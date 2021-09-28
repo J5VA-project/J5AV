@@ -1,4 +1,4 @@
-package com.example.J5VA;
+package com.J5VA;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

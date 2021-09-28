@@ -1,4 +1,4 @@
-package com.example.J5VA;
+package com.J5VA;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
