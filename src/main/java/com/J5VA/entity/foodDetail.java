@@ -1,12 +1,18 @@
 package com.J5VA.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +28,7 @@ public class foodDetail {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int food_id;
+	private int foodDetail_id;
 	@NotNull
 	private int category_id;
 	@NotBlank(message = "status not null!")
@@ -33,5 +39,13 @@ public class foodDetail {
 	private int size_id;
 	private String image_title1;
 	private String image_title2;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "foodDetail")
+	private List<size> size;
+
+	@OneToOne
+	@JoinColumn(name = "food_id_food")
+	private food food;
 
 }

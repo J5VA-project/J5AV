@@ -4,7 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -22,10 +25,14 @@ public class orderDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int orderDetail_id;
 	@NotNull
-	private int order_id;
-	@NotNull
-	private int food_id;
-	@NotNull
 	private int quantity;
 	private double price;
+	
+	@ManyToOne
+	@JoinColumn(name = "food_id")
+	private food food;
+	
+	@ManyToOne
+	@JoinColumn(name = "order_id")
+	private orders orders;
 }

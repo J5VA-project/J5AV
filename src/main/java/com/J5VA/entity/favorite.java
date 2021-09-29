@@ -1,11 +1,15 @@
 package com.J5VA.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -26,5 +30,8 @@ public class favorite {
 	private int food_id;
 	@NotNull
 	private int customer_id;
-
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "favorite")
+	private List<food> food;
 }

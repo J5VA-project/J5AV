@@ -1,14 +1,20 @@
 package com.J5VA.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,16 +24,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 public class orders {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int order_id;
-	@NotNull
-	private int account_id;
-	@NotNull
-	private int customer_id;
 	@NotNull
 	private Date orderDate;
 	private int discount;
@@ -36,4 +38,23 @@ public class orders {
 	@NotBlank(message = "address not null!")
 	private String address;
 
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private customer customer;
+
+	@ManyToOne
+	@JoinColumn(name = "account_id")
+	private account account;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "orders")
+	private List<orderDetail> orderDetails;
+
 }
+
+
+
+
+
+
+
