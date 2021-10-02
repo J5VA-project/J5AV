@@ -1,7 +1,5 @@
 package com.J5VA.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +12,7 @@ import com.J5VA.service.ParamService;
 
 
 @Controller
-@RequestMapping("/account/change-pwd")
+@RequestMapping("/home/change-pwd")
 public class ChangePasswordController {
 	@Autowired 
 	customerDao dao;
