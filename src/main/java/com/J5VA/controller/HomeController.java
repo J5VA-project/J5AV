@@ -4,11 +4,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class LoginController {
+public class HomeController {
 	
 
-@RequestMapping("/home/login")
+@RequestMapping("/home")
 	public String runControll(Model model) {
-		return "/home/login";
+		return "/home/index";
 	}
 }
