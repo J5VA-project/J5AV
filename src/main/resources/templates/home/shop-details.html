@@ -13,8 +13,8 @@
                      <div class="breadcrumb-title">
                          <h2>Shop Details</h2>
                          <ul class="breadcrumb-menu list-style">
-                             <li><a href="index.html">Home </a></li>
-                             <li><a href="shop-left-sidebar.html">Shop </a></li>
+                             <li><a th:href="@{/home}">Home </a></li>
+                             <li><a th:href="@{/home/shop}">Shop </a></li>
                              <li>Shop Details</li>
                          </ul>
                      </div>
@@ -31,32 +31,26 @@
                      <div class="swiper-container mySwiper2 single-product-slider">
                          <div class="swiper-wrapper">
                              <div class="swiper-slide">
-                                 <img src="/assets/img/feature/single-product-1.png" />
+                                 <img th:src="@{|/assets/img/feature/${food.photo}|}" alt="Image">
                              </div>
                              <div class="swiper-slide">
-                                 <img src="/assets/img/feature/single-product-2.png" />
+                                 <img th:src="@{|/assets/img/feature/${food.food_detail.image_title1}|}" alt="Image">
                              </div>
                              <div class="swiper-slide">
-                                 <img src="/assets/img/feature/single-product-3.png" />
-                             </div>
-                             <div class="swiper-slide">
-                                 <img src="/assets/img/feature/single-product-4.png" />
+                                 <img th:src="@{|/assets/img/feature/${food.food_detail.image_title2}|}" alt="Image">
                              </div>
                          </div>
                      </div>
-                     <div thumbsSlider="" class="swiper-container mySwiper single-product-thumbs">
+                     <div class="swiper-container mySwiper single-product-thumbs">
                          <div class="swiper-wrapper">
                              <div class="swiper-slide">
-                                 <img src="/assets/img/feature/single-product-1.png" />
+                                 <img th:src="@{|/assets/img/feature/${food.photo}|}" alt="Image">
                              </div>
                              <div class="swiper-slide">
-                                 <img src="/assets/img/feature/single-product-2.png" />
+                                 <img th:src="@{|/assets/img/feature/${food.food_detail.image_title1}|}" alt="Image">
                              </div>
                              <div class="swiper-slide">
-                                 <img src="/assets/img/feature/single-product-3.png" />
-                             </div>
-                             <div class="swiper-slide">
-                                 <img src="/assets/img/feature/single-product-4.png" />
+                                 <img th:src="@{|/assets/img/feature/${food.food_detail.image_title2}|}" alt="Image">
                              </div>
                          </div>
                          <div class="product-slider-next slider-btn style2"><i
@@ -68,7 +62,7 @@
                  <div class="col-lg-6">
                      <div class="single-product-details">
                          <div class="single-product-title">
-                             <h2>Chicken In Teriyaki</h2>
+                             <h2>[[${food.food_name}]]</h2>
                              <div class="product-ratings">
                                  <ul class="ratings list-style">
                                      <li> <i class="flaticon-star-1"></i> </li>
@@ -79,12 +73,11 @@
                                  </ul>
                                  <span>(45)</span>
                              </div>
-                             <h3><span>$39</span> <span class="discount">$45</span></h3>
+                             <h3><span>$[[${food.price}]]</span></h3>
                          </div>
                          <div class="single-product-desc">
                              <p>
-                                 Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Ipsum non facilis
-                                 corporis modi consequatur. Iure perferendis dicta illum deleniti veritatis vero.
+                                 [[${food.food_detail.description}]]
                              </p>
                              <ul class="content-feature-list list-style mb-20">
                                  <li><i class="las la-check-circle"></i>4 thick cut pork chops</li>
@@ -93,10 +86,6 @@
                              </ul>
                          </div>
                          <div class="product-more-option">
-                             <div class="product-more-option-item">
-                                 <h6>Category :</h6>
-                                 <a href="shop-left-sidebar.html">Fastfood</a>
-                             </div>
                              <div class="product-more-option-item">
                                  <h6>Quantity:</h6>
                                  <div class="product-quantity style1">
@@ -108,8 +97,12 @@
                                  </div>
                              </div>
                              <div class="product-more-option-item">
-                                 <h6>Availability :</h6>
-                                 <a href="shop-left-sidebar.html">In Stock</a>
+                                 <h6>Category:</h6>
+                                 <a th:href="@{|/home/shop-details/${food.food_detail.foodCategory.foodcategory_id}|}">[[${food.food_detail.foodCategory.foodcategory_name}]]</a>
+                             </div>
+                             <div class="product-more-option-item">
+                                 <h6>Size:</h6>
+	                             <a th:href="@{|/home/shop-details/${food.food_detail.food_detail_size.size_id}|}">[[${food.food_detail.food_detail_size.name}]]</a>
                              </div>
                          </div>
                          <div class="single-product-option">
@@ -309,161 +302,37 @@
                  <div class="col-md-12">
                      <div class="feature-slider swiper-container">
                          <div class="swiper-wrapper">
-                             <div class="swiper-slide">
+                             <div th:each="foods:${food.food_detail.foodCategory.foodDetails}" class="swiper-slide">
                                  <div class="feature-card style1">
-                                     <div class="feature-img">
-                                         <img src="/assets/img/feature/feature-item-1.jpg" alt="Image">
-                                     </div>
-                                     <div class="feature-info">
-                                         <h3 class="feature-title"><a href="shop-details.html">Chicken In
-                                                 Teriyaki</a>
-                                         </h3>
-                                         <div class="feature-meta">
-                                             <p class="feature-price">22.35$ <span>30.50$</span></p>
-                                             <div class="ratings">
-                                                 <i class="flaticon-star-1"></i>
-                                                 <span>4.9</span>
-                                             </div>
-                                         </div>
-                                         <a class="btn style2" href="shop-details.html"><i
-                                                 class="flaticon-shopping-bag-1"></i>Add To Cart</a>
-                                         <div class="discount-tag">
-                                             <img src="/assets/img/feature/circle-1.png" alt="Image">
-                                             <p> <span>Save</span>
-                                                 30%</p>
-                                         </div>
-                                     </div>
-                                 </div>
+				                     <div class="feature-img">
+				                         <img th:src="@{|/assets/img/feature/${foods.food.photo}|}" alt="Image">
+				                     </div>
+				                     <div class="feature-info">
+				                         <h3 class="feature-title"><a th:href="@{|/home/shop-details/${foods.food_id}|}">[[${foods.food.food_name}]]</a></h3>
+				                         <div class="product-more-option-item">
+					                         	 <div class="col-lg-6 col-md-6 col-12">
+						                         	 <h6>Category:</h6>
+						                         	 <a th:href="@{|/home/shop-details/${foods.food.food_detail.foodCategory.foodcategory_id}|}">[[${foods.food.food_detail.foodCategory.foodcategory_name}]]</a>
+				                                 </div>
+				                                 <div class="col-lg-6 col-md-6 col-12">
+				                                 	 <h6>Size:</h6>
+				                                 	 <a th:href="@{|/home/shop-details/${foods.food.food_detail.food_detail_size.size_id}|}">[[${foods.food.food_detail.food_detail_size.name}]]</a>
+				                                 </div>
+				                         </div>
+				                         <div class="feature-meta">
+				                             <p class="feature-price">[[${foods.food.price}]]$</p>
+				                         </div>
+				                         
+				                         <a class="btn style2" href="cart.html"><i class="flaticon-shopping-bag-1"></i>Add To
+				                             Cart</a>
+				                         <div class="discount-tag">
+				                             <img src="/assets/img/feature/circle-1.png" alt="Image">
+				                             <p> <span>[[${foods.food.food_detail.status?'Stocking':'Out of stock'}]]</span></p>
+				                         </div>
+				                     </div>
+				                 </div>
                              </div>
-                             <div class="swiper-slide">
-                                 <div class="feature-card style1">
-                                     <div class="feature-img">
-                                         <img src="/assets/img/feature/feature-item-2.jpg" alt="Image">
-                                     </div>
-                                     <div class="feature-info">
-                                         <h3 class="feature-title"><a href="feature.html">Hotdog With Sausage</a>
-                                         </h3>
-                                         <div class="feature-meta">
-                                             <p class="feature-price">30.35$ <span>40.50$</span></p>
-                                             <div class="ratings">
-                                                 <i class="flaticon-star-1"></i>
-                                                 <span>4.2</span>
-                                             </div>
-                                         </div>
-                                         <a class="btn style2" href="shop-details.html"><i
-                                                 class="flaticon-shopping-bag-1"></i>Add To Cart</a>
-                                         <div class="discount-tag">
-                                             <img src="/assets/img/feature/circle-1.png" alt="Image">
-                                             <p> <span>Save</span>
-                                                 20%</p>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                             <div class="swiper-slide">
-                                 <div class="feature-card style1">
-                                     <div class="feature-img">
-                                         <img src="/assets/img/feature/feature-item-3.jpg" alt="Image">
-                                     </div>
-                                     <div class="feature-info">
-                                         <h3 class="feature-title"><a href="shop-details.html">Breakfast With
-                                                 Sweet</a>
-                                         </h3>
-                                         <div class="feature-meta">
-                                             <p class="feature-price">52.35$ <span>60.50$</span></p>
-                                             <div class="ratings">
-                                                 <i class="flaticon-star-1"></i>
-                                                 <span>4.5</span>
-                                             </div>
-                                         </div>
-                                         <a class="btn style2" href="shop-details.html"><i
-                                                 class="flaticon-shopping-bag-1"></i>Add To Cart</a>
-                                         <div class="discount-tag">
-                                             <img src="/assets/img/feature/circle-1.png" alt="Image">
-                                             <p> <span>Save</span>
-                                                 25%</p>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                             <div class="swiper-slide">
-                                 <div class="feature-card style1">
-                                     <div class="feature-img">
-                                         <img src="/assets/img/feature/feature-item-4.jpg" alt="Image">
-                                     </div>
-                                     <div class="feature-info">
-                                         <h3 class="feature-title"><a href="shop-details.html">Grilled Chicken
-                                                 Stick</a>
-                                         </h3>
-                                         <div class="feature-meta">
-                                             <p class="feature-price">25.35$ <span>30.50$</span></p>
-                                             <div class="ratings">
-                                                 <i class="flaticon-star-1"></i>
-                                                 <span>4.8</span>
-                                             </div>
-                                         </div>
-                                         <a class="btn style2" href="shop-details.html"><i
-                                                 class="flaticon-shopping-bag-1"></i>Add To Cart</a>
-                                         <div class="discount-tag">
-                                             <img src="/assets/img/feature/circle-1.png" alt="Image">
-                                             <p> <span>Save</span>
-                                                 30%</p>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                             <div class="swiper-slide">
-                                 <div class="feature-card style1">
-                                     <div class="feature-img">
-                                         <img src="/assets/img/feature/feature-item-5.jpg" alt="Image">
-                                     </div>
-                                     <div class="feature-info">
-                                         <h3 class="feature-title"><a href="shop-details.html">Chicken Barista
-                                                 platter</a>
-                                         </h3>
-                                         <div class="feature-meta">
-                                             <p class="feature-price">32.35$ <span>45.50$</span></p>
-                                             <div class="ratings">
-                                                 <i class="flaticon-star-1"></i>
-                                                 <span>4.9</span>
-                                             </div>
-                                         </div>
-                                         <a class="btn style2" href="shop-details.html"><i
-                                                 class="flaticon-shopping-bag-1"></i>Add To Cart</a>
-                                         <div class="discount-tag">
-                                             <img src="/assets/img/feature/circle-1.png" alt="Image">
-                                             <p> <span>Save</span>
-                                                 40%</p>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                             <div class="swiper-slide">
-                                 <div class="feature-card style1">
-                                     <div class="feature-img">
-                                         <img src="/assets/img/feature/feature-item-6.jpg" alt="Image">
-                                     </div>
-                                     <div class="feature-info">
-                                         <h3 class="feature-title"><a href="shop-details.html">French Fries
-                                                 Pack</a>
-                                         </h3>
-                                         <div class="feature-meta">
-                                             <p class="feature-price">15.35$ <span>20.50$</span></p>
-                                             <div class="ratings">
-                                                 <i class="flaticon-star-1"></i>
-                                                 <span>4.4</span>
-                                             </div>
-                                         </div>
-                                         <a class="btn style2" href="shop-details.html"><i
-                                                 class="flaticon-shopping-bag-1"></i>Add To Cart</a>
-                                         <div class="discount-tag">
-                                             <img src="/assets/img/feature/circle-1.png" alt="Image">
-                                             <p> <span>Save</span>
-                                                 15%</p>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
+                             
                          </div>
                      </div>
                  </div>

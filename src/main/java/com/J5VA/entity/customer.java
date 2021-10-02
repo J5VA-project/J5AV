@@ -40,11 +40,11 @@ public class customer {
 	private String image;
 	
 	@JsonIgnore
-	@OneToMany (mappedBy = "customer")
+	@OneToMany (mappedBy = "order")
 	private List<orders> orders;
 	
 	@JsonIgnore
-	@OneToMany (mappedBy = "customer")
+	@OneToMany (mappedBy = "favorite_c")
 	private List<favorite> favorite;
 }
 

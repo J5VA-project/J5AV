@@ -43,7 +43,7 @@ public class account {
 	private String image; 
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "order")
+	@OneToMany(mappedBy = "account")
 	List<orders> orders;
 	
 	@JsonIgnore

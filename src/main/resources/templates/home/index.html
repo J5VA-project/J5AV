@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-	th:replace="~{/layout/header::dynamic(~{::body})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/header::dynamic(~{::body})}">
 
 <!-- Mirrored from templates.hibootstrap.com/caban/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:01 GMT -->
 
@@ -85,7 +84,7 @@
 	                             <img src="/assets/img/service/breakfast.png" alt="Image">
 	                         </div>
 	                         <div class="service-info">
-	                             <h3 class="service-title"><a href="service-details.html">Breakfast</a></h3>
+	                             <h3 class="service-title"><a th:href="@{/home/service-details}">Breakfast</a></h3>
 	                             <p>Lorem ipsum dolor sit amet, tetur
 	                                 piscing elit. Suspendisse smod
 	                                 congue bibendum.</p>
@@ -148,146 +147,32 @@
 	     </div>
 	     <div class="container pos-rel">
 	         <div class="row justify-content-center">
-	             <div class="col-xl-4 col-lg-6 col-md-6">
+	             <div th:each="food:${foods}" class="col-xl-4 col-lg-6 col-md-6">
 	                 <div class="feature-card style1">
 	                     <div class="feature-img">
-	                         <img src="/assets/img/feature/feature-item-1.jpg" alt="Image">
+	                         <img th:src="@{|/assets/img/feature/${food.photo}|}" alt="Image">
 	                     </div>
 	                     <div class="feature-info">
-	                         <h3 class="feature-title"><a href="shop-details.html">Chicken In Teriyaki</a></h3>
-	                         <div class="feature-meta">
-	                             <p class="feature-price">22.35$ <span>30.50$</span></p>
-	                             <div class="ratings">
-	                                 <i class="flaticon-star-1"></i>
-	                                 <span>4.9</span>
-	                             </div>
+	                         <h3 class="feature-title"><a th:href="@{|/home/shop-details/${food.food_id}|}">[[${food.food_name}]]</a></h3>
+	                         <div class="product-more-option-item">
+		                         	 <div class="col-lg-6 col-md-6 col-12">
+			                         	 <h6>Category:</h6>
+			                         	 <a th:href="@{|/home/shop-details/${food.food_detail.foodCategory.foodcategory_id}|}">[[${food.food_detail.foodCategory.foodcategory_name}]]</a>
+	                                 </div>
+	                                 <div class="col-lg-6 col-md-6 col-12">
+	                                 	 <h6>Size:</h6>
+	                                 	 <a th:href="@{|/home/shop-details/${food.food_detail.food_detail_size.size_id}|}">[[${food.food_detail.food_detail_size.name}]]</a>
+	                                 </div>
 	                         </div>
+	                         <div class="feature-meta">
+	                             <p class="feature-price">[[${food.price}]]$</p>
+	                         </div>
+	                         
 	                         <a class="btn style2" href="cart.html"><i class="flaticon-shopping-bag-1"></i>Add To
 	                             Cart</a>
 	                         <div class="discount-tag">
 	                             <img src="/assets/img/feature/circle-1.png" alt="Image">
-	                             <p> <span>Save</span>
-	                                 30%</p>
-	                         </div>
-	                     </div>
-	                 </div>
-	             </div>
-	             <div class="col-xl-4 col-lg-6 col-md-6">
-	                 <div class="feature-card style1">
-	                     <div class="feature-img">
-	                         <img src="/assets/img/feature/feature-item-2.jpg" alt="Image">
-	                     </div>
-	                     <div class="feature-info">
-	                         <h3 class="feature-title"><a href="shop-details.html">Hotdog With Sausage</a></h3>
-	                         <div class="feature-meta">
-	                             <p class="feature-price">30.35$ <span>40.50$</span></p>
-	                             <div class="ratings">
-	                                 <i class="flaticon-star-1"></i>
-	                                 <span>4.2</span>
-	                             </div>
-	                         </div>
-	                         <a class="btn style2" href="cart.html"><i class="flaticon-shopping-bag-1"></i>Add To
-	                             Cart</a>
-	                         <div class="discount-tag">
-	                             <img src="/assets/img/feature/circle-1.png" alt="Image">
-	                             <p> <span>Save</span>
-	                                 20%</p>
-	                         </div>
-	                     </div>
-	                 </div>
-	             </div>
-	             <div class="col-xl-4 col-lg-6 col-md-6">
-	                 <div class="feature-card style1">
-	                     <div class="feature-img">
-	                         <img src="/assets/img/feature/feature-item-3.jpg" alt="Image">
-	                     </div>
-	                     <div class="feature-info">
-	                         <h3 class="feature-title"><a href="shop-details.html">Breakfast With Sweet</a></h3>
-	                         <div class="feature-meta">
-	                             <p class="feature-price">52.35$ <span>60.50$</span></p>
-	                             <div class="ratings">
-	                                 <i class="flaticon-star-1"></i>
-	                                 <span>4.5</span>
-	                             </div>
-	                         </div>
-	                         <a class="btn style2" href="cart.html"><i class="flaticon-shopping-bag-1"></i>Add To
-	                             Cart</a>
-	                         <div class="discount-tag">
-	                             <img src="/assets/img/feature/circle-1.png" alt="Image">
-	                             <p> <span>Save</span>
-	                                 25%</p>
-	                         </div>
-	                     </div>
-	                 </div>
-	             </div>
-	             <div class="col-xl-4 col-lg-6 col-md-6">
-	                 <div class="feature-card style1">
-	                     <div class="feature-img">
-	                         <img src="/assets/img/feature/feature-item-4.jpg" alt="Image">
-	                     </div>
-	                     <div class="feature-info">
-	                         <h3 class="feature-title"><a href="shop-details.html">Grilled Chicken Stick</a></h3>
-	                         <div class="feature-meta">
-	                             <p class="feature-price">25.35$ <span>30.50$</span></p>
-	                             <div class="ratings">
-	                                 <i class="flaticon-star-1"></i>
-	                                 <span>4.8</span>
-	                             </div>
-	                         </div>
-	                         <a class="btn style2" href="cart.html"><i class="flaticon-shopping-bag-1"></i>Add To
-	                             Cart</a>
-	                         <div class="discount-tag">
-	                             <img src="/assets/img/feature/circle-1.png" alt="Image">
-	                             <p> <span>Save</span>
-	                                 30%</p>
-	                         </div>
-	                     </div>
-	                 </div>
-	             </div>
-	             <div class="col-xl-4 col-lg-6 col-md-6">
-	                 <div class="feature-card style1">
-	                     <div class="feature-img">
-	                         <img src="/assets/img/feature/feature-item-5.jpg" alt="Image">
-	                     </div>
-	                     <div class="feature-info">
-	                         <h3 class="feature-title"><a href="shop-details.html">Chicken Barista platter</a></h3>
-	                         <div class="feature-meta">
-	                             <p class="feature-price">32.35$ <span>45.50$</span></p>
-	                             <div class="ratings">
-	                                 <i class="flaticon-star-1"></i>
-	                                 <span>4.9</span>
-	                             </div>
-	                         </div>
-	                         <a class="btn style2" href="cart.html"><i class="flaticon-shopping-bag-1"></i>Add To
-	                             Cart</a>
-	                         <div class="discount-tag">
-	                             <img src="/assets/img/feature/circle-1.png" alt="Image">
-	                             <p> <span>Save</span>
-	                                 40%</p>
-	                         </div>
-	                     </div>
-	                 </div>
-	             </div>
-	             <div class="col-xl-4 col-lg-6 col-md-6">
-	                 <div class="feature-card style1">
-	                     <div class="feature-img">
-	                         <img src="/assets/img/feature/feature-item-6.jpg" alt="Image">
-	                     </div>
-	                     <div class="feature-info">
-	                         <h3 class="feature-title"><a href="shop-details.html">French Fries Pack</a></h3>
-	                         <div class="feature-meta">
-	                             <p class="feature-price">15.35$ <span>20.50$</span></p>
-	                             <div class="ratings">
-	                                 <i class="flaticon-star-1"></i>
-	                                 <span>4.4</span>
-	                             </div>
-	                         </div>
-	                         <a class="btn style2" href="cart.html"><i class="flaticon-shopping-bag-1"></i>Add To
-	                             Cart</a>
-	                         <div class="discount-tag">
-	                             <img src="/assets/img/feature/circle-1.png" alt="Image">
-	                             <p> <span>Save</span>
-	                                 15%</p>
+	                             <p> <span>[[${food.food_detail.status?'Stocking':'Out of stock'}]]</span></p>
 	                         </div>
 	                     </div>
 	                 </div>
@@ -319,7 +204,7 @@
 	                             <div class="contact-item-wrap">
 	                                 <div class="contact-item">
 	                                     <span><i class="flaticon-phone-call"></i></span>
-	                                     <a href="tel:49260573180">+49260-5731-80</a>
+	                                     <a href="tel:49260573180">+366533889</a>
 	                                 </div>
 	                                 <div class="contact-item">
 	                                     <div class="contact-item">
@@ -372,12 +257,12 @@
 	                     </div>
 	                     <div class="contact-box">
 	                         <h5>Make A Call</h5>
-	                         <a href="tel:880123654223">880-123-654</a>
+	                         <a href="tel:0963230016">096-323-0016</a>
 	                     </div>
 	                     <div class="contact-box">
 	                         <h5>Mail Us</h5>
-	                         <a href="mainto:hello@caban.com"><span class="__cf_email__"
-	                                 data-cfemail="bbd3ded7d7d4fbd8dad9dad595d8d4d6">[email&#160;protected]</span></a>
+	                         <a href="mainto:diemphuoc5555@gmail.com"><span class="__cf_email__"
+	                                 data-cfemail="bbd3ded7d7d4fbd8dad9dad595d8d4d6">diemphuoc5555</span></a>
 	                         <img src="/assets/img/contact/contact-img-1.png" alt="Image">
 	                     </div>
 	                 </div>
@@ -402,18 +287,18 @@
 	             <div class="col-md-12">
 	                 <div class="testimonial-slider-one swiper-container">
 	                     <div class="swiper-wrapper">
-	                         <div class="swiper-slide">
+	                     
+	                         <div th:each="cust:${custs}" class="swiper-slide">
 	                             <div class="testimonial-item style1">
 	                                 <div class="client-img">
-	                                     <img src="/assets/img/testimonial/client-1.jpg" alt="Image">
+	                                     <img th:src="@{|/assets/img/testimonial/${cust.image}|}" alt="Image">
 	                                 </div>
 	                                 <div class="client-info">
-	                                     <h4>Lisa Ann</h4>
-	                                     <span>CEO, IUBAT</span>
+	                                     <h4>[[${cust.fullname}]]</h4>
+	                                     <span>[[${cust.email}]]</span>
 	                                 </div>
 	                                 <div class="client-quote">
-	                                     <p>The food is really very tasty – the wagyu sushi on the dinner menu is
-	                                         especially delicious and not to be missed for a long time!</p>
+	                                     <p>[[${cust.address}]] - [[${cust.phone_No}]]</p>
 	                                 </div>
 	                                 <div class="client-rating-wrap">
 	                                     <ul class="ratings list-style">
@@ -429,87 +314,9 @@
 	                                 </div>
 	                             </div>
 	                         </div>
-	                         <div class="swiper-slide">
-	                             <div class="testimonial-item style1">
-	                                 <div class="client-img">
-	                                     <img src="/assets/img/testimonial/client-2.jpg" alt="Image">
-	                                 </div>
-	                                 <div class="client-info">
-	                                     <h4>Angelina Miller</h4>
-	                                     <span>Food Bloger</span>
-	                                 </div>
-	                                 <div class="client-quote">
-	                                     <p>The food is really very tasty – the wagyu sushi on the dinner menu is
-	                                         especially delicious and not to be missed for a long time!</p>
-	                                 </div>
-	                                 <div class="client-rating-wrap">
-	                                     <ul class="ratings list-style">
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                     </ul>
-	                                     <div class="quote-icon">
-	                                         <i class="flaticon-right-quote-sign"></i>
-	                                     </div>
-	                                 </div>
-	                             </div>
-	                         </div>
-	                         <div class="swiper-slide">
-	                             <div class="testimonial-item style1">
-	                                 <div class="client-img">
-	                                     <img src="/assets/img/testimonial/client-3.jpg" alt="Image">
-	                                 </div>
-	                                 <div class="client-info">
-	                                     <h4>Tony Stark</h4>
-	                                     <span>Traveler</span>
-	                                 </div>
-	                                 <div class="client-quote">
-	                                     <p>The food is really very tasty – the wagyu sushi on the dinner menu is
-	                                         especially delicious and not to be missed for a long time!</p>
-	                                 </div>
-	                                 <div class="client-rating-wrap">
-	                                     <ul class="ratings list-style">
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                     </ul>
-	                                     <div class="quote-icon">
-	                                         <i class="flaticon-right-quote-sign"></i>
-	                                     </div>
-	                                 </div>
-	                             </div>
-	                         </div>
-	                         <div class="swiper-slide">
-	                             <div class="testimonial-item style1">
-	                                 <div class="client-img">
-	                                     <img src="/assets/img/testimonial/client-4.jpg" alt="Image">
-	                                 </div>
-	                                 <div class="client-info">
-	                                     <h4>Henry Orton</h4>
-	                                     <span>Content Creator & Blogger</span>
-	                                 </div>
-	                                 <div class="client-quote">
-	                                     <p>The food is really very tasty – the wagyu sushi on the dinner menu is
-	                                         especially delicious and not to be missed for a long time!</p>
-	                                 </div>
-	                                 <div class="client-rating-wrap">
-	                                     <ul class="ratings list-style">
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                     </ul>
-	                                     <div class="quote-icon">
-	                                         <i class="flaticon-right-quote-sign"></i>
-	                                     </div>
-	                                 </div>
-	                             </div>
-	                         </div>
+	                         
+	                         
+	                         
 	                     </div>
 	                     <div class="testimonial-one-pagination"></div>
 	                 </div>

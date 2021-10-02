@@ -40,11 +40,11 @@ public class orders {
 
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
-	private customer customer;
+	private customer order;
 
 	@ManyToOne
 	@JoinColumn(name = "account_id")
-	private account order;
+	private account account;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "orders")
