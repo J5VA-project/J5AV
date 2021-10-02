@@ -8,8 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.sun.istack.NotNull;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,12 +22,10 @@ public class authorized {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int authorized_id;
-	@NotNull
-	private int account_id;
 	
 	@ManyToOne 
-	@JoinColumn(name = "username")
-	private account account;
+	@JoinColumn(name = "account_id")
+	private account authorize;
 	
 	@ManyToOne  
 	@JoinColumn(name = "role_id")

@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -34,9 +32,10 @@ public class food {
 	private double price;
 	private String photo;
 	
-	@ManyToOne
-	@JoinColumn(name = "favorite_id")
-	private favorite favorite;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "favorite")
+	private List<favorite> favorite;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "food")

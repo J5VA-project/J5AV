@@ -20,14 +20,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="foodCategory")
+@Table(name="foodcategory")
 public class foodCategory {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int foodCategory_id;
-	@NotBlank(message = "foodCategory_name not null!")
-	private String foodCategory_name;
+	private int foodcategory_id;
+	@NotBlank(message = "food Category Name not null!")
+	private String foodcategory_name;
 	@NotBlank(message = "description not null!")
 	private String description;
 	

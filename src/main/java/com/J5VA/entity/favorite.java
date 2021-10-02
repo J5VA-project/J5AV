@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,12 +28,13 @@ public class favorite {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int favorite_id;
-	@NotNull
-	private int food_id;
-	@NotNull
-	private int customer_id;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "favorite")
-	private List<food> food;
+	@ManyToOne
+	@JoinColumn(name = "food_id")
+	private food favorite;
+
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private customer customer;
+
 }

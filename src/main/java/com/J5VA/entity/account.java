@@ -43,11 +43,11 @@ public class account {
 	private String image; 
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "account")
+	@OneToMany(mappedBy = "order")
 	List<orders> orders;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "authorize", fetch = FetchType.EAGER)
 	List<authorized> authorities;
 
 }

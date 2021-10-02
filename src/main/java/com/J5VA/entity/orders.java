@@ -31,7 +31,7 @@ public class orders {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int order_id;
 	@NotNull
-	private Date orderDate;
+	private Date orderdate;
 	private int discount;
 	@NotNull
 	private int status;
@@ -44,7 +44,7 @@ public class orders {
 
 	@ManyToOne
 	@JoinColumn(name = "account_id")
-	private account account;
+	private account order;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "orders")

@@ -32,7 +32,7 @@ public class customer {
 	@NotBlank(message = "password not null!")
 	private String password;
 	@NotBlank(message = "fullName not null!")
-	private String fullName;
+	private String fullname;
 	@Size(max = 15, message = "Phone Number has be 15 charater")
 	private String phone_No;
 	private String address;
@@ -42,6 +42,10 @@ public class customer {
 	@JsonIgnore
 	@OneToMany (mappedBy = "customer")
 	private List<orders> orders;
+	
+	@JsonIgnore
+	@OneToMany (mappedBy = "customer")
+	private List<favorite> favorite;
 }
 
 

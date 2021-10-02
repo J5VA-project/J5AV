@@ -18,12 +18,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="orderDetail")
+@Table(name="orderdetail")
 public class orderDetail {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int orderDetail_id;
+	private int orderdetail_id;
 	@NotNull
 	private int quantity;
 	private double price;
