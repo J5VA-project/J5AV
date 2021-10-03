@@ -12,7 +12,7 @@ import com.J5VA.service.ParamService;
 
 
 @Controller
-@RequestMapping("/home/change-pwd")
+@RequestMapping("/home/change-pw")
 public class ChangePasswordController {
 	@Autowired 
 	customerDao dao;
