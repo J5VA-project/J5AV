@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.J5VA.dao.accountDao;
 import com.J5VA.dao.customerDao;
 import com.J5VA.dao.foodDao;
 import com.J5VA.entity.account;
@@ -19,10 +20,10 @@ import com.J5VA.service.accountService;
 @RequestMapping("test/home")
 public class testREST {
 	
-	@Autowired customerDao dao;
+	@Autowired accountDao dao;
 	
-	@GetMapping("{username}")
-	public List<customer> getAll(){
+	@GetMapping
+	public List<account> getAll(){
 		return dao.findAll();
 	}
 }
