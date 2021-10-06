@@ -11,19 +11,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.J5VA.dao.accountDao;
 import com.J5VA.dao.customerDao;
 import com.J5VA.dao.foodDao;
+import com.J5VA.dao.foodDetailDao;
 import com.J5VA.entity.account;
 import com.J5VA.entity.customer;
 import com.J5VA.entity.food;
+import com.J5VA.entity.foodDetail;
 import com.J5VA.service.accountService;
 
 @RestController
 @RequestMapping("test/home")
 public class testREST {
 	
-	@Autowired accountDao dao;
+	@Autowired foodDetailDao dao;
 	
-	@GetMapping
-	public List<account> getAll(){
-		return dao.findAll();
-	}
+//	@GetMapping("/{id}")
+//	public List<foodDetail> getAll(@PathVariable("id")Integer id){
+//		return dao.findByCateID(id);
+//	}
 }

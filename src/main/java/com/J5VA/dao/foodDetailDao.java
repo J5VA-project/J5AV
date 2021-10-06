@@ -7,5 +7,4 @@ import com.J5VA.entity.foodDetail;
 
 @Repository
 public interface foodDetailDao extends JpaRepository<foodDetail, Integer>{
-
 }

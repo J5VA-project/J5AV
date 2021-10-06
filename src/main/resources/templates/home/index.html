@@ -157,11 +157,11 @@
 	                         <div class="product-more-option-item">
 		                         	 <div class="col-lg-6 col-md-6 col-12">
 			                         	 <h6>Category:</h6>
-			                         	 <a th:href="@{|/home/shop-details/${food.food_detail.foodCategory.foodcategory_id}|}">[[${food.food_detail.foodCategory.foodcategory_name}]]</a>
+			                         	 <a th:href="@{|/home/shop?cid=${food.food_detail.foodCategory.foodcategory_name}|}">[[${food.food_detail.foodCategory.foodcategory_name}]]</a>
 	                                 </div>
 	                                 <div class="col-lg-6 col-md-6 col-12">
 	                                 	 <h6>Size:</h6>
-	                                 	 <a th:href="@{|/home/shop-details/${food.food_detail.food_detail_size.size_id}|}">[[${food.food_detail.food_detail_size.name}]]</a>
+	                                 	 <a  th:href="@{|/home/shop?sid=${food.food_detail.food_detail_size.name}|}">[[${food.food_detail.food_detail_size.name}]]</a>
 	                                 </div>
 	                         </div>
 	                         <div class="feature-meta">

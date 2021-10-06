@@ -1,8 +1,7 @@
 <!DOCTYPE html >
-<html lang="zxx" xmlns="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/header::dynamic(~{::body})}">
 
 <body>
-<<<<<<< HEAD
    <div class="breadcrumb-wrap bg-f br-1">
        <div class="overlay bg-black op-9"></div>
        <img src="/assets/img/shape-1.png" alt="Image" class="br-shape-1">
@@ -76,117 +75,5 @@
            </div>
        </div>
    </section>
-=======
-
-    <div class="preloader js-preloader">
-        <img src="/assets/img/preloader.gif" alt="Image">
-    </div>
-
-
-    <div class="page-wrapper ">
-
-        <div class="content-wrapper">
-
-            <div class="breadcrumb-wrap bg-f br-1">
-                <div class="overlay bg-black op-9"></div>
-                <img src="/assets/img/shape-1.png" alt="Image" class="br-shape-1">
-                <img src="/assets/img/shape-2.png" alt="Image" class="br-shape-2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="breadcrumb-title">
-                                <h2>Change Password</h2>
-                                <ul class="breadcrumb-menu list-style">
-                                    <li><a href="index.html">Home </a></li>
-                                    <li>Change Password</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <section class="login-wrap pt-100 pb-100">
-                <img src="/assets/img/shape-1.png" alt="Image" class="login-shape-1">
-                <img src="/assets/img/shape-2.png" alt="Image" class="login-shape-2">
-                <div class="container">
-                    <div class="row">                  
-                        <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
-                            <div class="login-form">
-                                <div class="login-header bg-green">
-                                    <h2 class="text-center mb-0">Change Password</h2>
-                                </div>
-                                <div class="login-body">
-                                    <form class="form-wrap"  th:action="@{/home/change-pw}" method="post">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <p>We will send a verification code to your mail to change your password.
-                                                </p>
-                                                <h4 th:text="${message}"></h4>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-group">
-                                                    <label for="email">Username *</label>
-                                                    <input id="email" name="username" type="text" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-group">
-                                                    <label for="pwd">Password *</label>
-                                                    <input id="pwd" name="password" type="password"  required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-group">
-                                                    <label for="pwd">New Password *</label>
-                                                    <input id="pwd" name="newpassword" type="New password" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-group">
-                                                    <label for="pwd">Confirm New Password *</label>
-                                                    <input id="pwd" name="confirmpassword" type="Confirm new password"  required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-group mb-0">
-                                                    <button class="btn style1 w-100 d-block">Submit</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-
-
-      
-
-    </div>
-
-
-
-    <a href="javascript:void(0)" class="back-to-top"><i class="las la-arrow-up"></i></a>
-
-
-    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/form-validator.min.js"></script>
-    <script src="/assets/js/contact-form-script.js"></script>
-    <script src="/assets/js/aos.js"></script>
-    <script src="/assets/js/swiper-min.js"></script>
-    <script src="/assets/js/jquery-magnific-popup.js"></script>
-    <script src="/assets/js/fancybox.js"></script>
-    <script src="/assets/js/jquery.appear.js"></script>
-    <script src="/assets/js/odometre.min.js"></script>
-    <script src="/assets/js/main.js"></script>
->>>>>>> fb86d13cd26cab43bdedf4d0762dc3b223cf36e0
 </body>
 </html>
