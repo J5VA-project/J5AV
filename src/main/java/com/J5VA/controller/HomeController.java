@@ -28,7 +28,7 @@ public class HomeController {
 		//find customer
 		List<customer> cust = cdao.findAll();
 		model.addAttribute("custs", cust);
-		return "/home/index";
+		return "home/index";
 	}
 	
 	
