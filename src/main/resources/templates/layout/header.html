@@ -81,8 +81,6 @@
                                 <div class="select-currency">
                                     <select>
                                         <option value="1">&nbsp; USD</option>
-                                        <option value="2">&nbsp; VND</option>
-                                        <option value="3">&nbsp; YEN</option>
                                     </select>
                                 </div>
                             </div>
@@ -116,7 +114,7 @@
                                             <ul class="sub-menu list-style">
                                                 <li><a href="testimonials.html">Testimonials</a></li>
                                                 <li><a href="faq.html">FAQ</a></li>
-                                                <li><a href="wishlist.html">Wishlist</a></li>
+                                                <li><a href="wishlist.html" th:text="#{menu.wishlist}">Wishlist</a></li>
                                             </ul>
                                         </li>
                                         <li><a th:href="@{/home/shop}" th:text="#{menu.shop}">Product</a>
