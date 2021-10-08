@@ -25,7 +25,6 @@ import lombok.NoArgsConstructor;
 public class customer {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotBlank(message = "username not null!")
 	private String username_custo;
 	@NotBlank(message = "password not null!")
