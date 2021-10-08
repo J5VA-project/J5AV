@@ -179,8 +179,8 @@
 						</div>
 						<div class="col-xl-4 col-lg-4 col-md-4">
 							<div class="filter-item-cat">
-								<select>
-									<option value="1">Sort By Most Popular</option>
+								<select th:each="asc:${ascName}">
+									<option value="1"><a th:href="@{|/home/shop?asc=ASC|}">Sort By High To Low</a></option>
 									<option value="2">Sort By High To Low</option>
 									<option value="3">Sort By Low To High</option>
 								</select>

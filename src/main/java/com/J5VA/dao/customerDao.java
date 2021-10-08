@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import com.J5VA.entity.customer;
 
 @Repository
-public interface customerDao extends JpaRepository<customer, Integer>{
+public interface customerDao extends JpaRepository<customer, String>{
 
-	@Query("SELECT o FROM customer o WHERE o.username = ?1")
+	@Query("SELECT o FROM customer o WHERE o.username_custo = ?1")
 	customer findByUsername(String username);
 }

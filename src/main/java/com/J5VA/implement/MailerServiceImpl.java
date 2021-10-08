@@ -1,8 +1,6 @@
-package com.J5VA.service;
+package com.J5VA.implement;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -10,10 +8,10 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.J5VA.config.MailInfo;
+import com.J5VA.service.MailerService;
 
 @Service
 public class MailerServiceImpl implements MailerService{

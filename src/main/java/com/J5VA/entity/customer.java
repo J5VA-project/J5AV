@@ -26,9 +26,8 @@ public class customer {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int customer_id;
 	@NotBlank(message = "username not null!")
-	private String username;
+	private String username_custo;
 	@NotBlank(message = "password not null!")
 	private String password;
 	@NotBlank(message = "fullName not null!")

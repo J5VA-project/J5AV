@@ -2,11 +2,10 @@ package com.J5VA.controller;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.constraints.Size;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,15 +16,17 @@ import com.J5VA.entity.food;
 import com.J5VA.entity.foodCategory;
 import com.J5VA.entity.size;
 
+
 @Controller
+@RequestMapping("/home")
 public class ProductController {
 	
 	@Autowired foodDao fdao;
 	@Autowired foodCategoryDao cdao;
 	@Autowired sizeDao sdao;
-
-	@RequestMapping("/home/shop")
-	public String runControll(Model model, @RequestParam("cid")Optional<String> cid, @RequestParam("sid")Optional<String> sid) {
+	
+	@GetMapping("/shop")
+	public String runControll(Model model, @RequestParam("cid")Optional<String> cid, @RequestParam("sid")Optional<String> sid, @RequestParam("asc")Optional<String> asc) {
 		//find food 
 		if(cid.isPresent()) {
 			List<food> food = fdao.findByCateID(cid.get());
@@ -58,6 +59,4 @@ public class ProductController {
 		}
 		return "/home/shop-slide";
 	}
-	
-	
 }

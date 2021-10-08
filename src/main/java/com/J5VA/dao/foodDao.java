@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.J5VA.entity.food;
 
+
 @Repository
 public interface foodDao extends JpaRepository<food, Integer>{
 	
@@ -18,4 +19,6 @@ public interface foodDao extends JpaRepository<food, Integer>{
 	@Query("SELECT o FROM food o WHERE o.food_detail.food_detail_size.name=?1")
 	List<food> findBySize(String sid);
 
+	@Query("SELECT o FROM food o ORDER BY o.food_name ASC")
+	List<food> sortNameASC(String name);
 }
