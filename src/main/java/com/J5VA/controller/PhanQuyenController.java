@@ -19,11 +19,11 @@ public class PhanQuyenController {
 		return "home/index";
 	}
 
-	@RequestMapping("/home/about")
-	public String about(Model model) {
-		model.addAttribute("message", "This is introduction page");
-		return "home/index";
-	}
+//	@RequestMapping("/home/about")
+//	public String about(Model model) {
+//		model.addAttribute("message", "This is introduction page");
+//		return "home/index";
+//	}
 
 //	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping("/home/admins")

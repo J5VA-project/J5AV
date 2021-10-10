@@ -3,25 +3,24 @@
 	th:replace="~{/layout/header::dynamic(~{::body})}">
 
 <body>
-	<div class="breadcrumb-wrap bg-f br-1">
-		<div class="overlay bg-black op-9"></div>
-		<img src="/assets/img/shape-1.png" alt="Image" class="br-shape-1">
-		<img src="/assets/img/shape-2.png" alt="Image" class="br-shape-2">
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-12">
-					<div class="breadcrumb-title">
-						<h2>Register</h2>
-						<ul class="breadcrumb-menu list-style">
-							<li><a th:href="@{/home}">Home </a></li>
-							<li>Register</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
+      <div class="breadcrumb-wrap bg-f br-1">
+          <div class="overlay bg-black op-9"></div>
+          <img src="/assets/img/shape-1.png" alt="Image" class="br-shape-1">
+          <img src="/assets/img/shape-2.png" alt="Image" class="br-shape-2">
+          <div class="container">
+              <div class="row">
+                  <div class="col-xl-12">
+                      <div class="breadcrumb-title">
+                          <h2 th:text=#{breadcrumb.register}>Register</h2>
+                          <ul class="breadcrumb-menu list-style">
+                             <li><a th:href="@{/home}" th:text=#{breadcrumb.home}>Home </a></li>
+                              <li th:text=#{breadcrumb.register}>Register</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
 
 	<section class="login-wrap pt-100 pb-100">
 		<img src="/assets/img/shape-1.png" alt="Image" class="login-shape-1">
