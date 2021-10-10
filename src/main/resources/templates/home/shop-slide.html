@@ -12,10 +12,10 @@
 			<div class="row">
 				<div class="col-xl-12">
 					<div class="breadcrumb-title">
-						<h2>Shop Left Sidebar</h2>
+						<h2 th:text=#{breadcrumb.product}>Products</h2>
 						<ul class="breadcrumb-menu list-style">
-							<li><a th:href="@{/home}">Home </a></li>
-							<li>Shop Left Sidebar</li>
+							<li><a th:href="@{/home}" th:text=#{breadcrumb.home}>Home </a></li>
+							<li th:text=#{breadcrumb.product}>Products</li>
 						</ul>
 					</div>
 				</div>
@@ -200,6 +200,7 @@
 						</div> -->
 						<div class="col-xl-4 col-lg-4 col-md-4">
 							<div class="filter-item-cat">
+<<<<<<< HEAD
 						<div class="main-menu-wrap">
 							<div id="menu">
 								<ul class="main-menu list-style">
@@ -223,6 +224,12 @@
 									<option value="1">Sort By Most Popular</option>
 									<option value="2">Sắp xếp giảm dần</option>
 									<option value="3">Sắp xếp tăng dần</option>
+=======
+								<select th:each="asc:${ascName}">
+									<option value="1"><a th:href="@{|/home/shop?asc=ASC|}">Sort By High To Low</a></option>
+									<option value="2">Sort By High To Low</option>
+									<option value="3">Sort By Low To High</option>
+>>>>>>> 941b5a2e234fcec22271f03afd4f39d7e3868c25
 								</select>
 							</div>
 						</div> -->

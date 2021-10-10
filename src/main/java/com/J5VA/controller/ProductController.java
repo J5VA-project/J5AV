@@ -10,7 +10,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.PathVariable;
+=======
+>>>>>>> 941b5a2e234fcec22271f03afd4f39d7e3868c25
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,8 +25,11 @@ import com.J5VA.entity.foodCategory;
 import com.J5VA.entity.size;
 import com.J5VA.service.foodService;
 
+
 @Controller
+@RequestMapping("/home")
 public class ProductController {
+<<<<<<< HEAD
 
 	@Autowired
 	foodDao fdao;
@@ -79,6 +85,17 @@ public class ProductController {
 			@RequestParam("sid") Optional<String> sid) {
 		// find food
 		if (cid.isPresent()) {
+=======
+	
+	@Autowired foodDao fdao;
+	@Autowired foodCategoryDao cdao;
+	@Autowired sizeDao sdao;
+	
+	@GetMapping("/shop")
+	public String runControll(Model model, @RequestParam("cid")Optional<String> cid, @RequestParam("sid")Optional<String> sid, @RequestParam("asc")Optional<String> asc) {
+		//find food 
+		if(cid.isPresent()) {
+>>>>>>> 941b5a2e234fcec22271f03afd4f39d7e3868c25
 			List<food> food = fdao.findByCateID(cid.get());
 			model.addAttribute("foods", food);
 			// cate
@@ -130,6 +147,4 @@ public class ProductController {
 		
 		return "/home/shop-slide";
 	}
-	
-	
 }

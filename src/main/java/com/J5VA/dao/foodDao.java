@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.J5VA.entity.food;
 
+
 @Repository
 public interface foodDao extends JpaRepository<food, Integer>,PagingAndSortingRepository<food, Integer>{
 	
@@ -29,4 +30,6 @@ public interface foodDao extends JpaRepository<food, Integer>,PagingAndSortingRe
 	List<food> foodHighPrice();
 
 
+	@Query("SELECT o FROM food o ORDER BY o.food_name ASC")
+	List<food> sortNameASC(String name);
 }

@@ -12,12 +12,12 @@
 	         <div class="row align-items-center">
 	             <div class="col-lg-6">
 	                 <div class="hero-content">
-	                     <h1>We Provide Express Home Delivery</h1>
-	                     <p>In shakes item of 2021 we are offering
+	                     <h1 th:text="#{home.title}">We Provide Express Home Delivery</h1>
+	                     <p th:text="#{home.sale}">In shakes item of 2021 we are offering
 	                         20% flat discount. Don't miss out!!</p>
 	                     <div class="hero-btn">
-	                         <a href="shop-left-sidebar.html" class="btn style1"><i
-	                                 class="las la-shopping-bag"></i>Order Now</a>
+	                         <a th:href="@{/home/shop}" class="btn style1" ><i th:text="#{home.order}"
+	                                 class="las la-shopping-bag"></i></a>
 	                     </div>
 	                 </div>
 	             </div>
@@ -46,14 +46,14 @@
 	             <div class="col-lg-6">
 	                 <div class="about-content">
 	                     <div class="content-title style2 mb-15">
-	                         <span>
+	                         <span >
 	                             <img src="/assets/img/secion-shape-1.png" alt="Image">
-	                             Our Story
+	                            <i th:text="#{home.story}">Our Story</i> 
 	                             <img src="/assets/img/secion-shape-2.png" alt="Image">
 	                         </span>
-	                         <h2>We Provide Locally Crafted Food Service </h2>
+	                         <h2 th:text="#{home.story.1}">We Provide Locally Crafted Food Service </h2>
 	                     </div>
-	                     <p>In our restaurant with people who are important to you, conversations that bring you
+	                     <p th:text="#{home.story.2}">In our restaurant with people who are important to you, conversations that bring you
 	                         closer to each other and those who enjoy our dishes.
 	                         Traditional dishes with local products of highest quality. including succulent Veal
 	                         Chops Sicilian, spicy Lobster Fra Diazole, tender Chicken Contadina.</p>
@@ -71,10 +71,10 @@
 	         <div class="section-title style1 text-center mb-110">
 	             <span>
 	                 <img src="/assets/img/secion-shape-1.png" alt="Image">
-	                 Our Services
+	                 <i th:text="#{service.title}"></i>
 	                 <img src="/assets/img/secion-shape-2.png" alt="Image">
 	             </span>
-	             <h2>What We Offer</h2>
+	             <h2 th:text="#{service.title1}">What We Offer</h2>
 	         </div>
 	         <div class="row">
 	             <div class="col-lg-12">
@@ -84,10 +84,8 @@
 	                             <img src="/assets/img/service/breakfast.png" alt="Image">
 	                         </div>
 	                         <div class="service-info">
-	                             <h3 class="service-title"><a th:href="@{/home/service-details}">Breakfast</a></h3>
-	                             <p>Lorem ipsum dolor sit amet, tetur
-	                                 piscing elit. Suspendisse smod
-	                                 congue bibendum.</p>
+	                             <h3 class="service-title"><a th:href="@{/home/service-details}" th:text="#{service.breakfast}">Breakfast</a></h3>
+	                             <p th:text="#{service.breakfast.content}">Breakfast is the most important meal of the day and I definitely have a hearty breakfast before I do anything</p>
 	                         </div>
 	                     </div>
 	                     <div class="service-card style1">
@@ -95,10 +93,8 @@
 	                             <img src="/assets/img/service/lunch.png" alt="Image">
 	                         </div>
 	                         <div class="service-info">
-	                             <h3 class="service-title"><a href="service-details.html">Lunch</a></h3>
-	                             <p>Lorem ipsum dolor sit amet, tetur
-	                                 piscing elit. Suspendisse smod
-	                                 congue bibendum.</p>
+	                             <h3 class="service-title"><a href="service-details.html" th:text="#{service.brunch}">Brunch</a></h3>
+	                             <p th:text="#{service.brunch.content}"> What's better than having a delicious meal in the brunch.</p>
 	                         </div>
 	                     </div>
 	                     <div class="service-card style1">
@@ -106,10 +102,8 @@
 	                             <img src="/assets/img/service/dinner.png" alt="Image">
 	                         </div>
 	                         <div class="service-info">
-	                             <h3 class="service-title"><a href="service-details.html">Dinner</a></h3>
-	                             <p>Lorem ipsum dolor sit amet, tetur
-	                                 piscing elit. Suspendisse smod
-	                                 congue bibendum.</p>
+	                             <h3 class="service-title"><a href="service-details.html" th:text="#{service.lunch}">Lunch</a></h3>
+	                             <p th:text="#{service.lunch.content}">Ask not what you can do for your country. Ask what's for lunch.</p>
 	                         </div>
 	                     </div>
 	                     <div class="service-card style1">
@@ -117,10 +111,8 @@
 	                             <img src="/assets/img/service/custom.png" alt="Image">
 	                         </div>
 	                         <div class="service-info">
-	                             <h3 class="service-title"><a href="service-details.html">Custom</a></h3>
-	                             <p>Lorem ipsum dolor sit amet, tetur
-	                                 piscing elit. Suspendisse smod
-	                                 congue bibendum.</p>
+	                             <h3 class="service-title"><a href="service-details.html" th:text="#{service.dinner}">Dinner</a></h3>
+	                             <p th:text="#{service.dinner.content}">It's a wonderful time when you sit down around the table for dinner and discuss life.</p>
 	                         </div>
 	                     </div>
 	                 </div>
@@ -140,10 +132,10 @@
 	     <div class="section-title style6 text-center mb-40">
 	         <span>
 	             <img src="/assets/img/secion-shape-1.png" alt="Image">
-	             Our Feature Items
+	             <i th:text=#{product.title}></i>
 	             <img src="/assets/img/secion-shape-2.png" alt="Image">
 	         </span>
-	         <h2 class="text-white">Popular Items Of Our Restaurant</h2>
+	         <h2 class="text-white" th:text=#{product.title1}>Hot Products Of Our Restaurant</h2>
 	     </div>
 	     <div class="container pos-rel">
 	         <div class="row justify-content-center">
@@ -156,11 +148,11 @@
 	                         <h3 class="feature-title"><a th:href="@{|/home/shop-details/${food.food_id}|}">[[${food.food_name}]]</a></h3>
 	                         <div class="product-more-option-item">
 		                         	 <div class="col-lg-6 col-md-6 col-12">
-			                         	 <h6>Category:</h6>
+			                         	 <h6 th:text=#{product.category}>Category</h6>
 			                         	 <a th:href="@{|/home/shop?cid=${food.food_detail.foodCategory.foodcategory_name}|}">[[${food.food_detail.foodCategory.foodcategory_name}]]</a>
 	                                 </div>
 	                                 <div class="col-lg-6 col-md-6 col-12">
-	                                 	 <h6>Size:</h6>
+	                                 	 <h6 th:text=#{product.size}>Size</h6>
 	                                 	 <a  th:href="@{|/home/shop?sid=${food.food_detail.food_detail_size.name}|}">[[${food.food_detail.food_detail_size.name}]]</a>
 	                                 </div>
 	                         </div>
@@ -168,8 +160,7 @@
 	                             <p class="feature-price">[[${food.price}]]$</p>
 	                         </div>
 	                         
-	                         <a class="btn style2" href="cart.html"><i class="flaticon-shopping-bag-1"></i>Add To
-	                             Cart</a>
+	                         <a class="btn style2" href="#"><i class="flaticon-shopping-bag-1"></i> <b th:text=#{product.addcart}></b> </a>
 	                         <div class="discount-tag">
 	                             <img src="/assets/img/feature/circle-1.png" alt="Image">
 	                             <p> <span>[[${food.food_detail.status?'Stocking':'Out of stock'}]]</span></p>
@@ -180,62 +171,6 @@
 	         </div>
 	     </div>
 	 </section>
-	
-	
-	 <section class="delivery-wrap ptb-100">
-	     <div class="container">
-	         <div class="row gx-5 align-items-center">
-	             <div class="col-lg-6">
-	                 <div class="delivery-content">
-	                     <div class="content-title style2 text-left mb-20">
-	                         <span class="">
-	                             <img src="/assets/img/secion-shape-1.png" alt="Image">
-	                             Quick Delivery
-	                             <img src="/assets/img/secion-shape-2.png" alt="Image">
-	                         </span>
-	                         <h2>Free Food Delivery Everyday At Your Convenience</h2>
-	                     </div>
-	                     <p>In our restaurant with people who are important to you, conversations that bring you to
-	                         closer to each other and those who enjoy our dishes. Quisque pretium dolor turpis, quis
-	                         blandit turpis semper ut. Nam malesuada eros nec luctus laoreet. Fusce sodales consequat
-	                         velit eget dictum. Integer ornare magna.</p>
-	                     <div class="row align-items-end gx-5">
-	                         <div class="col-md-8">
-	                             <div class="contact-item-wrap">
-	                                 <div class="contact-item">
-	                                     <span><i class="flaticon-phone-call"></i></span>
-	                                     <a href="tel:49260573180">+366533889</a>
-	                                 </div>
-	                                 <div class="contact-item">
-	                                     <div class="contact-item">
-	                                         <span> <i class="lar la-clock"></i></span>
-	                                         <p>Everyday From 8:00 to 12:00</p>
-	                                     </div>
-	                                 </div>
-	                             </div>
-	                             <form class="deilvery-address" action="#">
-	                                 <input type="text" placeholder="Enter Your Area ZIP Code">
-	                                 <button type="submit"><i class="flaticon-right-arrow-2"></i></button>
-	                             </form>
-	                         </div>
-	                         <div class="col-md-4 sm-none">
-	                             <div class="del-img">
-	                                 <img src="/assets/img/fruit-1.png" alt="Image">
-	                             </div>
-	                         </div>
-	                     </div>
-	                 </div>
-	             </div>
-	             <div class="col-lg-6">
-	                 <div class="delivery-van-img">
-	                     <img src="/assets/img/delivery/car.png" alt="Image">
-	                 </div>
-	             </div>
-	         </div>
-	     </div>
-	 </section>
-	
-	
 	 <section class="contact-wrap style1 bg-f contact-bg-1 pt-100 pb-70 pos-rel">
 	     <div class="overlay bg-black op-85"></div>
 	     <img src="/assets/img/shape-1.png" alt="Iamge" class="contact-shape-1 lg-none">
@@ -243,10 +178,10 @@
 	     <div class="section-title style6 text-center mb-40">
 	         <span class="text-sunshade">
 	             <img src="/assets/img/secion-shape-1.png" alt="Image">
-	             Contact Us
+	             <i th:text="#{contact.title}">Contact Us</i>
 	             <img src="/assets/img/secion-shape-2.png" alt="Image">
 	         </span>
-	         <h2 class="text-white">Not Sure What To Order? <br> Contact Us Now</h2>
+	         <h2 class="text-white" th:text="#{contact.title1}">Not Sure What To Order? <br> Contact Us Now</h2>
 	     </div>
 	     <div class="container pos-rel">
 	         <div class="row">
@@ -256,13 +191,13 @@
 	                         <i class="flaticon-phone-call"></i>
 	                     </div>
 	                     <div class="contact-box">
-	                         <h5>Make A Call</h5>
+	                         <h5 th:text="#{contact.phone}">Make A Call</h5>
 	                         <a href="tel:0963230016">096-323-0016</a>
 	                     </div>
 	                     <div class="contact-box">
-	                         <h5>Mail Us</h5>
-	                         <a href="mainto:diemphuoc5555@gmail.com"><span class="__cf_email__"
-	                                 data-cfemail="bbd3ded7d7d4fbd8dad9dad595d8d4d6">diemphuoc5555</span></a>
+	                         <h5 th:text="#{contact.mail}">Mail Us</h5>
+	                         <a href="mainto:j5varestaurant@gmail.com"><span class="__cf_email__"
+	                                 data-cfemail="bbd3ded7d7d4fbd8dad9dad595d8d4d6">j5varestaurant</span></a>
 	                         <img src="/assets/img/contact/contact-img-1.png" alt="Image">
 	                     </div>
 	                 </div>
@@ -270,17 +205,15 @@
 	         </div>
 	     </div>
 	 </section>
-	
-	
 	 <section class="testimonial-wrap bg-f testimonial-bg-1 pt-100 pb-100 pos-rel">
 	     <div class="overlay bg-white op-7"></div>
 	     <div class="section-title style1 text-center mb-40">
 	         <span>
 	             <img src="/assets/img/secion-shape-1.png" alt="Image">
-	             Testimonials
+	             <i th:text=#{testimonials.title}></i>
 	             <img src="/assets/img/secion-shape-2.png" alt="Image">
 	         </span>
-	         <h2>Our Happy Customers</h2>
+	         <h2 th:text=#{testimonials.title1}>Our Happy Customers</h2>
 	     </div>
 	     <div class="container">
 	         <div class="row">
@@ -313,10 +246,7 @@
 	                                     </div>
 	                                 </div>
 	                             </div>
-	                         </div>
-	                         
-	                         
-	                         
+	                         </div>	                         
 	                     </div>
 	                     <div class="testimonial-one-pagination"></div>
 	                 </div>
@@ -325,62 +255,13 @@
 	     </div>
 	 </section>
 	
-	
-	 <section class="app-wrap style1 ptb-100 bg-f app-bg-1">
-	     <div class="overlay op-95 bg-black"></div>
-	     <img src="/assets/img/shape-1.png" alt="Image" class="app-shape-1 lg-none">
-	     <img src="/assets/img/shape-2.png" alt="Image" class="app-shape-2 lg-none">
-	     <div class="container">
-	         <div class="row gx-5 align-items-center">
-	             <div class="col-lg-6">
-	                 <div class="app-content">
-	                     <div class="content-title style3 text-left mb-30">
-	                         <span>
-	                             <img src="/assets/img/secion-shape-1.png" alt="Image">
-	                             Our App
-	                             <img src="/assets/img/secion-shape-2.png" alt="Image">
-	                         </span>
-	                         <h2 class="text-white">Order With Our Application</h2>
-	                     </div>
-	                     <div class="pr-wrap style1">
-	                         <div class="pr-item">
-	                             <h4><i class="flaticon-check-box-with-check-sign"></i>Order And
-	                                 Pay In A Few
-	                                 Minutes</h4>
-	                             <p>Сhoose food and pay for the order in a couple of clicks online also
-	                                 choose you current location using GPS</p>
-	                         </div>
-	                         <div class="pr-item">
-	                             <h4><i class="flaticon-check-box-with-check-sign"></i>Check
-	                                 Delivery Status</h4>
-	                             <p>Follow the status of your order in real time and also track the delivery path
-	                                 until you get it.</p>
-	                         </div>
-	                     </div>
-	                     <div class="download-app-btn">
-	                         <a href="app.html"><img src="/assets/img/app/google-playstore.png" alt="Image"></a>
-	                         <a href="app.html"><img src="/assets/img/app/apple-playstore.png" alt="Image"></a>
-	                     </div>
-	                 </div>
-	             </div>
-	             <div class="col-lg-6">
-	                 <div class="app-img">
-	                     <img src="/assets/img/app/app-img-1.png" alt="Image" class="app-top-img md-none">
-	                     <img src="/assets/img/app/app-showcase.png" alt="Image">
-	                 </div>
-	             </div>
-	         </div>
-	     </div>
-	 </section>
-	
-	
 	 <section class="newsletter-wrap bg-f newsletter-bg-1 ptb-100">
 	     <div class="container">
 	         <div class="row">
 	             <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
 	                 <div class="section-title style1 text-center mb-40">
-	                     <h2>Newsletter Subscribe</h2>
-	                     <p>Drop us your mail address. We love to hear from you and are happy to answer any
+	                     <h2 th:text="#{subscribe.title}">Newsletter Subscribe</h2>
+	                     <p th:text="#{subscribe.content}">Drop us your mail address. We love to hear from you and are happy to answer any
 	                         questions immediately.</p>
 	                 </div>
 	                 <form action="#" class="newsletter-form">

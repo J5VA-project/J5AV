@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.J5VA.entity.account;
 
 @Repository
-public interface accountDao extends JpaRepository<account, Integer>{
+public interface accountDao extends JpaRepository<account, String>{
+	
+	
 	
 }

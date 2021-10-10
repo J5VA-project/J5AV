@@ -39,11 +39,11 @@ public class orders {
 	private String address;
 
 	@ManyToOne
-	@JoinColumn(name = "customer_id")
+	@JoinColumn(name = "username_custo")
 	private customer order;
 
 	@ManyToOne
-	@JoinColumn(name = "account_id")
+	@JoinColumn(name = "username")
 	private account account;
 
 	@JsonIgnore
