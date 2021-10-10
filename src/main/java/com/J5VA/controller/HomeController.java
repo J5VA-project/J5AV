@@ -22,12 +22,12 @@ public class HomeController {
 
 	@GetMapping
 	public String runControll(Model model) {
-		//find food
-		List<food> food = fdao.findAll();
-		model.addAttribute("foods", food);
-		//find customer
-		List<customer> cust = cdao.findAll();
-		model.addAttribute("custs", cust);
+//		//find food
+//		List<food> food = fdao.findAll();
+//		model.addAttribute("foods", food);
+//		//find customer
+//		List<customer> cust = cdao.findAll();
+//		model.addAttribute("custs", cust);
 		return "/home/index";
 	}
 	
