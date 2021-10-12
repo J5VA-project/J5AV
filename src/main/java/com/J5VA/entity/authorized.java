@@ -24,7 +24,7 @@ public class authorized {
 	private int authorized_id;
 	
 	@ManyToOne 
-	@JoinColumn(name = "account_id")
+	@JoinColumn(name = "username")
 	private account authorize;
 	
 	@ManyToOne  

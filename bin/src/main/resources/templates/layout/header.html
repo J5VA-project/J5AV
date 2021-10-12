@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(view)">
+
+<!-- Mirrored from templates.hibootstrap.com/caban/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:01 GMT -->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/line-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/flaticon.css">
+    <link rel="stylesheet" href="/assets/css/swiper-min.css">
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/fancybox.css">
+    <link rel="stylesheet" href="/assets/css/aos.css">
+    <link rel="stylesheet" href="/assets/css/odometre.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    <title>J5VA - Restaurant</title>
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+</head>
+
+<body>
+
+    <div class="preloader js-preloader">
+        <img src="/assets/img/preloader.gif" alt="Image">
+    </div>
+
+
+    <div class="page-wrapper ">
+
+        <header class="header-wrap style1">
+            <div class="header-top">
+                <div class="container">
+                    <div class="close-header-top xl-none">
+                        <button type="button"><i class="las la-times"></i></button>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-xl-10 col-lg-12">
+                            <div class="header-top-left">
+                                <div class="contact-item">
+                                    <i class="flaticon-wall-clock"></i>
+                                    <p>Mon - Sun[8:00am - 10:00pm]</p>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="flaticon-phone-call"></i>
+                                    <a href="tel:0366533889">0366-533-889</a>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="flaticon-voucher"></i>
+                                    <p>Discount 0ff <strong>25%</strong>only for <span>Burger Item</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-12">
+                            <div class="header-top-right">
+                                <div class="select-lang">
+                                    <div class="navbar-option-item navbar-language dropdown language-option">
+                                        <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <span class="lang-name"></span>
+                                        </button>
+                                        <div class="dropdown-menu language-dropdown-menu">
+                                            <a class="dropdown-item" href="#">
+                                                <img src="/assets/img/uk.png" alt="flag">
+                                                English
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <img src="/assets/img/china.png" alt="flag">
+                                                简体中文
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <img src="/assets/img/uae.png" alt="flag">
+                                                Tiếng Việt
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="select-currency">
+                                    <select>
+                                        <option value="1">&nbsp; USD</option>
+                                        <option value="2">&nbsp; VND</option>
+                                        <option value="3">&nbsp; YEN</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <a href="reservation.html" class="btn style1 xl-none">Make Reservation <i
+                                    class="flaticon-right-arrow-2"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container ">
+                <div class="header-bottom">
+                    <div class="row align-items-center">
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-5">
+                            <a href="index.html" class="logo"><img src="/assets/img/logo-white.png" alt="Image"></a>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-7">
+                            <div class="main-menu-wrap">
+                                <div class="menu-close xl-none">
+                                    <a href="javascript:void(0)"><i class="las la-times"></i></a>
+                                </div>
+                                <div id="menu">
+                                    <ul class="main-menu list-style">
+                                        <li>
+                                            <a th:href="@{/home}">Home</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{/home/service}">Services</a>
+                                        </li>
+                                        <li class="has-children">
+                                            <a href="#">Pages</a>
+                                            <ul class="sub-menu list-style">
+                                                <li><a href="testimonials.html">Testimonials</a></li>
+                                                <li><a href="faq.html">FAQ</a></li>
+                                                <li><a href="wishlist.html">Wishlist</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a th:href="@{/home/shop}">Product</a>
+                                        <li>
+                                            <a href="blog-no-sidebar.html">Blog</a>
+                                        </li>
+                                        <li>
+                                            <a href="contact.html">Contact</a>
+                                        </li>
+                                        <li>
+                                            <a href="about.html">About</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mobile-bar-wrap">
+                                <a href="cart.html" class="shopcart  xl-none">
+                                    <i class="las la-shopping-cart"></i>
+                                    <span>1</span>
+                                </a>                      
+                                    <a href="login.html"class="shopcart xl-none"> <i class="las la-user"></i></a>                                
+                                <div class="mobile-top-bar xl-none">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="mobile-menu xl-none">
+                                    <a href="javascript:void(0)"><i class="las la-bars"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 lg-none">
+                            <div class="header-bottom-right">
+                                <a href="cart.html" class="shopcart">
+                                    <i class="las la-shopping-cart"></i>
+                                    <span>1</span>
+                                </a>
+                                <div class="main-menu-wrap">
+                                    <div class="menu-close xl-none">
+                                        <a href="javascript:void(0)"><i class="las la-times"></i></a>
+                                    </div>
+                                    <div id="menu">
+                                        <ul class="main-menu list-style">
+                                            <li class="has-children">
+                                                <a href="#"class="shopcart"> <i class="las la-user"></i></a>
+                                                <ul class="sub-menu list-style">
+                                                    <li><a th:href="@{/home/login}">Login</a></li>
+                                                    <li><a th:href="@{/home/register}">Register</a></li>
+                                                    <li><a th:href="@{/home/forgot-pw}">Forgot Password</a></li>
+                                                </ul>
+                                            </li>   
+                                        </ul>
+                                    </div>
+                                </div>                                
+                                <!-- <a href="reservation.html" class="btn style1">Make Reservation <i
+                                        class="flaticon-right-arrow-2"></i> </a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        
+        <div class="ps-section--page" th:replace="${view}"></div>
+        
+        
+        
+        <footer class="footer-wrap">
+            <div class="footer-top bg-f footer-bg-1 pt-100 pb-70">
+                <div class="overlay op-9 bg-black"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="footer-widget-wrap">
+                                <div class="footer-widget">
+                                    <a href="index.html" class="footer-logo">
+                                        <img src="/assets/img/logo-white.png" alt="Image">
+                                    </a>
+                                    <p class="comp-desc">Our feet are on the ground, but our the desi ambitions are to
+                                        above the clouds a Here is how we move to satisfy our customers</p>
+                                    <div class="contact-item-wrap">
+                                        <div class="contact-item">
+                                            <i class="flaticon-mail-1"></i>
+                                            <a href="mailto:"><span class="__cf_email__"
+                                                    data-cfemail="29414c454546694a484b4847074a4644">diemphuoc5555@gmail.com</span></a>
+                                        </div>
+                                        <div class="contact-item">
+                                            <i class="flaticon-phone-call"></i>
+                                            <a href="tel:0366533889">+366533889</a>
+                                        </div>
+                                    </div>
+                                    <ul class="social-profile style1 list-style">
+                                        <li><a target="_blank" href="https://facebook.com/"><i
+                                                    class="flaticon-facebook"></i> </a></li>
+                                        <li><a target="_blank" href="https://twitter.com/"> <i
+                                                    class="flaticon-twitter-1"></i> </a></li>
+                                        <li><a target="_blank" href="https://instagram.com/"> <i
+                                                    class="flaticon-instagram"></i> </a></li>
+                                        <li><a target="_blank" href="https://youtube.com/"> <i
+                                                    class="flaticon-youtube"></i> </a></li>
+                                    </ul>
+                                </div>
+                                <div class="footer-widget">
+                                    <h4 class="footer-widget-title">
+                                        Quick Links
+                                    </h4>
+                                    <ul class="footer-menu list-style">
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="testimonials.html">Our Chef</a></li>
+                                        <li><a href="shop-left-sidebar.html">Shop</a></li>
+                                        <li><a href="wishlist.html">Wishlist</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                        <li><a href="contact.html">Career</a></li>
+                                    </ul>
+                                </div>
+                                <div class="footer-widget">
+                                    <h4 class="footer-widget-title">
+                                        Opening Hours
+                                    </h4>
+                                    <ul class="office-schedule  list-style">
+                                        <li>
+                                            <p>Monday</p>
+                                            <p>09:00 - 18:00</p>
+                                        </li>
+                                        <li>
+                                            <p>Tuesday</p>
+                                            <p>10:00 - 18:00</p>
+                                        </li>
+                                        <li>
+                                            <p>Wednesday</p>
+                                            <p>11:00 - 18:00</p>
+                                        </li>
+                                        <li>
+                                            <p>Thursday</p>
+                                            <p>12:00 - 18:00</p>
+                                        </li>
+                                        <li>
+                                            <p>Friday</p>
+                                            <p>14:00 - 18:00</p>
+                                        </li>
+                                        <li>
+                                            <p>Saturday,Sunday</p>
+                                            <p>Closed</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="footer-widget">
+                                    <h4 class="footer-widget-title">
+                                        Instagram Photo
+                                    </h4>
+                                    <div class="instagram-img-wrap">
+                                        <a href="https://instagram.com/" target="_blank" class="insta-box">
+                                            <img src="/assets/img/instagram/instagram-1.jpg" alt="Image">
+                                        </a>
+                                        <a href="https://instagram.com/" target="_blank" class="insta-box">
+                                            <img src="/assets/img/instagram/instagram-2.jpg" alt="Image">
+                                        </a>
+                                        <a href="https://instagram.com/" target="_blank" class="insta-box">
+                                            <img src="/assets/img/instagram/instagram-3.jpg" alt="Image">
+                                        </a>
+                                        <a href="https://instagram.com/" target="_blank" class="insta-box">
+                                            <img src="/assets/img/instagram/instagram-4.jpg" alt="Image">
+                                        </a>
+                                        <a href="https://instagram.com/" target="_blank" class="insta-box">
+                                            <img src="/assets/img/instagram/instagram-5.jpg" alt="Image">
+                                        </a>
+                                        <a href="https://instagram.com/" target="_blank" class="insta-box">
+                                            <img src="/assets/img/instagram/instagram-6.jpg" alt="Image">
+                                        </a>
+                                        <a href="https://instagram.com/" target="_blank" class="insta-box">
+                                            <img src="/assets/img/instagram/instagram-7.jpg" alt="Image">
+                                        </a>
+                                        <a href="https://instagram.com/" target="_blank" class="insta-box">
+                                            <img src="/assets/img/instagram/instagram-8.jpg" alt="Image">
+                                        </a>
+                                        <a href="https://instagram.com/" target="_blank" class="insta-box">
+                                            <img src="/assets/img/instagram/instagram-9.jpg" alt="Image">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom bg-black">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-12 col-12 order-lg-1 order-md-2 order-2">
+                            <p class="copyright"><span class="las la-copyright"></span>2021 Caban. All Rights Reserved
+                                By <a href="https://hibootstrap.com/">HiBootstrap</a></p>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-12 order-lg-2 order-md-1 order-1">
+                            <ul class="footer-bottom-menu list-style">
+                                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
+                                <li><a href="contact.html">Help Center</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <a href="javascript:void(0)" class="back-to-top"><i class="las la-arrow-up"></i></a>
+
+
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/form-validator.min.js"></script>
+    <script src="/assets/js/contact-form-script.js"></script>
+    <script src="/assets/js/aos.js"></script>
+    <script src="/assets/js/swiper-min.js"></script>
+    <script src="/assets/js/jquery-magnific-popup.js"></script>
+    <script src="/assets/js/fancybox.js"></script>
+    <script src="/assets/js/jquery.appear.js"></script>
+    <script src="/assets/js/odometre.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+</body>
+
+<!-- Mirrored from templates.hibootstrap.com/caban/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:23 GMT -->
+
+</html>

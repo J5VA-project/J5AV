@@ -39,12 +39,12 @@ public class orders {
 	private String address;
 
 	@ManyToOne
-	@JoinColumn(name = "customer_id")
-	private customer customer;
+	@JoinColumn(name = "username_custo")
+	private customer order;
 
 	@ManyToOne
-	@JoinColumn(name = "account_id")
-	private account order;
+	@JoinColumn(name = "username")
+	private account account;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "orders")

@@ -32,7 +32,7 @@ public class foodCategory {
 	private String description;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "category_id")
+	@OneToMany(mappedBy = "foodCategory")
 	List<foodDetail> foodDetails;
 
 }

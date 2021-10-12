@@ -27,7 +27,6 @@ public class account {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int account_id;
 	@NotBlank (message = "username not null!")
 	private String username;
 	@NotBlank (message = "password not null!")
@@ -43,7 +42,7 @@ public class account {
 	private String image; 
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "order")
+	@OneToMany(mappedBy = "account")
 	List<orders> orders;
 	
 	@JsonIgnore

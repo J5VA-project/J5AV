@@ -6,7 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -30,14 +32,18 @@ public class food {
 	private String food_name;
 	@NotBlank(message = "price not null!")
 	private double price;
-	private String photo;
+	String photo;
 	
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "favorite")
+	@OneToMany(mappedBy = "favorite_f")
 	private List<favorite> favorite;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "food")
 	private List<orderDetail> orderDetail;
+    
+	@OneToOne
+	@JoinColumn(name = "food_id")
+	private foodDetail food_detail;
 }
