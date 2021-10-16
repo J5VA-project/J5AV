@@ -37,14 +37,15 @@ public class orders {
 	private int status;
 	@NotBlank(message = "address not null!")
 	private String address;
+	private String note;
 
 	@ManyToOne
 	@JoinColumn(name = "username_custo")
-	private customer order;
+	private customer custo;
 
-	@ManyToOne
-	@JoinColumn(name = "username")
-	private account account;
+//	@ManyToOne
+//	@JoinColumn(name = "username")
+//	private account account;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "orders")

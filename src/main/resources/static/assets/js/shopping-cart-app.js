@@ -59,12 +59,12 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 				.reduce((total, qty) => total += qty, 0);
 		},
 		//tong thanh tien cac mat hang trong gio
-		get amout() {
+		get amount() {
 			return this.items
 				.map(item => item.qty * item.price)
 				.reduce((total, qty) => total += qty, 0);
 		},
-		get amout1() {
+		get amount1() {
 			return this.items
 				.map(item => item.qty * item.price)
 				.reduce((total, qty) => total += qty * 0.2, 0);
@@ -81,32 +81,35 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 		}
 	}
 	$scope.cart.loadFromLocalStorage();
-
-	$scope.order = {
-		createDate: new Date(),
+	
+	
+	$scope.orders = {
+		orderdate: new Date(),
+		status:1,
 		address: "",
-		account: { username: $("#username").text() },
-		get orderDetails() {
-			return $scope.cart.items.map(item => {
-				return {
-					product: { id: item.id },
-					price: item.price,
-					quantity: item.qty
+		note:"",
+		custo: {username_custo:$("#user").text()},
+		get orderDetails(){
+			return $scope.cart.items.map(item =>{
+				return{
+					food:{food_id:item.food_id},
+					price:item.price,
+					quantity:item.qty
 				}
 			});
 		},
-		purchase() {
-			var order = angular.copy(this);
-			//Thực hiện đặt hàng
-			$http.post("/rest/orders", order).then(resp => {
-				alert("Dat hang thanh cong!");
-				$scope.cart.clear();
-				location.href = "/order/detail/" + resp.data.id;
-			}).catch(error => {
-				alert("Dat hang loi")
-				console.log(error)
-			}
-			)
-		}
+		purchase(){
+			//thực hiện đặt hàng
+			$http.post("/rest/orders", this).then(resp =>{
+			alert("đặt hàng thành công");
+			$scope.cart.clear();
+			location.href = "/home/checkout-detail/"+resp.data.id;
+		}).catch(error => {
+		alert("Đặt hàng lỗi")
+		console.log(error)
+		})
 	}
-})
+	}
+});
+
+

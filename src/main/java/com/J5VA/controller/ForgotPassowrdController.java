@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.J5VA.dao.customerDao;
-import com.J5VA.entity.account;
 import com.J5VA.entity.customer;
 import com.J5VA.service.MailerService;
 import com.J5VA.service.ParamService;

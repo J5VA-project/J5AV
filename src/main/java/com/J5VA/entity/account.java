@@ -41,9 +41,6 @@ public class account {
 	private Date birthdate;
 	private String image; 
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "account")
-	List<orders> orders;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "authorize", fetch = FetchType.EAGER)
