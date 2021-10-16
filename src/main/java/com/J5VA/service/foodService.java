@@ -8,13 +8,15 @@ import com.J5VA.entity.food;
 
 public interface foodService {
 
+	int count();
+	
 	void delete(food entity);
 
 	food findById(Integer id);
 
 	food save(food entity);
 
-	List<food> searchFood(String key);
+	Page<food> searchFood(Integer pageNumber, String key);
 
 //	Page<food> listAll(int pageNumber);
 

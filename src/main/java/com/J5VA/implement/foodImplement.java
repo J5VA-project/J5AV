@@ -29,6 +29,11 @@ public class foodImplement implements foodService{
 //	}
 
 	@Override
+	public int count() {
+		return dao.countFood();
+	}
+	
+	@Override
 	public food findById(Integer id) {
 		return dao.findById(id).get();
 	}
@@ -37,12 +42,7 @@ public class foodImplement implements foodService{
 	public void delete(food entity) {
 		dao.delete(entity);
 	}
-
-	@Override
-	public List<food> searchFood(String key) {
-		return dao.searchFood(key);
-	}
-
+	
 	@Override
 	public List<food> findAll() {
 		return dao.findAll();
@@ -63,6 +63,15 @@ public class foodImplement implements foodService{
 	@Override
 	public void delete(Integer id) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Page<food> searchFood(Integer pageNumber, String key) {
+		key = key == null ? "" : key;
+		pageNumber = (pageNumber == null || pageNumber <=0) ? 1 : pageNumber;
+		Pageable pageable = PageRequest.of(pageNumber -1, 6);
+		return dao.findAllFood(key, pageable);
 		
 	}
 

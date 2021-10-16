@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,39 +33,35 @@ public class ProductController {
 	foodService service;
 
 	@GetMapping("/home/shop")
-	public String runControll(Model model, @RequestParam("cid") Optional<String> cid,
-			@RequestParam("sid") Optional<String> sid, @RequestParam("asc") Optional<String> asc) {
-		// find food
-		if (cid.isPresent()) {
-			List<food> food = fdao.findByCateID(cid.get());
-			model.addAttribute("foods", food);
-			// cate
-			List<foodCategory> cates = cdao.findAll();
-			model.addAttribute("cates", cates);
-			// size
-			List<size> size = sdao.findAll();
-			model.addAttribute("sizes", size);
-		} else if (sid.isPresent()) {
-			List<food> sizef = fdao.findBySize(sid.get());
-			model.addAttribute("foods", sizef);
-			// cate
-			List<foodCategory> cates = cdao.findAll();
-			model.addAttribute("cates", cates);
-			// size
-			List<size> size = sdao.findAll();
-			model.addAttribute("sizes", size);
-		} else {
-			// cate
-			List<foodCategory> cates = cdao.findAll();
-			model.addAttribute("cates", cates);
-			// size
-			List<size> size = sdao.findAll();
-			model.addAttribute("sizes", size);
-			// food
-			List<food> food = fdao.findAll();
-			model.addAttribute("foods", food);
-
-		}
+	public String listByPage(Model model, 
+			@RequestParam(name="page", required=false, defaultValue = "1") Integer currentPage,
+			@RequestParam(name="search", required=false) String search) {
+		
+		Page<food> page = service.searchFood(currentPage, search);
+		
+		// su dung long vi page.getTotalElements() khong chap nhan kieu int
+		long totalItems = page.getTotalElements();
+		int totalPages = page.getTotalPages();
+		
+		int count = service.count();
+		
+		List<food> food = page.getContent();
+		
+			
+		List<foodCategory> cates = cdao.findAll();
+		model.addAttribute("cates", cates);
+		// size
+		List<size> size = sdao.findAll();
+		model.addAttribute("sizes", size);
+		
+		// List<food> food = fdao.findAll();
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("totalItems", totalItems);
+		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("foods", food);
+		model.addAttribute("search", search == null ? "" : search);
+		model.addAttribute("count", count);
+		
 		return "/home/shop-slide";
 	}
 

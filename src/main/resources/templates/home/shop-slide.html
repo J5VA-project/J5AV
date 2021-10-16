@@ -30,28 +30,28 @@
 				<div
 					class="col-xl-4 col-lg-12 order-xl-1 order-lg-2 order-md-2 order-2">
 					<div class="sidebar">
-						<form th:action="@{/home/shop/search}" method="POST">
+						<form th:action="@{/home/shop}" method="GET">
 							<div class="sidebar-widget search-box">
-								<h4>Search</h4>
-								<div class="form-group">
-									<input type="search" name="name" placeholder="Search">
-									<button type="submit">
-										<i class="flaticon-search"></i>
-									</button>
-								</div>
+							<h4>Search</h4>
+							<div class="form-group">
+								<input type="text" name="search" placeholder="Search">
+								<input style="display: none;" type="number" name="page" placeholder="page"  th:value="${currentPage}">								
+								<button type="submit">
+									<i class="flaticon-search"></i>
+								</button>
 							</div>
+						</div>
 						</form>
+						
 						<div class="sidebar-widget categories">
 							<h4>Category</h4>
 							<div class="category-box">
 								<ul class="list-style">
-									<li><a th:href="@{/home/shop}">All Category<i
+									<li><a th:href="@{/home/shop/}">All Category<i
 											class="flaticon-right-arrow-angle"></i>
 									</a></li>
-									<li th:each="cate:${cates}"><a
-										th:href="@{|/home/shop?cid=${cate.foodcategory_name}|}">
-											[[${cate.foodcategory_name}]]<i
-											class="flaticon-right-arrow-angle"></i>
+									<li th:each="cate:${cates}"><a th:href="@{|/home/shop?cid=${cate.foodcategory_name}|}">
+											[[${cate.foodcategory_name}]]<i class="flaticon-right-arrow-angle"></i>
 									</a></li>
 								</ul>
 							</div>
@@ -63,8 +63,7 @@
 									<li><a th:href="@{/home/shop}">All Size<i
 											class="flaticon-right-arrow-angle"></i>
 									</a></li>
-									<li th:each="size:${sizes}"><a
-										th:href="@{|/home/shop?sid=${size.name}|}">
+									<li th:each="size:${sizes}"><a th:href="@{|/home/shop?sid=${size.name}|}"> 
 											[[${size.name}]]<i class="flaticon-right-arrow-angle"></i>
 									</a></li>
 								</ul>
@@ -174,14 +173,12 @@
 						</div>
 					</div>
 				</div>
-
-
 				<div
 					class="col-xl-8 col-lg-12 order-xl-2 order-lg-1 order-md-1 order-1">
 					<div class="row align-items-center mb-25">
 						<div class="col-xl-6 col-lg-5 col-md-4">
 							<div class="profuct-result">
-								<p>Showing 10 of 120 Products</p>
+								<p>Showing 6 of [[${count}]] Products</p>
 							</div>
 						</div>
 
@@ -191,19 +188,19 @@
 								<div class="main-menu-wrap">
 									<div id="menu">
 										<ul class="main-menu list-style">
-											<li class="has-children"><a href="#" class="shopcart">Sort </a>
+											<li class="has-children">
+												<a href="#"class="shopcart">Sắp xếp</a>
 												<ul class="sub-menu list-style">
-													<li><a class="dropdown-item"
-														th:href="@{/home/shop/low-price}">Sort price descending </a></li>
-													<li><a class="dropdown-item"
-														th:href="@{/home/shop/high-price}">Sort price ascending</a></li>
-												</ul></li>
+													<li><a class="dropdown-item" th:href="@{/home/shop/sort}">Giá tăng dần</a></li>
+													<li><a class="dropdown-item" th:href="@{/home/shop/high-price}">Giá giảm dần</a></li>
+												</ul>
+											</li>   
 										</ul>
 									</div>
-								</div>
+								</div>        
 							</div>
 						</div>
-
+						
 
 						<div class="col-xl-2 col-lg-3 col-md-4">
 							<div class="filter-item-num">
@@ -229,26 +226,28 @@
 									<div class="product-more-option-item">
 										<div class="col-lg-6 col-md-6 col-12">
 											<h6>Category:</h6>
-											<a
-												th:href="@{|/home/shop-details/${food.food_detail.foodCategory.foodcategory_id}|}">[[${food.food_detail.foodCategory.foodcategory_name}]]</a>
+											<a th:href="@{|/home/shop-details/${food.food_detail.foodCategory.foodcategory_id}|}">
+												[[${food.food_detail.foodCategory.foodcategory_name}]]</a>
 										</div>
 										<div class="col-lg-6 col-md-6 col-12">
 											<h6>Size:</h6>
 											<a
-												th:href="@{|/home/shop-details/${food.food_detail.food_detail_size.size_id}|}">[[${food.food_detail.food_detail_size.name}]]</a>
+												th:href="@{|/home/shop-details/${food.food_detail.food_detail_size.size_id}|}">
+												[[${food.food_detail.food_detail_size.name}]]</a>
 										</div>
 									</div>
 									<div class="feature-meta">
 										<p class="feature-price">[[${food.price}]]$</p>
 									</div>
 
-
 									<button class="btn style2"
 										th:attr="ng-click=@{|cart.add(${food.food_id})|}">
 										<i class="flaticon-shopping-bag-1"></i>Add To Cart
 									</button>
 
+
 									<div class="discount-tag">
+
 										<img src="/assets/img/feature/circle-1.png" alt="Image">
 										<p>
 											<span>[[${food.food_detail.status?'Stocking':'Out of
@@ -259,7 +258,8 @@
 							</div>
 						</div>
 					</div>
-					<div class="page-navigation">
+
+					<!-- <div class="page-navigation">
 						<div class="row align-items-center">
 							<div
 								class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20">
@@ -279,13 +279,68 @@
 								</a>
 							</div>
 						</div>
+					</div> -->
+
+
+
+					<!-- Start Page navigation of Page -->
+					<!-- Start Page navigation of Page -->
+					<!-- Start Page navigation of Page -->
+					<div class="page-navigation">
+						<div class="row align-items-center">
+							<div
+								class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20">
+								<a th:if="${currentPage > 1}" th:href="@{/home/shop?page=1+ '&search=' + ${search}}" class="btn prev">First</a>
+								<span th:unless="${currentPage > 1}" class="btn prev">First</span>
+
+								<a th:if="${currentPage > 1}" th:href="@{'/home/shop?page=' + ${currentPage - 1} + '&search=' + ${search}}" class="btn prev">Previous</a>
+						
+							</div>
+
+						
+
+
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center smb-20">
+								<ul class="page-nav list-style">
+									<li th:each="i: ${#numbers.sequence(1, totalPages)}">
+										<a th:if="${i != currentPage}" href="shop-left-sidebar.html" th:href="@{'/home/shop?page=' + ${i}} + '&search=' + ${search}">
+											[[${i}]]
+										</a>
+										<a class="active" th:unless="${i != currentPage}">[[${i}]]</a>
+									</li>
+								</ul>
+							</div>
+							<div
+								class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-end text-center">
+								<a th:if="${currentPage < totalPages}" th:href="@{'/home/shop?page=' + ${currentPage + 1} + '&search=' + ${search}}" class="btn prev">Next</a>
+							
+								<a th:if="${currentPage < totalPages}" th:href="@{'/home/shop?page=' + ${totalPages} + '&search=' + ${search}}" class="btn prev">Last</a>
+								<span th:unless="${currentPage < totalPages}" class="btn prev">Last</span>
+							</div>
+						</div>
+						<div class="page-navigation">
+							<div class="row align-items-center">
+								<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20"></div>
+								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center smb-20">
+									<div>
+										<div class="profuct-result">
+										 <p>Trang [[${currentPage}]] of [[${totalPages}]]</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20"></div>
+							</div>
+						</div>
+
 					</div>
+
+					<!-- End Page navigation of Page -->
+					<!-- End Page navigation of Page -->
+					<!-- End Page navigation of Page -->
 				</div>
 			</div>
 		</div>
 	</section>
 </body>
-
-<!-- Mirrored from templates.hibootstrap.com/caban/default/shop-left-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:44 GMT -->
 
 </html>
