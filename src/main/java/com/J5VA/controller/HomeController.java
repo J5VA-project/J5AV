@@ -30,5 +30,8 @@ public class HomeController {
 		return "home/index";
 	}
 	
-	
+	@RequestMapping({ "/admin", "/admin/home/index" })
+	public String admin() {
+		return "redirect:/admin/main/index.html";
+	}
 }
