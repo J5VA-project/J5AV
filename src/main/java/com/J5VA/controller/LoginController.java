@@ -7,8 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.J5VA.entity.customer;
-
+import com.J5VA.entity.account;
 import com.J5VA.service.UserService;
 
 @Controller
@@ -16,7 +15,7 @@ public class LoginController {
 
 	@GetMapping("/auth/login/form")
 	public String login(Model model) {
-		customer acc = new customer();
+		account acc = new account();
 		model.addAttribute("acc", acc);
 		return "home/login";
 	}
@@ -24,14 +23,14 @@ public class LoginController {
 	@RequestMapping("/auth/login/success")
 	public String success(Model model) {
 		model.addAttribute("message", "Login success");
-		model.addAttribute("user", new customer());
+		model.addAttribute("user", new account());
 		return "forward:/auth/login/form";
 	}
 	
 	@RequestMapping("/auth/logoff/success")
 	public String logoutSuccess(Model model) {
 		model.addAttribute("message", "Logout success");
-		model.addAttribute("acc", new customer());
+		model.addAttribute("acc", new account());
 		return "home/login";
 	}
 	@RequestMapping("/auth/login/error")
@@ -42,7 +41,7 @@ public class LoginController {
 
 	@RequestMapping("/auth/access/denied")
 	public String denied(Model model) {
-		customer acc = new customer();
+		account acc = new account();
 		model.addAttribute("acc", acc);
 		model.addAttribute("message", "Ban khong co quyen truy xuat");
 		return "/home/login";

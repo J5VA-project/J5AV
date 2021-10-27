@@ -6,7 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.J5VA.dao.customerDao;
+
+import com.J5VA.dao.accountDao;
 import com.J5VA.entity.*;
 import com.J5VA.service.ParamService;
 
@@ -15,7 +16,7 @@ import com.J5VA.service.ParamService;
 @RequestMapping("/home/change-pw")
 public class ChangePasswordController {
 	@Autowired 
-	customerDao dao;
+	accountDao dao;
 	@Autowired
 	ParamService paramService;
 	@GetMapping
@@ -29,7 +30,7 @@ public class ChangePasswordController {
 		String newPass = paramService.getString("newpassword", "");
 		String cfpw = paramService.getString("confirmpassword", "");	
 		try {
-			customer account = dao.findByUsername(username);
+			account account = dao.findByUsername(username);
 		if (account.getPassword().equals(password)) {
 			if (newPass.equals(cfpw)) {
 				account.setPassword(newPass);

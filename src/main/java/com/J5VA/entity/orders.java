@@ -40,8 +40,8 @@ public class orders {
 	private String note;
 
 	@ManyToOne
-	@JoinColumn(name = "username_custo")
-	private customer custo;
+	@JoinColumn(name = "username")
+	private account order_acc;
 
 //	@ManyToOne
 //	@JoinColumn(name = "username")

@@ -11,6 +11,6 @@ import com.J5VA.entity.orders;
 @Repository
 public interface ordersDao extends JpaRepository<orders, Integer>{
 
-	@Query("SELECT o FROM orders o WHERE o.custo.fullname=?1")
+	@Query("SELECT o FROM orders o WHERE o.order_acc.fullname=?1")
 	List<Object> findByUsername(String fullname);
 }

@@ -47,7 +47,7 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
 
 		http.formLogin().loginPage("/auth/login/form").loginProcessingUrl("/auth/login")
 				.defaultSuccessUrl("/auth/login/success", false).failureUrl("/auth/login/error")
-				.usernameParameter("username_custo").passwordParameter("password");
+				.usernameParameter("username").passwordParameter("password");
 
 		// dang xuat
 		http.logout().logoutUrl("/auth/logoff").logoutSuccessUrl("/auth/logoff/success");

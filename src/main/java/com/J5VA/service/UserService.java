@@ -1,7 +1,5 @@
 package com.J5VA.service;
 
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -14,28 +12,27 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Service;
 
-import com.J5VA.dao.customerDao;
+import com.J5VA.dao.accountDao;
 import com.J5VA.entity.account;
-import com.J5VA.entity.customer;
 
 @Service
 public class UserService implements UserDetailsService {
 	@Autowired
-	customerDao customerDao;
+	accountDao dao;
 
 	@Autowired
 	BCryptPasswordEncoder pe;
 
 	@Override
-	public UserDetails loadUserByUsername(String username_custo) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		try {
-			customer account = customerDao.findById(username_custo).get();
+			account account = dao.findById(username).get();
 
 			String password = account.getPassword();
 
-			return User.withUsername(username_custo).password(pe.encode(password)).roles("").build();
+			return User.withUsername(username).password(pe.encode(password)).roles("").build();
 		} catch (Exception e) {
-			throw new UsernameNotFoundException(username_custo + " not found");
+			throw new UsernameNotFoundException(username + " not found");
 		}
 	}
 
