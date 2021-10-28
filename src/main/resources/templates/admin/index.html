@@ -10,30 +10,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="../layout/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
 
     <!--Morris Chart CSS -->
-    <link rel="stylesheet" href="../layout/assets/plugins/morris/morris.css">
+    <link rel="stylesheet" href="/assets/plugins/morris/morris.css">
 
     <!-- App css -->
-    <link href="../layout/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="../layout/assets/css/icons.css" rel="stylesheet" type="text/css" />
-    <link href="../layout/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
     <!-- jQuery library -->
-    
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
 <!--Router-->
-    <script src="../layout/assets/js/modernizr.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+    <script src="/assets/js/modernizr.min.js"></script>
+
 </head>
 
-<body ng-app="admin-app">
+<body class="container" ng-app="admin-app">
 
     <!-- Navigation Bar-->
     <header id="topnav">
@@ -43,8 +48,9 @@
                 <!-- Logo container-->
                 <div class="logo">
                     <a href="index.html" class="logo">
-                        <img src="../layout/assets/images/logo.png" alt="" height="34" class="logo-large">
+                        <img src="/assets/images/logo.png" alt="" height="34" class="logo-large">
                     </a>
+
                 </div>
                 <!-- End Logo container-->
 
@@ -91,8 +97,12 @@
                         <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown"
                                 href="#" role="button" aria-haspopup="false" aria-expanded="false">
+<<<<<<< HEAD:src/main/resources/static/admin/main/index.html
                                 <img src="../layout/assets/images/users/avatar-2.jpg" alt="user" class="rounded-circle">
                                 
+=======
+                                <img src="/assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
+>>>>>>> 112a50db07548bdc29581a2d709173f6935ffc6f:src/main/resources/templates/admin/index.html
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
 
@@ -135,14 +145,14 @@
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         <li class="has-submenu">
-                            <a href="#!dashboard-ctrl"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                            <a href="index.html"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
                         </li>
                         <li class="has-submenu">
-                            <a href="#!product-ctrl"><i class="fa fa-product-hunt"></i> <span> Products Manager </span> </a>
+                            <a href="#"><i class="fa fa-product-hunt"></i> <span> Products Manager </span> </a>
                             <ul class="submenu megamenu">
                                 <li>
                                     <ul>
-                                        <li><a href="#!product-ctrl">List Products</a></li>
+                                        <li><a href="#!product-list">List Products</a></li>
                                         <li><a href="#!product-edit">Edit Product</a></li>
                                         <li><a href="#!size-manager">Size Manager</a></li>
                                     </ul>
@@ -151,21 +161,21 @@
                         </li>
 
                         <li class="has-submenu">
-                            <a href="#!customer-ctrl"><i class="fa fa-user-circle-o"></i><span> Customer Manager </span> </a>
+                            <a href="#"><i class="fa fa-user-circle-o"></i><span> Customer Manager </span> </a>
                             <ul class="submenu">
-                                <li><a href="#!customer-ctrl">List Customers</a></li>
-                                <li><a href="#!customer-edit">Edit Customer</a></li>
+                                <li><a href="#!customer">List Customers</a></li>
+                                <li><a href="customer-form.html">Edit Customer</a></li>
                             </ul>
                         </li>
                         <li class="has-submenu">
-                            <a href="#!order-ctrl"><i class="fa fa-shopping-basket"></i> <span> Orders Manager </span> &nbsp;&nbsp;
+                            <a href="#"><i class="fa fa-shopping-basket"></i> <span> Orders Manager </span> &nbsp;&nbsp;
                                 <span class="badge badge-danger pull-right"> 10</span> </a>
                             <ul class="submenu">
-                                <li><a href="#!order-ctrl">Order new</a></li>
-                                <li><a href="#!order-edit">Order confirmed</a></li>
-                                <li><a href="#!order-shipped">Orders are being shipped</a></li>
-                                <li><a href="#!order-success">Successful order</a></li>
-                                <li><a href="#!order-received">Order not received</a></li>
+                                <li><a href="form-xeditable.html">Order new</a></li>
+                                <li><a href="form-xeditable.html">Order confirmed</a></li>
+                                <li><a href="form-xeditable.html">Orders are being shipped</a></li>
+                                <li><a href="form-xeditable.html">Successful order</a></li>
+                                <li><a href="form-xeditable.html">Order not received</a></li>
                             </ul>
                         </li>
 
@@ -199,11 +209,9 @@
             </div> <!-- end container -->
         </div> <!-- end navbar-custom -->
     </header>
-    
-	    <div class="wrapper">
-		<div class="ng-view"></div>
-		</div>
-	
+
+	<p class="ng-view"></p>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -218,33 +226,32 @@
 
 
     <!-- jQuery  -->
-    <script src="../layout/assets/js/jquery.min.js"></script>
-    <script src="../layout/assets/js/popper.min.js"></script>
-    <script src="../layout/assets/js/bootstrap.min.js"></script>
-    <script src="../layout/assets/js/waves.js"></script>
-    <script src="../layout/assets/js/jquery.slimscroll.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/waves.js"></script>
+    <script src="/assets/js/jquery.slimscroll.js"></script>
 
-
-    <script src="../layout/assets/plugins/jquery-knob/jquery.knob.js"></script>
+    <!-- KNOB JS -->
+    <!--[if IE]>
+        <script type="text/javascript" src="/assets/plugins/jquery-knob/excanvas.js"></script>
+        <![endif]-->
+    <script src="/assets/plugins/jquery-knob/jquery.knob.js"></script>
 
     <!--Morris Chart-->
-    <script src="../layout/assets/plugins/morris/morris.min.js"></script>
-    <script src="../layout/assets/plugins/raphael/raphael-min.js"></script>
+    <script src="/assets/plugins/morris/morris.min.js"></script>
+    <script src="/assets/plugins/raphael/raphael-min.js"></script>
 
     <!-- Dashboard init -->
-    <script src="../layout/assets/pages/jquery.dashboard.js"></script>
+    <script src="/assets/pages/jquery.dashboard.js"></script>
 
 
     <!-- App js -->
-    <script src="../layout/assets/js/jquery.core.js"></script>
-    <script src="../layout/assets/js/jquery.app.js"></script>
-    
-    <!-- layout js -->
-    <script src="/admin/layout/admin-app.js"></script>
-	<script src="/admin/layout/product/product-ctrl.js"></script>
-	
+    <script src="/assets/js/jquery.core.js"></script>
+    <script src="/assets/js/jquery.app.js"></script>
+    <script src="./admin-app.js"></script>
+   
+
 </body>
+
 </html>
-
-
-

@@ -45,5 +45,12 @@ public class account {
 	@JsonIgnore
 	@OneToMany(mappedBy = "authorize", fetch = FetchType.EAGER)
 	List<authorized> authorities;
-
+	
+	@JsonIgnore 
+	@OneToMany(mappedBy = "favorite_acc")
+	List<favorite> favorites;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "order_acc")
+	List<orders> orders;
 }
