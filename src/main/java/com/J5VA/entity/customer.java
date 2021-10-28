@@ -3,6 +3,7 @@ package com.J5VA.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -36,7 +37,7 @@ public class customer {
 	private String image;
 	
 	@JsonIgnore
-	@OneToMany (mappedBy = "custo")
+	@OneToMany (mappedBy = "custo", fetch = FetchType.EAGER)
 	private List<orders> orders;
 	
 	@JsonIgnore

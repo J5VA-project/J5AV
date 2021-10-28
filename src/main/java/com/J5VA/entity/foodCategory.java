@@ -3,6 +3,7 @@ package com.J5VA.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class foodCategory {
 	private String description;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "foodCategory")
+	@OneToMany(mappedBy = "foodCategory", fetch = FetchType.EAGER)
 	List<foodDetail> foodDetails;
 
 }

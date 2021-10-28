@@ -63,7 +63,7 @@ public class foodImplement implements foodService{
 	@Override
 	public void delete(Integer id) {
 		// TODO Auto-generated method stub
-		
+		dao.deleteById(id);
 	}
 
 	@Override

@@ -17,6 +17,6 @@ public interface ordersService {
 
 	orders save(orders entity);
 
-	List<Object> findByUsername(String fullname);
+	orders findByUsername(String fullname);
 	
 }

@@ -3,6 +3,7 @@ package com.J5VA.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,8 +44,8 @@ public class food {
 	@OneToMany(mappedBy = "food")
 	private List<orderDetail> orderDetail;
     
-	@JsonIgnore
-	@OneToOne
+
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "food_id")
 	private foodDetail food_detail;
 }

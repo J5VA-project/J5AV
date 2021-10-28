@@ -66,19 +66,16 @@ app.controller("product-list-ctrl", function($scope, $http){
     		console.log("Error", error);
     	});
     }
-
-    //xóa sản phẩm
-    $scope.delete = function(item){
-    	$http.delete(`/rest/products/${item.id}`,item).then(resp =>{
-    		var index = $scope.items.findIndex(p => p.id == item.id);
-    		$scope.items.splice(index,1); //splice xóa một phần tử trong mảng
-    		$scope.reset();
-    		alert("xóa sản phẩm thất bại");
-		}).catch(error =>{
-    		alter("xóa sản phẩm thành công");
-    		console.log("Error", error);
-    	});
-    }
+    
+    $scope.delete = function (f) {
+		$http.delete(`/rest/food/${f.food_id}`, f).then(resp => {
+			var index = $scope.items.findIndex(p => p.food_id == f.food_id);
+			$scope.items.splice(index, 1);
+		}).catch(error => {
+			alert("Error!");
+			console.log("Error: ", error);
+		})
+	}
 
     //Upload image
     $scope.imageChanged = function(files){

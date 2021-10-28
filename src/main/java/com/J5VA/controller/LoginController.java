@@ -1,5 +1,8 @@
 package com.J5VA.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,9 @@ import com.J5VA.service.UserService;
 
 @Controller
 public class LoginController {
+	
+	@Autowired
+	HttpServletRequest request;
 
 	@GetMapping("/auth/login/form")
 	public String login(Model model) {
@@ -25,6 +31,8 @@ public class LoginController {
 	public String success(Model model) {
 		model.addAttribute("message", "Login success");
 		model.addAttribute("user", new customer());
+		HttpSession session = request.getSession(true);
+		session.setAttribute("AccountId", request.getRemoteUser());
 		return "forward:/auth/login/form";
 	}
 	

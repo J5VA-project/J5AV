@@ -67,7 +67,7 @@ app.config(function ($routeProvider) {
         })
         .otherwise({
         	templateUrl: "../layout/home/dashboard.html",
-            controller: "authority-ctrl"
+            controller: "dashboard-list-ctrl"
     	});
 })
 

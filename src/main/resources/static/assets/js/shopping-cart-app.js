@@ -88,7 +88,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 		status:1,
 		address: "",
 		note:"",
-		custo: {username_custo:$("#user").text()},
+		custo: {username_custo:$("#username").text()},
 		get orderDetails(){
 			return $scope.cart.items.map(item =>{
 				return{
@@ -103,7 +103,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			$http.post("/rest/orders", this).then(resp =>{
 			alert("đặt hàng thành công");
 			$scope.cart.clear();
-			location.href = "/home/checkout-detail/"+resp.data.id;
+			location.href = "/home/checkout-detail/"+resp.data.order_id;
 		}).catch(error => {
 		alert("Đặt hàng lỗi")
 		console.log(error)
