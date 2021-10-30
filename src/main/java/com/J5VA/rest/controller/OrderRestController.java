@@ -15,13 +15,13 @@ import com.J5VA.service.ordersService;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/rest/orders")
+@RequestMapping("/rest")
 public class OrderRestController {
 	
 	@Autowired
 	ordersService ordersService;
 	
-	@PostMapping
+	@PostMapping(value = "/orders")
 	public orders create(@RequestBody JsonNode orderData) {
 		return ordersService.create(orderData);
 	}

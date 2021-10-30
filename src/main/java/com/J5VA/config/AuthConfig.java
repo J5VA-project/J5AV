@@ -36,18 +36,16 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// CSRF, CORS
 		http.csrf().disable().cors().disable();
-
-		// phan quyen su dung
-//		http.authorizeRequests().antMatchers("/home/shop", "/rest/authorities/**").hasAnyRole("1")
-//				.anyRequest().permitAll();
-		http.httpBasic();
+		http.authorizeRequests()
+		.antMatchers("/home/shop", "/rest/authorities/**","/home/cart","/home/order/listorder").authenticated()
+		.anyRequest().permitAll();
 
 		// dieu khien loi truy cap khong dung vai tro
 		http.exceptionHandling().accessDeniedPage("/auth/access/denied");
 
 		http.formLogin().loginPage("/auth/login/form").loginProcessingUrl("/auth/login")
 				.defaultSuccessUrl("/auth/login/success", false).failureUrl("/auth/login/error")
-				.usernameParameter("username_custo").passwordParameter("password");
+				.usernameParameter("username").passwordParameter("password");
 
 		// dang xuat
 		http.logout().logoutUrl("/auth/logoff").logoutSuccessUrl("/auth/logoff/success");

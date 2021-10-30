@@ -23,8 +23,8 @@ public class ordersImplement implements ordersService{
 	@Autowired orderDetailDao orderDetailDao;
 	
 	@Override
-	public List<Object> findByUsername(String fullname) {
-		return ordersDao.findByUsername(fullname);
+	public List<orders> findByUsername(String username) {
+		return ordersDao.findByUsername(username);
 	}
 
 	@Override

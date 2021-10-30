@@ -1,5 +1,6 @@
 package com.J5VA.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -31,7 +32,8 @@ public class orders {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int order_id;
 	@NotNull
-	private Date orderdate;
+	private Date orderdate = new Date();
+	
 	private int discount;
 	@NotNull
 	private int status;
@@ -40,12 +42,8 @@ public class orders {
 	private String note;
 
 	@ManyToOne
-	@JoinColumn(name = "username_custo")
-	private customer custo;
-
-//	@ManyToOne
-//	@JoinColumn(name = "username")
-//	private account account;
+	@JoinColumn(name = "username")
+	private account order_acc;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "orders")

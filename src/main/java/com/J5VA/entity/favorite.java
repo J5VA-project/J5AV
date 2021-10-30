@@ -28,7 +28,7 @@ public class favorite {
 	private food favorite_f;
 
 	@ManyToOne
-	@JoinColumn(name = "username_custo")
-	private customer favorite_c;
+	@JoinColumn(name = "username")
+	private account favorite_acc;
 
 }
