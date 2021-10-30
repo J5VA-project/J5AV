@@ -26,7 +26,7 @@ public class OrderController {
 	
 	
 	@GetMapping("/checkout")
-	public String checkout(Model model) {
+	public String checkout() {
 		return "home/checkout";
 	}
 	
