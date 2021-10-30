@@ -29,9 +29,4 @@ public class HomeController {
 		model.addAttribute("custs", cust);
 		return "home/index";
 	}
-	
-	@RequestMapping({ "/admin", "/admin/home/index" })
-	public String admin() {
-		return "redirect:/admin/main/index.html";
-	}
 }
