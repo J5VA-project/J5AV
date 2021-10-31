@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.J5VA.dao.foodDao;
@@ -15,24 +16,19 @@ import com.J5VA.service.foodService;
 
 @Service
 public class foodImplement implements foodService{
-	@Autowired foodDao dao;
+	@Autowired
+	foodDao dao;
 
 	@Override
 	public food save(food entity) {
 		return dao.save(entity);
 	}
 
-//	@Override
-//	public Page<food> listAll(int pageNumber) {
-//		Pageable pageable = PageRequest.of(pageNumber -1, 6);
-//		return dao.findAll(pageable);
-//	}
-
 	@Override
 	public int count() {
 		return dao.countFood();
 	}
-	
+
 	@Override
 	public food findById(Integer id) {
 		return dao.findById(id).get();
@@ -42,7 +38,7 @@ public class foodImplement implements foodService{
 	public void delete(food entity) {
 		dao.delete(entity);
 	}
-	
+
 	@Override
 	public List<food> findAll() {
 		return dao.findAll();
@@ -63,17 +59,25 @@ public class foodImplement implements foodService{
 	@Override
 	public void delete(Integer id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public Page<food> searchFood(Integer pageNumber, String key) {
+	public Page<food> pageFood(String show ,String name, String key, Integer pageNumber) {
+		show = show == null ? "" : show;
 		key = key == null ? "" : key;
-		pageNumber = (pageNumber == null || pageNumber <=0) ? 1 : pageNumber;
-		Pageable pageable = PageRequest.of(pageNumber -1, 6);
-		return dao.findAllFood(key, pageable);
+		name = name == null ? "" : name;
+		pageNumber = (pageNumber == null || pageNumber <= 0) ? 1 : pageNumber;
+
+		Sort sort;
 		
+		if (key.equals("ASC"))
+			sort = Sort.by("price").ascending();
+		else
+			sort = Sort.by("price").descending();
+
+		Pageable pageable = PageRequest.of(pageNumber - 1, Integer.valueOf(show), sort);
+
+		return dao.findAllFood(name, pageable);
 	}
-
-
 }

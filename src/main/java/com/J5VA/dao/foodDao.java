@@ -26,13 +26,4 @@ public interface foodDao extends JpaRepository<food, Integer>,PagingAndSortingRe
 
 	@Query("SELECT o FROM food o WHERE o.food_detail.food_detail_size.name=?1")
 	List<food> findBySize(String sid);
-
-	@Query("SELECT o FROM food o WHERE o.food_name like ?1")
-	List<food> searchFood(String name);
-
-	@Query("SELECT o FROM food o ORDER BY o.price asc")
-	List<food> foodLowPrice();
-
-	@Query("SELECT o FROM food o ORDER BY o.price desc")
-	List<food> foodHighPrice();
 }

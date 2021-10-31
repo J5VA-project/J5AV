@@ -1,16 +1,25 @@
 package com.J5VA.controller.admin;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.J5VA.dao.accountDao;
 import com.J5VA.entity.account;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+	
+	@Autowired private accountDao accDao;
+	
 	@RequestMapping("/index")
-	public String index() {
+	public String index(Model model, HttpServletRequest request) {
+		account acc = accDao.findByUsername(request.getRemoteUser());
+		model.addAttribute("acc",acc == null ? "" : acc);
 		return "admin/index.html";
 	}
 	@RequestMapping("/home")

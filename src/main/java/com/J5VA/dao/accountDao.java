@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.J5VA.entity.account;
 @Repository
 public interface accountDao extends JpaRepository<account, String> {
+	
 	@Query("SELECT o FROM account o WHERE o.username = ?1")
 	account findByUsername(String username);
 }

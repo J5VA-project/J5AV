@@ -16,9 +16,7 @@ public interface foodService {
 
 	food save(food entity);
 
-	Page<food> searchFood(Integer pageNumber, String key);
-
-//	Page<food> listAll(int pageNumber);
+	Page<food> pageFood(String show ,String name, String key, Integer pageNumber);
 
 	List<food> findAll();
 
@@ -27,6 +25,4 @@ public interface foodService {
 	food update(food product);
 
 	void delete(Integer id);
-	
-
 }
