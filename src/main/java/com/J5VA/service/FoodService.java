@@ -24,9 +24,9 @@ public interface FoodService {
 
 	List<Food> findAll();
 
-	Food create(Food product);
+	Food create(Food food);
 
-	Food update(Food product);
+	Food update(Food food);
 
 	void delete(Integer id);
 }

@@ -1,207 +1,131 @@
-<head>
-
-<!-- App favicon -->
-<link rel="shortcut icon" href="../layout/assets/images/favicon.ico">
-
-<!-- App css -->
-<link href="../layout/assets/css/bootstrap.min.css" rel="stylesheet"
-	type="text/css" />
-<link href="../layout/assets/css/icons.css" rel="stylesheet"
-	type="text/css" />
-<link href="../layout/assets/css/style.css" rel="stylesheet"
-	type="text/css" />
-
-<script src="../layout/assets/js/modernizr.min.js"></script>
-
-</head>
-
 <div class="container-fluid">
 
 	<!-- Page-Title -->
 	<div class="row">
 		<div class="col-sm-12">
-			<div class="btn-group pull-right m-t-20">
-				<button type="button"
-					class="btn btn-custom dropdown-toggle waves-effect waves-light"
-					data-toggle="dropdown" aria-expanded="false">Settings</button>
-				<div class="dropdown-menu dropdown-menu-right">
-					<!-- item-->
-					<a href="javascript:void(0);" class="dropdown-item">Action</a>
-					<!-- item-->
-					<a href="javascript:void(0);" class="dropdown-item">Another
-						action</a>
-					<!-- item-->
-					<a href="javascript:void(0);" class="dropdown-item">Something
-						else</a>
-					<!-- item-->
-					<a href="javascript:void(0);" class="dropdown-item">Separated
-						link</a>
-				</div>
-			</div>
-			<h4 class="page-title">Cate</h4>
+			<div class="btn-group pull-right m-t-20"></div>
+			<h4 class="page-title">Category Manager</h4>
 		</div>
 	</div>
 	<!-- end page title end breadcrumb -->
-
-
-
 	<div class="row">
-		<div class="col-xl-6">
+		<div class="col-xl-5">
 			<div class="card-box">
 				<div class="dropdown pull-right">
-					<a href="#" class="dropdown-toggle arrow-none card-drop"
+					<a href="" class="dropdown-toggle arrow-none card-drop"
 						data-toggle="dropdown" aria-expanded="false"> <i
 						class="mdi mdi-dots-vertical"></i>
 					</a>
-					<div class="dropdown-menu dropdown-menu-right">
-						<!-- item-->
-						<a href="javascript:void(0);" class="dropdown-item">Action</a>
-						<!-- item-->
-						<a href="javascript:void(0);" class="dropdown-item">Another
-							action</a>
-						<!-- item-->
-						<a href="javascript:void(0);" class="dropdown-item">Something
-							else</a>
-						<!-- item-->
-						<a href="javascript:void(0);" class="dropdown-item">Separated
-							link</a>
-					</div>
+					<div class="dropdown-menu dropdown-menu-right"></div>
 				</div>
+				<h4 class="header-title m-t-0 m-b-30">Category Form</h4>
 
-				<h4 class="header-title m-t-0 m-b-30">Horizontal Form</h4>
-
-				<form class="form-horizontal" role="form" data-parsley-validate
-					novalidate>
+				<form class="form-horizontal" role="form">
 					<div class="form-group row">
-						<label for="inputEmail3" class="col-sm-4 col-form-label">Email*</label>
+						<label for="id" class="col-sm-4 col-form-label">Category
+							Id</label>
 						<div class="col-sm-7">
-							<input type="email" required parsley-type="email"
-								class="form-control" id="inputEmail3" placeholder="Email">
+							<input required class="form-control" id="id" disabled="disabled"
+								ng-model="form.foodcategory_id">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="hori-pass1" class="col-sm-4 col-form-label">Password*</label>
+						<label for="name" class="col-sm-4 col-form-label">Name *</label>
 						<div class="col-sm-7">
-							<input id="hori-pass1" type="password" placeholder="Password"
-								required class="form-control">
+							<input required class="form-control" id="name"
+								ng-model="form.foodcategory_name">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="hori-pass2" class="col-sm-4 col-form-label">Confirm
-							Password *</label>
+						<label for="description" class="col-sm-4 col-form-label">Description
+						</label>
 						<div class="col-sm-7">
-							<input data-parsley-equalto="#hori-pass1" type="password"
-								required placeholder="Password" class="form-control"
-								id="hori-pass2">
+							<input required class="form-control" id="description"
+								ng-model="form.description">
 						</div>
 					</div>
-
-					<div class="form-group row">
-						<label for="webSite" class="col-sm-4 col-form-label">Web
-							Site*</label>
-						<div class="col-sm-7">
-							<input type="url" required parsley-type="url"
-								class="form-control" id="webSite" placeholder="URL">
-						</div>
-					</div>
+					<br>
+					<hr>
 					<div class="form-group">
-						<div class="offset-sm-4 col-sm-8">
-							<div class="checkbox">
-								<input id="remember-2" type="checkbox"> <label
-									for="remember-2"> Remember me </label>
+						<div class="row">
+							<div class="col-sm-2"></div>
+							<div class="col-sm-10">
+								<button type="submit" ng-disabled="form.foodcategory_id"
+									ng-click="create()"
+									class="btn btn-primary btn-rounded waves-effect waves-light">
+									<i class="fa fa-plus-square"></i> Add
+								</button>
+								<button type="submit" ng-disabled="!form.foodcategory_id"
+									ng-click="update(category)"
+									class="btn btn-warning btn-rounded waves-effect waves-light">
+									<i class="fa fa-edit"></i> Update
+								</button>
+								<button type="submit" ng-disabled="!form.foodcategory_id"
+									ng-click="delete(form)"
+									class="btn btn-danger btn-rounded waves-effect waves-light">
+									<i class="fa fa-trash"></i> Delete
+								</button>
+								<button type="reset" ng-click="reset()"
+									class="btn btn-secondary btn-rounded waves-effect waves-light m-l-5">
+									<i class="fa fa-refresh"></i> Reset
+								</button>
 							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="offset-sm-4 col-sm-8">
-							<button type="submit"
-								class="btn btn-primary waves-effect waves-light">
-								Registrer</button>
-							<button type="reset"
-								class="btn btn-secondary waves-effect waves-light m-l-5">
-								Cancel</button>
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
-		<div class="col-lg-6">
+		<div class="col-lg-7">
 			<div class="card-box">
 				<div class="dropdown pull-right">
-					<a href="#" class="dropdown-toggle arrow-none card-drop"
+					<a href="" class="dropdown-toggle arrow-none card-drop"
 						data-toggle="dropdown" aria-expanded="false"> <i
 						class="mdi mdi-dots-vertical"></i>
 					</a>
-					<div class="dropdown-menu dropdown-menu-right">
-						<!-- item-->
-						<a href="javascript:void(0);" class="dropdown-item">Action</a>
-						<!-- item-->
-						<a href="javascript:void(0);" class="dropdown-item">Another
-							action</a>
-						<!-- item-->
-						<a href="javascript:void(0);" class="dropdown-item">Something
-							else</a>
-						<!-- item-->
-						<a href="javascript:void(0);" class="dropdown-item">Separated
-							link</a>
-					</div>
+					<div class="dropdown-menu dropdown-menu-right"></div>
 				</div>
-				<h4 class="m-t-0 header-title">Hoverable rows</h4>
-				<p class="text-muted font-14 m-b-20">
-					Create responsive tables by wrapping any
-					<code>.table</code>
-					in
-					<code>.table-responsive</code>
-					to make them scroll horizontally on small devices (under 768px).
-				</p>
+				<h4 class="m-t-0 header-title">Categories List</h4>
 
 				<table class="table table-hover">
 					<thead>
 						<tr>
+							<th>Category Id</th>
+							<th>Name</th>
+							<th>Description</th>
 							<th>#</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Username</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td colspan="2">Larry the Bird</td>
-							<td>@twitter</td>
+						<tr ng-repeat="category in pager.categories">
+							<th>{{category.foodcategory_id}}</th>
+							<td>{{category.foodcategory_name}}</td>
+							<td>{{category.description}}</td>
+							<td><a href="" ng-click="edit(category)"><i
+									class="fa fa-edit"></i></a> &nbsp;&nbsp; <a href=""
+								ng-click="delete(category)"> <i class="fa fa-trash"></i></a></td>
 						</tr>
 					</tbody>
 				</table>
+				<hr>
+				<div class="panel-footer text-center">
+					<button ng-click="pager.first()" class="btn btn-danger">
+						<b class="ti-control-skip-backward"></b>
+					</button>
+					<button ng-click="pager.prev()" class="btn btn-primary">
+						<b class="ti-control-backward"></b>
+					</button>
+					<button class="btn btn-success">{{pager.page + 1 }} of
+						{{pager.count}}</button>
+					<button ng-click="pager.next()" class="btn btn-primary">
+						<b class="ti-control-forward"></b>
+					</button>
+					<button ng-click="pager.last()" class="btn btn-danger">
+						<b class="ti-control-skip-forward"></b>
+					</button>
+				</div>
 			</div>
 
 		</div>
 	</div>
 	<!-- end row -->
-
-
-
 </div>
-<!-- end wrapper -->
-
-<!-- jQuery  -->
-<script src="../layout/assets/js/jquery.min.js"></script>
-<script src="../layout/assets/js/popper.min.js"></script>
-<script src="../layout/assets/js/bootstrap.min.js"></script>
-<script src="../layout/assets/js/waves.js"></script>
-<script src="../layout/assets/js/jquery.slimscroll.js"></script>
-
-<!-- App js -->
-<script src="../layout/assets/js/jquery.core.js"></script>
-<script src="../layout/assets/js/jquery.app.js"></script>

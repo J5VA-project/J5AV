@@ -50,21 +50,18 @@ public class FoodImplement implements FoodService {
 	}
 
 	@Override
-	public Food create(Food product) {
-		// TODO Auto-generated method stub
-		return null;
+	public Food create(Food food) {
+		return dao.save(food);
 	}
 
 	@Override
-	public Food update(Food product) {
-		// TODO Auto-generated method stub
-		return null;
+	public Food update(Food food) {
+		return dao.save(food);
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-
+		dao.deleteById(id);
 	}
 
 //	@Override

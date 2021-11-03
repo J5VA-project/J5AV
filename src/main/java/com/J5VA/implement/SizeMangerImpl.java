@@ -16,31 +16,26 @@ public class SizeMangerImpl implements SizeService {
 	
 	@Override
 	public List<Size> findAll() {
-		// TODO Auto-generated method stub
 		return sizeDao.findAll();
 	}
 
 	@Override
 	public Size findById(Integer id) {
-		// TODO Auto-generated method stub
 		return sizeDao.findById(id).get();
 	}
 
 	@Override
 	public Size create(Size size) {
-		// TODO Auto-generated method stub
 		return sizeDao.save(size);
 	}
 
 	@Override
 	public Size update(Size size) {
-		// TODO Auto-generated method stub
 		return sizeDao.save(size);
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
 		sizeDao.deleteById(id);
 	}
 
