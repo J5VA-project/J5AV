@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.J5VA.entity.account;
+import com.J5VA.entity.Account;
 import com.J5VA.service.MailerService;
 import com.J5VA.service.ParamService;
-import com.J5VA.service.accountService;
+import com.J5VA.service.AccountService;
 
 @Controller
 public class RegisterController {
 	@Autowired
-	accountService accountService;
+	AccountService accountService;
 	@Autowired
-	accountService customerService;
+	AccountService customerService;
 	@Autowired
 	ParamService paramService;
 	@Autowired
@@ -32,13 +32,13 @@ public class RegisterController {
 	// dang ky tai khoan khach hang
 	@RequestMapping("/home/register")
 	public String registerForm(Model model) {
-		account custo = new account();
+		Account custo = new Account();
 		model.addAttribute("custo", custo);
 		return "/home/register";
 	}
 
 	@PostMapping("/register/validate")
-	public String registerValid(Model model, @Valid @ModelAttribute("custo") @RequestBody account custo,@RequestParam("fullname")String fullname, Errors errors)
+	public String registerValid(Model model, @Valid @ModelAttribute("custo") @RequestBody Account custo,@RequestParam("fullname")String fullname, Errors errors)
 			throws MessagingException {
 				String username = paramService.getString("username", "");
 				String password = paramService.getString("password", "");

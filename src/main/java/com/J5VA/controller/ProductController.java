@@ -9,52 +9,66 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.J5VA.dao.foodCategoryDao;
-import com.J5VA.dao.foodDao;
-import com.J5VA.dao.sizeDao;
-import com.J5VA.entity.food;
-import com.J5VA.entity.foodCategory;
-import com.J5VA.entity.size;
-import com.J5VA.service.foodService;
-
+import com.J5VA.dao.FoodCategoryDao;
+import com.J5VA.dao.FoodDao;
+import com.J5VA.dao.SizeDao;
+import com.J5VA.entity.Food;
+import com.J5VA.entity.FoodCategory;
+import com.J5VA.entity.Size;
+import com.J5VA.service.FoodService;
 
 @Controller
 public class ProductController {
 
 	@Autowired
-	foodDao fdao;
+	FoodDao fdao;
 	@Autowired
-	foodCategoryDao cdao;
+	FoodCategoryDao cdao;
 	@Autowired
-	sizeDao sdao;
+	SizeDao sdao;
 	@Autowired
-	foodService service;
+	FoodService service;
 
 	@GetMapping(value = "/home/shop")
 	public String listByPage(Model model,
 			@RequestParam(name = "page", required = false, defaultValue = "1") Integer currentPage,
 			@RequestParam(name = "search", required = false) String search,
-			@RequestParam(defaultValue = "ASC", name = "key", required = false) String sort,
-			@RequestParam(defaultValue = "1", name = "show", required = false) String showPage) {
+			@RequestParam(name = "key", required = false, defaultValue = "ASC") String sort,
+			@RequestParam(name = "showPageNumber", required = false, defaultValue = "6") Integer showPageNumber
+			//@RequestParam(name = "cate", required = false) String cate
+			){
 		
 		int count = service.count();
-		Page<food> page = service.pageFood(showPage ,search, sort, currentPage);
+		
+		Page<Food> page;
+		
+//		if(cate != null) {
+//			page = service.pageFoodCate(showPageNumber, cate ,search, sort, currentPage);
+//		} else {
+			page = service.pageFood(showPageNumber ,search, sort, currentPage);
+//		}
+		
+		
+
 		
 		long totalItems = page.getTotalElements();
 		int totalPages = page.getTotalPages();
 
-		List<food> food = page.getContent();
+		List<Food> food = page.getContent();
 
-		List<foodCategory> cates = cdao.findAll();
-		model.addAttribute("cates", cates);
+		List<FoodCategory> listCate = cdao.findAll();
+		model.addAttribute("listCate", listCate);
 
-		List<size> size = sdao.findAll();
+		List<Size> listSize = sdao.findAll();
 		
 		model.addAttribute("search", search == null ? "" : search);
 		model.addAttribute("sort", sort == null ? "" : sort);
-		model.addAttribute("showPage", showPage == null ? "" : showPage);
+		model.addAttribute("showPageNumber", showPageNumber == null ? "" : showPageNumber);
+		//model.addAttribute("cate", cate == null ? "" : cate);
 		
-		model.addAttribute("sizes", size);
+//		model.addAttribute("size", size == null ? "" : size);
+		model.addAttribute("listSize", listSize);
+		
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("totalItems", totalItems);
 		model.addAttribute("totalPages", totalPages);
@@ -64,5 +78,6 @@ public class ProductController {
 
 		return "/home/shop-slide";
 	}
+
 
 }

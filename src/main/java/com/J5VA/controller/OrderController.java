@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.J5VA.dao.accountDao;
-import com.J5VA.dao.ordersDao;
-import com.J5VA.entity.orders;
+import com.J5VA.dao.AccountDao;
+import com.J5VA.dao.OrdersDao;
+import com.J5VA.entity.Orders;
 
 @Controller
 @RequestMapping("/home")
 public class OrderController {
 	
 	@Autowired
-	ordersDao orderDao;
+	OrdersDao orderDao;
 	
 	@Autowired
-	accountDao accountDao;
+	AccountDao accountDao;
 	
 	
 	@GetMapping("/checkout")

@@ -37,8 +37,9 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
 		// CSRF, CORS
 		http.csrf().disable().cors().disable();
 		http.authorizeRequests()
-		.antMatchers("/home/shop", "/rest/authorities/**","/home/cart","/home/order/listorder").authenticated()
-		.anyRequest().permitAll();
+				.antMatchers("/home/checkout", "/home/order/listorder", "/home/change-pw", "/home/forgot-pw",
+						"/home/order-detail/**", "/rest/authorities/**")
+				.authenticated().anyRequest().permitAll();
 
 		// dieu khien loi truy cap khong dung vai tro
 		http.exceptionHandling().accessDeniedPage("/auth/access/denied");

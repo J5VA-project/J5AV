@@ -19,19 +19,12 @@
 	type="text/css" />
 <link href="/admin/css/icons.css" rel="stylesheet" type="text/css" />
 <link href="/admin/css/style.css" rel="stylesheet" type="text/css" />
-<!-- jQuery library -->
-	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
-<!--Router-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
 <script src="/admin/js/modernizr.min.js"></script>
 
 </head>
 
-<body ng-app="login-app" ng-controller="login-ctrl">
+<body>
 
 	<div class="account-pages"></div>
 	<div class="clearfix"></div>
@@ -45,15 +38,13 @@
 				<h4 class="text-uppercase font-bold mb-0">Sign In</h4>
 			</div>
 			<div class="p-20">
-				<div th:text="${message}" style="color: green"></div>
-				<form id="loginform" class="form-horizontal m-t-20" method="post">
-					<!--  th:action="@{/auth/login}" th:object=${acc}-->
+			<div th:text="${message}" style="color: green"></div>
+				<form id="loginform" class="form-horizontal m-t-20" th:action="@{/auth/login}" th:object=${acc} method="post">
 
 					<div class="form-group">
 						<div class="col-xs-12">
 							<input class="form-control" type="text" placeholder="Username"
-								id="username">
-							<!-- th:field="*{username}" -->
+								id="username" th:field="*{username}">
 							<div id="error_usename" style="color: red; font-style: italic;"></div>
 						</div>
 					</div>
@@ -61,8 +52,7 @@
 					<div class="form-group">
 						<div class="col-xs-12">
 							<input class="form-control" type="password"
-								placeholder="Password" id="password">
-							<!--  th:field="*{password}" -->
+								placeholder="Password" id="password" th:field="*{password}">
 							<div id="error_password" style="color: red; font-style: italic;"></div>
 						</div>
 					</div>
@@ -138,13 +128,11 @@
 				}
 
 				if (check == true) {
-					alert('Something ok');
 					$('#loginform').submit();
 				}
 			});
 		});
 	</script>
-	<script src="/admin/js_controller/login.js"></script>
 
 </body>
 </html>

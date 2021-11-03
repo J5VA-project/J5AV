@@ -1,5 +1,13 @@
 app = angular.module("admin-app", ["ngRoute"]);
-
+app.controller("app-ctrl", function($scope, $http) {
+   	$scope.total = [];
+	$scope.total = function() {
+		$http.get("/rest/orders/total-order").then(resp => {
+				$scope.total = resp.data;
+		});
+	}
+	$scope.total();
+});
 app.config(function ($routeProvider) {
     $routeProvider
     	.when("/logout", {

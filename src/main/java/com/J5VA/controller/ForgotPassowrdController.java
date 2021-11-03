@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.J5VA.dao.accountDao;
-import com.J5VA.entity.account;
+import com.J5VA.dao.AccountDao;
+import com.J5VA.entity.Account;
 import com.J5VA.service.MailerService;
 import com.J5VA.service.ParamService;
 
@@ -20,7 +20,7 @@ import com.J5VA.service.ParamService;
 @RequestMapping("/home/forgot-pw")
 public class ForgotPassowrdController {
 	@Autowired
-	accountDao dao;
+	AccountDao dao;
 	@Autowired
 	ParamService paramService;
 	@Autowired
@@ -36,7 +36,7 @@ public class ForgotPassowrdController {
 		String username = paramService.getString("username", "");
 		String email = paramService.getString("email", "");
 
-		account account = dao.findByUsername(username);
+		Account account = dao.findByUsername(username);
 		if (account == null) {
 			model.addAttribute("msg", "Username invalid!");
 		} else {

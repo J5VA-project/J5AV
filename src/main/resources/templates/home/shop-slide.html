@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{/layout/header::dynamic(~{::body})}">
 
-
 <body>
 	<div class="breadcrumb-wrap bg-f br-1">
 		<div class="overlay bg-black op-9"></div>
@@ -27,23 +26,22 @@
 	<section class="Shop-wrap ptb-100">
 		<div class="container">
 			<div class="row gx-5">
-				<div
-					class="col-xl-4 col-lg-12 order-xl-1 order-lg-2 order-md-2 order-2">
+				<div class="col-xl-4 col-lg-12 order-xl-1 order-lg-2 order-md-2 order-2">
 					<div class="sidebar">
-						<form th:action="@{/home/shop}" method="GET">
-							<div class="sidebar-widget search-box">
-							<h4>Search</h4>
-							<div class="form-group">
-								<input type="text" name="search" placeholder="Search">
-								<input style="display: none;" type="number" name="page" placeholder="page" th:value="${currentPage}">								
-								<button type="submit">
-									<i class="flaticon-search"></i>
-								</button>
-
+						<form th:action="@{'/home/shop?page=1&search='+ ${search} +'&sort='+ ${sort}}" method="GET">
+							<input style="display: none;" name ="showPageNumber" th:value ="${showPageNumber}"/>
+								<div class="sidebar-widget search-box">
+									<h4>Search</h4>
+										<div class="form-group">
+										<input type="text" name="search" placeholder="Search" required>
+										<input style="display: none;" type="number" name="page" placeholder="page" th:value="${currentPage}">								
+										<button type="submit">
+											<i class="flaticon-search"></i>
+										</button>
+								</div>
 							</div>
-						</div>
 						</form>
-						
+						<br>
 						<div class="sidebar-widget categories">
 							<h4>Category</h4>
 							<div class="category-box">
@@ -51,9 +49,11 @@
 									<li><a th:href="@{/home/shop/}">All Category<i
 											class="flaticon-right-arrow-angle"></i>
 									</a></li>
-									<li th:each="cate:${cates}"><a th:href="@{|/home/shop?cid=${cate.foodcategory_name}|}">
-											[[${cate.foodcategory_name}]]<i class="flaticon-right-arrow-angle"></i>
-									</a></li>
+									<li th:each="listCa:${listCate}">
+										<a th:href="@{'/home/shop?page=1&search='+${search}+'&key=ASC&showPageNumber='+${showPageNumber}+'&cate='+${listCa.foodcategory_name}}">
+											[[${listCa.foodcategory_name}]]<i class="flaticon-right-arrow-angle"></i>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -64,8 +64,8 @@
 									<li><a th:href="@{/home/shop}">All Size<i
 											class="flaticon-right-arrow-angle"></i>
 									</a></li>
-									<li th:each="size:${sizes}"><a th:href="@{|/home/shop?sid=${size.name}|}"> 
-											[[${size.name}]]<i class="flaticon-right-arrow-angle"></i>
+									<li th:each="Lisize:${listSize}"><a th:href="@{'/home/shop?page=1&search='+${search}+'&key=ASC&showPageNumber='+${showPageNumber}}"> 
+											[[${Lisize.name}]]<i class="flaticon-right-arrow-angle"></i>
 									</a></li>
 								</ul>
 							</div>
@@ -179,47 +179,50 @@
 					<div class="row align-items-center mb-25">
 						<div class="col-xl-6 col-lg-5 col-md-4">
 							<div class="profuct-result">
-								<p>Showing 6 of [[${count}]] Products</p>
+								<p>Showing [[${showPageNumber}]] of [[${count}]] Products</p>
 							</div>
 						</div>
 
 
-						<div class="col-xl-3 col-lg-3 col-md-3">
+						<div class="col-xl-4 col-lg-4 col-md-4">
 							<div class="filter-item-cat">
 								<div class="main-menu-wrap">
 									<div id="menu">
 										<ul class="main-menu list-style">
 											<li class="has-children">
-												<a href="#"class="shopcart">Sắp xếp</a>
+												<a class="shopcart">Sắp xếp</a>
 												<ul class="sub-menu list-style">
-													<li><a class="dropdown-item" name="key" th:value="ASC" th:href="@{'/home/shop?page=1'+ '&search=' + ${search} +'&key=ASC'+'&show='+${showPage}}">Giá tăng dần</a></li>
-													<li><a class="dropdown-item" name="key" th:value="DESC" th:href="@{'/home/shop?page=1'+ '&search=' + ${search} +'&key=DESC'+'&show='+${showPage}}">Giá giảm dần</a></li>
+													<li><a class="dropdown-item" th:value="ASC" th:href="@{'/home/shop?page=1&search='+${search}+'&key=ASC&showPageNumber=' + ${showPageNumber}}">Giá tăng dần</a></li>
+													<li><a class="dropdown-item" th:value="DESC" th:href="@{'/home/shop?page=1&search='+${search}+'&key=DESC&showPageNumber=' + ${showPageNumber}}">Giá giảm dần</a></li>
 												</ul>
 											</li>   
 										</ul>
 									</div>
-									
 								</div>        
 							</div>
 						</div>
-						<div class="col-xl-3 col-lg-3 col-md-3">
+						
+
+						<div class="col-xl-2 col-lg-3 col-md-4">
 							<div class="filter-item-cat">
 								<div class="main-menu-wrap">
 									<div id="menu">
 										<ul class="main-menu list-style">
 											<li class="has-children">
-												<a href="#"class="shopcart">Phân trang</a>
+												<a class="shopcart">Show</a>
 												<ul class="sub-menu list-style">
-													<li><a class="dropdown-item" name="show" th:value="1" th:href="@{'/home/shop?page=1'+ '&search=' + ${search} +'&key=' + ${sort}+'&show=1'}">Hiện 1</a></li>
-													<li><a class="dropdown-item" name="show" th:value="2" th:href="@{'/home/shop?page=1'+ '&search=' + ${search} +'&key=' + ${sort}+'&show=2'}">Hiện 2</a></li>
-													<li><a class="dropdown-item" name="show" th:value="3" th:href="@{'/home/shop?page=1'+ '&search=' + ${search} +'&key=' + ${sort}+'&show=3'}">Hiện 3</a></li>
+													<li><a class="dropdown-item" name="showPageNumber" th:value="6" th:href="@{'/home/shop?page=1' + '&search=&key=' + ${sort} + '&showPageNumber=6'}">Show 6</a></li>
+													<li><a class="dropdown-item" name="showPageNumber" th:value="12" th:href="@{'/home/shop?page=1' + '&search=&key=' + ${sort} + '&showPageNumber=12'}">Show 12</a></li>
+													<li><a class="dropdown-item" name="showPageNumber" th:value="18" th:href="@{'/home/shop?page=1' + '&search=&key=' + ${sort} + '&showPageNumber=18'}">Show 18</a></li>
+													<li><a class="dropdown-item" name="showPageNumber" th:value="24" th:href="@{'/home/shop?page=1' + '&search=&key=' + ${sort} + '&showPageNumber=24'}">Show 24</a></li>
 												</ul>
 											</li>   
 										</ul>
 									</div>
-								</div>
+								</div>        
 							</div>
 						</div>
+
 					</div> 
 					<div class="row justify-content-center">
 						<div th:each="food:${foods}" class="col-lg-6 col-md-6">
@@ -267,17 +270,45 @@
 							</div>
 						</div>
 					</div>
+
+					<!-- <div class="page-navigation">
+						<div class="row align-items-center">
+							<div
+								class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20">
+								<a href="shop-left-sidebar.html" class="btn prev">Prev Page</a>
+							</div>
+							<div
+								class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center smb-20">
+								<ul class="page-nav list-style">
+									<li><a class="active" href="shop-left-sidebar.html">1</a></li>
+									<li><a href="shop-left-sidebar.html">2</a></li>
+									<li><a href="shop-left-sidebar.html">3</a></li>
+								</ul>
+							</div>
+							<div
+								class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-end text-center">
+								<a href="shop-left-sidebar.html" class="btn next">Next Page
+								</a>
+							</div>
+						</div>
+					</div> -->
+
+
+
+					<!-- Start Page navigation of Page -->
+					<!-- Start Page navigation of Page -->
+					<!-- Start Page navigation of Page -->
 					<div class="page-navigation">
 						<div class="row align-items-center">
 							<div
 								class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20">
-								<a th:if="${currentPage > 1}" th:href="@{'/home/shop?page=1'+ '&search=' + ${search} +'&key=' + ${sort}}+'&show='+${showPage}" class="btn prev">First</a>
+								<a th:if="${currentPage > 1}" th:href="@{'/home/shop?page=1'+ '&search=' + ${search} +'&key=' + ${sort} + '&showPageNumber=' + ${showPageNumber}}" class="btn prev">First</a>
 								<span th:unless="${currentPage > 1}" class="btn prev">First</span>
 							</div>
 							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center smb-20">
 								<ul class="page-nav list-style">
 									<li th:each="i: ${#numbers.sequence(1, totalPages)}">
-										<a th:if="${i != currentPage}" href="shop-left-sidebar.html" th:href="@{'/home/shop?page=' + ${i} + '&search=' + ${search} +'&key=' + ${sort}+'&show='+${showPage}}">
+										<a th:if="${i != currentPage}" href="shop-left-sidebar.html" th:href="@{'/home/shop?page=' + ${i} + '&search=' + ${search} +'&key=' + ${sort} + '&showPageNumber=' + ${showPageNumber}}">
 											[[${i}]]
 										</a>
 										<a class="active" th:unless="${i != currentPage}">[[${i}]]</a>
@@ -285,7 +316,7 @@
 								</ul>
 							</div>
 							<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-end text-center">
-								<a th:if="${currentPage < totalPages}" th:href="@{'/home/shop?page=' + ${totalPages} + '&search=' + ${search} +'&key=' + ${sort}+'&show='+${showPage}}" class="btn prev">Last</a>
+								<a th:if="${currentPage < totalPages}" th:href="@{'/home/shop?page=' + ${totalPages} + '&search=' + ${search} +'&key=' + ${sort} + '&showPageNumber=' + ${showPageNumber}}" class="btn prev">Last</a>
 								<span th:unless="${currentPage < totalPages}" class="btn prev">Last</span>
 							</div>
 						</div>
@@ -302,16 +333,10 @@
 								<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20"></div>
 							</div>
 						</div>
-
 					</div>
-
-					<!-- End Page navigation of Page -->
-					<!-- End Page navigation of Page -->
-					<!-- End Page navigation of Page -->
 				</div>
 			</div>
 		</div>
-	</section>
 </body>
 
 </html>

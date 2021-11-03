@@ -19,6 +19,7 @@
     <link href="/admin/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/admin/css/icons.css" rel="stylesheet" type="text/css" />
     <link href="/admin/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/css/status-style.css" rel="stylesheet" type="text/css" />
     
 <!-- jQuery library -->
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -35,7 +36,7 @@
 <body ng-app="admin-app">
 
     <!-- Navigation Bar-->
-    <header id="topnav">
+    <header id="topnav"  ng-conttroller="app-ctrl">
         <div class="topbar-main">
             <div class="container-fluid">
 
@@ -90,7 +91,7 @@
                         <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown"
                                 href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <img th:src="@{|/assets/img/testimonial/${acc.image}|}" alt="user" class="rounded-circle">
+                               <!-- <img th:src="@{|/assets/img/testimonial/${acc.image}|}" alt="user" class="rounded-circle"> --> 
                                 [[${#request.remoteUser}]]
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -159,7 +160,7 @@
                         </li>
                         <li class="has-submenu">
                             <a href="#!order"><i class="fa fa-shopping-basket"></i> <span> Orders Manager </span> &nbsp;&nbsp;
-                                <span class="badge badge-danger pull-right"> 10</span> </a>
+                                <span class="badge badge-danger pull-right">{{total}}</span> </a>
                         </li>
 
                         <li class="has-submenu">
@@ -242,7 +243,7 @@
     <script src="/admin/order.js"></script>
     <script src="/admin/report.js"></script>
     <script src="/admin/authorized.js"></script>
-    <script src="/admin/login.js"></script>
+    <!-- <script src="/admin/login.js"></script> -->
     <script src="/admin/change-pw.js"></script>
     <script src="/admin/reset-pw.js"></script>
     <script src="/admin/account-form.js"></script>

@@ -8,13 +8,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.J5VA.dao.foodCategoryDao;
+import com.J5VA.dao.FoodCategoryDao;
 
 @Component
 public class GlobalInterceptor implements HandlerInterceptor{
 
 	@Autowired
-	foodCategoryDao categoryService;
+	FoodCategoryDao categoryService;
 	
 	
 	@Override

@@ -7,25 +7,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.J5VA.dao.accountDao;
-import com.J5VA.dao.foodDao;
-import com.J5VA.entity.account;
-import com.J5VA.entity.food;
+import com.J5VA.dao.AccountDao;
+import com.J5VA.dao.FoodDao;
+import com.J5VA.entity.Account;
+import com.J5VA.entity.Food;
 
 @Controller
 @RequestMapping("/home")
 public class HomeController {
 	
-	@Autowired foodDao fdao;
-	@Autowired accountDao cdao;
+	@Autowired FoodDao fdao;
+	@Autowired AccountDao cdao;
 
 	@GetMapping
 	public String runControll(Model model) {
 		//find food
-		List<food> food = fdao.findAll();
+		List<Food> food = fdao.findAll();
 		model.addAttribute("foods", food);
 		//find customer
-		List<account> cust = cdao.findAll();
+		List<Account> cust = cdao.findAll();
 		model.addAttribute("custs", cust);
 		return "home/index";
 	}

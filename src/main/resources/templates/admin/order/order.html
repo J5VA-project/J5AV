@@ -2,27 +2,360 @@
 		<style>
             a:hover{text-decoration: none;}
         </style>
-<ul class="nav nav-tabs">
-	<li class="active"><a data-toggle="tab" data-target="#pending" href="">Pending</a></li>
-	<li><a data-toggle="tab" data-target="#ready" href="">Ready</a></li>
-	<li><a data-toggle="tab" data-target="#shipping" href="">Shipping</a></li>
-	<li><a data-toggle="tab" data-target="#delivered" href="">Delivered</a></li>
-	<li><a data-toggle="tab" data-target="#cancelled" href="">Cancelled</a></li>
+<ul class="nav nav-tabs" style="letter-spacing: 2px;cursor:pointer;">
+	<li class="active"><a data-toggle="tab" data-target="#all">All <span class="badge badge-danger pull-right">{{total}}</span></a></li>
+	<li><a class="pending" data-toggle="tab" data-target="#pending"  ng-click="pending()">Pending  <span class="badge badge-danger pull-right">{{totalPending}}</span></a></li>
+	<li><a class="ready" data-toggle="tab" data-target="#ready" ng-click="ready()">Ready <span class="badge badge-danger pull-right">{{totalReady}}</span></a></li>
+	<li><a class="shipping" data-toggle="tab" data-target="#shipping" ng-click="shipping()">Shipping <span class="badge badge-danger pull-right">{{totalshipping}}</span></a></li>
+	<li><a class="delivered" data-toggle="tab" data-target="#delivered" ng-click="delivered()">Delivered <span class="badge badge-danger pull-right">{{totalDelivered}}</span></a></li>
+	<li><a class="cancelled" data-toggle="tab" data-target="#cancelled" ng-click="cancelled()">Cancelled <span class="badge badge-danger pull-right">{{totalCancel}}</span></a></li>
+	<li><a data-toggle="tab" class="detail" data-target="#detail">Detail order</a></li>
 </ul>
 <div class="tab-content">
-	<div id="pending" class="tab-pane fade in active">
-		<h1>#pending</h1>
+	<div id="all" class="tab-pane fade in active">
+		<div class="row">
+			<div class="col-12">
+				<div class="card-box">
+					<table id="datatable" class="table table-bordered">
+						<thead>
+							<tr>
+								<th>OrderID</th>
+								<th>Order Date</th>
+								<th>Name customer</th>
+								<th>Phone number</th>
+								<th>Delivery Address</th>
+								<th>Note</th>
+								<th>Status</th>
+								<th>Change Status</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="order in pager.orders | orderBy:'- orderdate'">
+								<td>{{order.order_id}}</td>
+								<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
+								<td>{{order.order_acc.fullname}}</td>
+								<td>{{order.order_acc.phone}}</td>
+								<td>{{order.address}}</td>
+								<td>{{order.note}}</td>
+								<td><ANY ng-switch={{order.status}}> 
+										<ANY ng-switch-when="1"> <b class="pending">Pending</b></ANY> 
+										<ANY ng-switch-when="2"> <b class="ready">Ready</b></ANY>
+										<ANY ng-switch-when="3"> <b class="shipping">Shipping</b></ANY>
+										<ANY ng-switch-when="4"> <b class="delivered">Delivered</b></ANY>
+										<ANY ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY>
+										<ANY ng-switch-default>  <b class="cancelled">New order</b></ANY> 
+									</ANY>
+								</td>
+								<td>
+									<select ng-model="form.status" ng-focus="edit(order)"
+										class="custom-select">
+											<option value="1">Pending</option>
+											<option value="2">Ready</option>
+											<option value="3">Shipping</option>
+											<option value="4">Delivered</option>
+											<option value="5">Cancelled</option>
+									</select>
+								</td>
+								<td>
+									<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
+									<button class="btn btn-primary ti-save" ng-click="update()"></button>
+									<button class="btn btn-danger ti-trash"	ng-click="delete(order)"></button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<input type="hidden" ng-model="form.order_id"> 
+					<input type="hidden" ng-model="form.orderdate"> 
+					<input type="hidden" ng-model="form.discount"> 
+					<input type="hidden" ng-model="form.address"> 
+					<input type="hidden" ng-model="form.note"> 
+					<input type="hidden" ng-model="form.order_acc.fullname">
+				</div>
+			</div>
+			<!-- end col -->
+		</div>
+		<!-- end row -->
+
+		<div class="panel-footer text-center">
+			<button ng-click="pager.first()" class="btn btn-danger">
+				<b class="ti-control-skip-backward"></b>
+			</button>
+			<button ng-click="pager.prev()" class="btn btn-primary">
+				<b class="ti-control-backward"></b>
+			</button>
+			<button class="btn btn-success">{{pager.page + 1 }} of {{pager.count}}</button>
+			<button ng-click="pager.next()" class="btn btn-primary">
+				<b class="ti-control-forward"></b>
+			</button>
+			<button ng-click="pager.last()" class="btn btn-danger">
+				<b class="ti-control-skip-forward"></b>
+			</button>
+		</div>
+		<br>
+	</div>
+	<div id="pending" class="tab-pane fade">
+		<table id="datatable" class="table table-bordered">
+			<thead>
+				<tr>
+					<th>OrderID</th>
+					<th>Order Date</th>
+					<th>Name customer</th>
+					<th>Phone number</th>
+					<th>Delivery Address</th>
+					<th>Note</th>
+					<th>Status</th>
+					<th>Change Status</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="order in pendings">
+					<td>{{order.order_id}}</td>
+					<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
+					<td>{{order.order_acc.fullname}}</td>
+					<td>{{order.order_acc.phone}}</td>
+					<td>{{order.address}}</td>
+					<td>{{order.note}}</td>
+								<td><ANY ng-switch={{order.status}}> 
+										<ANY ng-switch-when="1"> <b class="pending">Pending</b></ANY> 
+										<ANY ng-switch-when="2"> <b class="ready">Ready</b></ANY>
+										<ANY ng-switch-when="3"> <b class="shipping">Shipping</b></ANY>
+										<ANY ng-switch-when="4"> <b class="delivered">Delivered</b></ANY>
+										<ANY ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY>
+										<ANY ng-switch-default>  <b class="cancelled">New order</b></ANY> 
+									</ANY>
+					<td><select ng-model="form.status" ng-focus="edit(order)"
+						class="custom-select">
+							<option value="1">Pending</option>
+							<option value="2">Ready</option>
+							<option value="3">Shipping</option>
+							<option value="4">Delivered</option>
+							<option value="5">Cancelled</option>
+					</select></td>
+					<td>
+						<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
+						<button class="btn btn-primary ti-save" ng-click="update()"></button>
+						<button class="btn btn-danger ti-trash" ng-click="delete(order)"></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<div id="ready" class="tab-pane fade">
-		<h1>#readyo</h1>
+		<table id="datatable" class="table table-bordered">
+			<thead>
+				<tr>
+					<th>OrderID</th>
+					<th>Order Date</th>
+					<th>Name customer</th>
+					<th>Phone number</th>
+					<th>Delivery Address</th>
+					<th>Note</th>
+					<th>Status</th>
+					<th>Change Status</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="order in readys">
+					<td>{{order.order_id}}</td>
+					<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
+					<td>{{order.order_acc.fullname}}</td>
+					<td>{{order.order_acc.phone}}</td>
+					<td>{{order.address}}</td>
+					<td>{{order.note}}</td>
+								<td><ANY ng-switch={{order.status}}> 
+										<ANY ng-switch-when="1"> <b class="pending">Pending</b></ANY> 
+										<ANY ng-switch-when="2"> <b class="ready">Ready</b></ANY>
+										<ANY ng-switch-when="3"> <b class="shipping">Shipping</b></ANY>
+										<ANY ng-switch-when="4"> <b class="delivered">Delivered</b></ANY>
+										<ANY ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY>
+										<ANY ng-switch-default>  <b class="cancelled">New order</b></ANY> 
+									</ANY>
+					<td><select ng-model="form.status" ng-focus="edit(order)"
+						class="custom-select">
+							<option value="1">Pending</option>
+							<option value="2">Ready</option>
+							<option value="3">Shipping</option>
+							<option value="4">Delivered</option>
+							<option value="5">Cancelled</option>
+					</select></td>
+					<td>
+						<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
+						<button class="btn btn-primary ti-save" ng-click="update()"></button>
+						<button class="btn btn-danger ti-trash" ng-click="delete(order)"></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<div id="shipping" class="tab-pane fade">
-		<h1>#shippings</h1>
+		<table id="datatable" class="table table-bordered">
+			<thead>
+				<tr>
+					<th>OrderID</th>
+					<th>Order Date</th>
+					<th>Name customer</th>
+					<th>Phone number</th>
+					<th>Delivery Address</th>
+					<th>Note</th>
+					<th>Status</th>
+					<th>Change Status</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+
+
+			<tbody>
+				<tr ng-repeat="order in shippings">
+					<td>{{order.order_id}}</td>
+					<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
+					<td>{{order.order_acc.fullname}}</td>
+					<td>{{order.order_acc.phone}}</td>
+					<td>{{order.address}}</td>
+					<td>{{order.note}}</td>
+						<td><ANY ng-switch={{order.status}}> 
+										<ANY ng-switch-when="1"> <b class="pending">Pending</b></ANY> 
+										<ANY ng-switch-when="2"> <b class="ready">Ready</b></ANY>
+										<ANY ng-switch-when="3"> <b class="shipping">Shipping</b></ANY>
+										<ANY ng-switch-when="4"> <b class="delivered">Delivered</b></ANY>
+										<ANY ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY>
+										<ANY ng-switch-default>  <b class="cancelled">New order</b></ANY> 
+									</ANY>
+					<td><select ng-model="form.status" ng-focus="edit(order)"
+						class="custom-select">
+							<option value="1">Pending</option>
+							<option value="2">Ready</option>
+							<option value="3">Shipping</option>
+							<option value="4">Delivered</option>
+							<option value="5">Cancelled</option>
+					</select></td>
+					<td>
+						<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
+						<button class="btn btn-primary ti-save" ng-click="update(); reloadRoute()"></button>
+						<button class="btn btn-danger ti-trash" ng-click="delete(order)"></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<div id="delivered" class="tab-pane fade">
-		<h1>#elivered</h1>
+		<table id="datatable" class="table table-bordered">
+			<thead>
+				<tr>
+					<th>OrderID</th>
+					<th>Order Date</th>
+					<th>Name customer</th>
+					<th>Phone number</th>
+					<th>Delivery Address</th>
+					<th>Note</th>
+					<th>Status</th>
+					<th>Change Status</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+
+
+			<tbody>
+				<tr ng-repeat="order in delivereds">
+					<td>{{order.order_id}}</td>
+					<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
+					<td>{{order.order_acc.fullname}}</td>
+					<td>{{order.order_acc.phone}}</td>
+					<td>{{order.address}}</td>
+					<td>{{order.note}}</td>
+									<td><ANY ng-switch={{order.status}}> 
+										<ANY ng-switch-when="1"> <b class="pending">Pending</b></ANY> 
+										<ANY ng-switch-when="2"> <b class="ready">Ready</b></ANY>
+										<ANY ng-switch-when="3"> <b class="shipping">Shipping</b></ANY>
+										<ANY ng-switch-when="4"> <b class="delivered">Delivered</b></ANY>
+										<ANY ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY>
+										<ANY ng-switch-default>  <b class="cancelled">New order</b></ANY> 
+									</ANY>
+					<td><select ng-model="form.status" ng-focus="edit(order)"
+						class="custom-select">
+							<option value="1">Pending</option>
+							<option value="2">Ready</option>
+							<option value="3">Shipping</option>
+							<option value="4">Delivered</option>
+							<option value="5">Cancelled</option>
+					</select></td>
+					<td>
+						<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
+						<button class="btn btn-primary ti-save" ng-click="update()"></button>
+						<button class="btn btn-danger ti-trash" ng-click="delete(order)"></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<div id="cancelled" class="tab-pane fade">
-		<h1>#Cancelled</h1>
+		<table id="datatable" class="table table-bordered">
+			<thead>
+				<tr>
+					<th>OrderID</th>
+					<th>Order Date</th>
+					<th>Name customer</th>
+					<th>Phone number</th>
+					<th>Delivery Address</th>
+					<th>Note</th>
+					<th>Status</th>
+					<th>Change Status</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+
+
+			<tbody>
+				<tr ng-repeat="order in cancelleds">
+					<td>{{order.order_id}}</td>
+					<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
+					<td>{{order.order_acc.fullname}}</td>
+					<td>{{order.order_acc.phone}}</td>
+					<td>{{order.address}}</td>
+					<td>{{order.note}}</td>
+								<td><ANY ng-switch={{order.status}}> 
+										<ANY ng-switch-when="1"> <b class="pending">Pending</b></ANY> 
+										<ANY ng-switch-when="2"> <b class="ready">Ready</b></ANY>
+										<ANY ng-switch-when="3"> <b class="shipping">Shipping</b></ANY>
+										<ANY ng-switch-when="4"> <b class="delivered">Delivered</b></ANY>
+										<ANY ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY>
+										<ANY ng-switch-default>  <b class="cancelled">New order</b></ANY> 
+									</ANY>
+								</td>
+					<td><select ng-model="form.status" ng-focus="edit(order)"
+						class="custom-select">
+							<option value="1">Pending</option>
+							<option value="2">Ready</option>
+							<option value="3">Shipping</option>
+							<option value="4">Delivered</option>
+							<option value="5">Cancelled</option>
+					</select></td>
+					<td>
+						<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
+						<button class="btn btn-primary ti-save" ng-click="update()"></button>
+						<button class="btn btn-danger ti-trash" ng-click="delete(order)"></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+		<div id="detail" class="tab-pane fade">
+		<table id="datatable" class="table table-bordered">
+			<thead>
+				<tr>
+					<th>OrderID</th>
+					<th>Order Date</th>
+					<th>Name customer</th>
+					<th>Phone number</th>
+					<th>Delivery Address</th>
+					<th>Note</th>
+					<th>Status</th>
+					<th>Change Status</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+		</table>
 	</div>
 </div>

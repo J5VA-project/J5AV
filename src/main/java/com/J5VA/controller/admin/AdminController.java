@@ -7,18 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.J5VA.dao.accountDao;
-import com.J5VA.entity.account;
+import com.J5VA.dao.AccountDao;
+import com.J5VA.entity.Account;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 	
-	@Autowired private accountDao accDao;
+	@Autowired private AccountDao accDao;
 	
 	@RequestMapping("/index")
 	public String index(Model model, HttpServletRequest request) {
-		account acc = accDao.findByUsername(request.getRemoteUser());
+		Account acc = accDao.findByUsername(request.getRemoteUser());
 		model.addAttribute("acc",acc == null ? "" : acc);
 		return "admin/index.html";
 	}

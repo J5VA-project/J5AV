@@ -13,29 +13,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.J5VA.entity.food;
-import com.J5VA.service.foodService;
+import com.J5VA.entity.Food;
+import com.J5VA.service.FoodService;
 
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/rest/food")
 public class ProductRestController {
 	@Autowired
-	foodService productService;
+	FoodService productService;
 
 	// lay mot san pham theo id
 	@GetMapping("/{id}")
-	public food getOne(@PathVariable("id") Integer id) {
+	public Food getOne(@PathVariable("id") Integer id) {
 		return productService.findById(id);
 	}
 
 	@PostMapping()
-	public food create(@RequestBody food product) {
+	public Food create(@RequestBody Food product) {
 		return productService.create(product);
 	}
 
 	@PutMapping("{id}")
-	public food update(@PathVariable("id") Integer id, @RequestBody food product) {
+	public Food update(@PathVariable("id") Integer id, @RequestBody Food product) {
 		return productService.update(product);
 	}
 
@@ -45,7 +45,7 @@ public class ProductRestController {
 	}
 
 	@GetMapping()
-	public List<food> getAll() {
+	public List<Food> getAll() {
 		return productService.findAll();
 	}
 }

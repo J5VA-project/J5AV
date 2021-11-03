@@ -12,13 +12,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Service;
 
-import com.J5VA.dao.accountDao;
-import com.J5VA.entity.account;
+import com.J5VA.dao.AccountDao;
+import com.J5VA.entity.Account;
 
 @Service
 public class UserService implements UserDetailsService {
 	@Autowired
-	accountDao dao;
+	AccountDao dao;
 
 	@Autowired
 	BCryptPasswordEncoder pe;
@@ -26,7 +26,7 @@ public class UserService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		try {
-			account account = dao.findById(username).get();
+			Account account = dao.findById(username).get();
 
 			String password = account.getPassword();
 
