@@ -32,4 +32,7 @@ public interface FoodDao extends JpaRepository<Food, Integer>,PagingAndSortingRe
 
 	@Query("SELECT o FROM Food o WHERE o.food_detail.food_detail_size.name=?1")
 	List<Food> findBySize(String sid);
+	
+	@Query("SELECT o FROM Food o WHERE o.price >= :priceSt AND o.price <= :priceEn AND o.food_name like %:name%")
+	Page<Food> findByPrice(Double priceSt, Double priceEn, String name, Pageable pageable);
 }

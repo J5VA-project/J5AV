@@ -22,13 +22,7 @@ public class FoodImplement implements FoodService {
 	public Food save(Food entity) {
 		return dao.save(entity);
 	}
-
-//	@Override
-//	public Page<food> listAll(int pageNumber) {
-//		Pageable pageable = PageRequest.of(pageNumber -1, 6);
-//		return dao.findAll(pageable);
-//	}
-
+	
 	@Override
 	public int count() {
 		return dao.countFood();
@@ -62,25 +56,8 @@ public class FoodImplement implements FoodService {
 	@Override
 	public void delete(Integer id) {
 		dao.deleteById(id);
+
 	}
-
-//	@Override
-//	public Page<food> searchFood(Integer pageNumber, String key) {
-//		key = key == null ? "" : key;
-//		pageNumber = (pageNumber == null || pageNumber <=0) ? 1 : pageNumber;
-//		Pageable pageable = PageRequest.of(pageNumber -1, 6);
-//		return dao.findAllFood(key, pageable);
-//		
-//	}
-
-//	@Override
-//	public Page<food> SortFood(Integer pageNumber) {
-//		pageNumber = (pageNumber == null || pageNumber <=0) ? 1 : pageNumber;
-//		Pageable pageable = PageRequest.of(pageNumber -1, 6);
-//		return dao.sortPage(pageable);
-//	}
-	
-	//thêm page=1 vào sort
 
 	@Override
 	public Page<Food> pageFood(Integer showPageNumber ,String name, String key, Integer pageNumber) {
@@ -92,8 +69,12 @@ public class FoodImplement implements FoodService {
 
 		Sort sort;
 		
-		if (key.equals("ASC"))
+		if (key.equals("asc"))
 			sort = Sort.by("price").ascending();
+		else if (key.equals("az"))
+			sort = Sort.by("food_name").ascending();
+		else if (key.equals("za"))
+			sort = Sort.by("food_name").descending();
 		else
 			sort = Sort.by("price").descending();
 		
@@ -114,8 +95,12 @@ public class FoodImplement implements FoodService {
 
 		Sort sort;
 		
-		if (key.equals("ASC"))
+		if (key.equals("asc"))
 			sort = Sort.by("price").ascending();
+		else if (key.equals("az"))
+			sort = Sort.by("food_name").ascending();
+		else if (key.equals("za"))
+			sort = Sort.by("food_name").descending();
 		else
 			sort = Sort.by("price").descending();
 		
@@ -136,8 +121,12 @@ public class FoodImplement implements FoodService {
 
 		Sort sort;
 		
-		if (key.equals("ASC"))
+		if (key.equals("asc"))
 			sort = Sort.by("price").ascending();
+		else if (key.equals("az"))
+			sort = Sort.by("food_name").ascending();
+		else if (key.equals("za"))
+			sort = Sort.by("food_name").descending();
 		else
 			sort = Sort.by("price").descending();
 		
@@ -145,5 +134,41 @@ public class FoodImplement implements FoodService {
 
 		return dao.findAllFoodSize(size ,name, pageable);
 	}
+
+	@Override
+	public Page<Food> pageFoodPrice(Integer showPageNumber, Double priceSt, Double priceEn, String name, String key,
+			Integer pageNumber) {
+		key = key == null ? "" : key;
+		name = name == null ? "" : name;
+		priceSt = priceSt == null ? null : priceSt;
+		priceEn = priceEn == null ? null : priceEn;
+		
+		showPageNumber = showPageNumber == null ? 6 : showPageNumber;
+		
+		pageNumber = (pageNumber == null || pageNumber <= 0) ? 1 : pageNumber;
+
+		Sort sort;
+		
+		if (key.equals("asc"))
+			sort = Sort.by("price").ascending();
+		else if (key.equals("az"))
+			sort = Sort.by("food_name").ascending();
+		else if (key.equals("za"))
+			sort = Sort.by("food_name").descending();
+		else
+			sort = Sort.by("price").descending();
+		
+		Pageable pageable = PageRequest.of(pageNumber - 1, showPageNumber, sort);
+
+		return dao.findByPrice(priceSt, priceEn, name, pageable);
+	}
+
+
+
+
+//	@Override
+//	public List<food> topFiveFood() {
+//		return dao.topFiveFood();
+//	}
 
 }

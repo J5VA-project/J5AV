@@ -29,24 +29,37 @@ public class ProductController {
 	@Autowired
 	FoodService service;
 
+
 	@GetMapping(value = "/home/shop")
 	public String listByPage(Model model,
-			@RequestParam(name = "page", required = false, defaultValue = "1") Integer currentPage,
+			@RequestParam(name = "p", required = false, defaultValue = "1") Integer currentPage,
 			@RequestParam(name = "search", required = false) String search,
-			@RequestParam(name = "key", required = false, defaultValue = "ASC") String sort,
-			@RequestParam(name = "showPageNumber", required = false, defaultValue = "6") Integer showPageNumber
-			//@RequestParam(name = "cate", required = false) String cate
+			@RequestParam(name = "sort", required = false, defaultValue = "asc") String sort,
+			@RequestParam(name = "show", required = false, defaultValue = "6") Integer showPageNumber,
+			@RequestParam(name = "cate", required = false) String cate,
+			@RequestParam(name = "size", required = false) String size,
+			@RequestParam(name = "priceSt", required = false) Double priceSt,
+			@RequestParam(name = "priceEnd", required = false) Double priceEnd
+			//@RequestParam(name = "pri", required = false) String pri
 			){
 		
+		//List<food> topFive = service.topFiveFood();
 		int count = service.count();
 		
 		Page<Food> page;
 		
-//		if(cate != null) {
-//			page = service.pageFoodCate(showPageNumber, cate ,search, sort, currentPage);
-//		} else {
+		if(cate != null && cate != "")
+		{
+			page = service.pageFoodCate(showPageNumber, cate ,search, sort, currentPage);
+		}
+		else if(size != null && size != ""){
+			page = service.pageFoodSize(showPageNumber, size ,search, sort, currentPage);
+		}
+		else if(priceSt != null && priceEnd != null)
+			page = service.pageFoodPrice(showPageNumber, priceSt, priceEnd ,search, sort, currentPage);
+		else 
 			page = service.pageFood(showPageNumber ,search, sort, currentPage);
-//		}
+		
 		
 		
 
@@ -64,11 +77,14 @@ public class ProductController {
 		model.addAttribute("search", search == null ? "" : search);
 		model.addAttribute("sort", sort == null ? "" : sort);
 		model.addAttribute("showPageNumber", showPageNumber == null ? "" : showPageNumber);
-		//model.addAttribute("cate", cate == null ? "" : cate);
+		model.addAttribute("cate", cate == null ? "" : cate);
+		model.addAttribute("size", size == null ? "" : size);
 		
-//		model.addAttribute("size", size == null ? "" : size);
+		model.addAttribute("priceSt", priceSt == null ? "" : priceSt);
+		model.addAttribute("priceEnd", priceEnd == null ? "" : priceEnd);
+		
 		model.addAttribute("listSize", listSize);
-		
+		//model.addAttribute("topFive", topFive);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("totalItems", totalItems);
 		model.addAttribute("totalPages", totalPages);
@@ -76,7 +92,7 @@ public class ProductController {
 		model.addAttribute("count", count);
 
 
-		return "/home/shop-slide";
+		return "home/shop-slide";
 	}
 
 

@@ -25,7 +25,6 @@ public class FoodDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int food_id;
-	@NotBlank(message = "status not null!")
 	private boolean status;
 	@NotBlank(message = "description not null!")
 	private String description;

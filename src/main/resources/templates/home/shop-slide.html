@@ -23,18 +23,18 @@
 	</div>
 
 
-	<section class="Shop-wrap ptb-100">
+	<section class="Shop-wrap ptb-100">	
 		<div class="container">
 			<div class="row gx-5">
 				<div class="col-xl-4 col-lg-12 order-xl-1 order-lg-2 order-md-2 order-2">
 					<div class="sidebar">
-						<form th:action="@{'/home/shop?page=1&search='+ ${search} +'&sort='+ ${sort}}" method="GET">
-							<input style="display: none;" name ="showPageNumber" th:value ="${showPageNumber}"/>
+						<form th:action="@{'/home/shop?p=1&search='+ ${search} +'&sort='+ ${sort}}" method="GET">
+							<input style="display: none;" name ="show" th:value ="${showPageNumber}"/>
 								<div class="sidebar-widget search-box">
 									<h4>Search</h4>
 										<div class="form-group">
 										<input type="text" name="search" placeholder="Search" required>
-										<input style="display: none;" type="number" name="page" placeholder="page" th:value="${currentPage}">								
+										<input style="display: none;" type="number" name="p" placeholder="page">								
 										<button type="submit">
 											<i class="flaticon-search"></i>
 										</button>
@@ -46,11 +46,8 @@
 							<h4>Category</h4>
 							<div class="category-box">
 								<ul class="list-style">
-									<li><a th:href="@{/home/shop/}">All Category<i
-											class="flaticon-right-arrow-angle"></i>
-									</a></li>
 									<li th:each="listCa:${listCate}">
-										<a th:href="@{'/home/shop?page=1&search='+${search}+'&key=ASC&showPageNumber='+${showPageNumber}+'&cate='+${listCa.foodcategory_name}}">
+										<a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&cate='+${listCa.foodcategory_name}}">
 											[[${listCa.foodcategory_name}]]<i class="flaticon-right-arrow-angle"></i>
 										</a>
 									</li>
@@ -61,57 +58,30 @@
 							<h4>Size</h4>
 							<div class="category-box">
 								<ul class="list-style">
-									<li><a th:href="@{/home/shop}">All Size<i
-											class="flaticon-right-arrow-angle"></i>
-									</a></li>
-									<li th:each="Lisize:${listSize}"><a th:href="@{'/home/shop?page=1&search='+${search}+'&key=ASC&showPageNumber='+${showPageNumber}}"> 
-											[[${Lisize.name}]]<i class="flaticon-right-arrow-angle"></i>
+									<li th:each="listSize:${listSize}"><a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&size='+${listSize.name}}"> 
+											[[${listSize.name}]]<i class="flaticon-right-arrow-angle"></i>
 									</a></li>
 								</ul>
 							</div>
 						</div>
 						<div class="sidebar-widget new-product">
-							<h4>New Arrivals</h4>
+							<h4>Selling products</h4>
 							<div class="new-product-wrap">
-								<div class="new-product-item">
-									<a href="car-details.html" class="new-product-img"> <img
-										src="/assets/img/blog/post-thumb-1.jpg" alt="Iamge">
+								<div th:each="topFive:${topFive}" class="new-product-item">
+									<a th:href="@{|/home/shop-details/${topFive.food_id}|}" class="new-product-img"> 
+										<img th:src="@{|/assets/img/feature/${topFive.photo}|}"
+										alt="Image">
 									</a>
 									<div class="new-product-info">
 										<h6>
-											<a href="shop-details.html">Pasta Barista</a>
+											<a th:href="@{|/home/shop-details/${topFive.food_id}|}">[[${topFive.food_name}]]</a>
 										</h6>
 										<div class="price">
-											<span>$22</span>
+											<span>[[${topFive.price}]]$</span>
 										</div>
 									</div>
 								</div>
-								<div class="new-product-item">
-									<a href="car-details.html" class="new-product-img"> <img
-										src="/assets/img/blog/post-thumb-3.jpg" alt="Iamge">
-									</a>
-									<div class="new-product-info">
-										<h6>
-											<a href="shop-details.html">Chicken Sandwitch</a>
-										</h6>
-										<div class="price">
-											<span>$32</span> <span class="discount">$35</span>
-										</div>
-									</div>
-								</div>
-								<div class="new-product-item">
-									<a href="car-details.html" class="new-product-img"> <img
-										src="/assets/img/blog/post-thumb-2.jpg" alt="Iamge">
-									</a>
-									<div class="new-product-info">
-										<h6>
-											<a href="car-details.html">Strawberry Salsa</a>
-										</h6>
-										<div class="price">
-											<span>$98</span>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 						</div>
 						<div class="sidebar-widget price-range-widget">
@@ -120,56 +90,57 @@
 								<div
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
-										<input type="checkbox" id="check_1"> <label
-											for="check_1">$100-$120</label>
+										<label for="check_1"><a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=0&priceEnd=200'}">
+										<input style="display: none;" name="priceSt" th:value="0" type="checkbox" id="check_1">
+										<input style="display: none;" name="priceEn" th:value="200" type="checkbox" id="check_1">
+										$0-$200</a></label> 
 									</div>
-									<span>(11)</span>
 								</div>
 								<div
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
-										<input type="checkbox" id="check_2"> <label
-											for="check_2">$120-$140</label>
+										<label for="check_2"><a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=200&priceEnd=400'}">
+										<input style="display: none;" name="priceSt" th:value="200" type="checkbox" id="check_2">
+										<input style="display: none;" name="priceEn" th:value="400" type="checkbox" id="check_2">
+										$200-$400</a></label> 
 									</div>
-									<span>(6)</span>
 								</div>
 								<div
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
-										<input type="checkbox" id="check_3"> <label
-											for="check_3">$140-$180</label>
+										<label for="check_3"><a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=400&priceEnd=600'}">
+										<input style="display: none;" name="priceSt" th:value="400" type="checkbox" id="check_3">
+										<input style="display: none;" name="priceEn" th:value="600" type="checkbox" id="check_3">
+										$400-$600</a></label> 
 									</div>
-									<span>(15)</span>
 								</div>
 								<div
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
-										<input type="checkbox" id="check_4"> <label
-											for="check_4">$180-$240</label>
+										<label for="check_4"><a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=600&priceEnd=800'}">
+										<input style="display: none;" name="priceSt" th:value="600" type="checkbox" id="check_4">
+										<input style="display: none;" name="priceEn" th:value="800" type="checkbox" id="check_4">
+										$600-$800</a></label> 
 									</div>
-									<span>(12)</span>
 								</div>
 								<div
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
-										<input type="checkbox" id="check_5"> <label
-											for="check_5">$240-$300</label>
+										<label for="check_5"><a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=800&priceEnd=1000'}">
+										<input style="display: none;" name="priceSt" th:value="800" type="checkbox" id="check_5">
+										<input style="display: none;" name="priceEn" th:value="1000" type="checkbox" id="check_5">
+										$800-$1000</a></label> 
 									</div>
-									<span>(9)</span>
 								</div>
-							</div>
-						</div>
-						<div class="sidebar-widget tags">
-							<h4>Popular Tags</h4>
-							<div class="tag-list">
-								<ul class="list-style">
-									<li><a href="blog-left-sidebar.html">Food</a></li>
-									<li><a href="blog-left-sidebar.html">Restaurant</a></li>
-									<li><a href="blog-left-sidebar.html">Health</a></li>
-									<li><a href="blog-left-sidebar.html">Review </a></li>
-									<li><a href="blog-left-sidebar.html">Fastfood</a></li>
-									<li><a href="blog-left-sidebar.html">Business</a></li>
-								</ul>
+								<div
+									class="checkbox-item d-flex justify-content-between align-items-center">
+									<div class="checkbox style2">
+										<label for="check_5"><a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=1000&priceEnd=1200'}">
+										<input style="display: none;" name="priceSt" th:value="1000" type="checkbox" id="check_5">
+										<input style="display: none;" name="priceEn" th:value="1200" type="checkbox" id="check_5">
+										$1000-$1200</a></label> 
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -190,10 +161,12 @@
 									<div id="menu">
 										<ul class="main-menu list-style">
 											<li class="has-children">
-												<a class="shopcart">Sắp xếp</a>
+												<a class="shopcart">Sort by</a>
 												<ul class="sub-menu list-style">
-													<li><a class="dropdown-item" th:value="ASC" th:href="@{'/home/shop?page=1&search='+${search}+'&key=ASC&showPageNumber=' + ${showPageNumber}}">Giá tăng dần</a></li>
-													<li><a class="dropdown-item" th:value="DESC" th:href="@{'/home/shop?page=1&search='+${search}+'&key=DESC&showPageNumber=' + ${showPageNumber}}">Giá giảm dần</a></li>
+													<li><a class="dropdown-item" th:value="asc" th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Price: Low High</a></li>
+													<li><a class="dropdown-item" th:value="desc" th:href="@{'/home/shop?p=1&search='+${search}+'&sort=desc&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Price: High Low</a></li>
+													<li><a class="dropdown-item" th:value="za" th:href="@{'/home/shop?p=1&search='+${search}+'&sort=az&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Name: A - Z</a></li>
+													<li><a class="dropdown-item" th:value="az" th:href="@{'/home/shop?p=1&search='+${search}+'&sort=za&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Name: Z - A</a></li>
 												</ul>
 											</li>   
 										</ul>
@@ -211,10 +184,10 @@
 											<li class="has-children">
 												<a class="shopcart">Show</a>
 												<ul class="sub-menu list-style">
-													<li><a class="dropdown-item" name="showPageNumber" th:value="6" th:href="@{'/home/shop?page=1' + '&search=&key=' + ${sort} + '&showPageNumber=6'}">Show 6</a></li>
-													<li><a class="dropdown-item" name="showPageNumber" th:value="12" th:href="@{'/home/shop?page=1' + '&search=&key=' + ${sort} + '&showPageNumber=12'}">Show 12</a></li>
-													<li><a class="dropdown-item" name="showPageNumber" th:value="18" th:href="@{'/home/shop?page=1' + '&search=&key=' + ${sort} + '&showPageNumber=18'}">Show 18</a></li>
-													<li><a class="dropdown-item" name="showPageNumber" th:value="24" th:href="@{'/home/shop?page=1' + '&search=&key=' + ${sort} + '&showPageNumber=24'}">Show 24</a></li>
+													<li><a class="dropdown-item" name="showPageNumber" th:value="6" th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=6'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Show 6</a></li>
+													<li><a class="dropdown-item" name="showPageNumber" th:value="12" th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=12'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Show 12</a></li>
+													<li><a class="dropdown-item" name="showPageNumber" th:value="18" th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=18'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Show 18</a></li>
+													<li><a class="dropdown-item" name="showPageNumber" th:value="24" th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=24'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Show 24</a></li>
 												</ul>
 											</li>   
 										</ul>
@@ -270,45 +243,17 @@
 							</div>
 						</div>
 					</div>
-
-					<!-- <div class="page-navigation">
-						<div class="row align-items-center">
-							<div
-								class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20">
-								<a href="shop-left-sidebar.html" class="btn prev">Prev Page</a>
-							</div>
-							<div
-								class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center smb-20">
-								<ul class="page-nav list-style">
-									<li><a class="active" href="shop-left-sidebar.html">1</a></li>
-									<li><a href="shop-left-sidebar.html">2</a></li>
-									<li><a href="shop-left-sidebar.html">3</a></li>
-								</ul>
-							</div>
-							<div
-								class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-end text-center">
-								<a href="shop-left-sidebar.html" class="btn next">Next Page
-								</a>
-							</div>
-						</div>
-					</div> -->
-
-
-
-					<!-- Start Page navigation of Page -->
-					<!-- Start Page navigation of Page -->
-					<!-- Start Page navigation of Page -->
 					<div class="page-navigation">
 						<div class="row align-items-center">
 							<div
 								class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20">
-								<a th:if="${currentPage > 1}" th:href="@{'/home/shop?page=1'+ '&search=' + ${search} +'&key=' + ${sort} + '&showPageNumber=' + ${showPageNumber}}" class="btn prev">First</a>
+								<a th:if="${currentPage > 1}" th:href="@{'/home/shop?p=1'+ '&search=' + ${search} +'&sort=' + ${sort} + '&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" class="btn prev">First</a>
 								<span th:unless="${currentPage > 1}" class="btn prev">First</span>
 							</div>
 							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center smb-20">
 								<ul class="page-nav list-style">
 									<li th:each="i: ${#numbers.sequence(1, totalPages)}">
-										<a th:if="${i != currentPage}" href="shop-left-sidebar.html" th:href="@{'/home/shop?page=' + ${i} + '&search=' + ${search} +'&key=' + ${sort} + '&showPageNumber=' + ${showPageNumber}}">
+										<a th:if="${i != currentPage}" href="shop-left-sidebar.html" th:href="@{'/home/shop?p=' + ${i} + '&search=' + ${search} +'&sort=' + ${sort} + '&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">
 											[[${i}]]
 										</a>
 										<a class="active" th:unless="${i != currentPage}">[[${i}]]</a>
@@ -316,7 +261,7 @@
 								</ul>
 							</div>
 							<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-end text-center">
-								<a th:if="${currentPage < totalPages}" th:href="@{'/home/shop?page=' + ${totalPages} + '&search=' + ${search} +'&key=' + ${sort} + '&showPageNumber=' + ${showPageNumber}}" class="btn prev">Last</a>
+								<a th:if="${currentPage < totalPages}" th:href="@{'/home/shop?p=' + ${totalPages} + '&search=' + ${search} +'&sort=' + ${sort} + '&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" class="btn prev">Last</a>
 								<span th:unless="${currentPage < totalPages}" class="btn prev">Last</span>
 							</div>
 						</div>

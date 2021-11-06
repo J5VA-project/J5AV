@@ -23,7 +23,6 @@ public class ProductRestController {
 	@Autowired
 	FoodService productService;
 
-	// lay mot san pham theo id
 	@GetMapping("/{id}")
 	public Food getOne(@PathVariable("id") Integer id) {
 		return productService.findById(id);

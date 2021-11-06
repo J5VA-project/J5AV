@@ -30,7 +30,6 @@ public class Food {
 	private int food_id;
 	@NotBlank(message = "username not null!")
 	private String food_name;
-	@NotBlank(message = "price not null!")
 	private double price;
 	String photo;
 	
