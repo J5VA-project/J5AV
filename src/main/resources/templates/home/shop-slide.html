@@ -2,7 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{/layout/header::dynamic(~{::body})}">
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 <body>
 	<div class="breadcrumb-wrap bg-f br-1">
 		<div class="overlay bg-black op-9"></div>
@@ -24,6 +27,7 @@
 	</div>
 
 
+<<<<<<< HEAD
 	<section class="Shop-wrap ptb-100">
 		<div class="container">
 			<div class="row gx-5">
@@ -42,16 +46,45 @@
 						</div>
 						</form>
 						
+=======
+	<section class="Shop-wrap ptb-100">	
+		<div class="container">
+			<div class="row gx-5">
+				<div class="col-xl-4 col-lg-12 order-xl-1 order-lg-2 order-md-2 order-2">
+					<div class="sidebar">
+						<form th:action="@{'/home/shop?p=1&search='+ ${search} +'&sort='+ ${sort}}" method="GET">
+							<input style="display: none;" name ="show" th:value ="${showPageNumber}"/>
+								<div class="sidebar-widget search-box">
+									<h4>Search</h4>
+										<div class="form-group">
+										<input type="text" name="search" placeholder="Search" required>
+										<input style="display: none;" type="number" name="p" placeholder="page">								
+										<button type="submit">
+											<i class="flaticon-search"></i>
+										</button>
+								</div>
+							</div>
+						</form>
+						<br>
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 						<div class="sidebar-widget categories">
 							<h4>Category</h4>
 							<div class="category-box">
 								<ul class="list-style">
+<<<<<<< HEAD
 									<li><a th:href="@{/home/shop/}">All Category<i
 											class="flaticon-right-arrow-angle"></i>
 									</a></li>
 									<li th:each="cate:${cates}"><a th:href="@{|/home/shop?cid=${cate.foodcategory_name}|}">
 											[[${cate.foodcategory_name}]]<i class="flaticon-right-arrow-angle"></i>
 									</a></li>
+=======
+									<li th:each="listCa:${listCate}">
+										<a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&cate='+${listCa.foodcategory_name}}">
+											[[${listCa.foodcategory_name}]]<i class="flaticon-right-arrow-angle"></i>
+										</a>
+									</li>
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 								</ul>
 							</div>
 						</div>
@@ -59,16 +92,22 @@
 							<h4>Size</h4>
 							<div class="category-box">
 								<ul class="list-style">
+<<<<<<< HEAD
 									<li><a th:href="@{/home/shop}">All Size<i
 											class="flaticon-right-arrow-angle"></i>
 									</a></li>
 									<li th:each="size:${sizes}"><a th:href="@{|/home/shop?sid=${size.name}|}"> 
 											[[${size.name}]]<i class="flaticon-right-arrow-angle"></i>
+=======
+									<li th:each="listSize:${listSize}"><a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&size='+${listSize.name}}"> 
+											[[${listSize.name}]]<i class="flaticon-right-arrow-angle"></i>
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 									</a></li>
 								</ul>
 							</div>
 						</div>
 						<div class="sidebar-widget new-product">
+<<<<<<< HEAD
 							<h4>New Arrivals</h4>
 							<div class="new-product-wrap">
 								<div class="new-product-item">
@@ -110,6 +149,25 @@
 										</div>
 									</div>
 								</div>
+=======
+							<h4>Selling products</h4>
+							<div class="new-product-wrap">
+								<div th:each="topFive:${topFive}" class="new-product-item">
+									<a th:href="@{|/home/shop-details/${topFive.food_id}|}" class="new-product-img"> 
+										<img th:src="@{|/assets/img/feature/${topFive.photo}|}"
+										alt="Image">
+									</a>
+									<div class="new-product-info">
+										<h6>
+											<a th:href="@{|/home/shop-details/${topFive.food_id}|}">[[${topFive.food_name}]]</a>
+										</h6>
+										<div class="price">
+											<span>[[${topFive.price}]]$</span>
+										</div>
+									</div>
+								</div>
+								
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 							</div>
 						</div>
 						<div class="sidebar-widget price-range-widget">
@@ -118,38 +176,71 @@
 								<div
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
+<<<<<<< HEAD
 										<input type="checkbox" id="check_1"> <label
 											for="check_1">$100-$120</label>
 									</div>
 									<span>(11)</span>
+=======
+										<label for="check_1"><a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=0&priceEnd=200'}">
+										<input style="display: none;" name="priceSt" th:value="0" type="checkbox" id="check_1">
+										<input style="display: none;" name="priceEn" th:value="200" type="checkbox" id="check_1">
+										$0-$200</a></label> 
+									</div>
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 								</div>
 								<div
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
+<<<<<<< HEAD
 										<input type="checkbox" id="check_2"> <label
 											for="check_2">$120-$140</label>
 									</div>
 									<span>(6)</span>
+=======
+										<label for="check_2"><a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=200&priceEnd=400'}">
+										<input style="display: none;" name="priceSt" th:value="200" type="checkbox" id="check_2">
+										<input style="display: none;" name="priceEn" th:value="400" type="checkbox" id="check_2">
+										$200-$400</a></label> 
+									</div>
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 								</div>
 								<div
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
+<<<<<<< HEAD
 										<input type="checkbox" id="check_3"> <label
 											for="check_3">$140-$180</label>
 									</div>
 									<span>(15)</span>
+=======
+										<label for="check_3"><a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=400&priceEnd=600'}">
+										<input style="display: none;" name="priceSt" th:value="400" type="checkbox" id="check_3">
+										<input style="display: none;" name="priceEn" th:value="600" type="checkbox" id="check_3">
+										$400-$600</a></label> 
+									</div>
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 								</div>
 								<div
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
+<<<<<<< HEAD
 										<input type="checkbox" id="check_4"> <label
 											for="check_4">$180-$240</label>
 									</div>
 									<span>(12)</span>
+=======
+										<label for="check_4"><a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=600&priceEnd=800'}">
+										<input style="display: none;" name="priceSt" th:value="600" type="checkbox" id="check_4">
+										<input style="display: none;" name="priceEn" th:value="800" type="checkbox" id="check_4">
+										$600-$800</a></label> 
+									</div>
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 								</div>
 								<div
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
+<<<<<<< HEAD
 										<input type="checkbox" id="check_5"> <label
 											for="check_5">$240-$300</label>
 									</div>
@@ -168,6 +259,23 @@
 									<li><a href="blog-left-sidebar.html">Fastfood</a></li>
 									<li><a href="blog-left-sidebar.html">Business</a></li>
 								</ul>
+=======
+										<label for="check_5"><a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=800&priceEnd=1000'}">
+										<input style="display: none;" name="priceSt" th:value="800" type="checkbox" id="check_5">
+										<input style="display: none;" name="priceEn" th:value="1000" type="checkbox" id="check_5">
+										$800-$1000</a></label> 
+									</div>
+								</div>
+								<div
+									class="checkbox-item d-flex justify-content-between align-items-center">
+									<div class="checkbox style2">
+										<label for="check_5"><a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=1000&priceEnd=1200'}">
+										<input style="display: none;" name="priceSt" th:value="1000" type="checkbox" id="check_5">
+										<input style="display: none;" name="priceEn" th:value="1200" type="checkbox" id="check_5">
+										$1000-$1200</a></label> 
+									</div>
+								</div>
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 							</div>
 						</div>
 					</div>
@@ -177,6 +285,7 @@
 					<div class="row align-items-center mb-25">
 						<div class="col-xl-6 col-lg-5 col-md-4">
 							<div class="profuct-result">
+<<<<<<< HEAD
 								<p>Showing 10 of 120 Products</p>
 							</div>
 						</div>
@@ -214,10 +323,35 @@
 								</ul>
 							</div>
 						</div>        
+=======
+								<p>Showing [[${showPageNumber}]] of [[${count}]] Products</p>
+							</div>
+						</div>
+
+
+						<div class="col-xl-4 col-lg-4 col-md-4">
+							<div class="filter-item-cat">
+								<div class="main-menu-wrap">
+									<div id="menu">
+										<ul class="main-menu list-style">
+											<li class="has-children">
+												<a class="shopcart">Sort by</a>
+												<ul class="sub-menu list-style">
+													<li><a class="dropdown-item" th:value="asc" th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Price: Low High</a></li>
+													<li><a class="dropdown-item" th:value="desc" th:href="@{'/home/shop?p=1&search='+${search}+'&sort=desc&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Price: High Low</a></li>
+													<li><a class="dropdown-item" th:value="za" th:href="@{'/home/shop?p=1&search='+${search}+'&sort=az&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Name: A - Z</a></li>
+													<li><a class="dropdown-item" th:value="az" th:href="@{'/home/shop?p=1&search='+${search}+'&sort=za&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Name: Z - A</a></li>
+												</ul>
+											</li>   
+										</ul>
+									</div>
+								</div>        
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 							</div>
 						</div>
 						
 
+<<<<<<< HEAD
 						<!-- <div class="col-xl-4 col-lg-4 col-md-4">
 							<div class="filter-item-cat">
 								<select>
@@ -244,6 +378,29 @@
 							</div>
 						</div>
 					</div>
+=======
+						<div class="col-xl-2 col-lg-3 col-md-4">
+							<div class="filter-item-cat">
+								<div class="main-menu-wrap">
+									<div id="menu">
+										<ul class="main-menu list-style">
+											<li class="has-children">
+												<a class="shopcart">Show</a>
+												<ul class="sub-menu list-style">
+													<li><a class="dropdown-item" name="showPageNumber" th:value="6" th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=6'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Show 6</a></li>
+													<li><a class="dropdown-item" name="showPageNumber" th:value="12" th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=12'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Show 12</a></li>
+													<li><a class="dropdown-item" name="showPageNumber" th:value="18" th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=18'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Show 18</a></li>
+													<li><a class="dropdown-item" name="showPageNumber" th:value="24" th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=24'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Show 24</a></li>
+												</ul>
+											</li>   
+										</ul>
+									</div>
+								</div>        
+							</div>
+						</div>
+
+					</div> 
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 					<div class="row justify-content-center">
 						<div th:each="food:${foods}" class="col-lg-6 col-md-6">
 							<div class="feature-card style1">
@@ -272,9 +429,20 @@
 										<p class="feature-price">[[${food.price}]]$</p>
 									</div>
 
+<<<<<<< HEAD
 									<a class="btn style2" href="cart.html"><i
 										class="flaticon-shopping-bag-1"></i>Add To Cart</a>
 									<div class="discount-tag">
+=======
+									<button class="btn style2"
+										th:attr="ng-click=@{|cart.add(${food.food_id})|}">
+										<i class="flaticon-shopping-bag-1"></i>Add To Cart
+									</button>
+
+
+									<div class="discount-tag">
+
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 										<img src="/assets/img/feature/circle-1.png" alt="Image">
 										<p>
 											<span>[[${food.food_detail.status?'Stocking':'Out of
@@ -289,6 +457,7 @@
 						<div class="row align-items-center">
 							<div
 								class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20">
+<<<<<<< HEAD
 								<a th:if="${currentPage > 1}" th:href="@{/home/shop/1}" class="btn prev">First</a>
 								<span th:unless="${currentPage > 1}" class="btn prev">First</span>
 
@@ -305,18 +474,32 @@
 									<li><a href="shop-left-sidebar.html">2</a></li> -->
 									<li th:each="i: ${#numbers.sequence(1, totalPages)}">
 										<a th:if="${i != currentPage}" href="shop-left-sidebar.html" th:href="@{'/home/shop/' + ${i}}">
+=======
+								<a th:if="${currentPage > 1}" th:href="@{'/home/shop?p=1'+ '&search=' + ${search} +'&sort=' + ${sort} + '&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" class="btn prev">First</a>
+								<span th:unless="${currentPage > 1}" class="btn prev">First</span>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center smb-20">
+								<ul class="page-nav list-style">
+									<li th:each="i: ${#numbers.sequence(1, totalPages)}">
+										<a th:if="${i != currentPage}" href="shop-left-sidebar.html" th:href="@{'/home/shop?p=' + ${i} + '&search=' + ${search} +'&sort=' + ${sort} + '&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 											[[${i}]]
 										</a>
 										<a class="active" th:unless="${i != currentPage}">[[${i}]]</a>
 									</li>
 								</ul>
 							</div>
+<<<<<<< HEAD
 							<div
 								class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-end text-center">
 								<a th:if="${currentPage < totalPages}" th:href="@{'/home/shop/' + ${currentPage + 1}}" class="btn prev">Next</a>
 								<!-- <span th:unless="${currentPage < totalPages}" class="btn prev">Next</span> -->
 
 								<a th:if="${currentPage < totalPages}" th:href="@{'/home/shop/' + ${totalPages}}" class="btn prev">Last</a>
+=======
+							<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-end text-center">
+								<a th:if="${currentPage < totalPages}" th:href="@{'/home/shop?p=' + ${totalPages} + '&search=' + ${search} +'&sort=' + ${sort} + '&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" class="btn prev">Last</a>
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 								<span th:unless="${currentPage < totalPages}" class="btn prev">Last</span>
 							</div>
 						</div>
@@ -325,20 +508,34 @@
 								<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20"></div>
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center smb-20">
 									<div>
+<<<<<<< HEAD
 										Trang [[${currentPage}]] of [[${totalPages}]]
+=======
+										<div class="profuct-result">
+										 <p>Page [[${currentPage}]] of [[${totalPages}]]</p>
+										</div>
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 									</div>
 								</div>
 								<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20"></div>
 							</div>
 						</div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 					</div>
 				</div>
 			</div>
 		</div>
+<<<<<<< HEAD
 	</section>
 </body>
 
 <!-- Mirrored from templates.hibootstrap.com/caban/default/shop-left-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:44 GMT -->
 
+=======
+</body>
+
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 </html>

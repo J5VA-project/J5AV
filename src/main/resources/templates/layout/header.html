@@ -5,6 +5,7 @@
 
 <head>
 
+<<<<<<< HEAD
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -337,6 +338,375 @@
     <script src="/assets/js/jquery.appear.js"></script>
     <script src="/assets/js/odometre.min.js"></script>
     <script src="/assets/js/main.js"></script>
+=======
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/css/line-awesome.min.css">
+<link rel="stylesheet" href="/assets/css/flaticon.css">
+<link rel="stylesheet" href="/assets/css/swiper-min.css">
+<link rel="stylesheet" href="/assets/css/magnific-popup.css">
+<link rel="stylesheet" href="/assets/css/fancybox.css">
+<link rel="stylesheet" href="/assets/css/aos.css">
+<link rel="stylesheet" href="/assets/css/odometre.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/responsive.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+<!--Router-->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+<script src="/assets/js/shopping-cart-app.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<title>J5VA - Restaurant</title>
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<style>
+a {
+	text-decoration: none;
+}
+</style>
+</head>
+
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+
+	<div class="preloader js-preloader">
+		<img src="/assets/img/preloader.gif" alt="Image">
+	</div>
+
+
+	<div class="page-wrapper ">
+
+		<header class="header-wrap style1">
+			<div class="header-top">
+				<div class="container">
+					<div class="close-header-top xl-none">
+						<button type="button">
+							<i class="las la-times"></i>
+						</button>
+					</div>
+					<div class="row align-items-center">
+						<div class="col-xl-10 col-lg-12">
+							<div class="header-top-left">
+								<div class="contact-item">
+									<i class="flaticon-wall-clock"></i>
+									<p th:text=#{menu.time}>Mon - Sun[8:00am - 10:00pm]</p>
+								</div>
+								<div class="contact-item">
+									<i class="flaticon-phone-call"></i> <a href="tel:0366533889">0366-533-889</a>
+								</div>
+								<div class="contact-item">
+									<i class="flaticon-voucher"></i>
+									<p th:text=#{menu.discount}>
+										Discount 0ff <strong>25%</strong>only for <span>Burger
+											Item</span>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-2 col-lg-12">
+							<div class="header-top-right">
+								<div class="select-lang">
+									<div
+										class="navbar-option-item navbar-language dropdown language-option">
+										<button class="dropdown-toggle" type="button"
+											data-bs-toggle="dropdown" aria-haspopup="true"
+											aria-expanded="false">
+											<span class="lang-name"></span>
+										</button>
+										<div class="dropdown-menu language-dropdown-menu">
+											<a class="dropdown-item" href="#"> Language </a> <a
+												class="dropdown-item" href="?lang=en"> <img
+												src="/assets/img/uk.png" alt="flag"> English
+											</a> <a class="dropdown-item" href="?lang=vi"> <img
+												src="/assets/img/uae.png" alt="flag"> Tiếng Việt
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="select-currency">
+									<select>
+										<option value="1">&nbsp; USD</option>
+									</select>
+								</div>
+							</div>
+							<a href="reservation.html" class="btn style1 xl-none">Make
+								Reservation <i class="flaticon-right-arrow-2"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container ">
+				<div class="header-bottom">
+					<div class="row align-items-center">
+						<div class="col-xl-2 col-lg-5 col-md-5 col-4">
+							<a th:href="@{/home}" class="logo"><img
+								src="/assets/img/logo-white.png" alt="Image"></a>
+						</div>
+						<div class="col-xl-7 col-lg-7 col-md-7 col-8">
+							<div class="main-menu-wrap">
+								<div class="menu-close xl-none">
+									<a href="javascript:void(0)"><i class="las la-times"></i></a>
+								</div>
+								<div id="menu">
+									<ul class="main-menu list-style">
+										<li><a th:href="@{/home}" th:text="#{menu.home}">Home</a>
+										</li>
+										<li><a th:href="@{/home/service}"
+											th:text="#{menu.service}">Services</a></li>
+										<li class="has-children"><a href="#"
+											th:text="#{menu.pages}">Pages</a>
+											<ul class="sub-menu list-style">
+												<li><a th:href="@{/home/chef}" th:text="#{menu.chef}">Our
+														chef</a></li>
+												<li><a th:href="@{/home/faq}">FAQ</a></li>
+												<li><a th:href="@{/home/wishlist}"
+													th:text="#{menu.wishlist}">Wishlist</a></li>
+												<li><a th:href="@{/home/order/listorder}" th:text="#{menu.order-list}">Order List</a></li>
+											</ul></li>
+										<li><a th:href="@{/home/shop}" th:text="#{menu.shop}">Products</a>
+										<li><a th:href="@{/home/blog}" th:text="#{menu.blog}">Blog</a>
+										</li>
+										<li><a th:href="@{/home/contact}"
+											th:text="#{menu.contact}">Contact</a></li>
+										<li><a th:href="@{/home/about}" th:text="#{menu.about}">About</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="mobile-bar-wrap">
+								<a th:href="@{/home/cart}" class="shopcart  xl-none"> <i
+									class="las la-shopping-cart"></i> <span>{{cart.count}} </a>
+								<a th:href="@{/auth/login/form}" class="shopcart xl-none"> <i
+									class="las la-user"></i>
+								</a>
+								<div class="mobile-top-bar xl-none">
+									<span></span> <span></span> <span></span>
+								</div>
+								<div class="mobile-menu xl-none">
+									<a href="javascript:void(0)"><i class="las la-bars"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 lg-none">
+							<div class="header-bottom-right">
+								<a th:href="@{/home/cart}" class="shopcart"> <i
+									class="las la-shopping-cart"></i> <span>{{cart.count}}</span>
+								</a>
+								<div class="main-menu-wrap">
+									<div class="menu-close xl-none">
+										<a href="javascript:void(0)"><i class="las la-times"></i></a>
+									</div>
+									<div id="menu">
+										<ul class="main-menu list-style">
+											<li class="has-children"><a
+												th:href="@{/auth/login/form}" class="shopcart"> <i
+													class="las la-user"></i><strong
+													th:if="${#request.remoteUser}" class="list-style">[[${#request.remoteUser}]]</strong>
+											</a>
+												<ul class="sub-menu list-style">
+													<li th:unless="${#request.remoteUser}"><a
+														th:href="@{/auth/login/form}" th:text="#{menu.login}">Login</a></li>
+													<li th:unless="${#request.remoteUser}"><a
+														th:href="@{/home/register}" th:text="#{menu.register}">Register</a></li>
+													<li th:if="${#request.remoteUser}"><a
+														th:href="@{/home/profile}" th:text="#{menu.profile}">Profile</a></li>
+													<li th:if="${#request.remoteUser}"><a
+														th:href="@{/auth/logoff}" th:text="#{menu.logout}">Logout</a></li>
+													<li th:if="${#request.remoteUser}"><a
+														th:href="@{/home/change-pw}" th:text="#{menu.cpw}">Change
+															Password</a></li>
+													<li th:unless="${#request.remoteUser}"><a
+														th:href="@{/home/forgot-pw}" th:text="#{menu.fgpw}">Forgot
+															Password</a></li>
+												</ul></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+
+		<div class="ps-section--page" th:replace="${view}"></div>
+
+
+
+		<footer class="footer-wrap">
+			<div class="footer-top bg-f footer-bg-1 pt-100 pb-70">
+				<div class="overlay op-9 bg-black"></div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="footer-widget-wrap">
+								<div class="footer-widget">
+									<a href="index.html" class="footer-logo"> <img
+										src="/assets/img/logo-white.png" alt="Image">
+									</a>
+									<p class="comp-desc" th:text="#{footer.content}">Our feet
+										are on the ground, but our the desi ambitions are to above the
+										clouds a Here is how we move to satisfy our customers</p>
+									<div class="contact-item-wrap">
+										<div class="contact-item">
+											<i class="flaticon-mail-1"></i> <a href="mailto:"><span
+												class="__cf_email__"
+												data-cfemail="29414c454546694a484b4847074a4644">j5varestaurant@gmail.com</span></a>
+										</div>
+										<div class="contact-item">
+											<i class="flaticon-phone-call"></i> <a href="tel:0366533889">+366533889</a>
+										</div>
+									</div>
+									<ul class="social-profile style1 list-style">
+										<li><a target="_blank" href="https://facebook.com/"><i
+												class="flaticon-facebook"></i> </a></li>
+										<li><a target="_blank" href="https://twitter.com/"> <i
+												class="flaticon-twitter-1"></i>
+										</a></li>
+										<li><a target="_blank" href="https://instagram.com/">
+												<i class="flaticon-instagram"></i>
+										</a></li>
+										<li><a target="_blank" href="https://youtube.com/"> <i
+												class="flaticon-youtube"></i>
+										</a></li>
+									</ul>
+								</div>
+								<div class="footer-widget">
+									<h4 class="footer-widget-title" th:text="#{footer.title1}">
+										Quick Links</h4>
+									<ul class="footer-menu list-style">
+										<li><a th:href="@{/home/about}" th:text="#{menu.about}">About
+												Us</a></li>
+										<li><a th:href="@{/home/chef}" th:text="#{menu.chef}">Our
+												Chef</a></li>
+										<li><a th:href="@{/home/shop}" th:text="#{menu.shop}">Product</a></li>
+										<li><a th:href="@{/home/wishlist}"
+											th:text="#{menu.wishlist}">Wishlist</a></li>
+										<li><a th:href="@{/home/contact}"
+											th:text="#{menu.contact}">Contact</a></li>
+										<li><a th:href="@{/home/faq}" th:text="#{menu.faq}">FAQ?</a></li>
+									</ul>
+								</div>
+								<div class="footer-widget">
+									<h4 class="footer-widget-title" th:text="#{footer.title2}">
+										Opening Hours</h4>
+									<ul class="office-schedule  list-style">
+										<li>
+											<p th:text="#{footer.title2.t2}">Monday</p>
+											<p>09:00 - 18:00</p>
+										</li>
+										<li>
+											<p th:text="#{footer.title2.t3}">Tuesday</p>
+											<p>10:00 - 18:00</p>
+										</li>
+										<li>
+											<p th:text="#{footer.title2.t4}">Wednesday</p>
+											<p>11:00 - 18:00</p>
+										</li>
+										<li>
+											<p th:text="#{footer.title2.t5}">Thursday</p>
+											<p>12:00 - 18:00</p>
+										</li>
+										<li>
+											<p th:text="#{footer.title2.t6}">Friday</p>
+											<p>14:00 - 18:00</p>
+										</li>
+										<li>
+											<p th:text="#{footer.title2.t7}">Saturday,Sunday</p>
+											<p th:text="#{footer.title2.cls}">Closed</p>
+										</li>
+									</ul>
+								</div>
+								<div class="footer-widget">
+									<h4 class="footer-widget-title" th:text="#{footer.title3}">
+										Instagram Photo</h4>
+									<div class="instagram-img-wrap">
+										<a href="https://instagram.com/" target="_blank"
+											class="insta-box"> <img
+											src="/assets/img/instagram/instagram-1.jpg" alt="Image">
+										</a> <a href="https://instagram.com/" target="_blank"
+											class="insta-box"> <img
+											src="/assets/img/instagram/instagram-2.jpg" alt="Image">
+										</a> <a href="https://instagram.com/" target="_blank"
+											class="insta-box"> <img
+											src="/assets/img/instagram/instagram-3.jpg" alt="Image">
+										</a> <a href="https://instagram.com/" target="_blank"
+											class="insta-box"> <img
+											src="/assets/img/instagram/instagram-4.jpg" alt="Image">
+										</a> <a href="https://instagram.com/" target="_blank"
+											class="insta-box"> <img
+											src="/assets/img/instagram/instagram-5.jpg" alt="Image">
+										</a> <a href="https://instagram.com/" target="_blank"
+											class="insta-box"> <img
+											src="/assets/img/instagram/instagram-6.jpg" alt="Image">
+										</a> <a href="https://instagram.com/" target="_blank"
+											class="insta-box"> <img
+											src="/assets/img/instagram/instagram-7.jpg" alt="Image">
+										</a> <a href="https://instagram.com/" target="_blank"
+											class="insta-box"> <img
+											src="/assets/img/instagram/instagram-8.jpg" alt="Image">
+										</a> <a href="https://instagram.com/" target="_blank"
+											class="insta-box"> <img
+											src="/assets/img/instagram/instagram-9.jpg" alt="Image">
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom bg-black">
+				<div class="container">
+					<div class="row align-items-center">
+						<div
+							class="col-lg-6 col-md-12 col-12 order-lg-1 order-md-2 order-2">
+							<p class="copyright">
+								<span class="las la-copyright"></span>2021 J5VA. All Rights
+								Reserved By <a href="https://hibootstrap.com/">HiBootstrap</a>
+							</p>
+						</div>
+						<div
+							class="col-lg-6 col-md-12 col-12 order-lg-2 order-md-1 order-1">
+							<ul class="footer-bottom-menu list-style">
+								<li><a href="#">Privacy Policy</a></li>
+								<li><a href="#">Terms &amp; Conditions</a></li>
+								<li><a href="#">Help Center</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+
+	<a href="javascript:void(0)" class="back-to-top"><i
+		class="las la-arrow-up"></i></a>
+
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/assets/js/bootstrap.min.js"></script>
+	<script src="/assets/js/form-validator.min.js"></script>
+	<script src="/assets/js/contact-form-script.js"></script>
+	<script src="/assets/js/aos.js"></script>
+	<script src="/assets/js/swiper-min.js"></script>
+	<script src="/assets/js/jquery-magnific-popup.js"></script>
+	<script src="/assets/js/fancybox.js"></script>
+	<script src="/assets/js/jquery.appear.js"></script>
+	<script src="/assets/js/odometre.min.js"></script>
+	<script src="/assets/js/main.js"></script>
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 </body>
 
 <!-- Mirrored from templates.hibootstrap.com/caban/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:23 GMT -->

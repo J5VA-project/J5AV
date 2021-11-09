@@ -106,9 +106,20 @@
                              </div>
                          </div>
                          <div class="single-product-option">
+<<<<<<< HEAD
                              <button type="submit" class="btn style1"><span><i class="flaticon-bag"></i>Add To
                                      Cart</span></button>
                              <button type="button" class="btn style2"><span>Buy Now </span></button>
+=======
+                              <button class="btn style1"
+										th:attr="ng-click=@{|cart.add(${food.food_id})|}">
+										<i class="flaticon-shopping-bag-1"></i>Add To Cart
+							</button>
+                              <button class="btn style2"
+										th:attr="ng-click=@{|cart.add(${food.food_id})|}">
+										<i class="flaticon-shopping-bag-1"></i>Buy Now
+							</button>
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
                          </div>
                          <div class="product-more-option">
                              <div class="product-more-option-item">
@@ -323,7 +334,11 @@
 				                             <p class="feature-price">[[${foods.food.price}]]$</p>
 				                         </div>
 				                         
+<<<<<<< HEAD
 				                         <a class="btn style2" href="cart.html"><i class="flaticon-shopping-bag-1"></i>Add To
+=======
+				                         <a class="btn style2" th:attr="ng-click=@{|cart.add(${food.food_id})|}"><i class="flaticon-shopping-bag-1"></i>Add To
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 				                             Cart</a>
 				                         <div class="discount-tag">
 				                             <img src="/assets/img/feature/circle-1.png" alt="Image">

@@ -159,8 +159,16 @@
 	                         <div class="feature-meta">
 	                             <p class="feature-price">[[${food.price}]]$</p>
 	                         </div>
+<<<<<<< HEAD
 	                         
 	                         <a class="btn style2" href="#"><i class="flaticon-shopping-bag-1"></i> <b th:text=#{product.addcart}></b> </a>
+=======
+	                 
+	                         	<button class="btn style2"
+										th:attr="ng-click=@{|cart.add(${food.food_id})|}">
+										<i class="flaticon-shopping-bag-1"></i><b th:text=#{product.addcart}></b>
+								</button>
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 	                         <div class="discount-tag">
 	                             <img src="/assets/img/feature/circle-1.png" alt="Image">
 	                             <p> <span>[[${food.food_detail.status?'Stocking':'Out of stock'}]]</span></p>
@@ -231,7 +239,11 @@
 	                                     <span>[[${cust.email}]]</span>
 	                                 </div>
 	                                 <div class="client-quote">
+<<<<<<< HEAD
 	                                     <p>[[${cust.address}]] - [[${cust.phone_No}]]</p>
+=======
+	                                     <p>[[${cust.address}]] - [[${cust.phone}]]</p>
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 	                                 </div>
 	                                 <div class="client-rating-wrap">
 	                                     <ul class="ratings list-style">

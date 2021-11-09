@@ -18,7 +18,11 @@ public class I18NConfig implements WebMvcConfigurer{
 	public MessageSource getMessageSource() {
 		ReloadableResourceBundleMessageSource ms = new ReloadableResourceBundleMessageSource();
 		ms.setDefaultEncoding("utf-8");
+<<<<<<< HEAD
 		ms.setBasenames("classpath:i18n/home","classpath:i18n/global");
+=======
+		ms.setBasenames("classpath:i18n/home","classpath:i18n/global","classpath:i18n/order_detail");
+>>>>>>> 143e3ba5cc786c2a4c3b8749a641044e07c913fe
 		return ms;
 	}
 	
