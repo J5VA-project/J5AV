@@ -1,5 +1,6 @@
 package com.J5VA.rest.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.J5VA.entity.Food;
+import com.J5VA.entity.Report;
 import com.J5VA.service.FoodService;
+import com.J5VA.service.OrdersService;
 
 @CrossOrigin("*")
 @RestController
@@ -22,6 +25,8 @@ import com.J5VA.service.FoodService;
 public class ProductRestController {
 	@Autowired
 	FoodService productService;
+	@Autowired
+	OrdersService oservice;
 
 	@GetMapping("/{id}")
 	public Food getOne(@PathVariable("id") Integer id) {
@@ -46,5 +51,16 @@ public class ProductRestController {
 	@GetMapping()
 	public List<Food> getAll() {
 		return productService.findAll();
+	}
+
+	@GetMapping("/count")
+	public List<Report> getlistFoodCount() {
+		List<Report> items = oservice.getInventoryByOrder();
+		List<Report> top6 = new ArrayList<Report>();
+		int i = 0;
+		for (i = 0; i <= 2; i++) {
+			top6.add(items.get(i));
+		}
+		return top6;
 	}
 }

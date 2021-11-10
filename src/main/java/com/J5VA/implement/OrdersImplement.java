@@ -1,7 +1,6 @@
 package com.J5VA.implement;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,17 +10,20 @@ import com.J5VA.dao.OrderDetailDao;
 import com.J5VA.dao.OrdersDao;
 import com.J5VA.entity.OrderDetail;
 import com.J5VA.entity.Orders;
+import com.J5VA.entity.Report;
 import com.J5VA.service.OrdersService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
-public class OrdersImplement implements OrdersService{
-	
-	@Autowired OrdersDao ordersDao;
-	@Autowired OrderDetailDao orderDetailDao;
-	
+public class OrdersImplement implements OrdersService {
+
+	@Autowired
+	OrdersDao ordersDao;
+	@Autowired
+	OrderDetailDao orderDetailDao;
+
 	@Override
 	public List<Orders> findByUsername(String username) {
 		return ordersDao.findByUsername(username);
@@ -46,22 +48,22 @@ public class OrdersImplement implements OrdersService{
 	public void deleteById(Integer id) {
 		ordersDao.deleteById(id);
 	}
-	
 
 	@Override
 	public Orders create(JsonNode orderData) {
 		ObjectMapper mapper = new ObjectMapper();
-		
+
 		Orders order = mapper.convertValue(orderData, Orders.class);
 		ordersDao.save(order);
-		
-		TypeReference<List<OrderDetail>> type = new TypeReference<List<OrderDetail>>() {};
-		List<OrderDetail> details = mapper.convertValue(orderData.get("orderDetails"), type)
-		 	.stream().peek(d -> d.setOrders(order)).collect(Collectors.toList());
+
+		TypeReference<List<OrderDetail>> type = new TypeReference<List<OrderDetail>>() {
+		};
+		List<OrderDetail> details = mapper.convertValue(orderData.get("orderDetails"), type).stream()
+				.peek(d -> d.setOrders(order)).collect(Collectors.toList());
 		orderDetailDao.saveAll(details);
 		return order;
 	}
-	
+
 	@Override
 	public Orders update(Orders order) {
 		// TODO Auto-generated method stub
@@ -73,7 +75,7 @@ public class OrdersImplement implements OrdersService{
 		// TODO Auto-generated method stub
 		ordersDao.deleteById(id);
 	}
-	
+
 	@Override
 	public List<Orders> findAllByStatus(Integer status) {
 		return ordersDao.orderStatus(status);
@@ -91,4 +93,19 @@ public class OrdersImplement implements OrdersService{
 		return ordersDao.totalOrdersByStatus(status);
 	}
 
+	@Override
+	public Double findCarsAfterYear(Integer month) {
+		return ordersDao.findCarsAfterYear(month);
+	}
+
+	@Override
+	public List<Report> getInventoryByOrder() {
+		return orderDetailDao.getInventoryByOrder();
+	}
+
+	@Override
+	public Integer quantityFoodByMonth(Integer month) {
+		// TODO Auto-generated method stub
+		return ordersDao.getReport2t(month);
+	}
 }

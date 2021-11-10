@@ -1,6 +1,6 @@
 package com.J5VA.entity;
 
-import java.text.SimpleDateFormat;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -21,19 +21,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@SuppressWarnings("serial")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "orders")
-public class Orders {
+public class Orders implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int order_id;
 	@NotNull
 	private Date orderdate = new Date();
-	
+
 	private int discount;
 	@NotNull
 	private int status;
@@ -50,10 +51,3 @@ public class Orders {
 	private List<OrderDetail> orderDetails;
 
 }
-
-
-
-
-
-
-

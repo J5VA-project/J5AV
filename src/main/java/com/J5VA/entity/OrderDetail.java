@@ -1,5 +1,7 @@
 package com.J5VA.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,24 +16,25 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@SuppressWarnings("serial")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="orderdetail")
-public class OrderDetail {
-	
+@Table(name = "orderdetail")
+public class OrderDetail implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int orderdetail_id;
 	@NotNull
-	private int quantity;
-	private double price;
-	
+	private Integer quantity;
+	private Double price;
+
 	@ManyToOne
 	@JoinColumn(name = "food_id")
 	private Food food;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "order_id")
 	private Orders orders;

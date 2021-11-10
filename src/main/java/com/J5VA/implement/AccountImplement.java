@@ -21,26 +21,36 @@ public class AccountImplement implements AccountService {
 
 	@Override
 	public Account findById(String username) {
-		// TODO Auto-generated method stub
+
 		return dao.findById(username).get();
 	}
 
 	@Override
 	public Account create(Account account) {
-		// TODO Auto-generated method stub
+
 		return dao.save(account);
 	}
 
 	@Override
 	public Account update(Account account) {
-		// TODO Auto-generated method stub
+
 		return dao.save(account);
 	}
 
 	@Override
 	public void delete(String username) {
-		// TODO Auto-generated method stub
+
 		dao.deleteById(username);
+	}
+
+	@Override
+	public Integer findByAge(Integer age) {
+		return dao.findByAge(age);
+	}
+
+	@Override
+	public List<Integer> listAge() {
+		return dao.listAgeAccount();
 	}
 
 }

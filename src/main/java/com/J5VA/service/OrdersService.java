@@ -1,8 +1,8 @@
 package com.J5VA.service;
 
 import java.util.List;
-import java.util.Optional;
 import com.J5VA.entity.Orders;
+import com.J5VA.entity.Report;
 import com.fasterxml.jackson.databind.JsonNode;
 
 public interface OrdersService {
@@ -18,17 +18,22 @@ public interface OrdersService {
 	Orders save(Orders entity);
 
 	List<Orders> findByUsername(String fullname);
-	
+
 	void delete(Integer id);
 
 	Orders update(Orders order);
-	
+
 	Orders findById(Integer id);
 
 	List<Orders> findAllByStatus(Integer status);
 
 	Integer totalOrders();
-	
+
 	Integer totalOrdersByStatus(Integer status);
+
+	Double findCarsAfterYear(Integer Month);
+
+	List<Report> getInventoryByOrder();
 	
+	Integer quantityFoodByMonth(Integer month);
 }

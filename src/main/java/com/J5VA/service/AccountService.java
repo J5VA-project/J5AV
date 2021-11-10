@@ -15,4 +15,7 @@ public interface AccountService {
 
 	void delete(String username);
 
+	Integer findByAge(Integer age);
+
+	List<Integer> listAge();
 }

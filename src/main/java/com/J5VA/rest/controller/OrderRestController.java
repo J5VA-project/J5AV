@@ -1,10 +1,9 @@
 package com.J5VA.rest.controller;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,10 +23,10 @@ import com.J5VA.service.OrdersService;
 @RestController
 @RequestMapping("/rest/orders")
 public class OrderRestController {
-	
+
 	@Autowired
 	OrdersService ordersService;
-	
+
 	@PostMapping
 	public Orders create(@RequestBody JsonNode orderData) {
 		return ordersService.create(orderData);
@@ -52,19 +51,34 @@ public class OrderRestController {
 	public List<Orders> getAll() {
 		return ordersService.findAll();
 	}
-	
+
 	@GetMapping("/status/{status}")
-	public List<Orders> findAllOrdersByStatus(@PathVariable("status") Integer status){
+	public List<Orders> findAllOrdersByStatus(@PathVariable("status") Integer status) {
 		return ordersService.findAllByStatus(status);
 	}
-	
+
 	@GetMapping("/total-order")
 	public Integer total() {
 		return ordersService.totalOrders();
 	}
+
 	@GetMapping("/total-status/{status}")
 	public Integer totalOrdersByStatus(@PathVariable("status") Integer status) {
 		return ordersService.totalOrdersByStatus(status);
 	}
-	
+
+	@GetMapping("/value")
+	public List<Integer> getValue() {
+		List<Integer> value = new ArrayList<Integer>();
+		for (int i = 1; i <= 12; i++) {
+			try {
+				Integer count = ordersService.quantityFoodByMonth(i);
+				value.add(count);
+			}catch (Exception e) {
+				e.printStackTrace();
+				value.add(0);
+			}
+		}
+		return value;
+	}
 }

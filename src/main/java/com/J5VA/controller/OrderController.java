@@ -1,7 +1,6 @@
 package com.J5VA.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.J5VA.dao.AccountDao;
 import com.J5VA.dao.OrdersDao;
 import com.J5VA.entity.Orders;
+import com.J5VA.service.OrdersService;
 
 @Controller
 @RequestMapping("/home")
@@ -23,6 +23,12 @@ public class OrderController {
 	
 	@Autowired
 	AccountDao accountDao;
+	
+	@Autowired
+	HttpServletRequest request;
+	
+	@Autowired
+	OrdersService service;
 	
 	
 	@GetMapping("/checkout")
@@ -46,5 +52,18 @@ public class OrderController {
 	public String detail(@PathVariable("username")Integer id, Model model) {
 		model.addAttribute("order", orderDao.findById(id).get());
 		return "home/checkout-details";
+	}
+	@RequestMapping("/order/update")
+	public String orderUpdate(Model model) {
+		Integer status = Integer.parseInt(request.getParameter("statusOrder"));
+		Integer orderId = Integer.parseInt(request.getParameter("id"));
+		
+		System.out.println(status);
+		System.out.println(orderId);
+		
+		Orders orders = service.findById(orderId);
+		orders.setStatus(status);
+		service.update(orders);
+		return "redirect:/home/order/listorder";
 	}
 }

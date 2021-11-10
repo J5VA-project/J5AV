@@ -1,6 +1,7 @@
 package com.J5VA.controller;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ public class RegisterController {
 	ParamService paramService;
 	@Autowired
 	MailerService mailer;
+	@Autowired
+	HttpServletRequest request;
 
 	// dang ky tai khoan khach hang
 	@RequestMapping("/home/register")
@@ -38,19 +41,22 @@ public class RegisterController {
 	}
 
 	@PostMapping("/register/validate")
-	public String registerValid(Model model, @Valid @ModelAttribute("custo") @RequestBody Account custo,@RequestParam("fullname")String fullname, Errors errors)
-			throws MessagingException {
-				String username = paramService.getString("username", "");
-				String password = paramService.getString("password", "");
-				String confirm = paramService.getString("confirmPass", "");
-				String email = paramService.getString("email", "");
+	public String registerValid(Model model, @Valid @ModelAttribute("custo") @RequestBody Account custo,
+			@RequestParam("fullname") String fullname, Errors errors) throws MessagingException {
+		String username = paramService.getString("username", "");
+		String password = paramService.getString("password", "");
+		String confirm = paramService.getString("confirmPass", "");
+		String email = paramService.getString("email", "");
 		if (!confirm.equals(password)) {
 			model.addAttribute("message", "Confirm password doesn't match!");
 			return "forward:/home/register";
 		} else {
 			model.addAttribute("custo", custo);
 			customerService.create(custo);
-			mailer.send(email, "Account Register","Dear. "+fullname+ ", Wellcome to J5VA Restaurant, hope you like my website, and then my username: "+ username+ ", password: " + password);
+			mailer.send(email, "Account Register",
+					"Dear. " + fullname
+							+ ", Wellcome to J5VA Restaurant, hope you like my website, and then my username: "
+							+ username + ", password: " + password);
 			model.addAttribute("message", "Register success!");
 			return "forward:/home/register";
 		}
