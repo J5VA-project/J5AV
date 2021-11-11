@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/header::dynamic(~{::body})}">
+
+<!-- Mirrored from templates.hibootstrap.com/caban/default/wishlist.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:46 GMT -->
+
+<body>
+
+    <div class="preloader js-preloader">
+        <img src="/assets/img/preloader.gif" alt="Image">
+    </div>
+
+
+        <div class="content-wrapper">
+
+            <div class="breadcrumb-wrap bg-f br-1">
+                <div class="overlay bg-black op-9"></div>
+                <img src="/assets/img/shape-1.png" alt="Image" class="br-shape-1">
+                <img src="/assets/img/shape-2.png" alt="Image" class="br-shape-2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="breadcrumb-title">
+                                <h2 th:text=#{breadcrumb.wishlist}>Wishlist</h2>
+                                <ul class="breadcrumb-menu list-style">
+                                    <li><a href="index.html" th:text=#{breadcrumb.home}>Home </a></li>
+                                    <li th:text=#{breadcrumb.wishlist}>Wishlist</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <section class="wishlist-wrap pt-100 pb-75">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="wishlist-table ">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Product</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Total Price</th>
+                                            <th scope="col">Remove</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="wh_item">
+                                                    <img src="/assets/img/blog/post-thumb-1.jpg" alt="Image">
+                                                    <div class="wh-item-info">
+                                                        <a href="shop-details.html">Chicken Sandwitch</a>
+                                                        <p>There are many variation of chicken.You can choose
+                                                            your favourite one</p>
+                                                        <span>$32.00</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="wh_qty">
+                                                    <div class="product-quantity style2">
+                                                        <div class="qtySelector">
+                                                            <span class="las la-minus decreaseQty"></span>
+                                                            <input type="text" class="qtyValue" value="1" />
+                                                            <span class="las la-plus increaseQty"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="wh-tem-price">$32.00</p>
+                                            </td>
+                                            <td>
+                                                <button type="button"><i class="las la-times"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="wh_item">
+                                                    <img src="/assets/img/blog/post-thumb-2.jpg" alt="Image">
+                                                    <div class="wh-item-info">
+                                                        <a href="shop-details.html">Strawbery Salsa </a>
+                                                        <p>There are many variation of chicken.You can choose
+                                                            your favourite one</p>
+                                                        <span>$43.00</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="wh_qty">
+                                                    <div class="product-quantity style2">
+                                                        <div class="qtySelector">
+                                                            <span class="las la-minus decreaseQty"></span>
+                                                            <input type="text" class="qtyValue" value="1" />
+                                                            <span class="las la-plus increaseQty"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="wh-tem-price">$43.00</p>
+                                            </td>
+                                            <td>
+                                                <button type="button"><i class="las la-times"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="wh_item">
+                                                    <img src="/assets/img/blog/post-thumb-3.jpg" alt="Image">
+                                                    <div class="wh-item-info">
+                                                        <a href="shop-details.html">Pasta Barista</a>
+                                                        <p>There are many variation of chicken.You can choose
+                                                            your favourite one</p>
+                                                        <span>$22.00</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="wh_qty">
+                                                    <div class="product-quantity style2">
+                                                        <div class="qtySelector">
+                                                            <span class="las la-minus decreaseQty"></span>
+                                                            <input type="text" class="qtyValue" value="1" />
+                                                            <span class="las la-plus increaseQty"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="wh-tem-price">$22.00</p>
+                                            </td>
+                                            <td>
+                                                <button type="button"><i class="las la-times"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+
+
+    <a href="javascript:void(0)" class="back-to-top"><i class="las la-arrow-up"></i></a>
+
+</body>
+
+<!-- Mirrored from templates.hibootstrap.com/caban/default/wishlist.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:46 GMT -->
+
+</html>
