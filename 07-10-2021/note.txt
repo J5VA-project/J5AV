@@ -1,0 +1,2 @@
+xoa account_id 
+xoa customer_id
