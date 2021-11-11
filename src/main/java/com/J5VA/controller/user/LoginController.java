@@ -23,7 +23,7 @@ public class LoginController {
 
 	@Autowired
 	AccountService service;
-	
+
 	@GetMapping("/auth/login/form")
 	public String login(Model model) {
 		Account acc = new Account();
@@ -35,23 +35,24 @@ public class LoginController {
 	public String success(Model model) {
 		model.addAttribute("message", "Login success");
 		model.addAttribute("user", new Account());
-		
+
 		Account account = service.findById(request.getRemoteUser());
 		List<Authorized> authorizeds = account.getAuthorities();
-		for(Authorized p:authorizeds) {
-			if(p.getRole().getRole_name().equals("Manager")) {
+		for (Authorized p : authorizeds) {
+			if (p.getRole().getRole_name().equals("Manager")) {
 				return "forward:/admin/index";
 			}
 		}
 		return "forward:/auth/login/form";
 	}
-	
+
 	@RequestMapping("/auth/logoff/success")
 	public String logoutSuccess(Model model) {
 		model.addAttribute("message", "Logout success");
 		model.addAttribute("acc", new Account());
 		return "user/body/login";
 	}
+
 	@RequestMapping("/auth/login/error")
 	public String error(Model model) {
 		model.addAttribute("error", "Username or Password entered wrong!");
@@ -65,7 +66,7 @@ public class LoginController {
 		model.addAttribute("error", "Ban khong co quyen truy xuat");
 		return "user/body/404";
 	}
-	
+
 	@Autowired
 	UserService userService;
 
@@ -74,5 +75,4 @@ public class LoginController {
 		userService.loginFromOAuth2(oauth2);
 		return "forward:/auth/login/success";
 	}
-
 }

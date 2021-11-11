@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/home/blog-detail")
 public class BlogDetailController {
-
 	@GetMapping
 	public String runControll() {
 		return "user/body/blog-details";

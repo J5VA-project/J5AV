@@ -23,9 +23,8 @@ import com.J5VA.entity.Account;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-
 public class AuthConfig extends WebSecurityConfigurerAdapter {
-	@org.springframework.beans.factory.annotation.Autowired(required = true)
+	@Autowired(required = true)
 	UserService userService;
 	@Autowired
 	AccountService accountService;

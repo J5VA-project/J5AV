@@ -53,4 +53,9 @@ public class AccountImplement implements AccountService {
 		return dao.listAgeAccount();
 	}
 
+	@Override
+	public Account findByUsername(String username) {
+		return dao.findByUsername(username);
+	}
+
 }

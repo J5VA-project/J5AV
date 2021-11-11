@@ -11,8 +11,6 @@ public interface OrdersService {
 
 	void deleteById(Integer id);
 
-//	Optional<orders> findById(Integer id);
-
 	List<Orders> findAll();
 
 	Orders save(Orders entity);

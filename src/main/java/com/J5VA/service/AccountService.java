@@ -18,4 +18,7 @@ public interface AccountService {
 	Integer findByAge(Integer age);
 
 	List<Integer> listAge();
+
+	Account findByUsername(String username);
+
 }

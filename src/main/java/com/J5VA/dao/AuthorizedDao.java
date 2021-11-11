@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.J5VA.entity.Authorized;
 
 @Repository
-public interface AuthorizedDao extends JpaRepository<Authorized, Integer>{
+public interface AuthorizedDao extends JpaRepository<Authorized, Integer> {
 
 }

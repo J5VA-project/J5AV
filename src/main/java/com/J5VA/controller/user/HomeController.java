@@ -17,9 +17,9 @@ import com.J5VA.service.OrdersService;
 @Controller
 @RequestMapping("/home")
 public class HomeController {
-
 	@Autowired
 	AccountService accService;
+	
 	@Autowired
 	OrdersService service;
 
