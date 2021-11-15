@@ -19,7 +19,7 @@
 
 		<div class="col-xl-4">
 			<div class="card-box">
-				<h4 class="header-title mt-0">Tuổi Khách Hàng</h4>
+				<h4 class="header-title mt-0">Tuá»•i KhÃ¡ch HÃ ng</h4>
 				<div id="chartAccount" style="height: 300px;"></div>
 			</div>
 		</div>
@@ -27,7 +27,7 @@
 
 		<div class="col-xl-4">
 			<div class="card-box">
-				<h4 class="header-title mt-0">Thống Kê Sản Phẩm</h4>
+				<h4 class="header-title mt-0">Thá»‘ng KÃª Sáº£n Pháº©m</h4>
 				<div id="chartOrder" style="height: 300px;"></div>
 			</div>
 		</div>
@@ -60,7 +60,7 @@
 
 		<div class="col-xl-12">
 			<div class="card-box">
-				<h4 class="header-title mt-0 m-b-30">Danh Sách Sản Phẩm</h4>
+				<h4 class="header-title mt-0 m-b-30">Danh SÃ¡ch Sáº£n Pháº©m</h4>
 
 				<div class="table-responsive">
 					<table class="table mb-0">
@@ -86,23 +86,23 @@
 								<td ng-switch="{{order.status}}">
 									<p ng-switch-when="1" class="mb-0 font-weight-bold"
 										style="color: #ffc61a; border: 2px solid #ffc61a; border-radius: 10px; text-align: center;">
-										<strong>Chờ xác nhận</strong>
+										<strong>Chá»� xÃ¡c nháº­n</strong>
 									</p>
 									<p ng-switch-when="2" class="mb-0 font-weight-bold"
 										style="color: #333399; border: 2px solid #333399; border-radius: 10px; text-align: center;">
-										<strong>Chờ nhận hàng</strong>
+										<strong>Chá»� nháº­n hÃ ng</strong>
 									</p>
 									<p ng-switch-when="3" class="mb-0 font-weight-bold"
 										style="color: #990099; border: 2px solid #990099; border-radius: 10px; text-align: center;">
-										<strong>Đang giao</strong>
+										<strong>Ä�ang giao</strong>
 									</p>
 									<p ng-switch-when="4" class="mb-0 font-weight-bold"
 										style="color: #33cc33; border: 2px solid #33cc33; border-radius: 10px; text-align: center;">
-										<strong>Đã nhận hàng</strong>
+										<strong>Ä�Ã£ nháº­n hÃ ng</strong>
 									</p>
 									<p ng-switch-when="5" class="mb-0 font-weight-bold"
 										style="color: #cc0000; border: 2px solid #cc0000; border-radius: 10px; text-align: center;">
-										<strong>Đã hủy đơn </strong>
+										<strong>Ä�Ã£ há»§y Ä‘Æ¡n </strong>
 									</p>
 								</td>
 							</tr>
@@ -287,7 +287,7 @@
 					type : "GET",
 					success : function(result) {
 						$.ajax({
-							url : "/rest/accounts",
+							url : "/rest/accounts/age",
 							type : "GET",
 							success : function(count) {
 								var options = {

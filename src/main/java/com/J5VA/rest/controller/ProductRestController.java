@@ -38,12 +38,12 @@ public class ProductRestController {
 		return productService.create(product);
 	}
 
-	@PutMapping("{id}")
+	@PutMapping("/{id}")
 	public Food update(@PathVariable("id") Integer id, @RequestBody Food product) {
 		return productService.update(product);
 	}
 
-	@DeleteMapping("{id}")
+	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Integer id) {
 		productService.delete(id);
 	}
