@@ -17,6 +17,6 @@ public interface AccountDao extends JpaRepository<Account, String> {
 	@Query("SELECT count(o) FROM Account o WHERE DATEDIFF(yy,o.birthdate,GETDATE()) = ?1")
 	Integer findByAge(Integer age);
 
-	@Query("SELECT distinct YEAR(GETDATE())-YEAR(o.birthdate) FROM  Account o")
+	@Query("SELECT distinct YEAR(GETDATE())-YEAR(o.birthdate) FROM  Account o WHERE YEAR(GETDATE())-YEAR(o.birthdate) IS NOT NULL")
 	List<Integer> listAgeAccount();
 }

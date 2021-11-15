@@ -22,34 +22,30 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="account")
+@Table(name = "account")
 public class Account {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NotBlank (message = "username not null!")
 	private String username;
-	@NotBlank (message = "password not null!")
 	private String password;
 	private String fullname;
 	private String email;
 	private String address;
 	private String phone;
-	private Date hire_date; 
+	private Date hire_date;
 	private double salary;
-	private Boolean gender; 
+	private Boolean gender;
 	private Date birthdate;
-	private String image; 
-	
-	
+	private String image;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "authorize", fetch = FetchType.EAGER)
 	List<Authorized> authorities;
-	
-	@JsonIgnore 
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "favorite_acc")
 	List<Favorite> favorites;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "order_acc")
 	List<Orders> orders;
