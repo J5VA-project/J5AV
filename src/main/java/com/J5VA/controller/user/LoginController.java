@@ -20,7 +20,6 @@ import com.J5VA.service.AccountService;
 public class LoginController {
 	@Autowired
 	HttpServletRequest request;
-
 	@Autowired
 	AccountService service;
 

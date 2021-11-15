@@ -19,7 +19,6 @@ import com.J5VA.service.OrdersService;
 public class HomeController {
 	@Autowired
 	AccountService accService;
-	
 	@Autowired
 	OrdersService service;
 

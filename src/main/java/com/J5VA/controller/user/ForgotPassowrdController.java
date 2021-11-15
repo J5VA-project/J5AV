@@ -21,10 +21,8 @@ import com.J5VA.service.ParamService;
 public class ForgotPassowrdController {
 	@Autowired
 	AccountService service;
-
 	@Autowired
 	ParamService paramService;
-
 	@Autowired
 	MailerService mailer;
 

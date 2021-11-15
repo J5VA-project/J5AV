@@ -13,13 +13,13 @@ import com.J5VA.service.FoodService;
 @Controller
 @RequestMapping("/home")
 public class DetailProductController {
+	@Autowired
+	FoodService fdao;
 	
-	@Autowired FoodService fdao;
-
 	@GetMapping("/shop-details/{id}")
 	public String runControll(@PathVariable("id") Integer id, Model model) {
 		Food food = fdao.findById(id);
-		model.addAttribute("food",food);
+		model.addAttribute("food", food);
 		return "user/body/shop-details";
 	}
 }

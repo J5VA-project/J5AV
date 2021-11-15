@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/home/contact")
 public class ContactController {
-
 	@GetMapping
 	public String runControll() {
 		return "user/body/contact";
