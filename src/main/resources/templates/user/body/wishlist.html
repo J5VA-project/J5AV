@@ -31,6 +31,56 @@
                 </div>
             </div>
 
+					<div class="row justify-content-center">
+						<div th:each="food:${favorite}" class="col-lg-6 col-md-6">
+							<div class="feature-card style1">
+								<div class="feature-img">
+									<img th:src="@{|/assets/img/feature/${food.photo}|}"
+										alt="Image">
+								</div>
+								<div class="feature-info">
+									<h3 class="feature-title">
+										<a th:href="@{|/home/shop-details/${food.food_id}|}">[[${food.food_name}]]</a>
+									</h3>
+									<div class="product-more-option-item">
+										<div class="col-lg-6 col-md-6 col-12">
+											<h6>Category:</h6>
+											<a
+												th:href="@{|/home/shop-details/${food.food_detail.foodCategory.foodcategory_id}|}">
+												[[${food.food_detail.foodCategory.foodcategory_name}]]</a>
+										</div>
+										<div class="col-lg-6 col-md-6 col-12">
+											<h6>Size:</h6>
+											<a
+												th:href="@{|/home/shop-details/${food.food_detail.food_detail_size.size_id}|}">
+												[[${food.food_detail.food_detail_size.name}]]</a>
+										</div>
+									</div>
+									<div class="feature-meta">
+										<p class="feature-price">[[${food.price}]]$</p>
+									</div>
+
+									<button class="btn style2"
+										th:attr="ng-click=@{|cart.add(${food.food_id})|}">
+										<i class="flaticon-shopping-bag-1"></i>Add To Cart
+									</button>
+									
+									<button class="btn style2">
+										<a th:href="@{'/favorite/'+${food.food_id}}"><i class="bi bi-heart"></i>Add To Favorite</a>
+									</button>
+
+									<div class="discount-tag">
+
+										<img src="/assets/img/feature/circle-1.png" alt="Image">
+										<p>
+											<span>[[${food.food_detail.status?'Stocking':'Out of
+												stock'}]]</span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
             <section class="wishlist-wrap pt-100 pb-75">
                 <div class="container">

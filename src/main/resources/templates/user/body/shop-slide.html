@@ -271,8 +271,9 @@
 										th:attr="ng-click=@{|cart.add(${food.food_id})|}">
 										<i class="flaticon-shopping-bag-1"></i>Add To Cart
 									</button>
+									
 									<button class="btn style2">
-										<a><i class="bi bi-heart"></i>Add To Favorite</a>
+										<a th:href="@{'/favorite/'+${food.food_id}}"><i class="bi bi-heart"></i>Add To Favorite</a>
 									</button>
 
 									<div class="discount-tag">
