@@ -50,7 +50,7 @@ app.controller("account-list-ctrl", function($scope, $http) {
 		$http.put(`/rest/accounts/${account.username}`, account).then(resp => {
 			var index = $scope.accounts.findIndex(p => p.username == account.username);
 			$scope.accounts[index] = account;
-			$scope.reset();
+			//$scope.reset();
 			alert("Cập nhật account thành công!");
 		}).catch(error => {
 			alert("Lỗi cập nhật account!");
