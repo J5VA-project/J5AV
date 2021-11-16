@@ -1,5 +1,4 @@
 app.controller("authorized-ctrl", function($scope, $http) {
-	alert("authorized")
 
 	$http.get("/rest/authorities").then(resp => {
 		$scope.db = resp.data;

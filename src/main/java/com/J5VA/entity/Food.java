@@ -27,11 +27,8 @@ import lombok.NoArgsConstructor;
 @Table(name = "food")
 public class Food implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int food_id;
-	@NotBlank(message = "username not null!")
 	private String food_name;
-	@NotBlank(message = "price not null!")
 	private double price;
 	String photo;
 

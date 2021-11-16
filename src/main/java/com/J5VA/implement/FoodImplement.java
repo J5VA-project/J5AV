@@ -10,13 +10,21 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.J5VA.dao.FoodDao;
+import com.J5VA.dao.FoodDetailDao;
 import com.J5VA.entity.Food;
+import com.J5VA.entity.FoodDetail;
 import com.J5VA.service.FoodService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class FoodImplement implements FoodService {
 	@Autowired
 	FoodDao dao;
+	
+	@Autowired
+	FoodDetailDao fdtDao;
 
 	@Override
 	public Food save(Food entity) {
@@ -33,10 +41,6 @@ public class FoodImplement implements FoodService {
 		return dao.findById(id).get();
 	}
 
-	@Override
-	public void delete(Food entity) {
-		dao.delete(entity);
-	}
 
 	@Override
 	public List<Food> findAll() {
@@ -163,12 +167,20 @@ public class FoodImplement implements FoodService {
 		return dao.findByPrice(priceSt, priceEn, name, pageable);
 	}
 
+	@Override
+	public Food insert(JsonNode foodData) {
+		ObjectMapper mapper = new ObjectMapper();
+	
+		Food food = mapper.convertValue(foodData, Food.class);
+		dao.saveAndFlush(food);
+
+		TypeReference<FoodDetail> type = new TypeReference<FoodDetail>() {};
+		FoodDetail foodDetail = mapper.convertValue(foodData.get("food_detail"), type);
+		fdtDao.save(foodDetail);
+
+		return food;
+	}
 
 
-
-//	@Override
-//	public List<food> topFiveFood() {
-//		return dao.topFiveFood();
-//	}
 
 }

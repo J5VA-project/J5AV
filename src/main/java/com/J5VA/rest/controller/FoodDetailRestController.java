@@ -1,6 +1,5 @@
 package com.J5VA.rest.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,53 +14,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.J5VA.entity.Food;
-import com.J5VA.entity.Report;
+import com.J5VA.entity.FoodDetail;
+import com.J5VA.entity.Orders;
+import com.J5VA.service.FoodDetailService;
 import com.J5VA.service.FoodService;
-import com.J5VA.service.OrdersService;
 import com.fasterxml.jackson.databind.JsonNode;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/rest/food")
-public class ProductRestController {
+@RequestMapping("/rest/food-detail")
+public class FoodDetailRestController {
 	@Autowired
-	FoodService productService;
-	@Autowired
-	OrdersService oservice;
+	FoodDetailService foodDetailService;
 	
+	@Autowired
+	FoodService foodService;
+
 	@GetMapping("/{id}")
-	public Food getOne(@PathVariable("id") Integer id) {
-		return productService.findById(id);
-	}
-	@PostMapping
-	public Food insert(@RequestBody JsonNode orderData) {
-		return productService.insert(orderData);
+	public FoodDetail getOne(@PathVariable("id") Integer id) {
+		return foodDetailService.findById(id);
 	}
 
-	@PutMapping("/{id}")	
-	public Food update(@PathVariable("id") Integer id, @RequestBody Food product) {
-			return productService.update(product);
-		}
+	@PutMapping("/{id}")
+	public FoodDetail update(@PathVariable("id") Integer id,@RequestBody JsonNode orderData) {
+		return foodDetailService.update(orderData);
+	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Integer id) {
-		productService.delete(id);
+		foodDetailService.delete(id);
 	}
 
 	@GetMapping()
-	public List<Food> getAll() {
-		return productService.findAll();
+	public List<FoodDetail> getAll() {
+		return foodDetailService.findAll();
 	}
-
-	@GetMapping("/count")
-	public List<Report> getlistFoodCount() {
-		List<Report> items = oservice.getInventoryByOrder();
-		List<Report> top6 = new ArrayList<Report>();
-		int i = 0;
-		for (i = 0; i <= 2; i++) {
-			top6.add(items.get(i));
-		}
-		return top6;
+	
+	@PostMapping
+	public FoodDetail insert(@RequestBody JsonNode orderData) {
+		return foodDetailService.insert(orderData);
 	}
 }
-

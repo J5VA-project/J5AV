@@ -30,3 +30,4 @@ li>a>.delivered{
 li>a>.cancelled{
 	color: #cc0000;
 }
+.btn[disabled].btn{cursor:not-allowed};

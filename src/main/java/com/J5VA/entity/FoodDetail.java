@@ -23,7 +23,6 @@ public class FoodDetail {
 	@Id
 	private int food_id;
 	private boolean status;
-	@NotBlank(message = "description not null!")
 	private String description;
 	private String image_title1;
 	private String image_title2;

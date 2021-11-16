@@ -146,26 +146,26 @@ body {
 		</div>
 		<!-- end topbar-main -->
 
-		<div class="navbar-custom">
-			<div class="container-fluid">
-				<div id="navigation">
-					<!-- Navigation Menu-->
-					<ul class="navigation-menu">
-						<li class="has-submenu"><a href="#!dashboard-ctrl"><i
-								class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a></li>
-						<li class="has-submenu"><a href="#!products-list"><i
-								class="fa fa-product-hunt"></i> <span> Shop Manager </span> </a>
-							<ul class="submenu megamenu">
-								<li>
-									<ul>
-										<li><a href="#!products-list">List Products</a></li>
-										<li><a href="#!product-form">Edit Product</a></li>
-										<li><a href="#!size-manager">Size Manager</a></li>
-										<li><a href="#!category-manager">Category Manager</a></li>
-									</ul>
-								</li>
-							</ul></li>
-
+<div class="navbar-custom">
+            <div class="container-fluid">
+                <div id="navigation">
+                    <!-- Navigation Menu-->
+                    <ul class="navigation-menu">
+                        <li class="has-submenu">
+                            <a href="#!dashboard-ctrl"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#!product-manager"><i class="fa fa-product-hunt"></i> <span> Shop Manager </span> </a>
+                            <ul class="submenu megamenu">
+                                <li>
+                                    <ul>
+                                        <li><a href="#!product-manager">Product Manager</a></li>
+                                        <li><a href="#!size-manager">Size Manager</a></li>
+                                        <li><a href="#!category-manager">Category Manager</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
 						<li class="has-submenu"><a href="#!account-list"><i
 								class="fa fa-user-circle-o"></i><span> Account Manager </span> </a>
 						</li>
@@ -174,12 +174,6 @@ body {
 								class="fa fa-shopping-basket"></i> <span> Orders Manager
 							</span> &nbsp;&nbsp; <span class="badge badge-danger pull-right">{{total}}</span>
 						</a></li>
-
-						<li class="has-submenu"><a href="#!report"><i
-								class="mdi mdi-chart-donut-variant"></i><span> Reports </span> </a>
-							<ul class="submenu">
-								<li><a href="#!report">Flot Chart</a></li>
-							</ul></li>
 
 						<li class="has-submenu"><a href="#!authorized"><i
 								class="mdi mdi-google-pages"></i><span> Authorized </span> </a></li>
@@ -190,9 +184,9 @@ body {
 							<ul class="submenu megamenu">
 								<li>
 									<ul>
-										<li><a href="#!logout">Logout</a></li>
-										<li><a href="#!change-pw">Change Password</a></li>
-										<li><a href="#!reset-pw">Reset Password</a></li>
+										<li><a href="/auth/logoff">Logout</a></li>
+										<li><a href="/home/change-pw">Change Password</a></li>
+										<li><a href="/home/forgot-pw">Reset Password</a></li>
 									</ul>
 								</li>
 							</ul></li>
@@ -240,7 +234,7 @@ body {
 	<script src="/admin/pages/jquery.dashboard.js"></script>
 
 
-	<!-- App js -->
+  <!-- App js -->
 	<script src="/admin/js/jquery.core.js"></script>
 	<script src="/admin/js/jquery.app.js"></script>
 
@@ -255,13 +249,11 @@ body {
 	<!-- Category JS -->
 	<script src="/admin/js/category/category-manager.js"></script>
 	<!-- Product JS -->
-	<script src="/admin/js/product/product-form.js"></script>
-	<script src="/admin/js/product/product-list.js"></script>
+	<script src="/admin/js/product/product-manager.js"></script>
 	<!-- Size JS -->
 	<script src="/admin/js/size/size-manager.js"></script>
 	<!-- Order JS -->
-	<script src="/admin/js/order/order.js"></script>
-</body>
+	<script src="/admin/js/order/order.js"></script></body>
 </html>
 
 

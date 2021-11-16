@@ -29,26 +29,11 @@ public class AdminController {
 		return "admin/home/home.html";
 	}
 
-	@RequestMapping("/logout")
-	public String logout() {
-		return "admin/account/page-login.html";
-	}
-
 	@RequestMapping("/login/index")
 	public String form(Model model) {
 		Account acc = new Account();
 		model.addAttribute("acc", acc);
 		return "admin/account/page-login.html";
-	}
-
-	@RequestMapping("/change-pw")
-	public String change_pw() {
-		return "admin/account/change-pw.html";
-	}
-
-	@RequestMapping("/reset-pw")
-	public String reset_pw() {
-		return "admin/account/reset-pw.html";
 	}
 
 	@RequestMapping("/authorized")
@@ -75,25 +60,15 @@ public class AdminController {
 	public String order() {
 		return "admin/order/order.html";
 	}
-
-	@RequestMapping("/product-form")
-	public String product_form() {
-		return "admin/product/product-form.html";
-	}
-
-	@RequestMapping("/products-list")
-	public String products_list() {
-		return "admin/product/products-list.html";
+	
+	@RequestMapping("/product-manager")	
+	public String products_manager() {
+			return "admin/product/product-manager.html";
 	}
 
 	@RequestMapping("/size-manager")
 	public String size_manager() {
 		return "admin/product/size-manager.html";
-	}
-
-	@RequestMapping("/report")
-	public String report() {
-		return "admin/report/report.html";
 	}
 
 	@RequestMapping("/category-manager")

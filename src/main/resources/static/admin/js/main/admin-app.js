@@ -35,13 +35,9 @@ app.config(function($routeProvider) {
 			controller: "account-list-ctrl"
 		})
 
-		.when("/product-form", {
-			templateUrl: "/admin/product-form",
-			controller: "product-form-ctrl"
-		})
-		.when("/products-list", {
-			templateUrl: "/admin/products-list",
-			controller: "products-list-ctrl"
+		.when("/product-manager", {
+			templateUrl: "/admin/product-manager",
+			controller: "product-manager-ctrl"
 		})
 		.when("/size-manager", {
 			templateUrl: "/admin/size-manager",

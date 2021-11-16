@@ -26,9 +26,7 @@ public class FoodCategory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int foodcategory_id;
-	@NotBlank(message = "food Category Name not null!")
 	private String foodcategory_name;
-	@NotBlank(message = "description not null!")
 	private String description;
 	
 	@JsonIgnore

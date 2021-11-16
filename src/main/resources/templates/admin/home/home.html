@@ -4,14 +4,14 @@
 	<!-- Page-Title -->
 	<div class="row">
 		<div class="col-sm-12">
-			<h4 class="page-title">Dashboard</h4>
+			<h4 class="page-title">Statistics</h4>
 		</div>
 	</div>
 	<!-- end page title end breadcrumb -->
 	<div class="row">
 		<div class="col-xl-4">
 			<div class="card-box">
-				<h4 class="header-title mt-0">Doanh Thu</h4>
+				<h4 class="header-title mt-0">Monthly Proceeds Statistics</h4>
 				<div id="chartProduct" style="height: 300px;"></div>
 			</div>
 		</div>
@@ -19,7 +19,7 @@
 
 		<div class="col-xl-4">
 			<div class="card-box">
-				<h4 class="header-title mt-0">Tuá»•i KhÃ¡ch HÃ ng</h4>
+				<h4 class="header-title mt-0">Age of customers Statistics</h4>
 				<div id="chartAccount" style="height: 300px;"></div>
 			</div>
 		</div>
@@ -27,7 +27,7 @@
 
 		<div class="col-xl-4">
 			<div class="card-box">
-				<h4 class="header-title mt-0">Thá»‘ng KÃª Sáº£n Pháº©m</h4>
+				<h4 class="header-title mt-0">Monthly Product Statistics</h4>
 				<div id="chartOrder" style="height: 300px;"></div>
 			</div>
 		</div>
@@ -52,67 +52,6 @@
 			</div>
 		</div>
 		<!-- end col -->
-	</div>
-	<!-- end row -->
-
-
-	<div class="row">
-
-		<div class="col-xl-12">
-			<div class="card-box">
-				<h4 class="header-title mt-0 m-b-30">Danh SÃ¡ch Sáº£n Pháº©m</h4>
-
-				<div class="table-responsive">
-					<table class="table mb-0">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>Customer</th>
-								<th>Email</th>
-								<th>Address</th>
-								<th>Phone</th>
-								<th>Order Date</th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="order in orders">
-								<td>{{order.order_id}}</td>
-								<td>{{order.order_acc.fullname}}</td>
-								<td>{{order.order_acc.email}}</td>
-								<td>{{order.address}}</td>
-								<td>{{order.order_acc.phone}}</td>
-								<td>{{order.orderdate | date: 'dd-MM-yyyy'}}</td>
-								<td ng-switch="{{order.status}}">
-									<p ng-switch-when="1" class="mb-0 font-weight-bold"
-										style="color: #ffc61a; border: 2px solid #ffc61a; border-radius: 10px; text-align: center;">
-										<strong>Chá»� xÃ¡c nháº­n</strong>
-									</p>
-									<p ng-switch-when="2" class="mb-0 font-weight-bold"
-										style="color: #333399; border: 2px solid #333399; border-radius: 10px; text-align: center;">
-										<strong>Chá»� nháº­n hÃ ng</strong>
-									</p>
-									<p ng-switch-when="3" class="mb-0 font-weight-bold"
-										style="color: #990099; border: 2px solid #990099; border-radius: 10px; text-align: center;">
-										<strong>Ä�ang giao</strong>
-									</p>
-									<p ng-switch-when="4" class="mb-0 font-weight-bold"
-										style="color: #33cc33; border: 2px solid #33cc33; border-radius: 10px; text-align: center;">
-										<strong>Ä�Ã£ nháº­n hÃ ng</strong>
-									</p>
-									<p ng-switch-when="5" class="mb-0 font-weight-bold"
-										style="color: #cc0000; border: 2px solid #cc0000; border-radius: 10px; text-align: center;">
-										<strong>Ä�Ã£ há»§y Ä‘Æ¡n </strong>
-									</p>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-		<!-- end col -->
-
 	</div>
 	<!-- end row -->
 
