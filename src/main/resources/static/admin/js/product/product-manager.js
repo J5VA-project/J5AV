@@ -31,9 +31,12 @@ app.controller("product-manager-ctrl", function($scope, $http) {
 		$scope.form = {
 		food_id : $scope.random,
 		status : true,
+		image_title1:'image-df.jpg',
+		image_title2:'image-df.jpg',
 		};
 	}
-		
+	
+	$scope.reset();
 
 	//hiển thị lên form
 	$scope.edit = function(food) {
@@ -79,15 +82,45 @@ app.controller("product-manager-ctrl", function($scope, $http) {
 			console.log("Error", error);
 		});
 	}
-	//Upload hình
-	$scope.imageChanged = function(files) {
+		//Upload hình
+	$scope.imageFood = function(files) {
 		var data = new FormData();
 		data.append('file', files[0]);
-		$http.post('/rest/upload/feature', data, {
+		$http.post('/rest/upload/products', data, {
 			transformRequest: angular.identity,
 			headers: { 'Content-Type': undefined }
 		}).then(resp => {
-			$scope.form.photo = resp.data.name;
+			$scope.form.food.photo = resp.data.name;
+		}).catch(error => {
+			alert("Lỗi upload hình ảnh");
+			console.log("Error", error);
+		})
+	}
+	
+		//Upload hình
+	$scope.imageFoodDetail1 = function(files) {
+		var data = new FormData();
+		data.append('file', files[0]);
+		$http.post('/rest/upload/products', data, {
+			transformRequest: angular.identity,
+			headers: { 'Content-Type': undefined }
+		}).then(resp => {
+			$scope.form.image_title1 = resp.data.name;
+		}).catch(error => {
+			alert("Lỗi upload hình ảnh");
+			console.log("Error", error);
+		})
+	}
+	
+		//Upload hình
+	$scope.imageFoodDetail2 = function(files) {
+		var data = new FormData();
+		data.append('file', files[0]);
+		$http.post('/rest/upload/products', data, {
+			transformRequest: angular.identity,
+			headers: { 'Content-Type': undefined }
+		}).then(resp => {
+			$scope.form.image_title2 = resp.data.name;
 		}).catch(error => {
 			alert("Lỗi upload hình ảnh");
 			console.log("Error", error);

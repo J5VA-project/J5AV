@@ -71,26 +71,35 @@
 			<div class="row">
 				
 				<div class="col-xl-6">
-					<div class="card-box">				
-						<img ng-src="{{'/assets/img/feature/'+ form.food.photo}}" style="max-width: 100%;height: 100%;">
+					<div class="card-box">										
+						<label for="image">
+							<img ng-src="/assets/products/{{form.food.photo || 'image-df.jpg'}}" style="max-width: 100%;height: 200px;">
+						</label>
 					</div>
-					<input type="file" class="form-control" ng-model="form.food.photo">
+					<input type="file" class="form-control" id="image"
+									onchange="angular.element(this).scope().imageFood(this.files)">
 					<hr>
 					<label>Food Detail Image</label>
 					<div class="col-xl-12 row">
 					
 					<div class="col-xl-6">
-					<div class="card-box">
-						<img ng-src="{{'/assets/img/feature/'+ form.image_title1}}" style="max-width: 100%;height: 100%;">
+					<div class="card-box ">
+					<label for="image1">
+						<img ng-src="{{'/assets/products/'+ form.image_title1}}" style="max-width: 100%;height: 200px;">
+					</label>
 					</div>					
-					<input type="file" class="form-control" ng-model="form.image_title1" >
+					<input type="file" class="form-control" id="image1"
+									onchange="angular.element(this).scope().imageFoodDetail1(this.files)">
 					</div>
 					<hr>
 					<div class="col-xl-6">
 					<div class="card-box">
-						<img ng-src="{{'/assets/img/feature/'+ form.image_title2}}" style="max-width: 100%;height: 100%;">
+						<label for="image2">
+							<img ng-src="{{'/assets/products/'+ form.image_title2}}" style="max-width: 100%;height: 200px;">
+						</label>
 					</div>
-					<input type="file" class="form-control" ng-model="form.image_title2">
+					<input type="file" class="form-control" id="image2"
+									onchange="angular.element(this).scope().imageFoodDetail2(this.files)">
 					</div>
 					</div>
 				</div>
