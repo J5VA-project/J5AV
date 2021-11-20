@@ -36,9 +36,9 @@
 							<input style="display: none;" name="show"
 								th:value="${showPageNumber}" />
 							<div class="sidebar-widget search-box">
-								<h4>Search</h4>
+								<h4 th:text=#{product.search}>Search</h4>
 								<div class="form-group">
-									<input type="text" name="search" placeholder="Search" required>
+									<input type="text" name="search" th:placeholder="#{product.search}" required>
 									<input style="display: none;" type="number" name="p"
 										placeholder="page">
 									<button type="submit">
@@ -49,7 +49,7 @@
 						</form>
 						<br>
 						<div class="sidebar-widget categories">
-							<h4>Category</h4>
+							<h4 th:text=#{product.category}>Category</h4>
 							<div class="category-box">
 								<ul class="list-style">
 									<li th:each="listCa:${listCate}"><a
@@ -61,30 +61,31 @@
 							</div>
 						</div>
 						<div class="sidebar-widget categories">
-							<h4>Size</h4>
+							<h4 th:text=#{product.size}>Size</h4>
 							<div class="category-box">
 								<ul class="list-style">
 									<li th:each="listSize:${listSize}"><a
-										th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&size='+${listSize.name}}">
+										th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&size='+${listSize.name}}">		
 											[[${listSize.name}]]<i class="flaticon-right-arrow-angle"></i>
 									</a></li>
 								</ul>
 							</div>
 						</div>
 						<div class="sidebar-widget new-product">
-							<h4>Selling products</h4>
+							<h4 th:text=#{product.selling}>Selling products</h4>
+							
 							<div class="new-product-wrap">
-								<div th:each="topFive:${topFive}" class="new-product-item">
-									<a th:href="@{|/home/shop-details/${topFive.food_id}|}"
+								<div th:each="top6:${top6}" class="new-product-item">
+									<a th:href="@{|/home/shop-details/${top6.group.food_id}|}"
 										class="new-product-img"> <img
-										th:src="@{|/assets/img/feature/${topFive.photo}|}" alt="Image">
+										th:src="@{|/assets/img/feature/${top6.group.photo}|}" alt="Image">
 									</a>
 									<div class="new-product-info">
 										<h6>
-											<a th:href="@{|/home/shop-details/${topFive.food_id}|}">[[${topFive.food_name}]]</a>
+											<a th:href="@{|/home/shop-details/${top6.group.food_id}|}">[[${top6.group.food_name}]]</a>
 										</h6>
 										<div class="price">
-											<span>[[${topFive.price}]]$</span>
+											<span>[[${top6.group.price}]]$</span>
 										</div>
 									</div>
 								</div>
@@ -92,7 +93,7 @@
 							</div>
 						</div>
 						<div class="sidebar-widget price-range-widget">
-							<h4>Price Filter</h4>
+							<h4 th:text=#{product.priceFilter}>Price Filter</h4>
 							<div class="checkbox-item-wrap">
 								<div
 									class="checkbox-item d-flex justify-content-between align-items-center">
@@ -175,7 +176,7 @@
 					<div class="row align-items-center mb-25">
 						<div class="col-xl-6 col-lg-5 col-md-4">
 							<div class="profuct-result">
-								<p>Showing [[${showPageNumber}]] of [[${count}]] Products</p>
+								<p><b th:text=#{product.showing}>Showing</b> [[${showPageNumber}]] <b th:text=#{product.of}>of</b> [[${count}]] <b th:text=#{product.products}>Products</b></p>
 							</div>
 						</div>
 
@@ -185,7 +186,7 @@
 								<div class="main-menu-wrap">
 									<div id="menu">
 										<ul class="main-menu list-style">
-											<li class="has-children"><a class="shopcart">Sort by</a>
+											<li class="has-children"><a class="shopcart" th:text=#{product.sort}>Sort by</a>
 												<ul class="sub-menu list-style">
 													<li><a class="dropdown-item" th:value="asc"
 														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Price:
@@ -212,7 +213,7 @@
 								<div class="main-menu-wrap">
 									<div id="menu">
 										<ul class="main-menu list-style">
-											<li class="has-children"><a class="shopcart">Show</a>
+											<li class="has-children"><a class="shopcart" th:text=#{product.show}>Show</a>
 												<ul class="sub-menu list-style">
 													<li><a class="dropdown-item" name="showPageNumber"
 														th:value="6"
@@ -236,7 +237,6 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
 					<div class="row justify-content-center">
 						<div th:each="food:${foods}" class="col-lg-6 col-md-6">
@@ -251,13 +251,13 @@
 									</h3>
 									<div class="product-more-option-item">
 										<div class="col-lg-6 col-md-6 col-12">
-											<h6>Category:</h6>
+											<h6 th:text=#{product.category}>Category:</h6>
 											<a
 												th:href="@{|/home/shop-details/${food.food_detail.foodCategory.foodcategory_id}|}">
 												[[${food.food_detail.foodCategory.foodcategory_name}]]</a>
 										</div>
 										<div class="col-lg-6 col-md-6 col-12">
-											<h6>Size:</h6>
+											<h6 th:text=#{product.size}>Size:</h6>
 											<a
 												th:href="@{|/home/shop-details/${food.food_detail.food_detail_size.size_id}|}">
 												[[${food.food_detail.food_detail_size.name}]]</a>
@@ -269,12 +269,15 @@
 
 									<button class="btn style2"
 										th:attr="ng-click=@{|cart.add(${food.food_id})|}">
-										<i class="flaticon-shopping-bag-1"></i>Add To Cart
+										<i class="flaticon-shopping-bag-1"></i><b th:text=#{product.addcart}></b>
 									</button>
-									
-									<button class="btn style2">
+
+									<!-- 
+							<button class="btn style2">
 										<a th:href="@{'/favorite/'+${food.food_id}}"><i class="bi bi-heart"></i>Add To Favorite</a>
 									</button>
+							 -->
+
 
 									<div class="discount-tag">
 
@@ -294,8 +297,8 @@
 								class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20">
 								<a th:if="${currentPage > 1}"
 									th:href="@{'/home/shop?p=1'+ '&search=' + ${search} +'&sort=' + ${sort} + '&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
-									class="btn prev">First</a> <span th:unless="${currentPage > 1}"
-									class="btn prev">First</span>
+									class="btn prev" th:text=#{product.first}>First</a> <span th:unless="${currentPage > 1}"
+									class="btn prev" th:text=#{product.first}>First</span>
 							</div>
 							<div
 								class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center smb-20">
@@ -311,8 +314,8 @@
 								class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-end text-center">
 								<a th:if="${currentPage < totalPages}"
 									th:href="@{'/home/shop?p=' + ${totalPages} + '&search=' + ${search} +'&sort=' + ${sort} + '&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
-									class="btn prev">Last</a> <span
-									th:unless="${currentPage < totalPages}" class="btn prev">Last</span>
+									class="btn prev" th:text=#{product.last}>Last</a> <span
+									th:unless="${currentPage < totalPages}" class="btn prev" th:text=#{product.last}>Last</span>
 							</div>
 						</div>
 						<div class="page-navigation">
@@ -323,7 +326,7 @@
 									class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center smb-20">
 									<div>
 										<div class="profuct-result">
-											<p>Page [[${currentPage}]] of [[${totalPages}]]</p>
+											<p><b th:text=#{product.page}>Page</b> [[${currentPage}]] <b th:text="#{product.of}">of</b> [[${totalPages}]]</p>
 										</div>
 									</div>
 								</div>
@@ -335,6 +338,7 @@
 				</div>
 			</div>
 		</div>
+	</section>
 </body>
 
 </html>

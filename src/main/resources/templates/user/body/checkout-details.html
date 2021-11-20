@@ -47,18 +47,17 @@
 					<div class="row text-center">
 						<div class="col-sm-3">
 							<div id="1">
-								<i class="bi bi-journal-text"></i><br> Ä�ang chá»� xÃ¡c nháº­n
+								<i class="bi bi-journal-text"></i><br> Đang chờ xác nhận
 							</div>
 						</div>
 						<div class="col-sm-3">
 							<div id="2">
-								<i class="bi bi-journal-check"></i><br> Ä�Ã£ xÃ¡c nháº­n Ä‘Æ¡n
-								hÃ ng
+								<i class="bi bi-journal-check"></i><br> Xác nhận đơn hàng
 							</div>
 						</div>
 						<div class="col-sm-3">
 							<div id="3">
-								<i class="bi bi-cart4"></i><br> Ä�ang giao
+								<i class="bi bi-cart4"></i><br> Đang giao
 							</div>
 						</div>
 						<div class="col-sm-3">
@@ -80,8 +79,7 @@
 							<div class="card">
 								<ul class="list-group list-group-flush">
 									<li class="list-group-item p-3">
-										<h5 th:text=#{info.title} class="font-weight-bold pb-2">ThÃƒÂ´ng
-											Tin Ã„ï¿½Ã†Â¡n HÃƒÂ ng</h5>
+										<h5 th:text=#{info.title} class="font-weight-bold pb-2">Thông tin khách hàng</h5>
 										<div class="table-responsive">
 											<table class="table table-borderless mb-0">
 												<tbody>
@@ -90,42 +88,40 @@
 														<td>[[*{order_id}]]</td>
 													</tr>
 													<tr class="white-space-no-wrap">
-														<td th:text=#{info.datetime} class="text-muted pl-0 col-4">NgÃƒÂ y
-															giÃ¡Â»ï¿½</td>
+														<td th:text=#{info.datetime} class="text-muted pl-0 col-4">Ngày giao</td>
 														<td>[[*{orderdate}]]</td>
 													</tr>
 													<tr class="white-space-no-wrap">
 														<td th:text=#{info.payment} class="text-muted pl-0 col-4">Thanh
-															toÃƒÂ¡n</td>
+															toán</td>
 														<td>Credit Card"</td>
 													</tr>
 													<tr class="white-space-no-wrap">
-														<td th:text=#{info.status} class="text-muted pl-0 col-4">Tráº¡ng
-															thÃ¡i</td>
+														<td th:text=#{info.status} class="text-muted pl-0 col-4">Trạng thái</td>
 														<td class="text-muted pl-0" style="width: 300px;">
 															<p th:if="${order.status} == 1" class=" font-weight-bold"
 																style="color: #ffc61a;">
-																<strong>Chá»� xÃ¡c nháº­n</strong>
+																<strong>Chờ xác nhận</strong>
 															</p>
 
 															<p th:if="${order.status} == 2" class=" font-weight-bold"
 																style="color: #333399;">
-																<strong>Ä�Ã£ xÃ¡c nháº­n Ä‘Æ¡n hÃ ng</strong>
+																<strong>Đã xác nhận đơn hàng</strong>
 															</p>
 
 															<p th:if="${order.status} == 3" class=" font-weight-bold"
 																style="color: #990099;">
-																<strong>Ä�ang giao</strong>
+																<strong>Đang giao</strong>
 															</p>
 
 															<p th:if="${order.status} == 4" class=" font-weight-bold"
 																style="color: green;">
-																<strong>Ä�Ã£ nháº­n hÃ ng</strong>
+																<strong>Giao thành công</strong>
 															</p>
 
 															<p th:if="${order.status} == 5" class=" font-weight-bold"
 																style="color: #cc0000;">
-																<strong>Ä�Ã£ há»§y Ä‘Æ¡n </strong>
+																<strong>Giao thất bại </strong>
 															</p>
 														</td>
 													</tr>
@@ -137,25 +133,22 @@
 											<input id="id" th:value="${order.order_id}" name="id"
 												type="hidden"> <input id="statusOrder"
 												th:value="5" name="statusOrder" type="hidden">
-											<button class="btn btn-danger col-sm-12" id="btn-cancel">Há»§y
-												Ä‘áº·t hÃ ng</button>
+											<button class="btn btn-danger col-sm-12" id="btn-cancel">Hủy đơn hàng</button>
 										</form> <!--  -->
 									</li>
 
 									<li class="list-group-item p-3">
 										<h5 th:text=#{cust.title} class="font-weight-bold pb-2">Chi
-											TiÃ¡ÂºÂ¿t KhÃƒÂ¡ch HÃƒÂ ng</h5>
+											Tiết Khách Hàng</h5>
 										<div class="table-responsive">
 											<table class="table table-borderless mb-0">
 												<tbody>
 													<tr class="white-space-no-wrap">
-														<td th:text=#{cust.username} class="text-muted pl-0">TÃƒÂ i
-															khoÃ¡ÂºÂ£n</td>
+														<td th:text=#{cust.username} class="text-muted pl-0">Tài khảon</td>
 														<td>[[${#request.remoteUser}]]</td>
 													</tr>
 													<tr class="white-space-no-wrap">
-														<td th:text=#{cust.fullname} class="text-muted pl-0">HÃ¡Â»ï¿½
-															tÃƒÂªn</td>
+														<td th:text=#{cust.fullname} class="text-muted pl-0">Họ tên</td>
 														<td>[[*{order_acc.fullname}]]</td>
 													</tr>
 													<tr class="white-space-no-wrap">
@@ -163,17 +156,16 @@
 														<td>[[*{order_acc.email}]]</td>
 													</tr>
 													<tr class="white-space-no-wrap">
-														<td th:text=#{cust.phone} class="text-muted pl-0">SÃ„ï¿½T</td>
+														<td th:text=#{cust.phone} class="text-muted pl-0">SĐT</td>
 														<td>[[*{order_acc.phone}]]</td>
 													</tr>
 													<tr class="white-space-no-wrap">
-														<td th:text=#{cust.address} class="text-muted pl-0">Ã„ï¿½Ã¡Â»â€¹a
-															chÃ¡Â»â€°</td>
+														<td th:text=#{cust.address} class="text-muted pl-0">Địa chỉ</td>
 														<td>[[*{address}]]</td>
 													</tr>
 													<tr class="white-space-no-wrap">
 														<td th:text=#{cust.note} class="text-muted pl-0">Ghi
-															chÃƒÂº</td>
+															chú</td>
 														<td>[[*{note}]]</td>
 													</tr>
 												</tbody>
@@ -248,7 +240,7 @@
 							$('#btn-cancel').hide();
 							$('#hoanthanh')
 									.html(
-											'<i class="bi bi-cart-check-fill"></i><br> Giao thÃ nh cÃ´ng');
+											'<i class="bi bi-cart-check-fill"></i><br> Giao thành công');
 							$('.progress-bar').addClass('bg-success');
 							if (status == 1) {
 								$('#btn-cancel').show();
@@ -278,7 +270,7 @@
 								$('#4').css('font-size', '2.5vh');
 								$('#hoanthanh')
 										.html(
-												'<i class="bi bi-cart-check-fill"></i><br> Giao thÃ nh cÃ´ng');
+												'<i class="bi bi-cart-check-fill"></i><br> Giao thành công');
 								$('.progress-bar').css('width', '100%');
 							} else if (status == 5) {
 								$('#4').css('color', 'red');
@@ -286,7 +278,7 @@
 								$('#4').css('font-size', '2.5vh');
 								$('#hoanthanh')
 										.html(
-												'<i class="bi bi-cart-x"></i><br> Giao tháº¥t báº¡i');
+												'<i class="bi bi-cart-x"></i><br> Giao thất bại');
 								$('.progress-bar').addClass('bg-danger');
 								$('.progress-bar').css('width', '100%');
 							}

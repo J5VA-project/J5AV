@@ -1,5 +1,7 @@
 package com.J5VA.controller.user;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +48,8 @@ public class FavoriteController {
 
 	@GetMapping("/list")
 	public String list(Model model) {
-		Favorite favorite = service.findByIdCustomer(request.getRemoteUser());
+		Account account = accountService.findByUsername(request.getRemoteUser());
+		List<Favorite> favorite = service.findAllByAccount(account);
 		model.addAttribute("favorite", favorite);
 		return "user/body/wishlist";
 	}

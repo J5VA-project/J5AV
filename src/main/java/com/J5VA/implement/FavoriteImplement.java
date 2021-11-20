@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.J5VA.dao.FavoriteDao;
+import com.J5VA.entity.Account;
 import com.J5VA.entity.Favorite;
 import com.J5VA.service.FavoriteService;
 
@@ -62,11 +63,10 @@ public class FavoriteImplement implements FavoriteService {
 	@Override
 	public void delete(Integer id) {
 		dao.deleteById(id);
-
 	}
 
 	@Override
-	public Favorite findByIdCustomer(String id) {
-		return dao.findByIdCustomer(id);
+	public List<Favorite> findAllByAccount(Account account) {
+		return dao.findAllByAccount(account);
 	}
 }

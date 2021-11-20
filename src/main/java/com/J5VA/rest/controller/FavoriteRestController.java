@@ -21,15 +21,15 @@ public class FavoriteRestController {
 	@Autowired
 	FavoriteService favoriteService;
 
+	@GetMapping("")
+	public List<Favorite> getAll() {
+		return favoriteService.findAll();
+	}
+
 	@GetMapping("/{id}")
 	public List<Favorite> getAllById(@PathVariable List<Integer> id) {
 		return favoriteService.findAllById(id);
 	}
-
-//	@GetMapping("/{id}")
-//	public Favorite getOne(@PathVariable("id") Integer id) {
-//		return favoriteService.findById(id);
-//	}
 
 	@PostMapping
 	public Favorite create(@RequestBody Favorite product) {

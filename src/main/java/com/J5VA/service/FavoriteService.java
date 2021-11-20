@@ -2,6 +2,7 @@ package com.J5VA.service;
 
 import java.util.List;
 
+import com.J5VA.entity.Account;
 import com.J5VA.entity.Favorite;
 
 public interface FavoriteService {
@@ -17,7 +18,7 @@ public interface FavoriteService {
 
 	Favorite findById(Integer id);
 
-	Favorite findByIdCustomer(String id);
+	List<Favorite> findAllByAccount(Account account);
 
 	<S extends Favorite> S save(S entity);
 
