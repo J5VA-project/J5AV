@@ -30,26 +30,26 @@
                      <div class="swiper-container mySwiper2 single-product-slider">
                          <div class="swiper-wrapper">
                              <div class="swiper-slide">
-                                 <img th:src="@{|/assets/img/feature/${food.photo}|}" alt="Image">
+                                 <img th:src="@{|/assets/products/${food.photo}|}" alt="Image">
                              </div>
                              <div class="swiper-slide">
-                                 <img th:src="@{|/assets/img/feature/${food.food_detail.image_title1}|}" alt="Image">
+                                 <img th:src="@{|/assets/products/${food.food_detail.image_title1}|}" alt="Image">
                              </div>
                              <div class="swiper-slide">
-                                 <img th:src="@{|/assets/img/feature/${food.food_detail.image_title2}|}" alt="Image">
+                                 <img th:src="@{|/assets/products/${food.food_detail.image_title2}|}" alt="Image">
                              </div>
                          </div>
                      </div>
                      <div class="swiper-container mySwiper single-product-thumbs">
                          <div class="swiper-wrapper">
                              <div class="swiper-slide">
-                                 <img th:src="@{|/assets/img/feature/${food.photo}|}" alt="Image">
+                                 <img th:src="@{|/assets/products/${food.photo}|}" alt="Image">
                              </div>
                              <div class="swiper-slide">
-                                 <img th:src="@{|/assets/img/feature/${food.food_detail.image_title1}|}" alt="Image">
+                                 <img th:src="@{|/assets/products/${food.food_detail.image_title1}|}" alt="Image">
                              </div>
                              <div class="swiper-slide">
-                                 <img th:src="@{|/assets/img/feature/${food.food_detail.image_title2}|}" alt="Image">
+                                 <img th:src="@{|/assets/products/${food.food_detail.image_title2}|}" alt="Image">
                              </div>
                          </div>
                          <div class="product-slider-next slider-btn style2"><i
@@ -281,7 +281,7 @@
                              <div th:each="foods:${food.food_detail.foodCategory.foodDetails}" class="swiper-slide">
                                  <div class="feature-card style1">
 				                     <div class="feature-img">
-				                         <img th:src="@{|/assets/img/feature/${foods.food.photo}|}" alt="Image">
+				                         <img th:src="@{|/assets/products/${foods.food.photo}|}" alt="Image">
 				                     </div>
 				                     <div class="feature-info">
 				                         <h3 class="feature-title"><a th:href="@{|/home/shop-details/${foods.food_id}|}">[[${foods.food.food_name}]]</a></h3>

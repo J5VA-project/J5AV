@@ -78,7 +78,7 @@
 								<div th:each="top6:${top6}" class="new-product-item">
 									<a th:href="@{|/home/shop-details/${top6.group.food_id}|}"
 										class="new-product-img"> <img
-										th:src="@{|/assets/img/feature/${top6.group.photo}|}" alt="Image">
+										th:src="@{|/assets/products/${top6.group.photo}|}" alt="Image">
 									</a>
 									<div class="new-product-info">
 										<h6>
@@ -242,7 +242,7 @@
 						<div th:each="food:${foods}" class="col-lg-6 col-md-6">
 							<div class="feature-card style1">
 								<div class="feature-img">
-									<img th:src="@{|/assets/img/feature/${food.photo}|}"
+									<img th:src="@{|/assets/products/${food.photo}|}"
 										alt="Image">
 								</div>
 								<div class="feature-info">

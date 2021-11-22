@@ -27,15 +27,18 @@ app.controller("product-manager-ctrl", function($scope, $http) {
 
 	//xóa form
 	$scope.reset = function() {
-	$scope.random = Math.floor((Math.random() * 99999));
+		$scope.random = Math.floor((Math.random() * 99999));
 		$scope.form = {
-		food_id : $scope.random,
-		status : true,
-		image_title1:'image-df.jpg',
-		image_title2:'image-df.jpg',
+			food_id: $scope.random,
+			status: true,
+			image_title1: 'image-df.jpg',
+			image_title2: 'image-df.jpg',
+			food: {
+				photo: 'image-df.jpg'
+			},
 		};
 	}
-	
+
 	$scope.reset();
 
 	//hiển thị lên form
@@ -43,7 +46,7 @@ app.controller("product-manager-ctrl", function($scope, $http) {
 		$scope.form = angular.copy(food);
 	}
 
-		//thêm sản phẩm mới
+	//thêm sản phẩm mới
 	$scope.create = function() {
 		var food = angular.copy($scope.form);
 		$http.post(`/rest/food-detail`, food).then(resp => {
@@ -55,8 +58,8 @@ app.controller("product-manager-ctrl", function($scope, $http) {
 			console.log("Error", error);
 		});
 	}
-	
-	
+
+
 	//thêm sản phẩm mới
 	$scope.update = function() {
 		var food = angular.copy($scope.form);
@@ -82,8 +85,8 @@ app.controller("product-manager-ctrl", function($scope, $http) {
 			console.log("Error", error);
 		});
 	}
-		//Upload hình
-	$scope.imageFood = function(files) {
+	//Upload hình
+	$scope.imageFoodChange = function(files) {
 		var data = new FormData();
 		data.append('file', files[0]);
 		$http.post('/rest/upload/products', data, {
@@ -96,8 +99,8 @@ app.controller("product-manager-ctrl", function($scope, $http) {
 			console.log("Error", error);
 		})
 	}
-	
-		//Upload hình
+
+	//Upload hình
 	$scope.imageFoodDetail1 = function(files) {
 		var data = new FormData();
 		data.append('file', files[0]);
@@ -111,8 +114,8 @@ app.controller("product-manager-ctrl", function($scope, $http) {
 			console.log("Error", error);
 		})
 	}
-	
-		//Upload hình
+
+	//Upload hình
 	$scope.imageFoodDetail2 = function(files) {
 		var data = new FormData();
 		data.append('file', files[0]);
