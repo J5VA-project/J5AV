@@ -52,6 +52,7 @@ app.controller("product-manager-ctrl", function($scope, $http) {
 		$http.post(`/rest/food-detail`, food).then(resp => {
 			$scope.foods.push(resp.data);
 			$scope.reset();
+			$scope.initialize();
 			alert("Thêm mới food thành công!");
 		}).catch(error => {
 			alert("Lỗi thêm mới food!");
@@ -66,6 +67,7 @@ app.controller("product-manager-ctrl", function($scope, $http) {
 		$http.put(`/rest/food-detail/${food.food_id}`, food).then(resp => {
 			var index = $scope.foods.findIndex(p => p.food_id == food.food_id);
 			$scope.foods[index] = food;
+			$scope.initialize();
 			alert("Cập nhật food thành công!");
 		}).catch(error => {
 			alert("Lỗi cập nhật food!");
@@ -79,6 +81,7 @@ app.controller("product-manager-ctrl", function($scope, $http) {
 			var index = $scope.foods.findIndex(p => p.food_id == food.food_id);
 			$scope.foods.splice(index, 1);
 			$scope.reset();
+			$scope.initialize();
 			alert("Xóa food thành công!");
 		}).catch(error => {
 			alert("Lỗi xóa food!");
@@ -132,7 +135,7 @@ app.controller("product-manager-ctrl", function($scope, $http) {
 
 	$scope.pager = {
 		page: 0,
-		food: 6,
+		food: 8,
 		get foods() {
 			var start = this.page * this.food;
 			return $scope.foods.slice(start, start + this.food);
