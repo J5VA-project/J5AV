@@ -31,10 +31,10 @@
 							<table class="table table-bordered">
 								<thead>
 									<tr>
-										<th scope="col">Product</th>
-										<th scope="col">Quantity</th>
-										<th scope="col">Total Price</th>
-										<th scope="col">Remove</th>
+										<th scope="col" th:text=#{cart.product}>Product</th>
+										<th scope="col" th:text=#{cart.qty}>Quantity</th>
+										<th scope="col" th:text=#{cart.total-price}>Total Price</th>
+										<th scope="col" th:text=#{cart.remove}>Remove</th>
 									</tr>
 								</thead>
 								<tbody ng-repeat="item in cart.items">
@@ -86,13 +86,13 @@
 					<div class="col-lg-6 col-md-12">
 						<div class="checkout-details smt-30">
 							<div class="content-box-title">
-								<h4 class="mb-20">Total Bill</h4>
+								<h4 class="mb-20" th:text=#{cart.total-bill}>Total Bill</h4>
 							</div>
 							<div class="bill-details">
 								<div class="subtotal-wrap">
 									<div class="subtotal-item">
 										<div class="subtotal-item-left">
-											<h6>Subtotal</h6>
+											<h6 th:text=#{cart.subtotal}>Subtotal</h6>
 										</div>
 										<div class="subtotal-item-right">
 											<span>${{cart.amount|number:2}}</span>
@@ -100,7 +100,7 @@
 									</div>
 									<div class="subtotal-item">
 										<div class="subtotal-item-left">
-											<p>Shipping Charge</p>
+											<p th:text=#{cart.shipping}>Shipping Charge</p>
 										</div>
 										<div class="subtotal-item-right">
 											<p>$0.00</p>
@@ -108,7 +108,7 @@
 									</div>
 								</div>
 								<div class="total-wrap">
-									<h5>Total Amount</h5>
+									<h5 th:text=#{cart.total-amount}>Total Amount</h5>
 									<span>${{cart.amount|number:2}}</span>
 								</div>
 							</div>
@@ -116,8 +116,9 @@
 
 							<div ng-if="cart.items.length!=0">
 								<div class="col-lg-12 mt-3">	
-									<a th:href="@{/home/checkout}" class="btn style1 w-100 d-block">Proceed
-										To Checkout<i class="lar la-check-circle"></i>
+									<a th:href="@{/home/checkout}" class="btn style1 w-100 d-block">
+										<b th:text=#{cart.checkout}>Proceed To Checkout</b>
+										<i class="lar la-check-circle" ></i>
 									</a>
 								</div>
 							</div>
