@@ -189,16 +189,16 @@
 											<li class="has-children"><a class="shopcart" th:text=#{product.sort}>Sort by</a>
 												<ul class="sub-menu list-style">
 													<li><a class="dropdown-item" th:value="asc"
-														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Price:
+														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.sort1}>Price:
 															Low High</a></li>
 													<li><a class="dropdown-item" th:value="desc"
-														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=desc&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Price:
+														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=desc&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.sort2}>Price:
 															High Low</a></li>
 													<li><a class="dropdown-item" th:value="za"
-														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=az&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Name:
+														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=az&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.sort3}>Name:
 															A - Z</a></li>
 													<li><a class="dropdown-item" th:value="az"
-														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=za&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Name:
+														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=za&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.sort4}>Name:
 															Z - A</a></li>
 												</ul></li>
 										</ul>
@@ -217,19 +217,19 @@
 												<ul class="sub-menu list-style">
 													<li><a class="dropdown-item" name="showPageNumber"
 														th:value="6"
-														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=6'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Show
+														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=6'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.show1}>Show
 															6</a></li>
 													<li><a class="dropdown-item" name="showPageNumber"
 														th:value="12"
-														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=12'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Show
+														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=12'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.show2}>Show
 															12</a></li>
 													<li><a class="dropdown-item" name="showPageNumber"
 														th:value="18"
-														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=18'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Show
+														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=18'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.show3}>Show
 															18</a></li>
 													<li><a class="dropdown-item" name="showPageNumber"
 														th:value="24"
-														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=24'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}">Show
+														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=24'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.show4}>Show
 															24</a></li>
 												</ul></li>
 										</ul>
