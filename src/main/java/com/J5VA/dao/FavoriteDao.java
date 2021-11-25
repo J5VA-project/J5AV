@@ -13,4 +13,7 @@ import com.J5VA.entity.Favorite;
 public interface FavoriteDao extends JpaRepository<Favorite, Integer> {
 	@Query("SELECT o FROM Favorite o WHERE o.favorite_acc=?1")
 	List<Favorite> findAllByAccount(Account account);
+
+	@Query("SELECT o FROM Favorite o WHERE o.favorite_f.food_id=?1")
+	Favorite findFavoriteByFood(Integer id);
 }

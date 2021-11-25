@@ -1,5 +1,6 @@
 package com.J5VA.implement;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,13 @@ public class FavoriteImplement implements FavoriteService {
 
 	@Override
 	public Favorite findById(Integer id) {
-		return dao.findById(id).get();
+		try {
+			return dao.findById(id).get();
+		} catch (Exception e) {
+			e.getMessage();
+			return null;
+		}
+
 	}
 
 	@Override
@@ -68,5 +75,10 @@ public class FavoriteImplement implements FavoriteService {
 	@Override
 	public List<Favorite> findAllByAccount(Account account) {
 		return dao.findAllByAccount(account);
+	}
+
+	@Override
+	public Favorite findFavoriteByFood(Integer id) {
+		return dao.findFavoriteByFood(id);
 	}
 }

@@ -27,4 +27,6 @@ public interface FavoriteService {
 	Favorite update(Favorite favo);
 
 	void delete(Integer id);
+	
+	Favorite findFavoriteByFood(Integer id);
 }

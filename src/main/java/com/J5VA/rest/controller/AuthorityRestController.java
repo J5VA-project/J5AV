@@ -47,4 +47,5 @@ public class AuthorityRestController {
 	public void delete(@PathVariable("id") Integer id) {
 		authorityDao.deleteById(id);
 	}
+	
 }
