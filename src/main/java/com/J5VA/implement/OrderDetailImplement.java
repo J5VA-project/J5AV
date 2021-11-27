@@ -16,7 +16,6 @@ public class OrderDetailImplement implements OrderDetailService {
 
 	@Override
 	public List<OrderDetail> list() {
-		// TODO Auto-generated method stub
 		return dao.findAll();
 	}
 

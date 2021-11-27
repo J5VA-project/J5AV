@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class OrdersImplement implements OrdersService {
 	@Autowired
 	OrdersDao ordersDao;
-	
+
 	@Autowired
 	OrderDetailDao orderDetailDao;
 
@@ -66,13 +66,11 @@ public class OrdersImplement implements OrdersService {
 
 	@Override
 	public Orders update(Orders order) {
-		// TODO Auto-generated method stub
 		return ordersDao.save(order);
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
 		ordersDao.deleteById(id);
 	}
 
@@ -83,13 +81,11 @@ public class OrdersImplement implements OrdersService {
 
 	@Override
 	public Integer totalOrders() {
-		// TODO Auto-generated method stub
 		return ordersDao.totalOrders();
 	}
 
 	@Override
 	public Integer totalOrdersByStatus(Integer status) {
-		// TODO Auto-generated method stub
 		return ordersDao.totalOrdersByStatus(status);
 	}
 
@@ -105,7 +101,6 @@ public class OrdersImplement implements OrdersService {
 
 	@Override
 	public Integer quantityFoodByMonth(Integer month) {
-		// TODO Auto-generated method stub
 		return ordersDao.getReport2t(month);
 	}
 }
