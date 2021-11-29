@@ -1,0 +1,145 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/header::dynamic(~{::body})}">
+<body>
+   <div class="breadcrumb-wrap bg-f br-1">
+       <div class="overlay bg-black op-9"></div>
+       <img src="/assets/img/shape-1.png" alt="Image" class="br-shape-1">
+       <img src="/assets/img/shape-2.png" alt="Image" class="br-shape-2">
+       <div class="container">
+           <div class="row">
+               <div class="col-xl-12">
+                   <div class="breadcrumb-title">
+                       <h2 th:text=#{breadcrumb.changepwd}>Change Password</h2>
+                       <ul class="breadcrumb-menu list-style">
+						   <li><a th:href="@{/home}" th:text=#{breadcrumb.home}>Home </a></li>
+                           <li th:text=#{breadcrumb.changepwd}>Change Password</li>                       </ul>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+   <section class="login-wrap pt-100 pb-100">
+       <img src="/assets/img/shape-1.png" alt="Image" class="login-shape-1">
+       <img src="/assets/img/shape-2.png" alt="Image" class="login-shape-2">
+       <div class="container">
+           <div class="row">                  
+               <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
+                   <div class="login-form">
+                       <div class="login-header bg-green">
+                           <h2 class="text-center mb-0">Change Password</h2>
+                       </div>
+                       <div class="login-body">
+                           <form class="form-wrap" th:action="@{/home/change-pw}" method="post" id ="changepwform">
+                               <div class="row">
+                                   <div class="col-lg-12">
+                                       <p>We will send a verification code to your mail to change your password.
+                                       </p>
+                                       <h4 th:text="${message}"></h4>
+                                   </div>
+                                   <div class="col-lg-12">
+                                       <div class="form-group">
+                                           <label for="email">Username *</label>
+                                           <input id="username" name="username" type="text">
+                                           <div id="error_username" class="error"></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-lg-12">
+                                       <div class="form-group">
+                                           <label for="pwd">Password *</label>
+                                           <input id="password" name="password" type="password" >
+                                            <div id="error_password" class="error"></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-lg-12">
+                                       <div class="form-group">
+                                           <label for="pwd">New Password *</label>
+                                           <input id="newpassword" name="newpassword" type="password">
+                                            <div id="error_newpassword" class="error"></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-lg-12">
+                                       <div class="form-group">
+                                           <label for="pwd">Confirm New Password *</label>
+                                           <input id="confirmpassword" name="confirmpassword" type="password" >
+                                            <div id="error_confirmpassword" class="error"></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-lg-12">
+                                       <div class="form-group mb-0">
+                                           <button class="btn style1 w-100 d-block" id="btn-submit" type="button">Submit</button>
+                                       </div>
+                                   </div>
+                               </div>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </section>
+   <script>
+   $(document).ready(function(){
+	   $('#btn-submit').on('click',function(){
+		   $('.error').css('color','red');
+		   var check = true;
+		   if($('#username').val()==''){
+			   $('#error_username').html('Username not null');
+			   $('#error_username').show();
+			   check = false;
+		   }else if($('#username').val().length>50||$('#username').val().length<3){
+			   $('#error_username').html('Length username between 3 to 50 characters');
+			   $('#error_username').show();
+			   check = false;
+		   }else{
+			   $('#error_username').hide();
+		   }
+		   
+		   if($('#password').val()==''){
+			   $('#error_password').html('Password not null');
+			   $('#error_password').show();
+			   check = false;
+		   }else if($('#password').val().length>50||$('#password').val().length<3){
+			   $('#error_password').html('Length password between 3 to 50 characters');
+			   $('#error_password').show();
+			   check = false;
+		   }else{
+			   $('#error_password').hide();
+		   }
+		   
+		   if($('#newpassword').val()==''){
+			   $('#error_newpassword').html('New password not null');
+			   $('#error_newpassword').show();
+			   check = false;
+		   }else if($('#newpassword').val().length>50||$('#newpassword').val().length<3){
+			   $('#error_newpassword').html('Length new password between 3 to 50 characters');
+			   $('#error_newpassword').show();
+			   check = false;
+		   }else{
+			   $('#error_newpassword').hide();
+		   }
+		   
+		   if($('#confirmpassword').val()==''){
+			   $('#error_confirmpassword').html('Confirm password not null');
+			   $('#error_confirmpassword').show();
+			   check = false;
+		   }else if($('#confirmpassword').val().length>50||$('#confirmpassword').val().length<3){
+			   $('#error_confirmpassword').html('Length confirm password between 3 to 50 characters');
+			   $('#error_confirmpassword').show();
+			   check = false;
+		   }else if($('#confirmpassword').val()!=$('#newpassword').val()){
+			   $('#error_confirmpassword').html('Password not match');
+			   $('#error_confirmpassword').show();
+		   }
+		   else{
+			   $('#error_confirmpassword').hide();
+		   }
+		   
+		   
+		   if(check == true){
+			   $('#changepwform').submit();
+		   }
+	   })
+   });
+   </script>
+</body>
+</html>
