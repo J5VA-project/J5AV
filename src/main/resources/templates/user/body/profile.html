@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/header::dynamic(~{::body})}">
 
-<!-- Mirrored from templates.hibootstrap.com/caban/default/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:43 GMT -->
-
 <body>
 	<div class="content-wrapper">
 
@@ -46,7 +44,7 @@
 
 						<div class="login-form">
 							<div class="login-header bg-green">
-								<h2 class="text-center mb-0">Profile</h2>
+								<h2 class="text-center mb-0" th:text=#{breadcrumb.profile}>Profile</h2>
 							</div>
 							<div class="login-body">
 								<form class="form-wrap" th:action="@{/auth/login}"
@@ -54,7 +52,7 @@
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label for="pwd">Username</label> <input id="username"
+												<label for="pwd" th:text=#{login.username}>Username</label> <input id="username" readonly="readonly"
 													name="username" type="text" placeholder="Username"
 													th:field="*{username}">
 												<div id="error_username"></div>
@@ -63,16 +61,7 @@
 
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label for="pwd">Password</label> <input id="password"
-													name="password" type="text" placeholder="Password"
-													th:field="*{password}">
-												<div id="error_password"></div>
-											</div>
-										</div>
-
-										<div class="col-lg-12">
-											<div class="form-group">
-												<label for="pwd">Fullname</label> <input id="fullname"
+												<label for="pwd" th:text=#{register.fullname}>Fullname</label> <input id="fullname"
 													name="fullname" type="text" placeholder="fullname"
 													th:field="*{fullname}">
 												<div id="error_fullname"></div>
@@ -81,7 +70,7 @@
 										
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label for="pwd">Email</label> <input id="email"
+												<label for="pwd" th:text=#{register.email}>Email</label> <input id="email"
 													name="email" type="text" placeholder="Email"
 													th:field="*{email}">
 												<div id="error_email"></div>
@@ -90,7 +79,7 @@
 
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label for="pwd">Address</label> <input id="address"
+												<label for="pwd" th:text=#{profile.address}>Address</label> <input id="address"
 													name="address" type="text" placeholder="Address"
 													th:field="*{address}">
 												<div id="error_address"></div>
@@ -99,7 +88,7 @@
 
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label for="pwd">Phone</label> <input id="phone"
+												<label for="pwd" th:text=#{profile.phone}>Phone</label> <input id="phone"
 													name="phone" type="text" placeholder="Phone"
 													th:field="*{phone}">
 												<div id="error_phone"></div>
@@ -108,7 +97,22 @@
 
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label for="pwd">Hire Date</label> <input id="hire_date"
+												<label for="pwd" th:text=#{profile.birthdate}>BirthDate</label> <input id="birthdate"
+													name="Birthdate" type="text" placeholder="Birthdate"
+													th:field="*{birthdate}">
+												<div id="error_birthdate"></div>
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="form-group">
+												 <input id="password" readonly="readonly" hidden="true"
+													name="password" type="text" th:field="*{password}">
+												<div id="error_password"></div>
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="form-group">
+												<label for="pwd" th:text=#{profile.hireday}>Hire Date</label> <input id="hire_date" readonly="readonly"
 													name="hire_date" type="text" placeholder="Hire date"
 													th:field="*{hire_date}">
 												<div id="error_hiredate"></div>
@@ -117,28 +121,21 @@
 
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label for="pwd">Salary</label> <input id="salary"
+												<input id="salary" hidden="true"
 													name="salary" type="text" placeholder="salary"
 													th:field="*{salary}">
 												<div id="error_salary"></div>
 											</div>
 										</div>
-
-										<div class="col-lg-12">
-											<div class="form-group">
-												<label for="pwd">BirthDate</label> <input id="birthdate"
-													name="Birthdate" type="text" placeholder="Birthdate"
-													th:field="*{birthdate}">
-												<div id="error_birthdate"></div>
-											</div>
-										</div>
+										
 
 										<div class="col-lg-12">
 											<div class="form-group">
 												<button type="button" class="btn style1 w-100 d-block"
-													id="btn-login">Update Profile</button>
+													id="btn-login" th:text=#{profile.update}>Update Profile</button>
 											</div>
 										</div>
+										
 									</div>
 								</form>
 							</div>

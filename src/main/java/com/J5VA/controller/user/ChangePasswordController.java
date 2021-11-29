@@ -42,10 +42,10 @@ public class ChangePasswordController {
 					model.addAttribute("message", "Confirm password doesn't match!");
 				}
 			} else {
-				model.addAttribute("message", "Password invalid!");
+				model.addAttribute("message", "Username or Password invalid!");
 			}
 		} catch (Exception e) {
-			model.addAttribute("message", "Username invalid!");
+			model.addAttribute("message", "Username or Password invalid!");
 		}
 		return "user/body/change-pwd";
 	}

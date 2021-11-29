@@ -78,9 +78,9 @@
 							<div class="new-product-wrap">
 								<div th:each="top6:${top6}" class="new-product-item">
 									<a th:href="@{|/home/shop-details/${top6.group.food_id}|}"
-										class="new-product-img"> <img
-										th:src="@{|/assets/products/${top6.group.photo}|}" alt="Image">
-                                       <img th:src="@{|/assets/products/${top6.group.photo}|}" alt="Image"></a>
+										class="new-product-img"> 
+									   <img th:src="@{|/assets/products/${top6.group.photo}|}" alt="Image">
+									</a>
 									<div class="new-product-info">
 										<h6>
 											<a th:href="@{|/home/shop-details/${top6.group.food_id}|}">[[${top6.group.food_name}]]</a>

@@ -30,8 +30,8 @@
 					<div
 						class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
 						<!-- Status -->
-						<div th:if="${message}">
-							<div class="alert alert-success text-center" th:text="${message}"
+						<div th:if="${msg}">
+							<div class="alert alert-success text-center" th:text="${msg}"
 								style="margin-bottom: 10px"></div>
 						</div>
 						<div th:if="${error}">
@@ -40,7 +40,7 @@
 						</div>
 						<div class="login-form">
 							<div class="login-header bg-green">
-								<h2 class="text-center mb-0">Forgot Password</h2>
+								<h2 class="text-center mb-0" th:text=#{forgot.title}>Forgot Password</h2>
 							</div>
 							<!-- Form -->
 							<div class="login-body">
@@ -48,13 +48,12 @@
 									method="post" id="pwform">
 									<div class="row">
 										<div class="col-lg-12">
-											<p>We will send a verification code to your mail to reset
+											<p th:text=#{forgot.content}>We will send a verification code to your mail to reset
 												your password.</p>
-											<h4 th:text="${msg}"></h4>
 										</div>
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label for="pwd">Username *</label> 
+												<label for="pwd" th:text=#{login.username}>Username *</label> 
 												<input id="username"
 													name="username" type="text">
 												<div id="error_username" class="error"></div>
@@ -62,17 +61,17 @@
 										</div>
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label for="email">Email Address*</label> <input id="email"
+												<label for="email" th:text=#{register.email}>Email Address*</label> <input id="email"
 													name="email" type="email">
 												<div id="error_email" class="error"></div>
 											</div>
 										</div>
-										<a style="color: blue" href="/home/change-pw">Change your
+										<a style="color: blue" href="/home/change-pw" th:text=#{forgot.change}>Change your
 											password.</a> <br> <br>
 										<div class="col-lg-12">
 											<div class="form-group mb-0">
 												<button class="btn style1 w-100 d-block" id="btn-submit"
-													type="button">Submit</button>
+													type="button" th:text=#{forgot.retrieve}>Submit</button>
 											</div>
 										</div>
 									</div>

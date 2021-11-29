@@ -43,44 +43,44 @@
 
 						<div class="login-form">
 							<div class="login-header bg-green">
-								<h2 class="text-center mb-0">Login</h2>
+								<h2 class="text-center mb-0" th:text=#{login.title}>Login</h2>
 							</div>
 							<div class="login-body">
 								<form class="form-wrap" th:action="@{/auth/login}" th:object="${acc}" method="post" id="loginform">
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label for="pwd">Username</label> <input id="username" name="username"
+												<label for="pwd" th:text=#{login.username}>Username</label> <input id="username" name="username"
 													type="text" placeholder="Username" th:field="*{username}">
 												<div id="error_username"></div>
 											</div>
 										</div>
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label for="pwd">Password</label> <input id="password" name="password"
+												<label for="pwd" th:text=#{login.password}>Password</label> <input id="password" name="password"
 													type="password" placeholder="Password" th:field="*{password}">
 												<div id="error_password"></div>
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-12">
 											<div class="form_group mb-20">
-												<input type="checkbox" id="test_1"> <label for="test_1">Remember
+												<input type="checkbox" id="test_1"> <label for="test_1" th:text=#{login.remember}>Remember
 													Me</label>
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-12 text-md-end mb-20">
-											<a th:href="@{/home/forgot-pw}" class="link style2">Forgot
+											<a th:href="@{/home/forgot-pw}" class="link style2" th:text=#{login.fogot-pw}>Forgot
 												Password?</a>
 										</div>
 										<div class="col-lg-12">
 											<div class="form-group">
 												<button type="button" class="btn style1 w-100 d-block"
-													id="btn-login">Log In</button>
+													id="btn-login" th:text=#{login.title}>Log In</button>
 											</div>
 										</div>
 										<div class="col-lg-12">
 											<div class="or-text">
-												<p>Or Login With</p>
+												<p th:text=#{login.with}>Or Login With</p>
 											</div>
 										</div>
 										<div class="col-lg-12">
@@ -98,9 +98,8 @@
 											</div>
 										</div>
 										<div class="col-md-12 text-center">
-											<p class="mb-0">
-												Don’t Have an Account? <a class="link style2"
-													th:href="@{/home/register}">Create One</a>
+											<p class="mb-0"> <i  th:text=#{login.dont-have}>Don't Have an Account? </i>	 &nbsp;	&nbsp;																			
+												<a class="link style2" th:href="@{/home/register}" th:text=#{login.create}> Create One</a>
 											</p>
 										</div>
 									</div>

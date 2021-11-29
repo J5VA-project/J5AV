@@ -12,10 +12,10 @@
 				<div class="row">
 					<div class="col-xl-12">
 						<div class="breadcrumb-title">
-							<h2>Order Detail</h2>
+							<h2 th:text="#{menu.order-list}">Order Detail</h2>
 							<ul class="breadcrumb-menu list-style">
-								<li><a th:href="@{/home}">Home </a></li>
-								<li>Order List</li>
+								<li><a th:href="@{/home}" th:text=#{breadcrumb.home}>Home </a></li>
+								<li th:text="#{menu.order-list}">Order List</li>
 							</ul>
 						</div>
 					</div>
@@ -49,50 +49,49 @@
 														aria-label="
                                                     ID
                                                 : activate to sort column ascending">
-														<label class="text-muted m-0">ID</label>
+														<label class="text-muted m-0" th:text=#{info.id}>ID</label>
 													</th>
 													<th scope="col" class="dates sorting" tabindex="0"
 														aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
 														aria-label="
                                                     Date
                                                 : activate to sort column ascending">
-														<label class="text-muted mb-0">Date</label>
+														<label class="text-muted mb-0" th:text=#{info.datetime}>Date</label>
 													</th>
 													<th scope="col" class="sorting" tabindex="0"
 														aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
 														aria-label="
                                                     Customer
                                                 : activate to sort column ascending">
-														<label class="text-muted mb-0">Username
-															([[${#request.remoteUser}]])</label>
+														<label class="text-muted mb-0" th:text=#{cust.fullname}>Fullname</label>
 													</th>
 													<th scope="col" class="text-right sorting" tabindex="0"
 														aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
 														aria-label="
-                                                    Há»� tÃªn
+                                                    HÃ¡Â»ï¿½ tÃƒÂªn
                                                 : activate to sort column ascending">
-														<label class="text-muted mb-0">Address</label>
+														<label class="text-muted mb-0" th:text=#{cust.address}>Address</label>
 													</th>
 													<th scope="col" class="text-right sorting" tabindex="0"
 														aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
 														aria-label="
-                                                    Ä�á»‹a chá»‰
+                                                    Ã„ï¿½Ã¡Â»â€¹a chÃ¡Â»â€°
                                                 : activate to sort column ascending">
-														<label class="text-muted mb-0">Email</label>
+														<label class="text-muted mb-0" th:text=#{cust.email}>Email</label>
 													</th>
 													<th scope="col" class="sorting" tabindex="0"
 														aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
 														aria-label="
                                                     Customer
                                                 : activate to sort column ascending">
-														<label class="text-muted mb-0">Note</label>
+														<label class="text-muted mb-0" th:text=#{cust.note}>Note</label>
 													</th>
 													<th scope="col" class="sorting" tabindex="0"
 														aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
 														aria-label="
                                                     Status
                                                 : activate to sort column ascending">
-														<label class="text-muted mb-0">Status</label>
+														<label class="text-muted mb-0" th:text=#{info.status}>Status</label>
 													</th>
 													<th scope="col" class="text-right sorting" tabindex="0"
 														aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
@@ -117,31 +116,31 @@
 														<p th:if="${order.status} == 1"
 															class="mb-0 font-weight-bold"
 															style="color: #ffc61a; border: 2px solid #ffc61a; border-radius: 10px; text-align: center;">
-															<strong>Chờ xác nhận</strong>
+															<strong th:text=#{status.waiting}>Waiting</strong>
 														</p>
 
 														<p th:if="${order.status} == 2"
 															class="mb-0 font-weight-bold"
 															style="color: #333399; border: 2px solid #333399; border-radius: 10px; text-align: center;">
-															<strong>Xác nhận đơn hàng</strong>
+															<strong th:text=#{status.confirmed}>Confirmed</strong>
 														</p>
 
 														<p th:if="${order.status} == 3"
 															class="mb-0 font-weight-bold"
 															style="color: #990099; border: 2px solid #990099; border-radius: 10px; text-align: center;">
-															<strong>Đang giao</strong>
+															<strong th:text=#{status.shipping}>Shipping</strong>
 														</p>
 
 														<p th:if="${order.status} == 4"
 															class="mb-0 font-weight-bold"
 															style="color: #33cc33; border: 2px solid #33cc33; border-radius: 10px; text-align: center;">
-															<strong>Đã nhận hàng</strong>
+															<strong th:text=#{status.received}>Received</strong>
 														</p>
 
 														<p th:if="${order.status} == 5"
 															class="mb-0 font-weight-bold"
 															style="color: #cc0000; border: 2px solid #cc0000; border-radius: 10px; text-align: center;">
-															<strong>Đã hủy đơn</strong>
+															<strong th:text=#{status.cancelled}>Cancelled</strong>
 														</p>
 
 													</td>

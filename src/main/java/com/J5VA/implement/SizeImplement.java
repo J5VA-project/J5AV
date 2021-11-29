@@ -10,7 +10,7 @@ import com.J5VA.entity.Size;
 import com.J5VA.service.SizeService;
 
 @Service
-public class SizeMangerImpl implements SizeService {
+public class SizeImplement implements SizeService {
 	@Autowired
 	SizeDao sizeDao;
 	

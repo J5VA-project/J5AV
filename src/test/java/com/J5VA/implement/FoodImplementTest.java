@@ -6,6 +6,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -42,10 +43,10 @@ public class FoodImplementTest {
 	void test_findFoodById_fail() {
 		Integer foodId = 3;
 		Food mockFoods = new Food();
-		when(foodDao.findById(foodId).get()).thenReturn(mockFoods);
+		when(foodDao.findById(foodId)).thenReturn(Optional.of(mockFoods));
 		Food actualFoods = foodService.findById(foodId);
 		assertThat(actualFoods).isEqualTo(mockFoods);
-		verify(foodDao).findAll();
+		verify(foodDao).findById(foodId);
 	}
 	
 
