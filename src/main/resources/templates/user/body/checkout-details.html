@@ -11,10 +11,10 @@
 				<div class="row">
 					<div class="col-xl-12">
 						<div class="breadcrumb-title">
-							<h2>Order Detail</h2>
+							<h2 th:text=#{breadcrumb.order-detail}>Order Detail</h2>
 							<ul class="breadcrumb-menu list-style">
-								<li><a th:href="@{/home}">Home </a></li>
-								<li>Order Detail</li>
+								<li><a th:href="@{/home}" th:text=#{breadcrumb.home}>Home </a></li>
+								<li th:text=#{breadcrumb.order-detail}>Order Detail</li>
 							</ul>
 						</div>
 					</div>
@@ -39,7 +39,7 @@
                         			<path stroke-linecap="round"
 											stroke-linejoin="round" stroke-width="2"
 											d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                        </svg> Generate Invoice
+                        </svg> <i th:text=#{purchase.history}> Purchase history</i>
 								</a>
 							</div>
 						</div>
@@ -47,18 +47,17 @@
 					<div class="row text-center">
 						<div class="col-sm-3">
 							<div id="1">
-								<i class="bi bi-journal-text"></i><br> Ä�ang chá»� xÃ¡c nháº­n
+								<i class="bi bi-journal-text"></i><br> <b th:text=#{status.waiting}>Chờ xác nhận</b> 
 							</div>
 						</div>
 						<div class="col-sm-3">
 							<div id="2">
-								<i class="bi bi-journal-check"></i><br> Ä�Ã£ xÃ¡c nháº­n Ä‘Æ¡n
-								hÃ ng
+								<i class="bi bi-journal-check"></i><br><b th:text=#{status.confirmed}>Chờ lấy hàng</b> 
 							</div>
 						</div>
 						<div class="col-sm-3">
 							<div id="3">
-								<i class="bi bi-cart4"></i><br> Ä�ang giao
+								<i class="bi bi-cart4"></i><br><b th:text=#{status.shipping}> Đang giao</b> 
 							</div>
 						</div>
 						<div class="col-sm-3">
@@ -80,8 +79,7 @@
 							<div class="card">
 								<ul class="list-group list-group-flush">
 									<li class="list-group-item p-3">
-										<h5 th:text=#{info.title} class="font-weight-bold pb-2">ThÃƒÂ´ng
-											Tin Ã„ï¿½Ã†Â¡n HÃƒÂ ng</h5>
+										<h5 th:text=#{info.title} class="font-weight-bold pb-2">Order Info</h5>
 										<div class="table-responsive">
 											<table class="table table-borderless mb-0">
 												<tbody>
@@ -90,42 +88,40 @@
 														<td>[[*{order_id}]]</td>
 													</tr>
 													<tr class="white-space-no-wrap">
-														<td th:text=#{info.datetime} class="text-muted pl-0 col-4">NgÃƒÂ y
-															giÃ¡Â»ï¿½</td>
+														<td th:text=#{info.datetime} class="text-muted pl-0 col-4">Order day</td>
 														<td>[[*{orderdate}]]</td>
 													</tr>
 													<tr class="white-space-no-wrap">
-														<td th:text=#{info.payment} class="text-muted pl-0 col-4">Thanh
-															toÃƒÂ¡n</td>
-														<td>Credit Card"</td>
-													</tr>
-													<tr class="white-space-no-wrap">
-														<td th:text=#{info.status} class="text-muted pl-0 col-4">Tráº¡ng
-															thÃ¡i</td>
+														<td th:text=#{info.status} class="text-muted pl-0 col-4">Status</td>
+
+
+
+
+
 														<td class="text-muted pl-0" style="width: 300px;">
 															<p th:if="${order.status} == 1" class=" font-weight-bold"
 																style="color: #ffc61a;">
-																<strong>Chá»� xÃ¡c nháº­n</strong>
+																<strong th:text=#{status.waiting}>Waiting</strong>
 															</p>
 
 															<p th:if="${order.status} == 2" class=" font-weight-bold"
 																style="color: #333399;">
-																<strong>Ä�Ã£ xÃ¡c nháº­n Ä‘Æ¡n hÃ ng</strong>
+																<strong th:text=#{status.confirmed}>Confirmed</strong>
 															</p>
 
 															<p th:if="${order.status} == 3" class=" font-weight-bold"
 																style="color: #990099;">
-																<strong>Ä�ang giao</strong>
+																<strong th:text=#{status.shipping}>Shipping</strong>
 															</p>
 
 															<p th:if="${order.status} == 4" class=" font-weight-bold"
 																style="color: green;">
-																<strong>Ä�Ã£ nháº­n hÃ ng</strong>
+																<strong th:text=#{status.received}>Received</strong>
 															</p>
 
 															<p th:if="${order.status} == 5" class=" font-weight-bold"
 																style="color: #cc0000;">
-																<strong>Ä�Ã£ há»§y Ä‘Æ¡n </strong>
+																<strong th:text=#{status.cancelled}>Cancelled</strong>
 															</p>
 														</td>
 													</tr>
@@ -137,25 +133,22 @@
 											<input id="id" th:value="${order.order_id}" name="id"
 												type="hidden"> <input id="statusOrder"
 												th:value="5" name="statusOrder" type="hidden">
-											<button class="btn btn-danger col-sm-12" id="btn-cancel">Há»§y
-												Ä‘áº·t hÃ ng</button>
+											<button class="btn btn-danger col-sm-12" id="btn-cancel" th:text=#{status.cancel}>Cancel order</button>
 										</form> <!--  -->
 									</li>
 
 									<li class="list-group-item p-3">
-										<h5 th:text=#{cust.title} class="font-weight-bold pb-2">Chi
-											TiÃ¡ÂºÂ¿t KhÃƒÂ¡ch HÃƒÂ ng</h5>
+										<h5 th:text=#{cust.title} class="font-weight-bold pb-2">Customer</h5>
+
 										<div class="table-responsive">
 											<table class="table table-borderless mb-0">
 												<tbody>
 													<tr class="white-space-no-wrap">
-														<td th:text=#{cust.username} class="text-muted pl-0">TÃƒÂ i
-															khoÃ¡ÂºÂ£n</td>
+														<td th:text=#{cust.username} class="text-muted pl-0">Username</td>
 														<td>[[${#request.remoteUser}]]</td>
 													</tr>
 													<tr class="white-space-no-wrap">
-														<td th:text=#{cust.fullname} class="text-muted pl-0">HÃ¡Â»ï¿½
-															tÃƒÂªn</td>
+														<td th:text=#{cust.fullname} class="text-muted pl-0">Full name</td>
 														<td>[[*{order_acc.fullname}]]</td>
 													</tr>
 													<tr class="white-space-no-wrap">
@@ -163,17 +156,16 @@
 														<td>[[*{order_acc.email}]]</td>
 													</tr>
 													<tr class="white-space-no-wrap">
-														<td th:text=#{cust.phone} class="text-muted pl-0">SÃ„ï¿½T</td>
+														<td th:text=#{cust.phone} class="text-muted pl-0">Phone </td>
 														<td>[[*{order_acc.phone}]]</td>
 													</tr>
 													<tr class="white-space-no-wrap">
-														<td th:text=#{cust.address} class="text-muted pl-0">Ã„ï¿½Ã¡Â»â€¹a
-															chÃ¡Â»â€°</td>
+														<td th:text=#{cust.address} class="text-muted pl-0">Address</td>
 														<td>[[*{address}]]</td>
 													</tr>
 													<tr class="white-space-no-wrap">
-														<td th:text=#{cust.note} class="text-muted pl-0">Ghi
-															chÃƒÂº</td>
+														<td th:text=#{cust.note} class="text-muted pl-0">Note</td>
+
 														<td>[[*{note}]]</td>
 													</tr>
 												</tbody>
@@ -187,20 +179,18 @@
 							<div class="card">
 								<ul class="list-group list-group-flush">
 									<li class="list-group-item p-3">
-										<h5 th:text=#{prod.title} class="font-weight-bold">SÃ¡ÂºÂ£n
-											PhÃ¡ÂºÂ©m Ã„ï¿½ÃƒÂ£ Ã„ï¿½Ã¡ÂºÂ·t</h5>
+										<h5 th:text=#{prod.title} class="font-weight-bold">Food name</h5>
 									</li>
 									<li class="list-group-item p-0">
 										<div class="table-responsive">
 											<table class="table mb-0">
 												<thead>
 													<tr class="text-muted">
-														<th th:text=#{prod.image} width="30%">SÃ¡ÂºÂ£n phÃ¡ÂºÂ©m</th>
-														<th th:text=#{prod.name} width="25%">TÃƒÂªn sÃ¡ÂºÂ£n
-															phÃ¡ÂºÂ©m</th>
-														<th th:text=#{prod.qty} width="15%">SÃ¡Â»â€˜ lÃ†Â°Ã¡Â»Â£ng</th>
-														<th th:text=#{prod.price} width="15%">GiÃƒÂ¡</th>
-														<th th:text=#{prod.total} width="15%">TÃ¡Â»â€¢ng</th>
+														<th th:text=#{prod.image} width="30%">Food</th>
+														<th th:text=#{prod.name} width="25%">Food name</th>
+														<th th:text=#{prod.qty} width="15%">Quantity</th>
+														<th th:text=#{prod.price} width="15%">Price¡</th>
+														<th th:text=#{prod.total} width="15%">Total</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -208,7 +198,7 @@
 														th:object="${detail}">
 														<td width="30%" style="vertical-align: middle"><img
 															style="width: 80%" class="avatar rounded"
-															th:src="@{|/assets/img/feature/*{food.photo}|}"></td>
+															th:src="@{|/assets/products/*{food.photo}|}"></td>
 														<td width="25%" style="vertical-align: middle">
 															<div class="">
 																<div class="data-content">
@@ -248,7 +238,7 @@
 							$('#btn-cancel').hide();
 							$('#hoanthanh')
 									.html(
-											'<i class="bi bi-cart-check-fill"></i><br> Giao thÃ nh cÃ´ng');
+											'<i class="bi bi-cart-check-fill"></i><br> Done');
 							$('.progress-bar').addClass('bg-success');
 							if (status == 1) {
 								$('#btn-cancel').show();
@@ -278,7 +268,7 @@
 								$('#4').css('font-size', '2.5vh');
 								$('#hoanthanh')
 										.html(
-												'<i class="bi bi-cart-check-fill"></i><br> Giao thÃ nh cÃ´ng');
+												'<i class="bi bi-cart-check-fill"></i><br>  Done');
 								$('.progress-bar').css('width', '100%');
 							} else if (status == 5) {
 								$('#4').css('color', 'red');
@@ -286,7 +276,7 @@
 								$('#4').css('font-size', '2.5vh');
 								$('#hoanthanh')
 										.html(
-												'<i class="bi bi-cart-x"></i><br> Giao tháº¥t báº¡i');
+												'<i class="bi bi-cart-x"></i><br> Opps!');
 								$('.progress-bar').addClass('bg-danger');
 								$('.progress-bar').css('width', '100%');
 							}

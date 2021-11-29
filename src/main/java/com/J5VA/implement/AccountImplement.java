@@ -57,5 +57,4 @@ public class AccountImplement implements AccountService {
 	public Account findByUsername(String username) {
 		return dao.findByUsername(username);
 	}
-
 }

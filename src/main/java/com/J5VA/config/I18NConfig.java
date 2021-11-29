@@ -1,5 +1,5 @@
 
-package com.J5VA.service;
+package com.J5VA.config;
 import java.util.Locale;
 
 import org.springframework.context.MessageSource;
@@ -18,7 +18,7 @@ public class I18NConfig implements WebMvcConfigurer{
 	public MessageSource getMessageSource() {
 		ReloadableResourceBundleMessageSource ms = new ReloadableResourceBundleMessageSource();
 		ms.setDefaultEncoding("utf-8");
-		ms.setBasenames("classpath:i18n/home","classpath:i18n/global","classpath:i18n/order_detail");
+		ms.setBasenames("classpath:i18n/home","classpath:i18n/global","classpath:i18n/order_detail","classpath:i18n/cart","classpath:i18n/about","classpath:i18n/blog");
 		return ms;
 	}
 	

@@ -11,10 +11,10 @@
 				<div class="row">
 					<div class="col-xl-12">
 						<div class="breadcrumb-title">
-							<h2>Cart</h2>
+							<h2 th:text=#{breadcrumb.cart}>Cart</h2>
 							<ul class="breadcrumb-menu list-style">
-								<li><a th:href="@{/home}">Home </a></li>
-								<li>Cart</li>
+								<li><a th:href="@{/home}" th:text=#{breadcrumb.home}>Home </a></li>
+								<li th:text=#{breadcrumb.cart}>Cart</li>
 							</ul>
 						</div>
 					</div>
@@ -31,22 +31,22 @@
 							<table class="table table-bordered">
 								<thead>
 									<tr>
-										<th scope="col">Product</th>
-										<th scope="col">Quantity</th>
-										<th scope="col">Total Price</th>
-										<th scope="col">Remove</th>
+										<th scope="col" th:text=#{cart.product}>Product</th>
+										<th scope="col" th:text=#{cart.qty}>Quantity</th>
+										<th scope="col" th:text=#{cart.total-price}>Total Price</th>
+										<th scope="col" th:text=#{cart.remove}>Remove</th>
 									</tr>
 								</thead>
 								<tbody ng-repeat="item in cart.items">
 									<tr>
 										<td>
 											<div class="wh_item">
-												<img src="/assets/img/feature/{{item.photo}}" alt="Image">
+												<img src="/assets/products/{{item.photo}}" alt="Image">
 												<div class="wh-item-info">
 													<a href="shop-details.html">{{item.food_name}}</a>
 													<p>There are many variation of chicken.You can choose
 														your favourite one</p>
-													<span>${{item.price}}</span>
+													Price: <span>${{item.price}}</span>
 												</div>
 											</div>
 										</td>
@@ -81,46 +81,18 @@
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-12">
-						<div class="checkout-details">
-							<div class="content-box-title">
-								<h4 class="mb-20">Coupon Code</h4>
-							</div>
-							<div class="bill-details">
-								<div class="subtotal-wrap">
-									<div class="subtotal-item">
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing
-											elit. Aspernatur, hic. Libero non minima harum ducimus.</p>
-										<div class="form-group mb-0 w-100">
-											<input class="w-100" type="text"
-												placeholder="Enter code here">
-											<button type="submit">Apply</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row mt-20">
-								<div class="col-md-5">
-									<a href="cart.html" class="btn style1">Update Cart<i
-										class="las la-redo-alt"></i></a>
-								</div>
-								<div class="col-md-7 text-md-end">
-									<a th:href="@{/home/shop}" class="btn style1">Continue
-										Shopping<i class="flaticon-right-arrow-2"></i>
-									</a>
-								</div>
-							</div>
-						</div>
+					
 					</div>
 					<div class="col-lg-6 col-md-12">
 						<div class="checkout-details smt-30">
 							<div class="content-box-title">
-								<h4 class="mb-20">Total Bill</h4>
+								<h4 class="mb-20" th:text=#{cart.total-bill}>Total Bill</h4>
 							</div>
 							<div class="bill-details">
 								<div class="subtotal-wrap">
 									<div class="subtotal-item">
 										<div class="subtotal-item-left">
-											<h6>Subtotal</h6>
+											<h6 th:text=#{cart.subtotal}>Subtotal</h6>
 										</div>
 										<div class="subtotal-item-right">
 											<span>${{cart.amount|number:2}}</span>
@@ -128,7 +100,7 @@
 									</div>
 									<div class="subtotal-item">
 										<div class="subtotal-item-left">
-											<p>Shipping Charge</p>
+											<p th:text=#{cart.shipping}>Shipping Charge</p>
 										</div>
 										<div class="subtotal-item-right">
 											<p>$0.00</p>
@@ -136,7 +108,7 @@
 									</div>
 								</div>
 								<div class="total-wrap">
-									<h5>Total Amount</h5>
+									<h5 th:text=#{cart.total-amount}>Total Amount</h5>
 									<span>${{cart.amount|number:2}}</span>
 								</div>
 							</div>
@@ -144,8 +116,9 @@
 
 							<div ng-if="cart.items.length!=0">
 								<div class="col-lg-12 mt-3">	
-									<a th:href="@{/home/checkout}" class="btn style1 w-100 d-block">Proceed
-										To Checkout<i class="lar la-check-circle"></i>
+									<a th:href="@{/home/checkout}" class="btn style1 w-100 d-block">
+										<b th:text=#{cart.checkout}>Proceed To Checkout</b>
+										<i class="lar la-check-circle" ></i>
 									</a>
 								</div>
 							</div>

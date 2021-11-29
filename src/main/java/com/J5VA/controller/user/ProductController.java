@@ -1,5 +1,6 @@
 package com.J5VA.controller.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +13,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.J5VA.dao.FoodCategoryDao;
 import com.J5VA.dao.FoodDao;
 import com.J5VA.dao.SizeDao;
+import com.J5VA.entity.Account;
 import com.J5VA.entity.Food;
 import com.J5VA.entity.FoodCategory;
+import com.J5VA.entity.Report;
 import com.J5VA.entity.Size;
 import com.J5VA.service.FoodCategoryService;
 import com.J5VA.service.FoodService;
+import com.J5VA.service.OrdersService;
 import com.J5VA.service.SizeService;
 
 @Controller
@@ -27,6 +31,9 @@ public class ProductController {
 	FoodCategoryService foodCategoryService;
 	@Autowired
 	SizeService sizeService;
+	@Autowired
+	OrdersService service;
+
 
 	@GetMapping(value = "/home/shop")
 	public String listByPage(Model model,
@@ -78,6 +85,14 @@ public class ProductController {
 		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("foods", food);
 		model.addAttribute("count", count);
+		
+		List<Report> items = service.getInventoryByOrder();
+		List<Report> top6 = new ArrayList<Report>();
+		int i = 0;
+		for (i = 0; i <= 5; i++) {
+			top6.add(items.get(i));
+		}
+		model.addAttribute("top6", top6);
 
 		return "user/body/shop-slide";
 	}

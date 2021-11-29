@@ -23,7 +23,6 @@
          </div>
      </div>
 
-
      <section class="product-details-wrap pt-100">
          <div class="container">
              <div class="row gx-5 ">
@@ -31,26 +30,26 @@
                      <div class="swiper-container mySwiper2 single-product-slider">
                          <div class="swiper-wrapper">
                              <div class="swiper-slide">
-                                 <img th:src="@{|/assets/img/feature/${food.photo}|}" alt="Image">
+                                 <img th:src="@{|/assets/products/${food.photo}|}" alt="Image">
                              </div>
                              <div class="swiper-slide">
-                                 <img th:src="@{|/assets/img/feature/${food.food_detail.image_title1}|}" alt="Image">
+                                 <img th:src="@{|/assets/products/${food.food_detail.image_title1}|}" alt="Image">
                              </div>
                              <div class="swiper-slide">
-                                 <img th:src="@{|/assets/img/feature/${food.food_detail.image_title2}|}" alt="Image">
+                                 <img th:src="@{|/assets/products/${food.food_detail.image_title2}|}" alt="Image">
                              </div>
                          </div>
                      </div>
                      <div class="swiper-container mySwiper single-product-thumbs">
                          <div class="swiper-wrapper">
                              <div class="swiper-slide">
-                                 <img th:src="@{|/assets/img/feature/${food.photo}|}" alt="Image">
+                                 <img th:src="@{|/assets/products/${food.photo}|}" alt="Image">
                              </div>
                              <div class="swiper-slide">
-                                 <img th:src="@{|/assets/img/feature/${food.food_detail.image_title1}|}" alt="Image">
+                                 <img th:src="@{|/assets/products/${food.food_detail.image_title1}|}" alt="Image">
                              </div>
                              <div class="swiper-slide">
-                                 <img th:src="@{|/assets/img/feature/${food.food_detail.image_title2}|}" alt="Image">
+                                 <img th:src="@{|/assets/products/${food.food_detail.image_title2}|}" alt="Image">
                              </div>
                          </div>
                          <div class="product-slider-next slider-btn style2"><i
@@ -75,16 +74,7 @@
                              </div>
                              <h3><span>$[[${food.price}]]</span></h3>
                          </div>
-                         <div class="single-product-desc">
-                             <p>
-                                 [[${food.food_detail.description}]]
-                             </p>
-                             <ul class="content-feature-list list-style mb-20">
-                                 <li><i class="las la-check-circle"></i>4 thick cut pork chops</li>
-                                 <li><i class="las la-check-circle"></i>1 tablespoon dried basil
-                                 </li>
-                             </ul>
-                         </div>
+            
                          <div class="product-more-option">
                              <div class="product-more-option-item">
                                  <h6>Quantity:</h6>
@@ -148,27 +138,8 @@
                      <div class="tab-content product-tab-content">
                          <div class="tab-pane fade show active" id="tab_1" role="tabpanel">
                              <div class="product_desc">
-                                 <p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Ipsum non facilis
-                                     corporis modi consequatur. Iure perferendis dicta illum deleniti veritatis
-                                     vero tempora maxime ducimus quaerat, iusto omnis magni doloribus. Repellat
-                                     exercitationem odio rerum doloremque quod, enim iste doloribus fugit
-                                     incidunt suscipit, totam illo molestias! Beatae error reprehenderit autem ex
-                                     sit laudantium praesentium quibusdam optio, ab omnis magnam nobis quisquam
-                                     enim ad sint? Error soluta exercitationem earum atque</p>
-                                 <ul class="content-feature-list list-style mb-0">
-                                     <li><i class="las la-check-circle"></i>Lorem ipsum dolor, sit amet.</li>
-                                     <li><i class="las la-check-circle"></i>Amet consectetur adipisicing elit.
-                                         Officia, odit!</li>
-                                     <li><i class="las la-check-circle"></i>Aquaerat ipsa quis possimus.</li>
-                                     <li><i class="las la-check-circle"></i>Lorem, ipsum dolor sit amet
-                                         consectetur
-                                         adipi.</li>
-                                     <li><i class="las la-check-circle"></i>Consectetur adipisicing elit.
-                                         Voluptatibus, dignissimos.</li>
-                                     <li><i class="las la-check-circle"></i>Highly professional administration
-                                     </li>
-                                     <li><i class="las la-check-circle"></i>Lorem ipsum dolor sit.</li>
-                                 </ul>
+                                 <p>[[${food.food_detail.description}]]</p>
+                          
                              </div>
                          </div>
                          <div class="tab-pane fade" id="tab_2" role="tabpanel">
@@ -310,7 +281,7 @@
                              <div th:each="foods:${food.food_detail.foodCategory.foodDetails}" class="swiper-slide">
                                  <div class="feature-card style1">
 				                     <div class="feature-img">
-				                         <img th:src="@{|/assets/img/feature/${foods.food.photo}|}" alt="Image">
+				                         <img th:src="@{|/assets/products/${foods.food.photo}|}" alt="Image">
 				                     </div>
 				                     <div class="feature-info">
 				                         <h3 class="feature-title"><a th:href="@{|/home/shop-details/${foods.food_id}|}">[[${foods.food.food_name}]]</a></h3>

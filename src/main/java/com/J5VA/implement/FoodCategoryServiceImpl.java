@@ -13,6 +13,7 @@ import com.J5VA.service.FoodCategoryService;
 public class FoodCategoryServiceImpl implements FoodCategoryService {
 	@Autowired
 	FoodCategoryDao dao;
+
 	@Override
 	public List<FoodCategory> findAll() {
 		return dao.findAll();
@@ -37,5 +38,4 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 	public void delete(Integer id) {
 		dao.deleteById(id);
 	}
-
 }

@@ -25,7 +25,6 @@ public class UploadServiceImpl implements UploadService {
 		try {
 			File savedFile = new File(dir, name);
 			file.transferTo(savedFile);
-			System.out.println(savedFile.getAbsolutePath());
 			return savedFile;
 		} catch (Exception e) {
 			throw new RuntimeException(e);

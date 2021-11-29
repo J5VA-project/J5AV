@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/swiper-min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <div class="container-fluid">
@@ -42,6 +44,7 @@
 									<td><a href="" ng-click="changeTab(2);edit(food)"><i
 											class="fa fa-edit"></i></a> &nbsp;&nbsp; <a href=""
 										ng-click="delete(food)"> <i class="fa fa-trash"></i></a></td>
+										
 
 								</tr>
 							</tbody>
@@ -69,32 +72,53 @@
 		<div ng-show="current_tab == 2">
 			<label>Food Image</label>
 			<div class="row">
+			<div class="col-lg-6">
+                     <div class="swiper-container mySwiper2 single-product-slider">
+                         <div class="swiper-wrapper">
+                             <div class="swiper-slide">
+                                <label for="image">
+									<img ng-src="{{'/assets/products/'+ form.food.photo}}" style="width: 680px; height: 350px" title="Click here to choose food image"> 
+								</label>
+                             </div>
+                             <div class="swiper-slide">
+                                 <label for="image1">
+									<img ng-src="{{'/assets/products/'+ form.image_title1}}" style="width: 680px; height: 350px" class="img-fluid" title="Click here to choose food image">
+								</label>
+                             </div>
+                             <div class="swiper-slide">
+                                 <label for="image2">
+									<img ng-src="{{'/assets/products/'+ form.image_title2}}" style="width: 680px; height: 350px" class="img-fluid" title="Click here to choose food image">
+								</label>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="swiper-container mySwiper single-product-thumbs">
+                         <div class="swiper-wrapper">
+                             <div class="swiper-slide">
+									<img src="/assets/products/{{form.food.photo}}" style="width: 100%; height: 140px"> 
+                             </div>
+                             <div class="swiper-slide">
+									<img src="/assets/products/{{form.image_title1}}" style="width: 100%; height: 140px">
+                             </div>
+                             <div class="swiper-slide">                               
+									<img src="/assets/products/{{form.image_title2}}" style="width: 100%; height: 140px">
+                             </div>
+                         </div>
+                         <div class="product-slider-next slider-btn style2">
+                         	<i class="ti-control-forward"></i>
+                         </div>
+                         <div class="product-slider-prev slider-btn style2">
+                         	<i class="ti-control-backward"></i>
+                         </div>
+                     </div>
+                 </div>
 				
-				<div class="col-xl-6">
-					<div class="card-box">				
-						<img ng-src="{{'/assets/img/feature/'+ form.food.photo}}" style="max-width: 100%;height: 100%;">
-					</div>
-					<input type="file" class="form-control" ng-model="form.food.photo">
-					<hr>
-					<label>Food Detail Image</label>
-					<div class="col-xl-12 row">
-					
-					<div class="col-xl-6">
-					<div class="card-box">
-						<img ng-src="{{'/assets/img/feature/'+ form.image_title1}}" style="max-width: 100%;height: 100%;">
-					</div>					
-					<input type="file" class="form-control" ng-model="form.image_title1" >
-					</div>
-					<hr>
-					<div class="col-xl-6">
-					<div class="card-box">
-						<img ng-src="{{'/assets/img/feature/'+ form.image_title2}}" style="max-width: 100%;height: 100%;">
-					</div>
-					<input type="file" class="form-control" ng-model="form.image_title2">
-					</div>
-					</div>
-				</div>
-				<!-- end col -->
+				<input hidden="true" type="file" class="form-control" id="image"
+									onchange="angular.element(this).scope().imageFoodChange(this.files)">
+				<input hidden="true" type="file" class="form-control" id="image1"
+									onchange="angular.element(this).scope().imageFoodDetail1(this.files)">
+				<input hidden="true" type="file" class="form-control" id="image2"
+									onchange="angular.element(this).scope().imageFoodDetail2(this.files)">					
 
 				<div class="col-xl-6">
 					<div class="card-box">
@@ -148,7 +172,7 @@
 								<div class="col-sm-10">
 									<select style="height: 100%" ng-model="form.foodCategory.foodcategory_id"
 										class="form-control">
-										<option ng-repeat="c in cates" ng-value="c.foodcategory_id">{{c.foodcategory_name}}</option>
+										<option ng-repeat="c in cates"  ng-value="c.foodcategory_id">{{c.foodcategory_name}}</option>
 									</select>
 								</div>
 							</div>
@@ -167,11 +191,12 @@
 							<div class="form-group row">
 								<label for="description" class="col-sm-2 col-form-label">Description</label>
 								<div class="col-sm-10">
-									<textarea type="text" required class="form-control"
+									<textarea rows="7" class="form-control"
 										ng-model="form.description" id="description"
 										placeholder="Description"></textarea>
 								</div>
 							</div>
+							<br>
 							
 								<div class="form-group">
 									<div class="row">
@@ -208,3 +233,6 @@
 		</div>
 	</div>
 </div>
+	<script src="/assets/js/jquery.appear.js"></script>
+	<script src="/assets/js/swiper-min.js"></script>
+	<script src="/admin/js/image.js"></script>

@@ -39,7 +39,7 @@
 					</div>
 					<div class="login-form">
 						<div class="login-header bg-green">
-							<h2 class="text-center mb-0">Register</h2>
+							<h2 class="text-center mb-0" th:text=#{breadcrumb.register}>Register</h2>
 						</div>
 						<div class="login-body">
 							<div th:text="${message}"></div>
@@ -102,7 +102,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<button type="button" id="btn-register"
-												class="btn style1 w-100 d-block">Register</button>
+												class="btn style1 w-100 d-block" th:text=#{breadcrumb.register}>Register</button>
 										</div>
 									</div>
 									<div class="col-lg-12">

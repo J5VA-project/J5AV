@@ -1,282 +1,324 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/header::dynamic(~{::body})}">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/header::dynamic(~{::body})}">
 
 <!-- Mirrored from templates.hibootstrap.com/caban/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:01 GMT -->
 
 <body>
-	 <section class="hero-wrap style1 bg-cod-grey">
-	     <img src="/assets/img/hero/hero-shape-1.png" alt="Image" class="hero-shape-1">
-	     <img src="/assets/img/hero/hero-shape-2.png" alt="Image" class="hero-shape-2">
-	     <img src="/assets/img/hero/hero-shape-31.png" alt="Image" class="hero-shape-3 md-none">
-	     <div class="container-fluid">
-	         <div class="row align-items-center">
-	             <div class="col-lg-6">
-	                 <div class="hero-content">
-	                     <h1 th:text="#{home.title}">We Provide Express Home Delivery</h1>
-	                     <p th:text="#{home.sale}">In shakes item of 2021 we are offering
-	                         20% flat discount. Don't miss out!!</p>
-	                     <div class="hero-btn">
-	                         <a th:href="@{/home/shop}" class="btn style1" ><i th:text="#{home.order}"
-	                                 class="las la-shopping-bag"></i></a>
-	                     </div>
-	                 </div>
-	             </div>
-	             <div class="col-lg-6">
-	                 <div class="hero-img-wrap">
-	                     <img src="/assets/img/hero/hero-img-1.png" alt="Image">
-	                 </div>
-	             </div>
-	         </div>
-	     </div>
-	 </section>
-	
-	
-	 <section class="about-wrap style1 ptb-100">
-	     <div class="container">
-	         <div class="row gx-5 align-items-center">
-	             <div class="col-lg-6">
-	                 <div class="about-img-wrap">
-	                     <img src="/assets/img/about/about-shape-1.png" alt="Image" class="abouut-shape-1 md-none">
-	                     <img src="/assets/img/about/about-shape-2.png" alt="Image" class="abouut-shape-2 md-none">
-	                     <img src="/assets/img/about/about-shape-3.png" alt="Image" class="abouut-shape-3 md-none">
-	                     <div class="about-bg-1 bg-f"></div>
-	                     <div class="about-bg-2 bg-f"></div>
-	                 </div>
-	             </div>
-	             <div class="col-lg-6">
-	                 <div class="about-content">
-	                     <div class="content-title style2 mb-15">
-	                         <span >
-	                             <img src="/assets/img/secion-shape-1.png" alt="Image">
-	                            <i th:text="#{home.story}">Our Story</i> 
-	                             <img src="/assets/img/secion-shape-2.png" alt="Image">
-	                         </span>
-	                         <h2 th:text="#{home.story.1}">We Provide Locally Crafted Food Service </h2>
-	                     </div>
-	                     <p th:text="#{home.story.2}">In our restaurant with people who are important to you, conversations that bring you
-	                         closer to each other and those who enjoy our dishes.
-	                         Traditional dishes with local products of highest quality. including succulent Veal
-	                         Chops Sicilian, spicy Lobster Fra Diazole, tender Chicken Contadina.</p>
-	                     <img src="/assets/img/about/author-sign.png" alt="Image">
-	                 </div>
-	             </div>
-	         </div>
-	     </div>
-	 </section>
-	
-	
-	 <section class="service-wrap bg-f service-bg-1 pt-100 pb-75">
-	     <div class="overlay op-7 bg-white"></div>
-	     <div class="container">
-	         <div class="section-title style1 text-center mb-110">
-	             <span>
-	                 <img src="/assets/img/secion-shape-1.png" alt="Image">
-	                 <i th:text="#{service.title}"></i>
-	                 <img src="/assets/img/secion-shape-2.png" alt="Image">
-	             </span>
-	             <h2 th:text="#{service.title1}">What We Offer</h2>
-	         </div>
-	         <div class="row">
-	             <div class="col-lg-12">
-	                 <div class="service-card-wrap">
-	                     <div class="service-card style1">
-	                         <div class="service-img">
-	                             <img src="/assets/img/service/breakfast.png" alt="Image">
-	                         </div>
-	                         <div class="service-info">
-	                             <h3 class="service-title"><a th:href="@{/home/service-details}" th:text="#{service.breakfast}">Breakfast</a></h3>
-	                             <p th:text="#{service.breakfast.content}">Breakfast is the most important meal of the day and I definitely have a hearty breakfast before I do anything</p>
-	                         </div>
-	                     </div>
-	                     <div class="service-card style1">
-	                         <div class="service-img">
-	                             <img src="/assets/img/service/lunch.png" alt="Image">
-	                         </div>
-	                         <div class="service-info">
-	                             <h3 class="service-title"><a href="service-details.html" th:text="#{service.brunch}">Brunch</a></h3>
-	                             <p th:text="#{service.brunch.content}"> What's better than having a delicious meal in the brunch.</p>
-	                         </div>
-	                     </div>
-	                     <div class="service-card style1">
-	                         <div class="service-img">
-	                             <img src="/assets/img/service/dinner.png" alt="Image">
-	                         </div>
-	                         <div class="service-info">
-	                             <h3 class="service-title"><a href="service-details.html" th:text="#{service.lunch}">Lunch</a></h3>
-	                             <p th:text="#{service.lunch.content}">Ask not what you can do for your country. Ask what's for lunch.</p>
-	                         </div>
-	                     </div>
-	                     <div class="service-card style1">
-	                         <div class="service-img">
-	                             <img src="/assets/img/service/custom.png" alt="Image">
-	                         </div>
-	                         <div class="service-info">
-	                             <h3 class="service-title"><a href="service-details.html" th:text="#{service.dinner}">Dinner</a></h3>
-	                             <p th:text="#{service.dinner.content}">It's a wonderful time when you sit down around the table for dinner and discuss life.</p>
-	                         </div>
-	                     </div>
-	                 </div>
-	             </div>
-	         </div>
-	     </div>
-	 </section>
-	
-	
-	 <section class="feature-wrap style1 pt-100 pb-70 bg-1 pos-rel">
-	     <div class="feature-top-shape bg-f">
-	         <img src="/assets/img/shape-1.png" alt="Image" class="feature-top-shape-1 md-none">
-	         <img src="/assets/img/shape-2.png" alt="Image" class="feature-top-shape-2 md-none">
-	         <div class="overlay op-9 bg-black"></div>
-	     </div>
-	     <div class="overlay op-6 bg-white"></div>
-	     <div class="section-title style6 text-center mb-40">
-	         <span>
-	             <img src="/assets/img/secion-shape-1.png" alt="Image">
-	             <i th:text=#{product.title}></i>
-	             <img src="/assets/img/secion-shape-2.png" alt="Image">
-	         </span>
-	         <h2 class="text-white" th:text=#{product.title1}>Hot Products Of Our Restaurant</h2>
-	     </div>
-	     <div class="container pos-rel">
-	         <div class="row justify-content-center">
-	             <div th:each="food:${foods}" class="col-xl-4 col-lg-6 col-md-6">
-	                 <div class="feature-card style1">
-	                     <div class="feature-img">
-	                         <img th:src="@{|/assets/img/feature/${food.group.photo}|}" alt="Image">
-	                     </div>
-	                     <div class="feature-info">
-	                         <h3 class="feature-title"><a th:href="@{|/home/shop-details/${food.group.food_id}|}">[[${food.group.food_name}]]</a></h3>
-	                         <div class="product-more-option-item">
-		                         	 <div class="col-lg-6 col-md-6 col-12">
-			                         	 <h6 th:text=#{product.category}>Category</h6>
-			                         	 <a th:href="@{|/home/shop?cid=${food.group.food_detail.foodCategory.foodcategory_name}|}">[[${food.group.food_detail.foodCategory.foodcategory_name}]]</a>
-	                                 </div>
-	                                 <div class="col-lg-6 col-md-6 col-12">
-	                                 	 <h6 th:text=#{product.size}>Size</h6>
-	                                 	 <a  th:href="@{|/home/shop?sid=${food.group.food_detail.food_detail_size.name}|}">[[${food.group.food_detail.food_detail_size.name}]]</a>
-	                                 </div>
-	                         </div>
-	                         <div class="feature-meta">
-	                             <p class="feature-price">[[${food.group.price}]]$</p>
-	                         </div>
-	                 
-	                         	<button class="btn style2"
-										th:attr="ng-click=@{|cart.add(${food.group.food_id})|}">
-										<i class="flaticon-shopping-bag-1"></i><b th:text=#{product.addcart}></b>
-								</button>
-	                         <div class="discount-tag">
-	                             <img src="/assets/img/feature/circle-1.png" alt="Image">
-	                             <p> <span>[[${food.group.food_detail.status?'Stocking':'Out of stock'}]]</span></p>
-	                         </div>
-	                     </div>
-	                 </div>
-	             </div>
-	         </div>
-	     </div>
-	 </section>
-	 <section class="contact-wrap style1 bg-f contact-bg-1 pt-100 pb-70 pos-rel">
-	     <div class="overlay bg-black op-85"></div>
-	     <img src="/assets/img/shape-1.png" alt="Iamge" class="contact-shape-1 lg-none">
-	     <img src="/assets/img/shape-2.png" alt="Iamge" class="contact-shape-2 lg-none">
-	     <div class="section-title style6 text-center mb-40">
-	         <span class="text-sunshade">
-	             <img src="/assets/img/secion-shape-1.png" alt="Image">
-	             <i th:text="#{contact.title}">Contact Us</i>
-	             <img src="/assets/img/secion-shape-2.png" alt="Image">
-	         </span>
-	         <h2 class="text-white" th:text="#{contact.title1}">Not Sure What To Order? <br> Contact Us Now</h2>
-	     </div>
-	     <div class="container pos-rel">
-	         <div class="row">
-	             <div class="col-xl-10 offset-xl-1">
-	                 <div class="contact-box-wrap">
-	                     <div class="contact-box-icon">
-	                         <i class="flaticon-phone-call"></i>
-	                     </div>
-	                     <div class="contact-box">
-	                         <h5 th:text="#{contact.phone}">Make A Call</h5>
-	                         <a href="tel:0963230016">096-323-0016</a>
-	                     </div>
-	                     <div class="contact-box">
-	                         <h5 th:text="#{contact.mail}">Mail Us</h5>
-	                         <a href="mainto:j5varestaurant@gmail.com"><span class="__cf_email__"
-	                                 data-cfemail="bbd3ded7d7d4fbd8dad9dad595d8d4d6">j5varestaurant</span></a>
-	                         <img src="/assets/img/contact/contact-img-1.png" alt="Image">
-	                     </div>
-	                 </div>
-	             </div>
-	         </div>
-	     </div>
-	 </section>
-	 <section class="testimonial-wrap bg-f testimonial-bg-1 pt-100 pb-100 pos-rel">
-	     <div class="overlay bg-white op-7"></div>
-	     <div class="section-title style1 text-center mb-40">
-	         <span>
-	             <img src="/assets/img/secion-shape-1.png" alt="Image">
-	             <i th:text=#{testimonials.title}></i>
-	             <img src="/assets/img/secion-shape-2.png" alt="Image">
-	         </span>
-	         <h2 th:text=#{testimonials.title1}>Our Happy Customers</h2>
-	     </div>
-	     <div class="container">
-	         <div class="row">
-	             <div class="col-md-12">
-	                 <div class="testimonial-slider-one swiper-container">
-	                     <div class="swiper-wrapper">
-	                     
-	                         <div th:each="cust:${custs}" class="swiper-slide">
-	                             <div class="testimonial-item style1">
-	                                 <div class="client-img">
-	                                     <img th:src="@{|/assets/img/testimonial/${cust.image}|}" alt="Image">
-	                                 </div>
-	                                 <div class="client-info">
-	                                     <h4>[[${cust.fullname}]]</h4>
-	                                     <span>[[${cust.email}]]</span>
-	                                 </div>
-	                                 <div class="client-quote">
-	                                     <p>[[${cust.address}]] - [[${cust.phone}]]</p>
-	                                 </div>
-	                                 <div class="client-rating-wrap">
-	                                     <ul class="ratings list-style">
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                         <li><i class="flaticon-star-1"></i></li>
-	                                     </ul>
-	                                     <div class="quote-icon">
-	                                         <i class="flaticon-right-quote-sign"></i>
-	                                     </div>
-	                                 </div>
-	                             </div>
-	                         </div>	                         
-	                     </div>
-	                     <div class="testimonial-one-pagination"></div>
-	                 </div>
-	             </div>
-	         </div>
-	     </div>
-	 </section>
-	
-	 <section class="newsletter-wrap bg-f newsletter-bg-1 ptb-100">
-	     <div class="container">
-	         <div class="row">
-	             <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-	                 <div class="section-title style1 text-center mb-40">
-	                     <h2 th:text="#{subscribe.title}">Newsletter Subscribe</h2>
-	                     <p th:text="#{subscribe.content}">Drop us your mail address. We love to hear from you and are happy to answer any
-	                         questions immediately.</p>
-	                 </div>
-	                 <form action="#" class="newsletter-form">
-	                     <div class="form-group">
-	                         <input type="email" placeholder="Enter Your Email Address">
-	                         <button type="submit"><i class="flaticon-direct"></i></button>
-	                     </div>
-	                 </form>
-	             </div>
-	         </div>
-	     </div>
-	 </section>
+	<section class="hero-wrap style1 bg-cod-grey">
+		<img src="/assets/img/hero/hero-shape-1.png" alt="Image"
+			class="hero-shape-1"> <img
+			src="/assets/img/hero/hero-shape-2.png" alt="Image"
+			class="hero-shape-2"> <img
+			src="/assets/img/hero/hero-shape-31.png" alt="Image"
+			class="hero-shape-3 md-none">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-lg-6">
+					<div class="hero-content">
+						<h1 th:text="#{home.title}">We Provide Express Home Delivery</h1>
+						<p th:text="#{home.sale}">In shakes item of 2021 we are
+							offering 20% flat discount. Don't miss out!!</p>
+						<div class="hero-btn">
+							<a th:href="@{/home/shop}" class="btn style1"><i
+								th:text="#{home.order}" class="las la-shopping-bag"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="hero-img-wrap">
+						<img src="/assets/img/hero/hero-img-1.png" alt="Image">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="about-wrap style1 ptb-100">
+		<div class="container">
+			<div class="row gx-5 align-items-center">
+				<div class="col-lg-6">
+					<div class="about-img-wrap">
+						<img src="/assets/img/about/about-shape-1.png" alt="Image"
+							class="abouut-shape-1 md-none"> <img
+							src="/assets/img/about/about-shape-2.png" alt="Image"
+							class="abouut-shape-2 md-none"> <img
+							src="/assets/img/about/about-shape-3.png" alt="Image"
+							class="abouut-shape-3 md-none">
+						<div class="about-bg-1 bg-f"></div>
+						<div class="about-bg-2 bg-f"></div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="about-content">
+						<div class="content-title style2 mb-15">
+							<span> <img src="/assets/img/secion-shape-1.png"
+								alt="Image"> <i th:text="#{home.story}">Our Story</i> <img
+								src="/assets/img/secion-shape-2.png" alt="Image">
+							</span>
+							<h2 th:text="#{home.story.1}">We Provide Locally Crafted
+								Food Service</h2>
+						</div>
+						<p th:text="#{home.story.2}">In our restaurant with people who
+							are important to you, conversations that bring you closer to each
+							other and those who enjoy our dishes. Traditional dishes with
+							local products of highest quality. including succulent Veal Chops
+							Sicilian, spicy Lobster Fra Diazole, tender Chicken Contadina.</p>
+						<img src="/assets/img/about/author-sign.png" alt="Image">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="service-wrap bg-f service-bg-1 pt-100 pb-75">
+		<div class="overlay op-7 bg-white"></div>
+		<div class="container">
+			<div class="section-title style1 text-center mb-110">
+				<span> <img src="/assets/img/secion-shape-1.png" alt="Image">
+					<i th:text="#{service.title}"></i> <img
+					src="/assets/img/secion-shape-2.png" alt="Image">
+				</span>
+				<h2 th:text="#{service.title1}">What We Offer</h2>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="service-card-wrap">
+						<div class="service-card style1">
+							<div class="service-img">
+								<img src="/assets/img/service/breakfast.png" alt="Image">
+							</div>
+							<div class="service-info">
+								<h3 class="service-title">
+									<a th:href="@{/home/service-details}"
+										th:text="#{service.breakfast}">Breakfast</a>
+								</h3>
+								<p th:text="#{service.breakfast.content}">Breakfast is the
+									most important meal of the day and I definitely have a hearty
+									breakfast before I do anything</p>
+							</div>
+						</div>
+						<div class="service-card style1">
+							<div class="service-img">
+								<img src="/assets/img/service/lunch.png" alt="Image">
+							</div>
+							<div class="service-info">
+								<h3 class="service-title">
+									<a href="service-details.html" th:text="#{service.brunch}">Brunch</a>
+								</h3>
+								<p th:text="#{service.brunch.content}">What's better than
+									having a delicious meal in the brunch.</p>
+							</div>
+						</div>
+						<div class="service-card style1">
+							<div class="service-img">
+								<img src="/assets/img/service/dinner.png" alt="Image">
+							</div>
+							<div class="service-info">
+								<h3 class="service-title">
+									<a href="service-details.html" th:text="#{service.lunch}">Lunch</a>
+								</h3>
+								<p th:text="#{service.lunch.content}">Ask not what you can
+									do for your country. Ask what's for lunch.</p>
+							</div>
+						</div>
+						<div class="service-card style1">
+							<div class="service-img">
+								<img src="/assets/img/service/custom.png" alt="Image">
+							</div>
+							<div class="service-info">
+								<h3 class="service-title">
+									<a href="service-details.html" th:text="#{service.dinner}">Dinner</a>
+								</h3>
+								<p th:text="#{service.dinner.content}">It's a wonderful time
+									when you sit down around the table for dinner and discuss life.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="feature-wrap style1 pt-100 pb-70 bg-1 pos-rel">
+		<div class="feature-top-shape bg-f">
+			<img src="/assets/img/shape-1.png" alt="Image"
+				class="feature-top-shape-1 md-none"> <img
+				src="/assets/img/shape-2.png" alt="Image"
+				class="feature-top-shape-2 md-none">
+			<div class="overlay op-9 bg-black"></div>
+		</div>
+		<div class="overlay op-6 bg-white"></div>
+		<div class="section-title style6 text-center mb-40">
+			<span> <img src="/assets/img/secion-shape-1.png" alt="Image">
+				<i th:text=#{product.title}></i> <img
+				src="/assets/img/secion-shape-2.png" alt="Image">
+			</span>
+			<h2 class="text-white" th:text=#{product.title1}>Hot Products Of
+				Our Restaurant</h2>
+		</div>
+		<div class="container pos-rel">
+			<div class="row justify-content-center">
+				<div th:each="food:${foods}" class="col-xl-4 col-lg-6 col-md-6">
+					<div class="feature-card style1">
+						<div class="feature-img">
+							<img th:src="@{|/assets/img/feature/${food.group.photo}|}"
+								alt="Image">
+						</div>
+						<div class="feature-info">
+							<h3 class="feature-title">
+								<a th:href="@{|/home/shop-details/${food.group.food_id}|}">[[${food.group.food_name}]]</a>
+							</h3>
+							<div class="product-more-option-item">
+								<div class="col-lg-6 col-md-6 col-12">
+									<h6 th:text=#{product.category}>Category</h6>
+									<a
+										th:href="@{|/home/shop?cid=${food.group.food_detail.foodCategory.foodcategory_name}|}">[[${food.group.food_detail.foodCategory.foodcategory_name}]]</a>
+								</div>
+								<div class="col-lg-6 col-md-6 col-12">
+									<h6 th:text=#{product.size}>Size</h6>
+									<a
+										th:href="@{|/home/shop?sid=${food.group.food_detail.food_detail_size.name}|}">[[${food.group.food_detail.food_detail_size.name}]]</a>
+								</div>
+							</div>
+							<div class="feature-meta">
+								<p class="feature-price">[[${food.group.price}]]$</p>
+							</div>
+
+							<button class="btn style2"
+								th:attr="ng-click=@{|cart.add(${food.group.food_id})|}">
+								<i class="flaticon-shopping-bag-1"></i><b
+									th:text=#{product.addcart}></b>
+							</button>
+							<div class="discount-tag">
+								<img src="/assets/img/feature/circle-1.png" alt="Image">
+								<p>
+									<span>[[${food.group.food_detail.status?'Stocking':'Out
+										of stock'}]]</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section
+		class="contact-wrap style1 bg-f contact-bg-1 pt-100 pb-70 pos-rel">
+		<div class="overlay bg-black op-85"></div>
+		<img src="/assets/img/shape-1.png" alt="Iamge"
+			class="contact-shape-1 lg-none"> <img
+			src="/assets/img/shape-2.png" alt="Iamge"
+			class="contact-shape-2 lg-none">
+		<div class="section-title style6 text-center mb-40">
+			<span class="text-sunshade"> <img
+				src="/assets/img/secion-shape-1.png" alt="Image"> <i
+				th:text="#{contact.title}">Contact Us</i> <img
+				src="/assets/img/secion-shape-2.png" alt="Image">
+			</span>
+			<h2 class="text-white" th:text="#{contact.title1}">
+				Not Sure What To Order? <br> Contact Us Now
+			</h2>
+		</div>
+		<div class="container pos-rel">
+			<div class="row">
+				<div class="col-xl-10 offset-xl-1">
+					<div class="contact-box-wrap">
+						<div class="contact-box-icon">
+							<i class="flaticon-phone-call"></i>
+						</div>
+						<div class="contact-box">
+							<h5 th:text="#{contact.phone}">Make A Call</h5>
+							<a href="tel:0963230016">096-323-0016</a>
+						</div>
+						<div class="contact-box">
+							<h5 th:text="#{contact.mail}">Mail Us</h5>
+							<a href="mainto:j5varestaurant@gmail.com"><span
+								class="__cf_email__"
+								data-cfemail="bbd3ded7d7d4fbd8dad9dad595d8d4d6">j5varestaurant</span></a>
+							<img src="/assets/img/contact/contact-img-1.png" alt="Image">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section
+		class="testimonial-wrap bg-f testimonial-bg-1 pt-100 pb-100 pos-rel">
+		<div class="overlay bg-white op-7"></div>
+		<div class="section-title style1 text-center mb-40">
+			<span> <img src="/assets/img/secion-shape-1.png" alt="Image">
+				<i th:text=#{testimonials.title}></i> <img
+				src="/assets/img/secion-shape-2.png" alt="Image">
+			</span>
+			<h2 th:text=#{testimonials.title1}>Our Happy Customers</h2>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="testimonial-slider-one swiper-container">
+						<div class="swiper-wrapper">
+
+							<div th:each="cust:${custs}" class="swiper-slide">
+								<div class="testimonial-item style1">
+									<div class="client-img">
+										<img th:src="@{|/assets/img/testimonial/${cust.image}|}"
+											alt="Image">
+									</div>
+									<div class="client-info">
+										<h4>[[${cust.fullname}]]</h4>
+										<span>[[${cust.email}]]</span>
+									</div>
+									<div class="client-quote">
+										<p>[[${cust.address}]] - [[${cust.phone}]]</p>
+									</div>
+									<div class="client-rating-wrap">
+										<ul class="ratings list-style">
+											<li><i class="flaticon-star-1"></i></li>
+											<li><i class="flaticon-star-1"></i></li>
+											<li><i class="flaticon-star-1"></i></li>
+											<li><i class="flaticon-star-1"></i></li>
+											<li><i class="flaticon-star-1"></i></li>
+										</ul>
+										<div class="quote-icon">
+											<i class="flaticon-right-quote-sign"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="testimonial-one-pagination"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="newsletter-wrap bg-f newsletter-bg-1 ptb-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+					<div class="section-title style1 text-center mb-40">
+						<h2 th:text="#{subscribe.title}">Newsletter Subscribe</h2>
+						<p th:text="#{subscribe.content}">Drop us your mail address.
+							We love to hear from you and are happy to answer any questions
+							immediately.</p>
+					</div>
+					<form action="#" class="newsletter-form">
+						<div class="form-group">
+							<input type="email" placeholder="Enter Your Email Address">
+							<button type="submit">
+								<i class="flaticon-direct"></i>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
 
 <!-- Mirrored from templates.hibootstrap.com/caban/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:23 GMT -->

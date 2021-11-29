@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/css/bootstrap.min.js">
 <link rel="stylesheet" href="/assets/css/line-awesome.min.css">
 <link rel="stylesheet" href="/assets/css/flaticon.css">
 <link rel="stylesheet" href="/assets/css/swiper-min.css">
@@ -153,7 +154,7 @@ a {
 							</div>
 							<div class="mobile-bar-wrap">
 								<a th:href="@{/home/cart}" class="shopcart  xl-none"> <i
-									class="las la-shopping-cart"></i> <span>{{cart.count}} </a>
+									class="las la-shopping-cart"></i>{{cart.count}} </a>
 								<a th:href="@{/auth/login/form}" class="shopcart xl-none"> <i
 									class="las la-user"></i>
 								</a>
@@ -377,7 +378,5 @@ a {
 	<script src="/assets/js/odometre.min.js"></script>
 	<script src="/assets/js/main.js"></script>
 </body>
-
-<!-- Mirrored from templates.hibootstrap.com/caban/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:23 GMT -->
 
 </html>

@@ -1,5 +1,3 @@
-package com.J5VA.controller.user;
-
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +17,7 @@ import com.J5VA.service.FavoriteService;
 import com.J5VA.service.FoodService;
 
 @Controller
+@RequestMapping("/favorite")
 @RequestMapping("/home/favorite")
 public class FavoriteController {
 	@Autowired
@@ -32,6 +31,12 @@ public class FavoriteController {
 
 	@GetMapping("/{id}")
 	public String add(@PathVariable("id") Integer id) {
+		System.out.println(id);
+		Favorite favorite = new Favorite();
+		Account account = accountService.findById(request.getRemoteUser());
+		Food food = foodService.findById(id);
+		favorite.setFavorite_acc(account);
+		favorite.setFavorite_f(food);
 //		Favorite favorite = new Favorite();
 //		Account account = accountService.findById(request.getRemoteUser());
 //		
@@ -49,6 +54,15 @@ public class FavoriteController {
 //			e.printStackTrace();
 //		}
 		try {
+			service.create(favorite);
+		} catch (Exception e) {
+
+
+
+
+
+
+
 			Account account = accountService.findByUsername(request.getRemoteUser());
 			List<Favorite> favorite = service.findAllByAccount(account);
 
@@ -77,13 +91,17 @@ public class FavoriteController {
 				}
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			e.getMessage();
 		}
+		return "redirect:/home";
 		return "redirect:/home/favorite/list";
 	}
 
 	@GetMapping("/list")
 	public String list(Model model) {
+		Favorite favorite = service.findByIdCustomer(request.getRemoteUser());
+		model.addAttribute("favorite", favorite);
 		try {
 			Account account = accountService.findByUsername(request.getRemoteUser());
 			List<Favorite> favorite = service.findAllByAccount(account);
