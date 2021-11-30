@@ -36,7 +36,7 @@ public class FavoriteController {
 		Account account = accountService.findByUsername(request.getRemoteUser());
 		List<Favorite> favorite = service.findAllByAccount(account);
 
-		boolean check = false;
+		boolean check = true;
 		for (int i = 0; i < favorite.size(); i++) {
 			if (id.equals(favorite.get(i).getFavorite_f().getFood_id())) {
 				check = false;
