@@ -184,6 +184,7 @@
 															.html(
 																	'Length fullname not null');
 													$('#error_fullname').show();
+													check = false;
 												} else {
 													$('#error_fullname').hide();
 												}
@@ -192,12 +193,14 @@
 													$('#error_email').html(
 															'Email not null');
 													$('#error_email').show();
+													check = false;
 												} else if ($('#email').val().length > 50
 														|| $('#email').val().length < 3) {
 													$('#error_email')
 															.html(
 																	'Length email not null');
 													$('#error_email').show();
+													check = false;
 												} else {
 													$('#error_email').hide();
 												}
@@ -208,6 +211,7 @@
 																	'Password confirm not null');
 													$('#error_passwordCofirm')
 															.show();
+													check = false;
 												} else if ($('#passwordCofirm')
 														.val().length > 50
 														|| $('#passwordCofirm')
@@ -217,12 +221,16 @@
 																	'Length password cofirm not null');
 													$('#error_passwordCofirm')
 															.show();
-												} else if ($('#password').val() != $('#passwordConfirm')) {
+													check = false;
+												} else if ($('#password').val() != $('#passwordCofirm').val()) {
 													$('#error_passwordCofirm')
 															.html(
 																	'Password confirm not match');
 													$('#error_passwordCofirm')
 															.show();
+													alert($('#password').val());
+													alert($('#passwordCofirm').val());
+													check = false;
 												} else {
 													$('#error_passwordCofirm')
 															.hide();

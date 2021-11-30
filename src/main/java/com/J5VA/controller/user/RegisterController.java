@@ -1,5 +1,7 @@
 package com.J5VA.controller.user;
 
+import java.util.Date;
+
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -52,6 +54,7 @@ public class RegisterController {
 			return "forward:/home/register";
 		} else {
 			model.addAttribute("custo", custo);
+			custo.setHire_date(new Date());
 			customerService.create(custo);
 			mailer.send(email, "Account Register",
 					"Dear. " + fullname
