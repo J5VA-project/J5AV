@@ -32,21 +32,33 @@ public class FavoriteController {
 
 	@GetMapping("/{id}")
 	public String add(@PathVariable("id") Integer id) {
-		Favorite favorite = new Favorite();
-		Account account = accountService.findById(request.getRemoteUser());
-		try {
-			Favorite check = service.findFavoriteByFood(id);
-		}catch (Exception e) {
+
+		Account account = accountService.findByUsername(request.getRemoteUser());
+		List<Favorite> favorite = service.findAllByAccount(account);
+
+		boolean check = false;
+		for (int i = 0; i < favorite.size(); i++) {
+			if (id.equals(favorite.get(i).getFavorite_f().getFood_id())) {
+				check = false;
+				break;
+			} else {
+				check = true;
+			}
+		}
+		System.out.println(id);
+		System.out.print(check);
+		if (check == true) {
+			Favorite favorite1 = new Favorite();
 			Food food = foodService.findById(id);
-			favorite.setFavorite_acc(account);
-			favorite.setFavorite_f(food);
+			favorite1.setFavorite_acc(account);
+			favorite1.setFavorite_f(food);
 			try {
-				service.create(favorite);
+				service.create(favorite1);
 			} catch (Exception ez) {
 				ez.printStackTrace();
 			}
-			e.printStackTrace();
 		}
+
 		return "redirect:/home/favorite/list";
 	}
 

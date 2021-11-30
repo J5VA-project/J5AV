@@ -85,25 +85,25 @@ a {
 								<div class="select-lang">
 									<div
 										class="navbar-option-item navbar-language dropdown language-option">
-										<button class="dropdown-toggle" type="button"
-											data-bs-toggle="dropdown" aria-haspopup="true"
-											aria-expanded="false">
-											<span class="lang-name"></span>
-										</button>
-										<div class="dropdown-menu language-dropdown-menu">
-											<a class="dropdown-item" href="#"> Language </a> <a
-												class="dropdown-item" href="?lang=en"> <img
-												src="/assets/img/uk.png" alt="flag"> English
-											</a> <a class="dropdown-item" href="?lang=vi"> <img
-												src="/assets/img/uae.png" alt="flag"> Tiếng Việt
-											</a>
+										<div class="row">
+											<div class="col-sm-2"></div>
+											<div class="col-sm-10">
+												<div class="row">
+													<div class="col-sm-6">
+														<a href="?lang=en"> <img src="/assets/img/uk.png"
+															alt="flag" style="height: 3vh">
+														</a>
+													</div>
+													<div class="col-sm-6">
+														<a href="?lang=vi"> <img src="/assets/img/uae.png"
+															alt="flag" style="height: 3vh">
+														</a>
+													</div>
+												</div>
+											</div>
 										</div>
+
 									</div>
-								</div>
-								<div class="select-currency">
-									<select>
-										<option value="1">&nbsp; USD</option>
-									</select>
 								</div>
 							</div>
 							<a href="reservation.html" class="btn style1 xl-none">Make
@@ -154,9 +154,9 @@ a {
 							</div>
 							<div class="mobile-bar-wrap">
 								<a th:href="@{/home/cart}" class="shopcart  xl-none"> <i
-									class="las la-shopping-cart"></i>{{cart.count}} </a>
-								<a th:href="@{/auth/login/form}" class="shopcart xl-none"> <i
-									class="las la-user"></i>
+									class="las la-shopping-cart"></i>{{cart.count}}
+								</a> <a th:href="@{/auth/login/form}" class="shopcart xl-none">
+									<i class="las la-user"></i>
 								</a>
 								<div class="mobile-top-bar xl-none">
 									<span></span> <span></span> <span></span>

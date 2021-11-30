@@ -35,38 +35,40 @@
 		<section class="Shop-wrap ptb-100">
 			<div class="container">
 				<div class="row gx-12">
-						<div class="row justify-content-center">
-							<div th:each="favorite:${favorite}" class="col-xl-4  col-lg-6 col-md-6">
-								<div class="feature-card style1">
-									<div class="feature-img">
-										<img
-											th:src="@{|/assets/products/${favorite.favorite_f.photo}|}"
-											alt="Image">
-									</div>
-									<div class="feature-info">
-										<h3 class="feature-title">
+					<div class="row justify-content-center">
+						<div th:each="favorite:${favorite}"
+							class="col-xl-4  col-lg-6 col-md-6">
+							<div class="feature-card style1">
+								<div class="feature-img">
+									<img
+										th:src="@{|/assets/img/feature/${favorite.favorite_f.photo}|}"
+										alt="Image">
+								</div>
+								<div class="feature-info">
+									<h3 class="feature-title">
+										<a
+											th:href="@{|/home/shop-details/${favorite.favorite_f.food_id}|}">[[${favorite.favorite_f.food_name}]]</a>
+									</h3>
+									<div class="product-more-option-item">
+										<div class="col-lg-6 col-md-6 col-12">
+											<h6 th:text=#{product.category}>Category:</h6>
 											<a
-												th:href="@{|/home/shop-details/${favorite.favorite_f.food_id}|}">[[${favorite.favorite_f.food_name}]]</a>
-										</h3>
-										<div class="product-more-option-item">
-											<div class="col-lg-6 col-md-6 col-12">
-												<h6 th:text=#{product.category}>Category:</h6>
-												<a
-													th:href="@{|/home/shop-details/{$favorite.favorite_f.food_detail.foodCategory.foodcategory_id}|}">
-													[[${favorite.favorite_f.food_detail.foodCategory.foodcategory_name}]]</a>
-											</div>
-											<div class="col-lg-6 col-md-6 col-12">
-												<h6 th:text=#{product.size}>Size:</h6>
-												<a
-													th:href="@{|/home/shop-details/${favorite.favorite_f.food_detail.food_detail_size.size_id}|}">
-													[[${favorite.favorite_f.food_detail.food_detail_size.name}]]</a>
-											</div>
+												th:href="@{|/home/shop-details/{$favorite.favorite_f.food_detail.foodCategory.foodcategory_id}|}">
+												[[${favorite.favorite_f.food_detail.foodCategory.foodcategory_name}]]</a>
 										</div>
-										<div class="feature-meta">
-											<p class="feature-price">[[${favorite.favorite_f.price}]]$</p>
+										<div class="col-lg-6 col-md-6 col-12">
+											<h6 th:text=#{product.size}>Size:</h6>
+											<a
+												th:href="@{|/home/shop-details/${favorite.favorite_f.food_detail.food_detail_size.size_id}|}">
+												[[${favorite.favorite_f.food_detail.food_detail_size.name}]]</a>
 										</div>
+									</div>
+									<div class="feature-meta">
+										<p class="feature-price">[[${favorite.favorite_f.price}]]$</p>
+									</div>
 
-											<div class="row">
+
+									<div class="row">
 										<div class="col-sm-7">
 											<button class="btn style2"
 												th:attr="ng-click=@{|cart.add(${favorite.favorite_f.food_id})|}">
@@ -76,31 +78,29 @@
 										</div>
 										<div class="col-sm-5">
 											<button class="btn style2">
-												<a th:href="@{'/home/favorite/delete/'+${favorite.favorite_id}}">
-												<!--  <i class="bi bi-heart"></i>-->
-												Delete</a>
+												<b>
+													<div class="row">
+														<div class="col-sm-4">
+															<i class="bi bi-trash-fill"></i>
+														</div>
+														<div class="col-sm-8">
+															<a
+																th:href="@{'/home/favorite/delete/'+${favorite.favorite_id}}"
+																style="color: red"> Delete </a>
+														</div>
+													</div>
+
+												</b>
 											</button>
-										</div>
-									</div>
-
-										<div class="discount-tag">
-
-											<img src="/assets/img/feature/circle-1.png" alt="Image">
-											<p>
-												<span>[[${favorite.favorite_f.food_detail.status?'Stocking':'Out
-													of stock'}]]</span>
-											</p>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+					</div>
 				</div>
 			</div>
 		</section>
-		<!--  -->
-
-
 	</div>
 
 

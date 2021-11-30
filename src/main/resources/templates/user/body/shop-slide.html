@@ -78,9 +78,10 @@
 							<div class="new-product-wrap">
 								<div th:each="top6:${top6}" class="new-product-item">
 									<a th:href="@{|/home/shop-details/${top6.group.food_id}|}"
-										class="new-product-img"> 
-									   <img th:src="@{|/assets/products/${top6.group.photo}|}" alt="Image">
-									</a>
+										class="new-product-img"> <img
+										th:src="@{|/assets/products/${top6.group.photo}|}" alt="Image">
+										<img th:src="@{|/assets/products/${top6.group.photo}|}"
+										alt="Image"></a>
 									<div class="new-product-info">
 										<h6>
 											<a th:href="@{|/home/shop-details/${top6.group.food_id}|}">[[${top6.group.food_name}]]</a>
@@ -195,17 +196,17 @@
 												th:text=#{product.sort}>Sort by</a>
 												<ul class="sub-menu list-style">
 													<li><a class="dropdown-item" th:value="asc"
-														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.sort1}>Price:
-															Low High</a></li>
+														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
+														th:text=#{product.sort1}>Price: Low High</a></li>
 													<li><a class="dropdown-item" th:value="desc"
-														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=desc&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.sort2}>Price:
-															High Low</a></li>
+														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=desc&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
+														th:text=#{product.sort2}>Price: High Low</a></li>
 													<li><a class="dropdown-item" th:value="za"
-														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=az&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.sort3}>Name:
-															A - Z</a></li>
+														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=az&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
+														th:text=#{product.sort3}>Name: A - Z</a></li>
 													<li><a class="dropdown-item" th:value="az"
-														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=za&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.sort4}>Name:
-															Z - A</a></li>
+														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=za&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
+														th:text=#{product.sort4}>Name: Z - A</a></li>
 												</ul></li>
 										</ul>
 									</div>
@@ -224,20 +225,20 @@
 												<ul class="sub-menu list-style">
 													<li><a class="dropdown-item" name="showPageNumber"
 														th:value="6"
-														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=6'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.show1}>Show
-															6</a></li>
+														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=6'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
+														th:text=#{product.show1}>Show 6</a></li>
 													<li><a class="dropdown-item" name="showPageNumber"
 														th:value="12"
-														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=12'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.show2}>Show
-															12</a></li>
+														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=12'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
+														th:text=#{product.show2}>Show 12</a></li>
 													<li><a class="dropdown-item" name="showPageNumber"
 														th:value="18"
-														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=18'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.show3}>Show
-															18</a></li>
+														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=18'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
+														th:text=#{product.show3}>Show 18</a></li>
 													<li><a class="dropdown-item" name="showPageNumber"
 														th:value="24"
-														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=24'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}" th:text=#{product.show4}>Show
-															24</a></li>
+														th:href="@{'/home/shop?p=1' + '&search='+${search}+'&sort=' + ${sort} + '&show=24'+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
+														th:text=#{product.show4}>Show 24</a></li>
 												</ul></li>
 										</ul>
 									</div>
@@ -249,7 +250,7 @@
 						<div th:each="food:${foods}" class="col-lg-6 col-md-6">
 							<div class="feature-card style1">
 								<div class="feature-img">
-									<img th:src="@{|/assets/products/${food.photo}|}"
+									<img th:src="@{|/assets/img/feature/${food.photo}|}"
 										alt="Image">
 								</div>
 								<div class="feature-info">
@@ -274,35 +275,39 @@
 										<p class="feature-price">[[${food.price}]]$</p>
 									</div>
 									<div class="row">
-										<div class="col-sm-6">
+										<div class="col-sm-7">
 											<button class="btn style2"
 												th:attr="ng-click=@{|cart.add(${food.food_id})|}">
 												<i class="flaticon-shopping-bag-1"></i><b
 													th:text=#{product.addcart}></b>
 											</button>
 										</div>
-										<div class="col-sm-6">
+										<div class="col-sm-5">
 											<button class="btn style2">
-												<a th:href="@{'/home/favorite/'+${food.food_id}}">
-												<!--  <i class="bi bi-heart"></i>-->
-												Add To Favorite</a>
+												<b>
+													<div class="row">
+														<div class="col-sm-2 text-center">
+															<i class="bi bi-heart-fill"></i>
+														</div>
+														<div class="col-sm-9 text-center">
+															<a th:href="@{'/home/favorite/'+${food.food_id}}"
+																th:text=#{product.favorite} style="color: red"> </a>
+														</div>
+													</div>
+
+												</b>
 											</button>
 										</div>
 									</div>
-									<div class="discount-tag">
-										<img src="/assets/img/feature/circle-1.png" alt="Image">
-										<p>
-											<span>[[${food.food_detail.status?'Stocking':'Out of
-												stock'}]]</span>
-										</p>
-									</div>
+
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="page-navigation">
 						<div class="row align-items-center">
-							<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20">
+							<div
+								class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20">
 								<a th:if="${currentPage > 1}"
 									th:href="@{'/home/shop?p=1'+ '&search=' + ${search} +'&sort=' + ${sort} + '&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
 									class="btn prev" th:text=#{product.first}>First</a> <span
