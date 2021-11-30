@@ -33,6 +33,7 @@ public class ProfileController {
 		Account acc = service.findById(request.getRemoteUser());
 		acc.setHire_date(format.convertToDateSQL(acc.getHire_date()));
 		acc.setBirthdate(format.convertToDateSQL(acc.getBirthdate()));
+
 		model.addAttribute("acc", acc);
 		return "user/body/profile";
 	}
