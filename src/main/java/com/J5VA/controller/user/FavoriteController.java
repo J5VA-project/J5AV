@@ -45,8 +45,6 @@ public class FavoriteController {
 				check = true;
 			}
 		}
-		System.out.println(id);
-		System.out.print(check);
 		if (check == true) {
 			Favorite favorite1 = new Favorite();
 			Food food = foodService.findById(id);

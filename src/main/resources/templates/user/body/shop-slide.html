@@ -49,51 +49,6 @@
 							</div>
 						</form>
 						<br>
-						<div class="sidebar-widget categories">
-							<h4 th:text=#{product.category}>Category</h4>
-							<div class="category-box">
-								<ul class="list-style">
-									<li th:each="listCa:${listCate}"><a
-										th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&cate='+${listCa.foodcategory_name}}">
-											[[${listCa.foodcategory_name}]]<i
-											class="flaticon-right-arrow-angle"></i>
-									</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="sidebar-widget categories">
-							<h4 th:text=#{product.size}>Size</h4>
-							<div class="category-box">
-								<ul class="list-style">
-									<li th:each="listSize:${listSize}"><a
-										th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&size='+${listSize.name}}">
-											[[${listSize.name}]]<i class="flaticon-right-arrow-angle"></i>
-									</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="sidebar-widget new-product">
-							<h4 th:text=#{product.selling}>Selling products</h4>
-
-							<div class="new-product-wrap">
-								<div th:each="top6:${top6}" class="new-product-item">
-									<a th:href="@{|/home/shop-details/${top6.group.food_id}|}"
-										class="new-product-img"> <img
-										th:src="@{|/assets/products/${top6.group.photo}|}" alt="Image">
-										<img th:src="@{|/assets/products/${top6.group.photo}|}"
-										alt="Image"></a>
-									<div class="new-product-info">
-										<h6>
-											<a th:href="@{|/home/shop-details/${top6.group.food_id}|}">[[${top6.group.food_name}]]</a>
-										</h6>
-										<div class="price">
-											<span>[[${top6.group.price}]]$</span>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div>
 						<div class="sidebar-widget price-range-widget">
 							<h4 th:text=#{product.priceFilter}>Price Filter</h4>
 							<div class="checkbox-item-wrap">
@@ -171,6 +126,50 @@
 								</div>
 							</div>
 						</div>
+						<div class="sidebar-widget categories">
+							<h4 th:text=#{product.category}>Category</h4>
+							<div class="category-box">
+								<ul class="list-style">
+									<li th:each="listCa:${listCate}">
+									<a th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show=6'+'&cate='+${listCa.foodcategory_name}}">
+											[[${listCa.foodcategory_name}]]<i
+											class="flaticon-right-arrow-angle"></i>
+									</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="sidebar-widget categories">
+							<h4 th:text=#{product.size}>Size</h4>
+							<div class="category-box">
+								<ul class="list-style">
+									<li th:each="listSize:${listSize}"><a
+										th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show=6'+'&size='+${listSize.name}}">		
+											[[${listSize.name}]]<i class="flaticon-right-arrow-angle"></i>
+									</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="sidebar-widget new-product">
+							<h4 th:text=#{product.selling}>Selling products</h4>
+
+							<div class="new-product-wrap">
+								<div th:each="top6:${top6}" class="new-product-item">
+									<a th:href="@{|/home/shop-details/${top6.group.food_id}|}"
+										class="new-product-img"> 
+										<img th:src="@{|/assets/products/${top6.group.photo}|}"
+										alt="Image"></a>
+									<div class="new-product-info">
+										<h6>
+											<a th:href="@{|/home/shop-details/${top6.group.food_id}|}">[[${top6.group.food_name}]]</a>
+										</h6>
+										<div class="price">
+											<span>[[${top6.group.price}]]$</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div
@@ -196,16 +195,16 @@
 												th:text=#{product.sort}>Sort by</a>
 												<ul class="sub-menu list-style">
 													<li><a class="dropdown-item" th:value="asc"
-														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
+														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show=6' + '&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
 														th:text=#{product.sort1}>Price: Low High</a></li>
 													<li><a class="dropdown-item" th:value="desc"
-														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=desc&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
+														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=desc&show=6' + '&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
 														th:text=#{product.sort2}>Price: High Low</a></li>
 													<li><a class="dropdown-item" th:value="za"
-														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=az&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
+														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=az&show=6' + '&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
 														th:text=#{product.sort3}>Name: A - Z</a></li>
 													<li><a class="dropdown-item" th:value="az"
-														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=za&show=' + ${showPageNumber}+'&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
+														th:href="@{'/home/shop?p=1&search='+${search}+'&sort=za&show=6' + '&cate='+${cate}+'&size='+${size}+'&priceSt='+${priceSt}+'&priceEnd='+${priceEnd}}"
 														th:text=#{product.sort4}>Name: Z - A</a></li>
 												</ul></li>
 										</ul>
@@ -283,20 +282,10 @@
 											</button>
 										</div>
 										<div class="col-sm-5">
-											<button class="btn style2">
-												<b>
-													<div class="row">
-														<div class="col-sm-2 text-center">
-															<i class="bi bi-heart-fill"></i>
-														</div>
-														<div class="col-sm-9 text-center">
-															<a th:href="@{'/home/favorite/'+${food.food_id}}"
-																th:text=#{product.favorite} style="color: red"> </a>
-														</div>
-													</div>
-
-												</b>
-											</button>
+										<a th:href="@{'/home/favorite/'+${food.food_id}}" class="btn style2"	>
+												<i class="bi bi-heart-fill"></i><b
+													th:text=#{product.favorite}></b>
+										</a>
 										</div>
 									</div>
 
