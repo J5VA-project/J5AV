@@ -77,21 +77,10 @@
 											</button>
 										</div>
 										<div class="col-sm-5">
-											<button class="btn style2">
-												<b>
-													<div class="row">
-														<div class="col-sm-4">
-															<i class="bi bi-trash-fill"></i>
-														</div>
-														<div class="col-sm-8">
-															<a
-																th:href="@{'/home/favorite/delete/'+${favorite.favorite_id}}"
-																style="color: red"> Delete </a>
-														</div>
-													</div>
-
-												</b>
-											</button>
+										<a th:href="@{'/home/favorite/delete/'+${favorite.favorite_id}}" class="btn style2"	>
+												<i class="bi bi-trash-fill"></i><b
+													th:text=#{wishlist.delete}></b>
+										</a>
 										</div>
 									</div>
 								</div>
@@ -99,15 +88,16 @@
 						</div>
 					</div>
 				</div>
+				<br>
+				<div class="row">
+					<div class="col-sm-10"></div>
+					<div class="col-sm-2"><a th:href="@{/home/shop}" class="btn btn-outline-success " style="border: 1px solid green" > <b th:text=#{wishlist.more}> More product</b> <i class="flaticon-right-arrow-2"></i></a></div></div>				
 			</div>
 		</section>
 	</div>
 
-
-
 	<a href="javascript:void(0)" class="back-to-top"><i
 		class="las la-arrow-up"></i></a>
-
 </body>
 
 <!-- Mirrored from templates.hibootstrap.com/caban/default/wishlist.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:46 GMT -->
