@@ -48,6 +48,5 @@ public class FoodImplementTest {
 		assertThat(actualFoods).isEqualTo(mockFoods);
 		verify(foodDao).findById(foodId);
 	}
-	
 
 }
