@@ -1,8 +1,5 @@
 package com.J5VA.controller.user;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.J5VA.entity.Account;
@@ -51,6 +46,13 @@ public class ProfileController {
 		account.setHire_date(format.toDate(request.getParameter("hire_date"), "yyyy-MM-dd"));
 		Double salDouble = Double.parseDouble(request.getParameter("salary"));
 		account.setSalary(salDouble);
+		if (request.getParameter("image")==null || request.getParameter("image").equals("")) {
+			Account acc = service.findById(request.getRemoteUser());
+			account.setImage(acc.getImage());
+		}else {
+			account.setImage(request.getParameter("image"));
+		}
+		account.setGender(Boolean.parseBoolean(request.getParameter("gender")));
 		service.update(account);
 		return "redirect:/home/profile";
 	}

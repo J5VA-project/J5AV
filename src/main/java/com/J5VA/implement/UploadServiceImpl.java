@@ -21,8 +21,8 @@ public class UploadServiceImpl implements UploadService {
 		if (!dir.exists()) {
 			dir.mkdirs();
 		}
-		String s = System.currentTimeMillis() + file.getOriginalFilename();
-		String name = Integer.toHexString(s.hashCode()) + s.substring(s.lastIndexOf("."));
+		String name = file.getOriginalFilename();
+//		String name = Integer.toHexString(s.hashCode()) + s.substring(s.lastIndexOf("."));
 		try {
 			File savedFile = new File(dir, name);
 			file.transferTo(savedFile);
