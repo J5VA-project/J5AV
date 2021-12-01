@@ -42,6 +42,8 @@ a {
 	text-decoration: none;
 }
 </style>
+
+
 </head>
 
 <body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
@@ -188,15 +190,15 @@ a {
 													<li th:unless="${#request.remoteUser}"><a
 														th:href="@{/home/register}" th:text="#{menu.register}">Register</a></li>
 													<li th:if="${#request.remoteUser}"><a
-														th:href="@{/home/profile}" th:text="#{menu.profile}">Profile</a></li>
-													<li th:if="${#request.remoteUser}"><a
-														th:href="@{/auth/logoff}" th:text="#{menu.logout}">Logout</a></li>
+														th:href="@{/home/profile}" th:text="#{menu.profile}">Profile</a></li>													
 													<li th:if="${#request.remoteUser}"><a
 														th:href="@{/home/change-pw}" th:text="#{menu.cpw}">Change
 															Password</a></li>
 													<li th:unless="${#request.remoteUser}"><a
 														th:href="@{/home/forgot-pw}" th:text="#{menu.fgpw}">Forgot
 															Password</a></li>
+													<li th:if="${#request.remoteUser}"><a
+														th:href="@{/auth/logoff}" th:text="#{menu.logout}">Logout</a></li>
 												</ul></li>
 										</ul>
 									</div>

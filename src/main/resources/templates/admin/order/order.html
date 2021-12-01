@@ -50,20 +50,20 @@ a:hover {
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="order in pager.orders | orderBy:'- orderdate'">
+							<tr ng-repeat="(key,order) in pager.orders | orderBy:'- orderdate'">
 								<td>{{order.order_id}}</td>
 								<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
 								<td>{{order.order_acc.fullname}}</td>
 								<td>{{order.order_acc.phone}}</td>
 								<td>{{order.address}}</td>
 								<td>{{order.note}}</td>
-								<td><ANY ng-switch={{order.status}}> <ANY
-										ng-switch-when="1"> <b class="pending">Chờ xác nhận</b></ANY>
-									<ANY ng-switch-when="2"> <b class="ready">Đã xác nhận
-										đơn hàng</b></ANY> <ANY ng-switch-when="3"> <b class="shipping">Đang
-										giao</b></ANY> <ANY ng-switch-when="4"> <b class="delivered">Đã
-										nhận hàng</b></ANY> <ANY ng-switch-when="5"> <b class="cancelled">Đã
-										hủy đơn</b></ANY>
+								<td><ANY ng-switch={{order.status}}> 
+								    <ANY ng-switch-when="1"> <b class="pending">Chờ xác nhận</b></ANY>
+								    <ANY ng-switch-when="2"> <b class="ready">Đã xác nhận đơn hàng</b></ANY> 
+								    <ANY ng-switch-when="3"> <b class="shipping">Đang giao</b></ANY> 
+								    <ANY ng-switch-when="4"> <b class="delivered">Đã nhận hàng</b></ANY> 
+								    <ANY ng-switch-when="5"> <b class="cancelled">Đã
+hủy đơn</b></ANY>
 										<ANY ng-switch-default> <b class="cancelled">New order</b></ANY> 
 										</ANY>
 								</td>
