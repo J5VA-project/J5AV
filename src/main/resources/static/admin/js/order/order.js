@@ -45,6 +45,7 @@ app.controller("order-ctrl", function($scope, $http){
     	var order = angular.copy($scope.form);
     	$http.patch(`/rest/orders/${order.order_id}`, order).then(resp =>{
     		var index = $scope.orders.findIndex(p => p.order_id == order.order_id);
+    		alert(order.status0);
     		$scope.orders[index] = order;	
     	}).catch(error =>{  
     		console.log("Error", error);

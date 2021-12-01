@@ -54,7 +54,9 @@
 
 										<div class="col-lg-12">
 											<div class="form-group ">
-												<img th:src="@{|/assets/img/testimonial/${acc.image}|}" alt="Image" style="border-radius:90px; border:black; margin-left:32%">
+												<img th:src="@{|/assets/img/testimonial/${acc.image}|}"
+													alt="Image"
+													style="border-radius: 90px; border: black; margin-left: 32%">
 											</div>
 										</div>
 
@@ -127,7 +129,19 @@
 												<div id="error_hiredate"></div>
 											</div>
 										</div>
-
+										<div class="col-lg-12">
+											<div class="switch">
+												<input name="gender" id="one" type="radio"
+													th:value="*{gender}" th:field="*{gender}"
+													th:checked="*{gender}==1" /> <label for="one"
+													class="switch__label">Male</label> 
+													
+													<input name="gender"
+													id="two" type="radio" th:value="*{gender}"
+													th:field="*{gender}" th:checked="*{gender}==0" /> <label
+													for="two" class="switch__label">Female</label>
+											</div>
+										</div>
 										<div class="col-lg-12">
 											<div class="form-group">
 												<input id="salary" hidden="true" name="salary" type="text"
