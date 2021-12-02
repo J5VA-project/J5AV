@@ -1,5 +1,4 @@
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 <style>
 a:hover {
 	text-decoration: none;
@@ -45,38 +44,29 @@ a:hover {
 								<th>Delivery Address</th>
 								<th>Note</th>
 								<th>Status</th>
-								<th>Change Status</th>
 								<th>Actions</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="(key,order) in pager.orders | orderBy:'- orderdate'">
+							<tr
+								ng-repeat="(key,order) in pager.orders | orderBy:'- orderdate'">
 								<td>{{order.order_id}}</td>
 								<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
 								<td>{{order.order_acc.fullname}}</td>
 								<td>{{order.order_acc.phone}}</td>
 								<td>{{order.address}}</td>
 								<td>{{order.note}}</td>
-								<td><ANY ng-switch={{order.status}}> 
-								    <ANY ng-switch-when="1"> <b class="pending">Chờ xác nhận</b></ANY>
-								    <ANY ng-switch-when="2"> <b class="ready">Đã xác nhận đơn hàng</b></ANY> 
-								    <ANY ng-switch-when="3"> <b class="shipping">Đang giao</b></ANY> 
-								    <ANY ng-switch-when="4"> <b class="delivered">Đã nhận hàng</b></ANY> 
-								    <ANY ng-switch-when="5"> <b class="cancelled">Đã
-hủy đơn</b></ANY>
-										<ANY ng-switch-default> <b class="cancelled">New order</b></ANY> 
-										</ANY>
-								</td>
-								<td><select ng-model="form.status" ng-focus="edit(order)"
-									class="custom-select">
-										<option value="1">Chờ xác nhận</option>
-										<option value="2">Đã xác nhận đơn hàng</option>
-										<option value="3">Đang giao</option>
-										<option value="4">Đã nhận hàng</option>
-										<option value="5">Đã hủy đơn hàng</option>
-								</select></td>
+								<td><ANY ng-switch={{order.status}}> <ANY
+										ng-switch-when="1"> <b class="pending">Chờ xác nhận</b></ANY>
+									<ANY ng-switch-when="2"> <b class="ready">Đã xác nhận
+										đơn hàng</b></ANY> <ANY ng-switch-when="3"> <b class="shipping">Đang
+										giao</b></ANY> <ANY ng-switch-when="4"> <b class="delivered">Đã
+										nhận hàng</b></ANY> <ANY ng-switch-when="5"> <b class="cancelled">Đã
+										hủy đơn</b></ANY> <ANY ng-switch-default> <b class="cancelled">New
+										order</b></ANY> </ANY></td>
 								<td>
-									<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
+									<button ng-click="edit(order)" class="btn btn-warning ti-eye"
+										data-toggle="modal" data-target=".bs-example-modal-lg"></button>
 									<button class="btn btn-primary ti-save" ng-click="update()"></button>
 									<button class="btn btn-danger ti-trash"
 										ng-click="delete(order)"></button>
@@ -84,12 +74,115 @@ hủy đơn</b></ANY>
 							</tr>
 						</tbody>
 					</table>
-					<input type="hidden" ng-model="form.order_id"> <input
-						type="hidden" ng-model="form.orderdate"> <input
-						type="hidden" ng-model="form.discount"> <input
-						type="hidden" ng-model="form.address"> <input
-						type="hidden" ng-model="form.note"> <input type="hidden"
-						ng-model="form.order_acc.fullname">
+
+					<!--  Modal content for the above example -->
+					<div class="modal fade bs-example-modal-lg" tabindex="-1"
+						role="dialog" aria-labelledby="myLargeModalLabel"
+						aria-hidden="true" style="display: none;">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h4 class="modal-title mt-0" id="myLargeModalLabel">Large
+										modal</h4>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">×</button>
+								</div>
+								<div class="modal-body">
+									<form action="#" data-parsley-validate novalidate>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-4">
+													<label for="userName">ID*</label>
+												</div>
+												<div class="col-sm-8">
+													<input type="text" ng-model="form.order_id" readonly
+														style="border: none">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-4">
+													<label for="emailAddress">OrderDate*</label>
+												</div>
+												<div class="col-sm-8">
+													<input type="text" ng-model="form.orderdate" readonly
+														style="border: none">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-4">
+													<label for="pass1">Discount*</label>
+												</div>
+												<div class="col-sm-8">
+													<input type="text" ng-model="form.discount" readonly
+														style="border: none">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-4">
+													<label for="passWord2">Address*</label>
+												</div>
+												<div class="col-sm-8">
+													<input type="text" ng-model="form.address" readonly
+														style="border: none">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-4">
+													<label for="passWord2">Note*</label>
+												</div>
+												<div class="col-sm-8">
+													<input type="text" ng-model="form.note" readonly
+														style="border: none">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-4">
+													<label for="passWord2">Fullname*</label>
+												</div>
+												<div class="col-sm-8">
+													<input type="text" ng-model="form.order_acc.fullname"
+														readonly style="border: none">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-4">
+													<label for="passWord2">Change Status*</label>
+												</div>
+												<div class="col-sm-8">
+													<select ng-model="form.status" class="custom-select">
+														<option value="1">Chờ xác nhận</option>
+														<option value="2">Đã xác nhận đơn hàng</option>
+														<option value="3">Đang giao</option>
+														<option value="4">Đã nhận hàng</option>
+														<option value="5">Đã hủy đơn hàng</option>
+													</select>
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group text-right m-b-0">
+										     <button class="btn btn-primary ti-save" ng-click="update()"></button>
+										</div>
+									</form>
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
 				</div>
 			</div>
 			<!-- end col -->

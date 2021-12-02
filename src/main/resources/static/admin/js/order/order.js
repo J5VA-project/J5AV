@@ -11,14 +11,15 @@ app.controller("order-ctrl", function($scope, $http){
     //khởi đầu
     $scope.initialize();
 	$scope.edit = function (order) {
-			$scope.form = angular.copy(order);
-		}
-		
+		$scope.form = angular.copy(order);
+	}
+	
 	$scope.pending = function() {
 		$http.get(`/rest/orders/status/1`).then(resp => {
 			$scope.pendings = resp.data;
 		});
 	}
+	
 	$scope.ready = function() {
 		$http.get(`/rest/orders/status/2`).then(resp => {
 			$scope.readys = resp.data;
@@ -45,8 +46,8 @@ app.controller("order-ctrl", function($scope, $http){
     	var order = angular.copy($scope.form);
     	$http.patch(`/rest/orders/${order.order_id}`, order).then(resp =>{
     		var index = $scope.orders.findIndex(p => p.order_id == order.order_id);
-    		alert(order.status0);
-    		$scope.orders[index] = order;	
+    		$scope.orders[index] = order;
+    		$('.modal-backdrop').hide();
     	}).catch(error =>{  
     		console.log("Error", error);
     	});
