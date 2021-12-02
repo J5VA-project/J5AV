@@ -55,9 +55,9 @@
 											<div class="form-group ">
 												<label for="image">
 													<img th:src="@{|/assets/account/${acc.image}|} "
-													alt="Image"style="border-radius: 50%; border: black; width: 50%;margin-left: 25% ; height: 20%; max-height: 250px">
+													alt="Image"style="border-radius: 50%; border: black; width: 30%;margin-left: 35% ; height: 8%; max-height: 150px">
 												</label>													
-													<input type="file" class="form-control" id="image"  th:field="*{image}" value="${acc.image}" >
+													<input type="file" class="form-control" id="image"  th:field="*{image}" onchange="angular.element(this).scope().imageChanged(this.files)" >
 													</div>
 										</div>
 
@@ -226,7 +226,6 @@
 											});
 						});
 	</script>
-	<script src="/admin/js/account/upload-image.js"></script>
 </body>
 
 <!-- Mirrored from templates.hibootstrap.com/caban/default/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:43 GMT -->
