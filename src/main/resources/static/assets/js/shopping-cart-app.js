@@ -112,6 +112,19 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 		})
 	}
 	}
+	//Upload hình
+	$scope.imageChanged = function(files) {
+		var data = new FormData();
+		data.append('file', files[0]);
+		$http.post('/rest/upload/account', data, {
+			transformRequest: angular.identity,
+			headers: { 'Content-Type': undefined }
+		}).catch(error => {
+			alert("Lỗi upload hình ảnh");
+			console.log("Error", error);
+		})
+	}
+	
 });
 
 

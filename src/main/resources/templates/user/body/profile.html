@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{/user/layout/header::dynamic(~{::body})}">
-
 <body>
 	<div class="content-wrapper">
 
@@ -54,10 +53,12 @@
 
 										<div class="col-lg-12">
 											<div class="form-group ">
-												<img th:src="@{|/assets/img/testimonial/${acc.image}|}"
-													alt="Image"
-													style="border-radius: 90px; border: black; margin-left: 32%">
-											</div>
+												<label for="image">
+													<img th:src="@{|/assets/account/${acc.image}|} "
+													alt="Image"style="border-radius: 50%; border: black; width: 50%;margin-left: 25% ; height: 20%; max-height: 250px">
+												</label>													
+													<input type="file" class="form-control" id="image"  th:field="*{image}" value="${acc.image}" >
+													</div>
 										</div>
 
 										<div class="col-lg-12">
@@ -132,13 +133,12 @@
 										<div class="col-lg-12">
 											<div class="switch">
 												<input name="gender" id="one" type="radio"
-													th:value="*{gender}" th:field="*{gender}"
-													th:checked="*{gender}==1" /> <label for="one"
+													value="true" th:field="*{gender}"/> <label for="one"
 													class="switch__label">Male</label> 
 													
 													<input name="gender"
-													id="two" type="radio" th:value="*{gender}"
-													th:field="*{gender}" th:checked="*{gender}==0" /> <label
+													id="two" type="radio" th:value="false"
+													th:field="*{gender}" checked="checked"/> <label
 													for="two" class="switch__label">Female</label>
 											</div>
 										</div>
@@ -226,6 +226,7 @@
 											});
 						});
 	</script>
+	<script src="/admin/js/account/upload-image.js"></script>
 </body>
 
 <!-- Mirrored from templates.hibootstrap.com/caban/default/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:43 GMT -->
