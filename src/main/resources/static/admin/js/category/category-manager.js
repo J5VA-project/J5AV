@@ -4,7 +4,8 @@ app.controller("category-manager-ctrl", function($scope, $http){
 		$('.error_name').css('font-style','italic');
 		$('.error_description').css('color','red');
 		$('.error_description').css('font-style','italic');
-
+	
+		
 		var check = true;
 		if ($('#name').val() == '') {
 			$('.error_name').html('X Category name not nul');
