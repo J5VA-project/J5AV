@@ -1,8 +1,87 @@
-app.controller("account-list-ctrl", function($scope, $http) {
+app.controller("account-list-ctrl", function ($scope, $http) {
+	$("#btn-add").click(function () {
+		$('.error_username').css('color', 'red');
+		$('.error_username').css('font-style', 'italic');
+		$('.error_password').css('color', 'red');
+		$('.error_password').css('font-style', 'italic');
+		$('.error_fullname').css('color', 'red');
+		$('.error_fullname').css('font-style', 'italic');
+		$('.error_email').css('color', 'red');
+		$('.error_email').css('font-style', 'italic');
+		$('.error_address').css('color', 'red');
+		$('.error_address').css('font-style', 'italic');
+		$('.error_phone').css('color', 'red');
+		$('.error_phone').css('font-style', 'italic');
+		$('.error_salary').css('color', 'red');
+		$('.error_salary').css('font-style', 'italic');
+
+		var check = true;
+		if ($('#username').val() == '') {
+			$('.error_username').html('X Username not nul');
+			$('.error_username').show();
+			check = false;
+		} else {
+			$('.error_username').hide();
+		}
+
+		if ($('#password').val() == '') {
+			$('.error_password').html('X Password not nul');
+			$('.error_password').show();
+			check = false;
+		} else {
+			$('.error_password').hide();
+		}
+
+		if ($('#fullname').val() == '') {
+			$('.error_fullname').html('X Fullname not nul');
+			$('.error_fullname').show();
+			check = false;
+		} else {
+			$('.error_fullname').hide();
+		}
+
+		if ($('#email').val() == '') {
+			$('.error_email').html('X Email not nul');
+			$('.error_email').show();
+			check = false;
+		} else {
+			$('.error_email').hide();
+		}
+
+		if ($('#address').val() == '') {
+			$('.error_address').html('X Address not nul');
+			$('.error_address').show();
+			check = false;
+		} else {
+			$('.error_address').hide();
+		}
+
+		if ($('#phone').val() == '') {
+			$('.error_phone').html('X Phone not nul');
+			$('.error_phone').show();
+			check = false;
+		} else {
+			$('.error_phone').hide();
+		}
+
+		if ($('#salary').val() == '') {
+			$('.error_salary').html('X Salary not nul');
+			$('.error_salary').show();
+			check = false;
+		} else {
+			$('.error_salary').hide();
+		}
+
+
+		if (check == true) {
+			$scope.create();
+		}
+	});
+
 	$scope.accounts = [];
 	$scope.form = {};
 
-	$scope.initialize = function() {
+	$scope.initialize = function () {
 		//load products
 		$http.get("/rest/accounts").then(resp => {
 			$scope.accounts = resp.data;
@@ -17,7 +96,7 @@ app.controller("account-list-ctrl", function($scope, $http) {
 	$scope.initialize();
 
 	//xóa form
-	$scope.reset = function() {
+	$scope.reset = function () {
 		$scope.form = {
 			hire_date: new Date(),
 			image: 'empty-account.jpg',
@@ -27,12 +106,12 @@ app.controller("account-list-ctrl", function($scope, $http) {
 	}
 
 	//hiển thị lên form
-	$scope.edit = function(account) {
+	$scope.edit = function (account) {
 		$scope.form = angular.copy(account);
 	}
 
 	//thêm sản phẩm mới
-	$scope.create = function() {
+	$scope.create = function () {
 		var account = angular.copy($scope.form);
 		$http.post(`/rest/accounts`, account).then(resp => {
 			$scope.accounts.push(resp.data);
@@ -45,7 +124,7 @@ app.controller("account-list-ctrl", function($scope, $http) {
 	}
 
 	//update sản phẩm
-	$scope.update = function() {
+	$scope.update = function () {
 		var account = angular.copy($scope.form);
 		$http.put(`/rest/accounts/${account.username}`, account).then(resp => {
 			var index = $scope.accounts.findIndex(p => p.username == account.username);
@@ -61,7 +140,7 @@ app.controller("account-list-ctrl", function($scope, $http) {
 
 
 	//xóa sản phẩm
-	$scope.delete = function(account) {
+	$scope.delete = function (account) {
 		$http.delete(`/rest/accounts/${account.username}`).then(resp => {
 			var index = $scope.accounts.findIndex(p => p.username == account.username);
 			$scope.accounts.splice(index, 1);
@@ -74,7 +153,7 @@ app.controller("account-list-ctrl", function($scope, $http) {
 	}
 
 	//Upload hình
-	$scope.imageChanged = function(files) {
+	$scope.imageChanged = function (files) {
 		var data = new FormData();
 		data.append('file', files[0]);
 		$http.post('/rest/upload/account', data, {
@@ -94,14 +173,14 @@ app.controller("account-list-ctrl", function($scope, $http) {
 	$scope.current_tab = 1;
 
 	// Hàm đổi tab
-	$scope.changeTab = function(index) {
+	$scope.changeTab = function (index) {
 		$scope.current_tab = index;
 	};
 
 	// Hàm kiểm tra có phải tab hiện tại hay không
 	// hàm này sẽ trả về true/false và dùng kết hợp
 	// với ng-class để active menu
-	$scope.isActiveTab = function(index) {
+	$scope.isActiveTab = function (index) {
 		return index === $scope.current_tab;
 	};
 

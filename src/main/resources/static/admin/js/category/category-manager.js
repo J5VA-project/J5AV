@@ -1,4 +1,33 @@
 app.controller("category-manager-ctrl", function($scope, $http){
+	$("#btn-add").click(function () {
+		$('.error_name').css('color','red');
+		$('.error_name').css('font-style','italic');
+		$('.error_description').css('color','red');
+		$('.error_description').css('font-style','italic');
+	
+		
+		var check = true;
+		if ($('#name').val() == '') {
+			$('.error_name').html('X Category name not nul');
+			$('.error_name').show();
+			check = false;
+		} else {
+			$('.error_name').hide();
+		}
+
+		if ($('#description').val() == '') {
+			$('.error_description').html('X Category Description not nul');
+			$('.error_description').show();
+			check = false;
+		} else {
+			$('.error_description').hide();
+		}
+
+		if(check==true){
+			$scope.create();
+		}
+	});
+
    $scope.categories = [];
 	$scope.form = {};
 

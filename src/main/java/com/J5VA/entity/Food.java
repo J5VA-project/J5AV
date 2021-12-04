@@ -27,6 +27,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "food")
 public class Food implements Serializable {
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int food_id;
 	private String food_name;
 	private double price;

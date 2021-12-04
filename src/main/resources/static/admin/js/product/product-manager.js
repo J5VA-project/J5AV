@@ -1,4 +1,37 @@
 app.controller("product-manager-ctrl", function($scope, $http) {
+		$("#btn-add").click(function() {
+			var check = true;
+
+			$('.error_foodName').css('color', 'red');
+			$('.error_foodName').css('font-style', 'italic');
+			$('.error_foodPrice').css('color', 'red');
+			$('.error_foodPrice').css('font-style', 'italic');
+			$('.error_foodCategory').css('color', 'red');
+			$('.error_foodCategory').css('font-style', 'italic');
+			$('.error_foodSize').css('color', 'red');
+			$('.error_foodSize').css('font-style', 'italic');
+
+			if ($('#foodname').val() == '') {
+				$('.error_foodName').html('X Food Name not null');
+				check = false;
+			}
+			if ($('#foodprice').val() == '') {
+				$('.error_foodPrice').html('X Food Price not null');
+				check = false;
+			}
+			if ($("select[name=category]").val() == '? undefined:undefined ?') {
+				$('.error_foodCategory').html('X Category not null');
+				check = false;
+			}
+			if ($("select[name=size]").val() == '? undefined:undefined ?') {
+				$('.error_foodSize').html('X Size not null');
+				check = false;
+			}
+			if (check == true) {
+				$scope.create();
+			}
+		});
+
 	$scope.foods = [];
 	$scope.cates = [];
 	$scope.sizes = [];

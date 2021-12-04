@@ -1,8 +1,42 @@
-app.controller("size-manager-ctrl", function($scope, $http) {
+app.controller("size-manager-ctrl", function ($scope, $http) {
+	//Button Add
+	$("#btn-add").click(function () {
+		$('.error_name').css('color','red');
+		$('.error_name').css('font-style','italic');
+
+		var check = true;
+		if ($('#name').val() == '') {
+			$('.error_name').html('X Size name not nul');
+			$('.error_name').show();
+			check = false;
+		} else {
+			$('.error_name').hide();
+		}
+		if(check==true){
+			$scope.create();
+		}
+	});
+	//Button update
+	$("#btn-update").click(function () {
+		$('.error_name').css('color','red');
+		$('.error_name').css('font-style','italic');
+
+		var check = true;
+		if ($('#name').val() == '') {
+			$('.error_name').html('X Size name not nul');
+			$('.error_name').show();
+			check = false;
+		} else {
+			$('.error_name').hide();
+		}
+		if(check==true){
+			$scope.update(size);
+		}
+	});
 	$scope.sizes = [];
 	$scope.form = {};
 
-	$scope.initialize = function() {
+	$scope.initialize = function () {
 		//load products
 		$http.get("/rest/size").then(resp => {
 			$scope.sizes = resp.data;
@@ -14,18 +48,18 @@ app.controller("size-manager-ctrl", function($scope, $http) {
 
 
 	//xóa form
-	$scope.reset = function() {
+	$scope.reset = function () {
 		$scope.form = {
 		};
 	}
 
 	//hiển thị lên form
-	$scope.edit = function(size) {
+	$scope.edit = function (size) {
 		$scope.form = angular.copy(size);
 	}
 
 	//thêm sản phẩm mới
-	$scope.create = function() {
+	$scope.create = function () {
 		var size = angular.copy($scope.form);
 		$http.post(`/rest/size`, size).then(resp => {
 			$scope.sizes.push(resp.data);
@@ -38,7 +72,7 @@ app.controller("size-manager-ctrl", function($scope, $http) {
 	}
 
 	//thêm sản phẩm mới
-	$scope.update = function() {
+	$scope.update = function () {
 		var size = angular.copy($scope.form);
 		$http.put(`/rest/size/${size.size_id}`, size).then(resp => {
 			var index = $scope.sizes.findIndex(p => p.size_id == size.size_id);
@@ -51,7 +85,7 @@ app.controller("size-manager-ctrl", function($scope, $http) {
 	}
 
 	//xóa sản phẩm
-	$scope.delete = function(size) {
+	$scope.delete = function (size) {
 		$http.delete(`/rest/size/${size.size_id}`).then(resp => {
 			var index = $scope.sizes.findIndex(p => p.size_id == size.size_id);
 			$scope.sizes.splice(index, 1);
