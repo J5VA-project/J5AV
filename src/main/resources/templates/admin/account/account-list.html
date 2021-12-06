@@ -23,8 +23,8 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="card-box">
-					<table id="datatable" class="table table-bordered">
-						<thead>
+					<table id="datatable" class="table table-hover">
+						<thead class="thead-dark">
 							<tr>
 								<th>Username</th>
 								<th>Password</th>
@@ -33,7 +33,7 @@
 								<th>Address</th>
 								<th>Phone</th>
 								<th>Hire date</th>
-								<th>Salary $</th>
+								<th>Salary</th>
 								<th>Gender</th>
 								<th>Birthdate</th>
 								<th>Image</th>
@@ -49,11 +49,11 @@
 								<td>{{acc.address}}</td>
 								<td>{{acc.phone}}</td>
 								<td>{{acc.hire_date | date:'MM/dd/yyyy'}}</td>
-								<td>{{acc.salary}}</td>
+								<td>{{acc.salary}}$</td>
 								<td>{{acc.gender?'Male':'Female'}}</td>
 								<td>{{acc.birthdate | date:'MM/dd/yyyy'}}</td>
 								<td>
-									<img ng-src="{{'/assets/account/'+ acc.image}}" style="width: 100px;height: 90px;"></td>
+									<img ng-src="{{'/assets/account/'+ acc.image}}" style="width: 100px;height: 100%;"></td>
 								<td>
 								<a href="" ng-click="changeTab(2);edit(acc)" ><i
 									class="fa fa-edit"></i></a> &nbsp;&nbsp; <a href=""
@@ -93,7 +93,6 @@
 				<div class="btn-group pull-right m-t-20">
 
 				</div>
-				<h4 class="page-title">Account Manager</h4>
 			</div>
 		</div>
 
