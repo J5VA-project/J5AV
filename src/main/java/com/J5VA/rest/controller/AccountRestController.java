@@ -34,6 +34,12 @@ public class AccountRestController {
 		}
 		return list;
 	}
+	
+	@GetMapping("/mostBuy") 
+	public List<Account> getMostBuy(Integer month, Integer year){
+		List<Account> accounts = service.getMostBuy(month, year);
+		return accounts;
+	}
 
 	@GetMapping("/list")
 	public List<Integer> getList() {

@@ -21,4 +21,6 @@ public interface AccountService {
 
 	Account findByUsername(String username);
 
+	List<Account> getMostBuy(Integer month, Integer year);
+
 }
