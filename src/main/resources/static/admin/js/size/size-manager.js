@@ -6,7 +6,7 @@ app.controller("size-manager-ctrl", function ($scope, $http) {
 
 		var check = true;
 		if ($('#name').val() == '') {
-			$('.error_name').html('X Size name not nul');
+			$('.error_name').html('X Size name not null');
 			$('.error_name').show();
 			check = false;
 		} else {
@@ -14,23 +14,6 @@ app.controller("size-manager-ctrl", function ($scope, $http) {
 		}
 		if(check==true){
 			$scope.create();
-		}
-	});
-	//Button update
-	$("#btn-update").click(function () {
-		$('.error_name').css('color','red');
-		$('.error_name').css('font-style','italic');
-
-		var check = true;
-		if ($('#name').val() == '') {
-			$('.error_name').html('X Size name not nul');
-			$('.error_name').show();
-			check = false;
-		} else {
-			$('.error_name').hide();
-		}
-		if(check==true){
-			$scope.update(size);
 		}
 	});
 	$scope.sizes = [];

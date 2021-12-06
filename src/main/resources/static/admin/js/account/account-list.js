@@ -17,7 +17,7 @@ app.controller("account-list-ctrl", function ($scope, $http) {
 
 		var check = true;
 		if ($('#username').val() == '') {
-			$('.error_username').html('X Username not nul');
+			$('.error_username').html('X Username not null');
 			$('.error_username').show();
 			check = false;
 		} else {
@@ -25,7 +25,7 @@ app.controller("account-list-ctrl", function ($scope, $http) {
 		}
 
 		if ($('#password').val() == '') {
-			$('.error_password').html('X Password not nul');
+			$('.error_password').html('X Password not null');
 			$('.error_password').show();
 			check = false;
 		} else {
@@ -33,7 +33,7 @@ app.controller("account-list-ctrl", function ($scope, $http) {
 		}
 
 		if ($('#fullname').val() == '') {
-			$('.error_fullname').html('X Fullname not nul');
+			$('.error_fullname').html('X Fullname not null');
 			$('.error_fullname').show();
 			check = false;
 		} else {
@@ -41,7 +41,7 @@ app.controller("account-list-ctrl", function ($scope, $http) {
 		}
 
 		if ($('#email').val() == '') {
-			$('.error_email').html('X Email not nul');
+			$('.error_email').html('X Email not null');
 			$('.error_email').show();
 			check = false;
 		} else {
@@ -49,7 +49,7 @@ app.controller("account-list-ctrl", function ($scope, $http) {
 		}
 
 		if ($('#address').val() == '') {
-			$('.error_address').html('X Address not nul');
+			$('.error_address').html('X Address not null');
 			$('.error_address').show();
 			check = false;
 		} else {
@@ -57,7 +57,7 @@ app.controller("account-list-ctrl", function ($scope, $http) {
 		}
 
 		if ($('#phone').val() == '') {
-			$('.error_phone').html('X Phone not nul');
+			$('.error_phone').html('X Phone not null');
 			$('.error_phone').show();
 			check = false;
 		} else {
@@ -65,7 +65,7 @@ app.controller("account-list-ctrl", function ($scope, $http) {
 		}
 
 		if ($('#salary').val() == '') {
-			$('.error_salary').html('X Salary not nul');
+			$('.error_salary').html('X Salary not null');
 			$('.error_salary').show();
 			check = false;
 		} else {

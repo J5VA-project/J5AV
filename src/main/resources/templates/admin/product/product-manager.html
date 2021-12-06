@@ -162,7 +162,7 @@
 								<label for="price" class="col-sm-2 col-form-label">Price
 									*</label>
 								<div class="col-sm-10">
-									<input type="number" required class="form-control"
+									<input type="number" ng-min="0" required class="form-control"
 										id="foodprice" ng-model="form.food.price" placeholder="Price">
 									<div class="error_foodPrice"></div>
 								</div>
@@ -184,7 +184,7 @@
 							</div>
 							<div class="form-group row">
 								<label for="cate" class="col-sm-2 col-form-label">Category</label>
-								<div class="col-sm-10">
+								<div class="col-sm-8">
 									<select style="height: 100%"
 										ng-model="form.foodCategory.foodcategory_id"
 										class="form-control" name="category">
@@ -192,16 +192,22 @@
 									</select>
 									<div class="error_foodCategory"></div>
 								</div>
+								<div class="col-sm-2">
+									<a class="btn btn-primary btn-rounded waves-effect waves-light" href="#!category-manager"><i class="fa fa-plus-square"></i> Cate</a>
+								</div>
 							</div>
 							<br>
 							<div class="form-group row">
 								<label for="size" class="col-sm-2 col-form-label">Size</label>
-								<div class="col-sm-10">
+								<div class="col-sm-8">
 									<select style="height: 100%"
 										ng-model="form.food_detail_size.size_id" class="form-control" name="size">
 										<option ng-repeat="s in sizes" ng-value="s.size_id">{{s.name}}</option>
 									</select>
 									<div class="error_foodSize"></div>
+								</div>
+								<div class="col-sm-2">
+								<a class="btn btn-primary btn-rounded waves-effect waves-light" href="#!size-manager"><i class="fa fa-plus-square"></i> Size</a>
 								</div>
 							</div>
 							<br>
@@ -225,7 +231,7 @@
 											id="btn-add">
 											<i class="fa fa-plus-square"></i> Add
 										</button>
-										<button type="submit" ng-disabled="!form.food_id"
+										<button type="submit" ng-disabled="!form.food_id || !form.food.food_name || !form.food.price"
 											ng-click="update(food)"
 											class="btn btn-warning btn-rounded waves-effect waves-light">
 											<i class="fa fa-edit"></i> Update
@@ -251,42 +257,6 @@
 		</div>
 	</div>
 </div>
-<script>
-	$(document).ready(function() {
-		$("#btn-add").click(function() {
-			var check = true;
-
-			$('.error_foodName').css('color', 'red');
-			$('.error_foodName').css('font-style', 'italic');
-			$('.error_foodPrice').css('color', 'red');
-			$('.error_foodPrice').css('font-style', 'italic');
-			$('.error_foodCategory').css('color', 'red');
-			$('.error_foodCategory').css('font-style', 'italic');
-			$('.error_foodSize').css('color', 'red');
-			$('.error_foodSize').css('font-style', 'italic');
-
-			if ($('#foodname').val() == '') {
-				$('.error_foodName').html('X Food Name not null');
-				check = false;
-			}
-			if ($('#foodprice').val() == '') {
-				$('.error_foodPrice').html('X Food Price not null');
-				check = false;
-			}
-			if ($("select[name=category]").val() == '? undefined:undefined ?') {
-				$('.error_foodCategory').html('X Category not null');
-				check = false;
-			}
-			if ($("select[name=size]").val() == '? undefined:undefined ?') {
-				$('.error_foodSize').html('X Size not null');
-				check = false;
-			}
-			if (check == true) {
-				create();
-			}
-		});
-	});
-</script>
 <script src="/assets/js/jquery.appear.js"></script>
 <script src="/assets/js/swiper-min.js"></script>
 <script src="/admin/js/image.js"></script>
