@@ -56,9 +56,9 @@
 									class="btn btn-primary btn-rounded waves-effect waves-light" id="btn-add">
 									<i class="fa fa-plus-square"></i> Add
 								</button>
-								<button type="submit" ng-disabled="!form.foodcategory_id"
-									ng-click="update(category)"
-									class="btn btn-warning btn-rounded waves-effect waves-light">
+								<button type="submit" ng-disabled="!form.foodcategory_id || !form.foodcategory_name || !form.description"
+									ng-click="update(category)" 
+									class="btn btn-warning btn-rounded waves-effect waves-light" > 
 									<i class="fa fa-edit"></i> Update
 								</button>
 								<button type="submit" ng-disabled="!form.foodcategory_id"

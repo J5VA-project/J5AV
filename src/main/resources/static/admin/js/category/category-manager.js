@@ -8,7 +8,7 @@ app.controller("category-manager-ctrl", function($scope, $http){
 		
 		var check = true;
 		if ($('#name').val() == '') {
-			$('.error_name').html('X Category name not nul');
+			$('.error_name').html('X Category name not null');
 			$('.error_name').show();
 			check = false;
 		} else {
@@ -16,7 +16,7 @@ app.controller("category-manager-ctrl", function($scope, $http){
 		}
 
 		if ($('#description').val() == '') {
-			$('.error_description').html('X Category Description not nul');
+			$('.error_description').html('X Category Description not null');
 			$('.error_description').show();
 			check = false;
 		} else {
