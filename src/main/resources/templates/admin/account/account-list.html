@@ -33,7 +33,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="acc in pager.accounts | orderBy:'- fullname'">
+							<tr ng-repeat="acc in pager.accounts | filter:key">
 								<td>{{acc.username}}</td>
 								<td>{{acc.password}}</td>
 								<td>{{acc.fullname}}</td>
@@ -44,7 +44,8 @@
 								<td>{{acc.salary}} VND</td>
 								<td>{{acc.gender?'Male':'Female'}}</td>
 								<td>{{acc.birthdate | date:'MM/dd/yyyy'}}</td>
-								<td><img ng-src="{{'/assets/account/'+ acc.image}}" style="width: 100px;height: 80px;"></td>
+								<td>
+									<img ng-src="{{'/assets/account/'+ acc.image}}" style="width: 100px;height: 90px;"></td>
 								<td>
 									<button ng-click="changeTab(2);edit(acc)" class="btn btn-warning ti-eye"></button>
 									<button class="btn btn-danger ti-trash" ng-click="delete(acc)"></button>

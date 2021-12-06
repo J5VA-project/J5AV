@@ -10,10 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.J5VA.dao.FoodCategoryDao;
-import com.J5VA.dao.FoodDao;
-import com.J5VA.dao.SizeDao;
-import com.J5VA.entity.Account;
 import com.J5VA.entity.Food;
 import com.J5VA.entity.FoodCategory;
 import com.J5VA.entity.Report;
@@ -33,7 +29,6 @@ public class ProductController {
 	SizeService sizeService;
 	@Autowired
 	OrdersService service;
-
 
 	@GetMapping(value = "/home/shop")
 	public String listByPage(Model model,
@@ -85,7 +80,7 @@ public class ProductController {
 		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("foods", food);
 		model.addAttribute("count", count);
-		
+
 		List<Report> items = service.getInventoryByOrder();
 		List<Report> top6 = new ArrayList<Report>();
 		int i = 0;

@@ -103,14 +103,24 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 		purchase(){
 			//thực hiện đặt hàng
 			$http.post("/rest/orders", this).then(resp =>{
-			alert("đặt hàng thành công");
+			//alert("đặt hàng thành công");
 			$scope.cart.clear();
 			location.href = "/home/order-detail/"+resp.data.order_id;
 		}).catch(error => {
 		alert("Đặt hàng lỗi")
 		console.log(error)
 		})
-	}
+	},
+		purchasepaypal(){
+				$http.post("/rest/orders", this).then(resp =>{
+				//alert("đặt hàng thành công");
+				$scope.cart.clear();
+				//location.href = "/home/order-detail/"+resp.data.order_id;
+			}).catch(error => {
+				alert("Đặt hàng lỗi")
+				console.log(error)
+			})
+		}
 	}
 	//Upload hình
 	$scope.imageChanged = function(files) {

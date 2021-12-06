@@ -97,7 +97,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="category in pager.categories">
+						<tr ng-repeat="category in pager.categories | filter:key">
 							<th>{{category.foodcategory_id}}</th>
 							<td>{{category.foodcategory_name}}</td>
 							<td>{{category.description}}</td>

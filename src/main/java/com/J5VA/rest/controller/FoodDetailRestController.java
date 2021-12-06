@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.J5VA.entity.Food;
 import com.J5VA.entity.FoodDetail;
-import com.J5VA.entity.Orders;
 import com.J5VA.service.FoodDetailService;
 import com.J5VA.service.FoodService;
 import com.fasterxml.jackson.databind.JsonNode;

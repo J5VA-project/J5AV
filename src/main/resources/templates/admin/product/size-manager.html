@@ -87,7 +87,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="size in pager.sizes">
+						<tr ng-repeat="size in pager.sizes | filter:key">
 							<td>{{size.size_id}}</td>
 							<td>{{size.name}}</td>
 							<td><a href="" ng-click="edit(size)"><i

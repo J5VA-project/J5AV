@@ -186,7 +186,7 @@ app.controller("account-list-ctrl", function ($scope, $http) {
 
 	$scope.pager = {
 		page: 0,
-		account: 6,
+		account: 12,
 		get accounts() {
 			var start = this.page * this.account;
 			return $scope.accounts.slice(start, start + this.account);

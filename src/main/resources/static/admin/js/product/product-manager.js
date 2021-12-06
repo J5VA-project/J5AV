@@ -168,7 +168,7 @@ app.controller("product-manager-ctrl", function($scope, $http) {
 
 	$scope.pager = {
 		page: 0,
-		food: 8,
+		food: 20,
 		get foods() {
 			var start = this.page * this.food;
 			return $scope.foods.slice(start, start + this.food);

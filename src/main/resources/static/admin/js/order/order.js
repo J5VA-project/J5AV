@@ -107,7 +107,7 @@ app.controller("order-ctrl", function($scope, $http){
     
     $scope.pager = {
     	page:0,
-    	size:6,
+    	size:12,
     	get orders(){
     		var start = this.page * this.size;
     		return $scope.orders.slice(start,start + this.size);

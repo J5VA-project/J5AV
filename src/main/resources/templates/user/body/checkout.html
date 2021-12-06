@@ -86,7 +86,7 @@
 											<h4 class="total-amt sm-none">
 												<b th:text=#{checkout.total}>Total:</b> <span>${{cart.amount|number:2}}</span>
 											</h4>
-											<button ng-click="orders.purchase()" class="btn style1" ng-disabled="!orders.address">
+											<button ng-click="orders.purchasepaypal()" class="btn style1" ng-disabled="!orders.address">
 												<b th:text=#{checkout.order}>Place Order</b><i class="las la-check-circle"></i>
 											</button>
 
@@ -97,7 +97,7 @@
 								</form>
 								<form method="post" th:action="@{/pay}">
 									<input style="display: none;" type="text" value="{{cart.amount|number:2}}" name="price" />
-									<button class="btn btn-primary" type="submit"><i class="bi bi-paypal"></i> Paypal</button>
+									<button ng-click="orders.purchasepaypal()" class="btn btn-primary" type="submit"  ng-disabled="!orders.address"><i class="bi bi-paypal"></i> Paypal</button>
 								</form>
 							</div>
 						</div>
