@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,13 +30,10 @@ public class Orders implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int order_id;
-	@NotNull
 	private Date orderdate = new Date();
 
 	private int discount;
-	@NotNull
 	private int status;
-	@NotBlank(message = "address not null!")
 	private String address;
 	private String note;
 

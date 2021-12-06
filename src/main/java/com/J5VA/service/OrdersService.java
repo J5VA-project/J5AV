@@ -1,6 +1,9 @@
 package com.J5VA.service;
 
 import java.util.List;
+
+import com.J5VA.entity.BestCustomerBuy;
+import com.J5VA.entity.BestSellingProduct;
 import com.J5VA.entity.Orders;
 import com.J5VA.entity.Report;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -32,6 +35,10 @@ public interface OrdersService {
 	Double findCarsAfterYear(Integer Month);
 
 	List<Report> getInventoryByOrder();
-	
+
 	Integer quantityFoodByMonth(Integer month);
+
+	List<BestSellingProduct> getListBestSellingFoods(Integer month, Integer year);
+
+	List<BestCustomerBuy> getListBestCustomerBuy(Integer month, Integer year);
 }

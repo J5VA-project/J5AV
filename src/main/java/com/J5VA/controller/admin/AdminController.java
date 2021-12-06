@@ -75,5 +75,8 @@ public class AdminController {
 	public String category_manager() {
 		return "admin/product/category-manager.html";
 	}
-
+	@RequestMapping("/statistical/bestSellingProduct")
+	public String statistical() {
+		return"admin/statistical/statisticalBestSellingProduct.html";
+	}
 }

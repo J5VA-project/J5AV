@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.J5VA.entity.BestCustomerBuy;
+import com.J5VA.entity.BestSellingProduct;
 import com.J5VA.service.OrdersService;
 import com.nimbusds.jose.shaded.json.JSONArray;
 
@@ -28,5 +31,19 @@ public class DataRestController {
 			chart.add(total);
 		}
 		return chart;
+	}
+
+	@GetMapping("/listBestSellingFoods/{month}/{year}")
+	public List<BestSellingProduct> getMostFoods(@PathVariable("month") Integer month,
+			@PathVariable("year") Integer year) {
+		List<BestSellingProduct> getFoods = ordersService.getListBestSellingFoods(month, year);
+		return getFoods;
+	}
+
+	@GetMapping("/listBestCustomersBuy/{month}/{year}")
+	public List<BestCustomerBuy> getCustomerBuy(@PathVariable("month") Integer month,
+			@PathVariable("year") Integer year) {
+		List<BestCustomerBuy> getCustomer = ordersService.getListBestCustomerBuy(month, year);
+		return getCustomer;
 	}
 }

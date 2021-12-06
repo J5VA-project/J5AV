@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.J5VA.dao.OrderDetailDao;
 import com.J5VA.dao.OrdersDao;
+import com.J5VA.entity.BestCustomerBuy;
+import com.J5VA.entity.BestSellingProduct;
 import com.J5VA.entity.OrderDetail;
 import com.J5VA.entity.Orders;
 import com.J5VA.entity.Report;
@@ -103,4 +105,15 @@ public class OrdersImplement implements OrdersService {
 	public Integer quantityFoodByMonth(Integer month) {
 		return ordersDao.getReport2t(month);
 	}
+
+	@Override
+	public List<BestSellingProduct> getListBestSellingFoods(Integer month, Integer year) {
+		return ordersDao.getListBestSellingFoods(month, year);
+	}
+
+	@Override
+	public List<BestCustomerBuy> getListBestCustomerBuy(Integer month, Integer year) {
+		return ordersDao.getListBestCustomerBuy(month, year);
+	}
+
 }

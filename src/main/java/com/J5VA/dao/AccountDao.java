@@ -19,4 +19,7 @@ public interface AccountDao extends JpaRepository<Account, String> {
 
 	@Query("SELECT distinct YEAR(GETDATE())-YEAR(o.birthdate) FROM  Account o WHERE YEAR(GETDATE())-YEAR(o.birthdate) IS NOT NULL")
 	List<Integer> listAgeAccount();
+	
+	@Query("SELECT o FROM Account o")
+	List<Account> getMostBuy(Integer month, Integer year);
 }

@@ -57,4 +57,9 @@ public class AccountImplement implements AccountService {
 	public Account findByUsername(String username) {
 		return dao.findByUsername(username);
 	}
+
+	@Override
+	public List<Account> getMostBuy(Integer month, Integer year) {
+		return dao.getMostBuy(month, year);
+	}
 }

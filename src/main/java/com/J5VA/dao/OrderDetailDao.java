@@ -18,5 +18,4 @@ public interface OrderDetailDao extends JpaRepository<OrderDetail, Integer> {
 			+ " HAVING sum(o.quantity) > 20" 
 	        + " ORDER BY sum(o.quantity) DESC")
 	List<Report> getInventoryByOrder();
-	
 }
