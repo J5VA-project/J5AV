@@ -1,4 +1,4 @@
-app.controller("account-list-ctrl", function ($scope, $http) {
+app.controller("account-list-ctrl", function ($scope, $http,$location) {
 	$("#btn-add").click(function () {
 		$('.error_username').css('color', 'red');
 		$('.error_username').css('font-style', 'italic');
@@ -101,13 +101,14 @@ app.controller("account-list-ctrl", function ($scope, $http) {
 			hire_date: new Date(),
 			image: 'empty-account.jpg',
 			gender: true,
-
 		};
+		$scope.check = '';
 	}
 
 	//hiển thị lên form
 	$scope.edit = function (account) {
 		$scope.form = angular.copy(account);
+		$scope.check = 1;
 	}
 
 	//thêm sản phẩm mới
@@ -116,9 +117,9 @@ app.controller("account-list-ctrl", function ($scope, $http) {
 		$http.post(`/rest/accounts`, account).then(resp => {
 			$scope.accounts.push(resp.data);
 			$scope.reset();
-			alert("Thêm mới account thành công!");
+			alert("Successfully added new account!");
 		}).catch(error => {
-			alert("Lỗi thêm mới account!");
+			alert("Failed to add new account!");
 			console.log("Error", error);
 		});
 	}

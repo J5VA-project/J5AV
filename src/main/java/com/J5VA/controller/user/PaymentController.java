@@ -17,6 +17,7 @@ import com.J5VA.service.PaypalService;
 import com.J5VA.util.Utils;
 @Controller
 public class PaymentController {
+	
 	public static final String URL_PAYPAL_SUCCESS = "pay/success";
 	public static final String URL_PAYPAL_CANCEL = "pay/cancel";
 	private Logger log = LoggerFactory.getLogger(getClass());

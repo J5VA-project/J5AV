@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,13 +25,13 @@ public class HomeController {
 
 	@GetMapping
 	public String runControll(Model model) {
-
 		List<Report> items = service.getInventoryByOrder();
 		List<Report> top6 = new ArrayList<Report>();
 		int i = 0;
 		for (i = 0; i <= 5; i++) {
 			top6.add(items.get(i));
 		}
+		
 		model.addAttribute("foods", top6);
 
 		List<Account> cust = accService.findAll();
