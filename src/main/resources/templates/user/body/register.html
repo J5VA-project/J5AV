@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/header::dynamic(~{::body})}">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/header::dynamic(~{::body})}">
 <body>
 	<div class="breadcrumb-wrap bg-f br-1">
 		<div class="overlay bg-black op-9"></div>
@@ -41,58 +42,71 @@
 							<h2 class="text-center mb-0" th:text=#{breadcrumb.register}>Register</h2>
 						</div>
 						<div class="login-body">
-							<div th:text="${message}"></div>
 							<form class="form-wrap" th:action="@{/register/validate}"
 								th:object="${custo}" method="post" id="registerform">
 								<!-- Username -->
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="form-group">
-											<label for="name"  th:text=#{login.username}>Username</label> <input id="username"
-												name="usernname" type="text" placeholder="User name*"
-												th:field="*{username}">
+											<label for="name" th:text=#{login.username}>Username</label>
+											<input id="username" name="usernname" type="text"
+												placeholder="User name*" th:field="*{username}">
 											<div id="error_username" class="error"></div>
 										</div>
 									</div>
 									<!-- Password -->
 									<div class="col-lg-12">
 										<div class="form-group">
-											<label for="pwd" th:text=#{login.password}>Password</label> <input id="password"
-												name="password" type="password" placeholder="Password"
-												th:field="*{password}">
+											<label for="pwd" th:text=#{login.password}>Password</label> <input
+												id="password" name="password" type="password"
+												placeholder="Password" th:field="*{password}">
 											<div id="error_password" class="error"></div>
 										</div>
 									</div>
 									<!-- Fullname -->
 									<div class="col-lg-12">
 										<div class="form-group">
-											<label for="name" th:text=#{register.fullname}>Full name</label> <input id="fullname"
-												name="fullname" type="text" placeholder="Full name*"
-												th:field="*{fullname}">
+											<label for="name" th:text=#{register.fullname}>Full
+												name</label> <input id="fullname" name="fullname" type="text"
+												placeholder="Full name*" th:field="*{fullname}">
 											<div id="error_fullname" class="error"></div>
 										</div>
 									</div>
 									<!-- Email -->
 									<div class="col-lg-12">
 										<div class="form-group">
-											<label for="email" th:text=#{register.email}>Email Address</label> <input id="email"
-												name="email" type="email" placeholder="Email Address*"
-												th:field="*{email}">
+											<label for="email" th:text=#{register.email}>Email
+												Address</label> <input id="email" name="email" type="email"
+												placeholder="Email Address*" th:field="*{email}">
 											<div id="error_email" class="error"></div>
 										</div>
 									</div>
 									<div class="col-lg-12">
 										<div class="form-group">
-											<label for="pwd" th:text=#{register.confim-pw}>Confirm Password</label> <input
-												id="passwordCofirm" name="confirmPass" type="password"
-												placeholder="Confirm Password">
+											<label for="pwd" th:text=#{register.confim-pw}>Confirm
+												Password</label> <input id="passwordCofirm" name="confirmPass"
+												type="password" placeholder="Confirm Password">
 											<div id="error_passwordCofirm" class="error"></div>
 										</div>
 									</div>
 									<div class="col-lg-12">
 										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6">
+													<input type="text" class="form-control" readonly id="capt">
+												</div>
+												<div class="col-sm-6">
+													<input type="text" class="form-control"
+														placeholder="Enter Captcha" id="textinput">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="form-group">
 											<button type="button" id="btn-register"
-												class="btn style1 w-100 d-block" th:text=#{breadcrumb.register}>Register</button>
+												class="btn style1 w-100 d-block"
+												th:text=#{breadcrumb.register}>Register</button>
 										</div>
 									</div>
 									<div class="col-lg-12">
@@ -113,8 +127,9 @@
 										</div>
 									</div>
 									<div class="col-md-12 text-center">
-										<p class="mb-0"> <i th:text=#{register.aready}>Already Have an Account?</i>  &nbsp;	&nbsp;
-											 <a class="link style2" 
+										<p class="mb-0">
+											<i th:text=#{register.aready}>Already Have an Account?</i>
+											&nbsp; &nbsp; <a class="link style2"
 												th:href="@{/auth/login/form}" th:text=#{login.title}>Login</a>
 										</p>
 									</div>
@@ -135,6 +150,8 @@
 									.on(
 											'click',
 											function() {
+												var stg1 = $('#capt').val();
+									            var stg2 = $('#textinput').val();
 												var check = true;
 												$('.error').css('color', 'red');
 
@@ -221,24 +238,52 @@
 													$('#error_passwordCofirm')
 															.show();
 													check = false;
-												} else if ($('#password').val() != $('#passwordCofirm').val()) {
+												} else if ($('#password').val() != $(
+														'#passwordCofirm')
+														.val()) {
 													$('#error_passwordCofirm')
 															.html(
 																	'Password confirm not match');
 													$('#error_passwordCofirm')
 															.show();
-													alert($('#password').val());
-													alert($('#passwordCofirm').val());
+													alert('Hello');
 													check = false;
 												} else {
 													$('#error_passwordCofirm')
 															.hide();
 												}
-												if(check==true){
+												
+												if(stg2==''){
+								                	$('#textinput').css('border','3px solid');
+								                	$('#textinput').css('border-color','red');
+								                	check = false;
+								                } else if (stg1 == stg2) {
+								                	$('#textinput').css('border-color','green');
+								                } else {
+								                    cap();
+								                    $('#textinput').val('');
+								                    check = false;
+								                }
+												if (check == true) {
 													$('#registerform').submit();
 												}
-
+												
 											});
+							 function cap() {
+					                var alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V'
+					                    , 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
+					                    'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '!', '@', '#', '$', '%', '^', '&', '*', '+'];
+					                var a = alpha[Math.floor(Math.random() * 71)];
+					                var b = alpha[Math.floor(Math.random() * 71)];
+					                var c = alpha[Math.floor(Math.random() * 71)];
+					                var d = alpha[Math.floor(Math.random() * 71)];
+					                var e = alpha[Math.floor(Math.random() * 71)];
+					                var f = alpha[Math.floor(Math.random() * 71)];
+
+					                var final = a + b + c + d + e + f;
+					                $("#capt").val(final);
+					            }
+					            cap();
 						});
 	</script>
 </body>

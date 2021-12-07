@@ -23,4 +23,9 @@ public interface AccountService {
 
 	List<Account> getMostBuy(Integer month, Integer year);
 
+	boolean checkByUsername(String username);
+
+	Account findByEmail(String email);
+
+	boolean checkByEmail(String email);
 }

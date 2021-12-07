@@ -82,8 +82,9 @@ a:hover {
 						<div class="modal-dialog modal-lg">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h4 class="modal-title mt-0" id="myLargeModalLabel">Large
-										modal</h4>
+									<h4 class="modal-title mt-0" id="myLargeModalLabel">
+										<b>Order Detail</b>
+									</h4>
 									<button type="button" class="close" data-dismiss="modal"
 										aria-hidden="true">×</button>
 								</div>
@@ -155,6 +156,7 @@ a:hover {
 												</div>
 											</div>
 										</div>
+
 										<div class="form-group">
 											<div class="row">
 												<div class="col-sm-4">
@@ -173,7 +175,7 @@ a:hover {
 										</div>
 
 										<div class="form-group text-right m-b-0">
-										     <button class="btn btn-primary ti-save" ng-click="update()"></button>
+											<button class="btn btn-primary ti-save" ng-click="update()"></button>
 										</div>
 									</form>
 								</div>
@@ -220,7 +222,6 @@ a:hover {
 					<th>Delivery Address</th>
 					<th>Note</th>
 					<th>Status</th>
-					<th>Change Status</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -239,15 +240,7 @@ a:hover {
 							giao</b></ANY> <ANY ng-switch-when="4"> <b class="delivered">Đã
 							nhận hàng</b></ANY> <ANY ng-switch-when="5"> <b class="cancelled">Đã
 							hủy đơn</b></ANY> <ANY ng-switch-default> <b class="cancelled">New
-							order</b></ANY> </ANY>
-					<td><select ng-model="form.status" ng-focus="edit(order)"
-						class="custom-select">
-							<option value="1">Chờ xác nhận</option>
-							<option value="2">Đã xác nhận đơn hàng</option>
-							<option value="3">Đang giao</option>
-							<option value="4">Đã nhận hàng</option>
-							<option value="5">Đã hủy đơn hàng</option>
-					</select></td>
+							order</b></ANY> </ANY></td>
 					<td>
 						<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
 						<button class="btn btn-primary ti-save" ng-click="update()"></button>
@@ -270,7 +263,6 @@ a:hover {
 					<th>Delivery Address</th>
 					<th>Note</th>
 					<th>Status</th>
-					<th>Change Status</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -289,15 +281,7 @@ a:hover {
 							giao</b></ANY> <ANY ng-switch-when="4"> <b class="delivered">Đã
 							nhận hàng</b></ANY> <ANY ng-switch-when="5"> <b class="cancelled">Đã
 							hủy đơn</b></ANY> <ANY ng-switch-default> <b class="cancelled">New
-							order</b></ANY> </ANY>
-					<td><select ng-model="form.status" ng-focus="edit(order)"
-						class="custom-select">
-							<option value="1">Chờ xác nhận</option>
-							<option value="2">Đã xác nhận đơn hàng</option>
-							<option value="3">Đang giao</option>
-							<option value="4">Đã nhận hàng</option>
-							<option value="5">Đã hủy đơn</option>
-					</select></td>
+							order</b></ANY> </ANY></td>
 					<td>
 						<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
 						<button class="btn btn-primary ti-save" ng-click="update()"></button>
@@ -320,7 +304,6 @@ a:hover {
 					<th>Delivery Address</th>
 					<th>Note</th>
 					<th>Status</th>
-					<th>Change Status</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -341,15 +324,7 @@ a:hover {
 							giao</b></ANY> <ANY ng-switch-when="4"> <b class="delivered">Đã
 							nhận hàng</b></ANY> <ANY ng-switch-when="5"> <b class="cancelled">Đã
 							hủy đơn</b></ANY> <ANY ng-switch-default> <b class="cancelled">New
-							order</b></ANY> </ANY>
-					<td><select ng-model="form.status" ng-focus="edit(order)"
-						class="custom-select">
-							<option value="1">Pending</option>
-							<option value="2">Ready</option>
-							<option value="3">Shipping</option>
-							<option value="4">Delivered</option>
-							<option value="5">Cancelled</option>
-					</select></td>
+							order</b></ANY> </ANY></td>
 					<td>
 						<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
 						<button class="btn btn-primary ti-save"
@@ -371,7 +346,6 @@ a:hover {
 					<th>Delivery Address</th>
 					<th>Note</th>
 					<th>Status</th>
-					<th>Change Status</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -391,15 +365,7 @@ a:hover {
 							ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
 							ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
 							ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
-							ng-switch-default> <b class="cancelled">New order</b></ANY> </ANY>
-					<td><select ng-model="form.status" ng-focus="edit(order)"
-						class="custom-select">
-							<option value="1">Pending</option>
-							<option value="2">Ready</option>
-							<option value="3">Shipping</option>
-							<option value="4">Delivered</option>
-							<option value="5">Cancelled</option>
-					</select></td>
+							ng-switch-default> <b class="cancelled">New order</b></ANY> </ANY></td>
 					<td>
 						<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
 						<button class="btn btn-primary ti-save" ng-click="update()"></button>
@@ -420,7 +386,6 @@ a:hover {
 					<th>Delivery Address</th>
 					<th>Note</th>
 					<th>Status</th>
-					<th>Change Status</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -441,14 +406,6 @@ a:hover {
 							ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
 							ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
 							ng-switch-default> <b class="cancelled">New order</b></ANY> </ANY></td>
-					<td><select ng-model="form.status" ng-focus="edit(order)"
-						class="custom-select">
-							<option value="1">Pending</option>
-							<option value="2">Ready</option>
-							<option value="3">Shipping</option>
-							<option value="4">Delivered</option>
-							<option value="5">Cancelled</option>
-					</select></td>
 					<td>
 						<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
 						<button class="btn btn-primary ti-save" ng-click="update()"></button>

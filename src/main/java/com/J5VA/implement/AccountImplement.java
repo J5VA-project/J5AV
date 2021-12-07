@@ -62,4 +62,27 @@ public class AccountImplement implements AccountService {
 	public List<Account> getMostBuy(Integer month, Integer year) {
 		return dao.getMostBuy(month, year);
 	}
+
+	@Override
+	public boolean checkByUsername(String username) {
+		if (dao.findByUsername(username) == null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	@Override
+	public Account findByEmail(String email) {
+		return dao.findByEmail(email);
+	}
+
+	@Override
+	public boolean checkByEmail(String email) {
+		if (dao.findByEmail(email) == null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }

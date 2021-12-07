@@ -101,13 +101,14 @@ app.controller("account-list-ctrl", function ($scope, $http) {
 			hire_date: new Date(),
 			image: 'empty-account.jpg',
 			gender: true,
-
 		};
+		$scope.check = '';
 	}
 
 	//hiển thị lên form
 	$scope.edit = function (account) {
 		$scope.form = angular.copy(account);
+		$scope.check = 1;
 	}
 
 	//thêm sản phẩm mới
