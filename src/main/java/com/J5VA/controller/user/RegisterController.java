@@ -47,10 +47,13 @@ public class RegisterController {
 			@RequestParam("fullname") String fullname, Errors errors) throws MessagingException {
 		String username = paramService.getString("username", "");
 		String password = paramService.getString("password", "");
-		String confirm = paramService.getString("confirmPass", "");
 		String email = paramService.getString("email", "");
-		if (!confirm.equals(password)) {
-			model.addAttribute("message", "Confirm password doesn't match!");
+
+		if (accountService.checkByUsername(username) == true) {
+			model.addAttribute("error", "Username existed!");
+			return "forward:/home/register";
+		} else if (accountService.checkByEmail(email) == true) {
+			model.addAttribute("error", "Email existed!");
 			return "forward:/home/register";
 		} else {
 			model.addAttribute("custo", custo);
