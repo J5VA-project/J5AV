@@ -65,11 +65,14 @@ public class AccountImplement implements AccountService {
 
 	@Override
 	public boolean checkByUsername(String username) {
-		if (dao.findByUsername(username) == null) {
-			return false;
-		} else {
-			return true;
+		try {
+			if (dao.findByUsername(username) == null) {
+				return false;
+			}
+		} catch (Exception e) {
+			e.getMessage();
 		}
+		return true;
 	}
 
 	@Override
@@ -79,10 +82,13 @@ public class AccountImplement implements AccountService {
 
 	@Override
 	public boolean checkByEmail(String email) {
-		if (dao.findByEmail(email) == null) {
-			return false;
-		} else {
-			return true;
+		try {
+			if (dao.findByEmail(email) == null) {
+				return false;
+			}
+		} catch (Exception e) {
+			e.getMessage();
 		}
+		return true;
 	}
 }

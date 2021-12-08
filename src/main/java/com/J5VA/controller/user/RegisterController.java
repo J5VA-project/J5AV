@@ -51,20 +51,22 @@ public class RegisterController {
 
 		if (accountService.checkByUsername(username) == true) {
 			model.addAttribute("error", "Username existed!");
-			return "forward:/home/register";
-		} else if (accountService.checkByEmail(email) == true) {
-			model.addAttribute("error", "Email existed!");
-			return "forward:/home/register";
+			System.out.println("Existed");
 		} else {
-			model.addAttribute("custo", custo);
-			custo.setHire_date(new Date());
-			customerService.create(custo);
-			mailer.send(email, "Account Register",
-					"Dear. " + fullname
-							+ ", Wellcome to J5VA Restaurant, hope you like my website, and then my username: "
-							+ username + ", password: " + password);
-			model.addAttribute("message", "Register success!");
-			return "forward:/home/register";
+			if (accountService.checkByEmail(email) == true) {
+				model.addAttribute("error", "Email existed!");
+			} else {
+				model.addAttribute("custo", custo);
+				custo.setHire_date(new Date());
+				customerService.create(custo);
+				mailer.send(email, "Account Register",
+						"Dear. " + fullname
+								+ ", Wellcome to J5VA Restaurant, hope you like my website, and then my username: "
+								+ username + ", password: " + password);
+				model.addAttribute("message", "Register success!");
+			}
 		}
+
+		return "forward:/home/register";
 	}
 }
