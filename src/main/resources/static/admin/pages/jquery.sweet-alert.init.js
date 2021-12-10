@@ -104,9 +104,9 @@
         //Auto Close Timer
         $('#sa-close').click(function () {
             swal({
-                title: 'Auto close alert!',
-                text: 'I will close in 2 seconds.',
-                timer: 2000
+                title: 'Successfully!',
+                text: 'Please wait...',
+                timer: 1000
             }).then(
                 function () {
                 },

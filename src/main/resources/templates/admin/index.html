@@ -24,6 +24,8 @@
 <link href="/admin/css/style.css" rel="stylesheet" type="text/css" />
 <link href="/admin/css/status-style.css" rel="stylesheet"
 	type="text/css" />
+ <!-- Sweet Alert css -->
+    <link href="/admin/plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 
 <!-- jQuery library -->
 <script
@@ -209,6 +211,18 @@ body {
 
 	<!-- Footer -->
 	<footer class="footer">
+	<table>
+	    <tr>
+        <td>By passing a parameter, you can execute something else for "Cancel".</td>
+        <td>
+            <button type="button" class="btn btn-light waves-effect waves-light btn-sm" id="sa-params">Click me</button>
+        </td>
+    <tr>
+        <td>A message with auto close timer</td>
+        <td>
+            <button type="button" class="btn btn-light waves-effect waves-light btn-sm" id="sa-close">Click me</button>
+        </td>
+    </tr></table>
 		<div class="container">
 			<div class="row">
 				<div class="col-12 text-center">2016 - 2018 © Adminto.
@@ -257,6 +271,9 @@ body {
 	<script src="/admin/js/size/size-manager.js"></script>
 	<!-- Order JS -->
 	<script src="/admin/js/order/order.js"></script>
+	    <!-- Sweet Alert Js  -->
+    <script src="/admin/plugins/sweet-alert/sweetalert2.min.js"></script>
+    <script src="/admin/pages/jquery.sweet-alert.init.js"></script>
 </body>
 </html>
 
