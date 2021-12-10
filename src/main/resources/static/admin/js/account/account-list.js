@@ -1,4 +1,4 @@
-app.controller("account-list-ctrl", function ($scope, $http,$location) {
+app.controller("account-list-ctrl", function ($scope, $http, $location) {
 	$("#btn-add").click(function () {
 		$('.error_username').css('color', 'red');
 		$('.error_username').css('font-style', 'italic');
@@ -114,14 +114,28 @@ app.controller("account-list-ctrl", function ($scope, $http,$location) {
 	//thêm sản phẩm mới
 	$scope.create = function () {
 		var account = angular.copy($scope.form);
+		// $http.get(`/rest/accounts/checkUsername/account.username`).then(resp => {
+		// 	check=resp.data;
+		// }).catch(error => {
+		// 	alert("Lỗi tìm account!");
+		// 	console.log("Error", error);
+		// });
+		
+		// alert(check);
+		// if (check == true) {
+		// 	alert('User existed!');
+		// 	$scope.reset();
+		// } else {
+		// 	alert('User not existed!');
+		// }
 		$http.post(`/rest/accounts`, account).then(resp => {
-			$scope.accounts.push(resp.data);
-			$scope.reset();
-			alert("Successfully added new account!");
-		}).catch(error => {
-			alert("Failed to add new account!");
-			console.log("Error", error);
-		});
+				$scope.accounts.push(resp.data);
+				$scope.reset();
+				alert("Successfully added new account!");
+			}).catch(error => {
+				alert("Failed to add new account!");
+				console.log("Error", error);
+			});
 	}
 
 	//update sản phẩm

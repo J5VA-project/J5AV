@@ -51,7 +51,11 @@
 							</div>
 							<div class="login-body">
 								<form class="form-wrap" th:action="@{/auth/login}"
-									th:object="${acc}" method="post" id="loginform">
+									th:object="${acc}" method="post" id="loginform"
+									onsubmit="return validateForm()">
+
+									<script src="https://www.google.com/recaptcha/api.js" async
+										defer></script>
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="form-group">
@@ -70,19 +74,8 @@
 											</div>
 										</div>
 
-										<div class="col-lg-12">
-											<div class="form-group">
-												<div class="row">
-													<div class="col-sm-6">
-														<input type="text" class="form-control" id="capt" readonly>
-													</div>
-													<div class="col-sm-6">
-														<input type="text" class="form-control"
-															placeholder="Enter Captcha" id="textinput">
-													</div>
-												</div>
-											</div>
-										</div>
+										<div class="g-recaptcha"
+											th:data-sitekey="${@environment.getProperty('recaptcha.key')}"></div>
 
 										<div class="col-lg-6 col-md-6 col-12">
 											<div class="form_group mb-20">
@@ -140,6 +133,15 @@
 		</section>
 	</div>
 	<script>
+	
+	function validateForm(){
+		if(grecaptcha.getResponse()){
+			return true;
+		}else{
+			alert("Please prove that you're not robot!!!");
+			return false;
+		}
+	}
 		$(document)
 				.ready(
 						function() {
@@ -193,18 +195,6 @@
 													$('#error_password').hide();
 												}
 												
-								                if(stg2==''){
-								                	$('#textinput').css('border','3px solid');
-								                	$('#textinput').css('border-color','red');
-								                	check = false;
-								                } else if (stg1 == stg2) {
-								                	$('#textinput').css('border-color','green');
-								                    check = true;
-								                } else {
-								                    cap();
-								                    $('#textinput').val('');
-								                    check = false;
-								                }
 
 												if (check == true) {
 													$('#loginform').submit();

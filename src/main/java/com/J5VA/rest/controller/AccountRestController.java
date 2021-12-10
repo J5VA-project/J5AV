@@ -34,9 +34,9 @@ public class AccountRestController {
 		}
 		return list;
 	}
-	
-	@GetMapping("/mostBuy") 
-	public List<Account> getMostBuy(Integer month, Integer year){
+
+	@GetMapping("/mostBuy")
+	public List<Account> getMostBuy(Integer month, Integer year) {
 		List<Account> accounts = service.getMostBuy(month, year);
 		return accounts;
 	}
@@ -59,6 +59,15 @@ public class AccountRestController {
 	@PostMapping
 	public Account create(@RequestBody Account account) {
 		return service.create(account);
+	}
+
+	@GetMapping("checkUsername/{username}")
+	public boolean checkUsername(@PathVariable("username") String username) {
+		if (service.checkByUsername(username) == true) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@PutMapping("/{username}")

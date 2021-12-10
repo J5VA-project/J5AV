@@ -51,7 +51,6 @@ public class RegisterController {
 
 		if (accountService.checkByUsername(username) == true) {
 			model.addAttribute("error", "Username existed!");
-			System.out.println("Existed");
 		} else {
 			if (accountService.checkByEmail(email) == true) {
 				model.addAttribute("error", "Email existed!");
@@ -66,7 +65,6 @@ public class RegisterController {
 				model.addAttribute("message", "Register success!");
 			}
 		}
-
 		return "forward:/home/register";
 	}
 }
