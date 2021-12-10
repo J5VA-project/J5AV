@@ -190,7 +190,7 @@ a {
 													<li th:unless="${#request.remoteUser}"><a
 														th:href="@{/home/register}" th:text="#{menu.register}">Register</a></li>
 													<li th:if="${#request.remoteUser}"><a
-														th:href="@{/home/profile}" th:text="#{menu.profile}">Profile</a></li>													
+														th:href="@{/home/profile}" th:text="#{menu.profile}">Profile</a></li>
 													<li th:if="${#request.remoteUser}"><a
 														th:href="@{/home/change-pw}" th:text="#{menu.cpw}">Change
 															Password</a></li>
@@ -365,7 +365,6 @@ a {
 
 	<a href="javascript:void(0)" class="back-to-top"><i
 		class="las la-arrow-up"></i></a>
-
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
