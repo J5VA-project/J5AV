@@ -1,18 +1,27 @@
-
 <div class="container-fluid">
-	<div class="col-xl-12">
-		<div class="card-box">
+
+	<!-- Page-Title -->
+	<div class="row">
+		<div class="col-sm-12">
+			<h4 class="page-title">Statistics</h4>
+		</div>
+	</div>
+	<!-- end page title end breadcrumb -->
+	<div class="row">
+		<div class="col-xl-4">
+			<div class="card-box">
 			<h4 class="header-title mt-0">Age of customers Statistics</h4>
 			<div id="chartAccount" style="height: 300px;"></div>
 		</div>
-	</div>
+		</div>
+		<!-- end col -->
 
-	<div class="col-xl-12">
-		<div class="card-box">
+		<div class="col-xl-4">
+				<div class="card-box">
 			<h4 class="header-title mt-0">Monthly Customers Buy The Most
 				Statistics</h4>
 			<div class="row">
-				<select class="form-select" id="monthCustomer1">
+				<select class="form-control col-xl-4 select2"  style="height: 100%" id="monthCustomer1">
 					<option selected>Choose month</option>
 					<option value="1">January</option>
 					<option value="2">February</option>
@@ -26,130 +35,60 @@
 					<option value="10">October</option>
 					<option value="11">November</option>
 					<option value="12">December</option>
-				</select> <select class="form-select" id="yearCustomer1">
+				</select> <select class="form-control col-xl-4 select2"  style="height: 100%; margin: 0 10px" id="yearCustomer1">
 					<option selected>Choose year</option>
 					<option value="2019">2019</option>
 					<option value="2020">2020</option>
 					<option value="2021">2021</option>
 				</select>
-				<button type="button" class="btn btn-primary"
-					id="btn-filterCustomer1">Filter</button>
+				<button type="button" class="btn btn-primary col-xl-3" 
+					id="btn-filterCustomer1"> <i class="fa fa-filter"></i> Filter</button>
 				<div id="chartCustomer" class="col-sm-12"></div>
 			</div>
-		</div>
-	</div>
-	<div class="col-xl-12">
-		<div class="card-box">
-			<h4 class="header-title mt-0">Monthly Best Selling Product
-				Statistics</h4>
-			<div class="row">
-				<select class="form-select" id="monthCustomer2">
-					<option selected>Choose month</option>
-					<option value="1">January</option>
-					<option value="2">February</option>
-					<option value="3">March</option>
-					<option value="4">April</option>
-					<option value="5">May</option>
-					<option value="6">June</option>
-					<option value="7">July</option>
-					<option value="8">August</option>
-					<option value="9">September</option>
-					<option value="10">October</option>
-					<option value="11">November</option>
-					<option value="12">December</option>
-				</select> <select class="form-select" id="yearCustomer2">
-					<option selected>Choose year</option>
-					<option value="2019">2019</option>
-					<option value="2020">2020</option>
-					<option value="2021">2021</option>
-				</select>
-				<button type="button" class="btn btn-primary"
-					id="btn-filterCustomer2">Filter</button>
-				<div id="chartProduct" class="col-sm-12"></div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-xl-3 col-md-6" ng-repeat="acco in account">
-			<div class="card-box widget-user">
-				<div>
-					<img ng-src="/assets/img/testimonial/{{acco.image}}"
-						class="img-responsive rounded-circle" alt="user">
-					<div class="wid-u-info">
-						<h5 class="mt-0 m-b-5">{{acco.fullname}}</h5>
-						<p class="text-muted m-b-5 font-13">{{acco.email}}</p>
-						<small class="text-warning"><b>SALARY: {{acco.salary}}</b></small>
-					</div>
-				</div>
 			</div>
 		</div>
 		<!-- end col -->
+
+		<div class="col-xl-4">
+			<div class="card-box">
+			<h4 class="header-title mt-0">Monthly Best Selling Product
+				Statistics</h4>
+			<div class="row">
+				<select class="form-control col-xl-4 select2" style="height: 100%" id="monthCustomer2">
+					<option selected>Choose month</option>
+					<option value="1">January</option>
+					<option value="2">February</option>
+					<option value="3">March</option>
+					<option value="4">April</option>
+					<option value="5">May</option>
+					<option value="6">June</option>
+					<option value="7">July</option>
+					<option value="8">August</option>
+					<option value="9">September</option>
+					<option value="10">October</option>
+					<option value="11">November</option>
+					<option value="12">December</option>
+				</select> <select class="form-control col-xl-4 select2"  style="height: 100%; margin: 0 10px" id="yearCustomer2">
+					<option selected>Choose year</option>
+					<option value="2019">2019</option>
+					<option value="2020">2020</option>
+					<option value="2021">2021</option>
+				</select>
+				<button type="button" class="btn btn-primary col-xl-3"
+					id="btn-filterCustomer2"> <i class="fa fa-filter"></i> Filter</button>
+				<div id="chartProduct" class="col-sm-12"></div>
+			</div>
+			</div>
+		</div>
+		<!-- end col -->
+
 	</div>
 	<!-- end row -->
+
 
 </div>
 <!-- end container -->
 
-
-<!-- Right Sidebar -->
-<div class="side-bar right-bar">
-	<a href="javascript:void(0);" class="right-bar-toggle"> <i
-		class="mdi mdi-close-circle-outline"></i>
-	</a>
-	<h4 class="">Notifications</h4>
-	<div class="notification-list nicescroll">
-		<ul class="list-group list-no-border user-list">
-			<li class="list-group-item"><a href="#" class="user-list-item">
-					<div class="avatar">
-						<img src="/admin/images/users/avatar-2.jpg" alt="">
-					</div>
-					<div class="user-desc">
-						<span class="name">Michael Zenaty</span> <span class="desc">There
-							are new settings available</span> <span class="time">2 hours ago</span>
-					</div>
-			</a></li>
-			<li class="list-group-item"><a href="#" class="user-list-item">
-					<div class="icon bg-info">
-						<i class="mdi mdi-account"></i>
-					</div>
-					<div class="user-desc">
-						<span class="name">New Signup</span> <span class="desc">There
-							are new settings available</span> <span class="time">5 hours ago</span>
-					</div>
-			</a></li>
-			<li class="list-group-item"><a href="#" class="user-list-item">
-					<div class="icon bg-pink">
-						<i class="mdi mdi-comment"></i>
-					</div>
-					<div class="user-desc">
-						<span class="name">New Message received</span> <span class="desc">There
-							are new settings available</span> <span class="time">1 day ago</span>
-					</div>
-			</a></li>
-			<li class="list-group-item active"><a href="#"
-				class="user-list-item">
-					<div class="avatar">
-						<img src="/admin/images/users/avatar-3.jpg" alt="">
-					</div>
-					<div class="user-desc">
-						<span class="name">James Anderson</span> <span class="desc">There
-							are new settings available</span> <span class="time">2 days ago</span>
-					</div>
-			</a></li>
-			<li class="list-group-item active"><a href="#"
-				class="user-list-item">
-					<div class="icon bg-warning">
-						<i class="mdi mdi-settings"></i>
-					</div>
-					<div class="user-desc">
-						<span class="name">Settings</span> <span class="desc">There
-							are new settings available</span> <span class="time">1 day ago</span>
-					</div>
-			</a></li>
-
-		</ul>
-	</div>
 
 	<script>
 		$(document)
