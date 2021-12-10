@@ -19,4 +19,10 @@ public class OrderDetailImplement implements OrderDetailService {
 		return dao.findAll();
 	}
 
+
+	@Override
+	public List<OrderDetail> findByOrderId(Integer orderID) {
+		return dao.findByOrderId(orderID);
+	}
+
 }

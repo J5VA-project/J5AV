@@ -6,7 +6,7 @@ a:hover {
 </style>
 <ul class="nav nav-tabs" style="letter-spacing: 2px; cursor: pointer;">
 	<li class="active"><a data-toggle="tab" data-target="#all">All
-			<span class="badge badge-danger pull-right">{{total}}</span>
+			Order <span class="badge badge-danger pull-right">{{total}}</span>
 	</a></li>
 	<li><a class="pending" data-toggle="tab" data-target="#pending"
 		ng-click="pending()">Pending <span
@@ -23,8 +23,6 @@ a:hover {
 	<li><a class="cancelled" data-toggle="tab"
 		data-target="#cancelled" ng-click="cancelled()">Cancelled <span
 			class="badge badge-danger pull-right">{{totalCancel}}</span></a></li>
-	<li><a data-toggle="tab" class="detail" data-target="#detail">Detail
-			order</a></li>
 </ul>
 
 <div class="tab-content">
@@ -57,134 +55,21 @@ a:hover {
 								<td>{{order.address}}</td>
 								<td>{{order.note}}</td>
 								<td><ANY ng-switch={{order.status}}> <ANY
-										ng-switch-when="1"> <b class="pending">Chờ xác nhận</b></ANY>
-									<ANY ng-switch-when="2"> <b class="ready">Đã xác nhận
-										đơn hàng</b></ANY> <ANY ng-switch-when="3"> <b class="shipping">Đang
-										giao</b></ANY> <ANY ng-switch-when="4"> <b class="delivered">Đã
-										nhận hàng</b></ANY> <ANY ng-switch-when="5"> <b class="cancelled">Đã
-										hủy đơn</b></ANY> <ANY ng-switch-default> <b class="cancelled">New
-										order</b></ANY> </ANY></td>
+										ng-switch-when="1"> <b class="pending">Pending</b> </ANY> <ANY
+										ng-switch-when="2"> <b class="ready">Ready</b></ANY> <ANY
+										ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
+										ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
+										ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
+										ng-switch-default> <b class="pending">Pending</b></ANY> </ANY></td>
 								<td>
-									<button ng-click="edit(order)" class="btn btn-warning ti-eye"
-										data-toggle="modal" data-target=".bs-example-modal-lg"></button>
-									<button class="btn btn-primary ti-save" ng-click="update()"></button>
-									<button class="btn btn-danger ti-trash"
-										ng-click="delete(order)"></button>
+									<button ng-click="edit(order);editDetail(order)"
+										class="btn btn-primary fa fa-edit" data-toggle="modal"
+										data-target=".bs-example-modal-lg"></button>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 
-					<!--  Modal content for the above example -->
-					<div class="modal fade bs-example-modal-lg" tabindex="-1"
-						role="dialog" aria-labelledby="myLargeModalLabel"
-						aria-hidden="true" style="display: none;">
-						<div class="modal-dialog modal-lg">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h4 class="modal-title mt-0" id="myLargeModalLabel">
-										<b>Order Detail</b>
-									</h4>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-hidden="true">×</button>
-								</div>
-								<div class="modal-body">
-									<form action="#" data-parsley-validate novalidate>
-										<div class="form-group">
-											<div class="row">
-												<div class="col-sm-4">
-													<label for="userName">ID*</label>
-												</div>
-												<div class="col-sm-8">
-													<input type="text" ng-model="form.order_id" readonly
-														style="border: none">
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="row">
-												<div class="col-sm-4">
-													<label for="emailAddress">OrderDate*</label>
-												</div>
-												<div class="col-sm-8">
-													<input type="text" ng-model="form.orderdate" readonly
-														style="border: none">
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="row">
-												<div class="col-sm-4">
-													<label for="pass1">Discount*</label>
-												</div>
-												<div class="col-sm-8">
-													<input type="text" ng-model="form.discount" readonly
-														style="border: none">
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="row">
-												<div class="col-sm-4">
-													<label for="passWord2">Address*</label>
-												</div>
-												<div class="col-sm-8">
-													<input type="text" ng-model="form.address" readonly
-														style="border: none">
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="row">
-												<div class="col-sm-4">
-													<label for="passWord2">Note*</label>
-												</div>
-												<div class="col-sm-8">
-													<input type="text" ng-model="form.note" readonly
-														style="border: none">
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="row">
-												<div class="col-sm-4">
-													<label for="passWord2">Fullname*</label>
-												</div>
-												<div class="col-sm-8">
-													<input type="text" ng-model="form.order_acc.fullname"
-														readonly style="border: none">
-												</div>
-											</div>
-										</div>
-
-										<div class="form-group">
-											<div class="row">
-												<div class="col-sm-4">
-													<label for="passWord2">Change Status*</label>
-												</div>
-												<div class="col-sm-8">
-													<select ng-model="form.status" class="custom-select">
-														<option value="1">Chờ xác nhận</option>
-														<option value="2">Đã xác nhận đơn hàng</option>
-														<option value="3">Đang giao</option>
-														<option value="4">Đã nhận hàng</option>
-														<option value="5">Đã hủy đơn hàng</option>
-													</select>
-												</div>
-											</div>
-										</div>
-
-										<div class="form-group text-right m-b-0">
-											<button class="btn btn-primary ti-save" ng-click="update()"></button>
-										</div>
-									</form>
-								</div>
-							</div>
-							<!-- /.modal-content -->
-						</div>
-						<!-- /.modal-dialog -->
-					</div>
-					<!-- /.modal -->
 				</div>
 			</div>
 			<!-- end col -->
@@ -210,6 +95,8 @@ a:hover {
 		<br>
 	</div>
 
+
+
 	<!-- Tab Pending -->
 	<div id="pending" class="tab-pane fade">
 		<table id="datatable" class="table table-bordered">
@@ -234,17 +121,16 @@ a:hover {
 					<td>{{order.address}}</td>
 					<td>{{order.note}}</td>
 					<td><ANY ng-switch={{order.status}}> <ANY
-							ng-switch-when="1"> <b class="pending">Chờ xác nhận</b></ANY> <ANY
-							ng-switch-when="2"> <b class="ready">Đã xác nhận đơn
-							hàng</b></ANY> <ANY ng-switch-when="3"> <b class="shipping">Đang
-							giao</b></ANY> <ANY ng-switch-when="4"> <b class="delivered">Đã
-							nhận hàng</b></ANY> <ANY ng-switch-when="5"> <b class="cancelled">Đã
-							hủy đơn</b></ANY> <ANY ng-switch-default> <b class="cancelled">New
-							order</b></ANY> </ANY></td>
+							ng-switch-when="1"> <b class="pending">Pending</b> </ANY> <ANY
+							ng-switch-when="2"> <b class="ready">Ready</b></ANY> <ANY
+							ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
+							ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
+							ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
+							ng-switch-default> <b class="pending">Pending</b></ANY> </ANY></td>
 					<td>
-						<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
-						<button class="btn btn-primary ti-save" ng-click="update()"></button>
-						<button class="btn btn-danger ti-trash" ng-click="delete(order)"></button>
+						<button ng-click="edit(order);editDetail(order)"
+							class="btn btn-primary fa fa-edit" data-toggle="modal"
+							data-target=".bs-example-modal-lg"></button>
 					</td>
 				</tr>
 			</tbody>
@@ -275,17 +161,16 @@ a:hover {
 					<td>{{order.address}}</td>
 					<td>{{order.note}}</td>
 					<td><ANY ng-switch={{order.status}}> <ANY
-							ng-switch-when="1"> <b class="pending">Chờ xác nhận</b></ANY> <ANY
-							ng-switch-when="2"> <b class="ready">Đã xác nhận đơn
-							hàng</b></ANY> <ANY ng-switch-when="3"> <b class="shipping">Đang
-							giao</b></ANY> <ANY ng-switch-when="4"> <b class="delivered">Đã
-							nhận hàng</b></ANY> <ANY ng-switch-when="5"> <b class="cancelled">Đã
-							hủy đơn</b></ANY> <ANY ng-switch-default> <b class="cancelled">New
-							order</b></ANY> </ANY></td>
+							ng-switch-when="1"> <b class="pending">Pending</b> </ANY> <ANY
+							ng-switch-when="2"> <b class="ready">Ready</b></ANY> <ANY
+							ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
+							ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
+							ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
+							ng-switch-default> <b class="pending">Pending</b></ANY> </ANY></td>
 					<td>
-						<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
-						<button class="btn btn-primary ti-save" ng-click="update()"></button>
-						<button class="btn btn-danger ti-trash" ng-click="delete(order)"></button>
+						<button ng-click="edit(order);editDetail(order)"
+							class="btn btn-primary fa fa-edit" data-toggle="modal"
+							data-target=".bs-example-modal-lg"></button>
 					</td>
 				</tr>
 			</tbody>
@@ -318,18 +203,16 @@ a:hover {
 					<td>{{order.address}}</td>
 					<td>{{order.note}}</td>
 					<td><ANY ng-switch={{order.status}}> <ANY
-							ng-switch-when="1"> <b class="pending">Chờ xác nhận</b></ANY> <ANY
-							ng-switch-when="2"> <b class="ready">Đã xác nhận đơn
-							hàng</b></ANY> <ANY ng-switch-when="3"> <b class="shipping">Đang
-							giao</b></ANY> <ANY ng-switch-when="4"> <b class="delivered">Đã
-							nhận hàng</b></ANY> <ANY ng-switch-when="5"> <b class="cancelled">Đã
-							hủy đơn</b></ANY> <ANY ng-switch-default> <b class="cancelled">New
-							order</b></ANY> </ANY></td>
+							ng-switch-when="1"> <b class="pending">Pending</b> </ANY> <ANY
+							ng-switch-when="2"> <b class="ready">Ready</b></ANY> <ANY
+							ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
+							ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
+							ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
+							ng-switch-default> <b class="pending">Pending</b></ANY> </ANY></td>
 					<td>
-						<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
-						<button class="btn btn-primary ti-save"
-							ng-click="update(); reloadRoute()"></button>
-						<button class="btn btn-danger ti-trash" ng-click="delete(order)"></button>
+						<button ng-click="edit(order);editDetail(order)"
+							class="btn btn-primary fa fa-edit" data-toggle="modal"
+							data-target=".bs-example-modal-lg"></button>
 					</td>
 				</tr>
 			</tbody>
@@ -360,16 +243,16 @@ a:hover {
 					<td>{{order.address}}</td>
 					<td>{{order.note}}</td>
 					<td><ANY ng-switch={{order.status}}> <ANY
-							ng-switch-when="1"> <b class="pending">Pending</b></ANY> <ANY
+							ng-switch-when="1"> <b class="pending">Pending</b> </ANY> <ANY
 							ng-switch-when="2"> <b class="ready">Ready</b></ANY> <ANY
 							ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
 							ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
 							ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
-							ng-switch-default> <b class="cancelled">New order</b></ANY> </ANY></td>
+							ng-switch-default> <b class="pending">Pending</b></ANY> </ANY></td>
 					<td>
-						<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
-						<button class="btn btn-primary ti-save" ng-click="update()"></button>
-						<button class="btn btn-danger ti-trash" ng-click="delete(order)"></button>
+						<button ng-click="edit(order);editDetail(order)"
+							class="btn btn-primary fa fa-edit" data-toggle="modal"
+							data-target=".bs-example-modal-lg"></button>
 					</td>
 				</tr>
 			</tbody>
@@ -400,16 +283,16 @@ a:hover {
 					<td>{{order.address}}</td>
 					<td>{{order.note}}</td>
 					<td><ANY ng-switch={{order.status}}> <ANY
-							ng-switch-when="1"> <b class="pending">Pending</b></ANY> <ANY
+							ng-switch-when="1"> <b class="pending">Pending</b> </ANY> <ANY
 							ng-switch-when="2"> <b class="ready">Ready</b></ANY> <ANY
 							ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
 							ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
 							ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
-							ng-switch-default> <b class="cancelled">New order</b></ANY> </ANY></td>
+							ng-switch-default> <b class="pending">Pending</b></ANY> </ANY></td>
 					<td>
-						<button ng-click="edit(order)" class="btn btn-warning ti-eye"></button>
-						<button class="btn btn-primary ti-save" ng-click="update()"></button>
-						<button class="btn btn-danger ti-trash" ng-click="delete(order)"></button>
+						<button ng-click="edit(order);editDetail(order)"
+							class="btn btn-primary fa fa-edit" data-toggle="modal"
+							data-target=".bs-example-modal-lg"></button>
 					</td>
 				</tr>
 			</tbody>
@@ -433,3 +316,134 @@ a:hover {
 		</table>
 	</div>
 </div>
+
+<!--  Modal content for the above example -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+	aria-labelledby="myLargeModalLabel" aria-hidden="true"
+	style="display: none;">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title mt-0" id="myLargeModalLabel">
+					<b>Order Detail</b>
+				</h4>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">×</button>
+			</div>
+			<div class="modal-body">
+				<form action="#" data-parsley-validate novalidate>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="userName">ID*</label>
+							</div>
+							<div class="col-sm-8">
+								<input type="text" ng-model="form.order_id" readonly
+									style="border: none">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="emailAddress">OrderDate*</label>
+							</div>
+							<div class="col-sm-8">
+								<input type="text" ng-model="form.orderdate | date:'MM/dd/yyyy'"
+									readonly style="border: none">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="pass1">Discount*</label>
+							</div>
+							<div class="col-sm-8">
+								<input type="text" ng-model="form.discount" readonly
+									style="border: none">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="passWord2">Address*</label>
+							</div>
+							<div class="col-sm-8">
+								<input type="text" ng-model="form.address" readonly
+									style="border: none">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="passWord2">Note*</label>
+							</div>
+							<div class="col-sm-8">
+								<input type="text" ng-model="form.note" readonly
+									style="border: none">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="passWord2">Fullname*</label>
+							</div>
+							<div class="col-sm-8">
+								<input type="text" ng-model="form.order_acc.fullname" readonly
+									style="border: none">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="passWord2">Change Status*</label>
+							</div>
+							<div class="col-sm-8">
+								<select ng-model="form.status" class="custom-select">
+									<option ng-value="1">Pending</option>
+									<option ng-value="2">Ready</option>
+									<option ng-value="3">Shipping</option>
+									<option ng-value="4">Delivered</option>
+									<option ng-value="5">Cancelled</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="passWord2">Food</label>
+							</div>
+							<div class="col-sm-8">
+								<table id="datatable" class="table table-hover">
+									<tbody>
+										<tr ng-repeat="food in orderDetail">
+											<td><img ng-src="{{'/assets/products/'+food.food.photo}}" style="width: 50px; height: 50px"></td>
+											<td>{{food.food_id}}</td>
+											<td>{{food.food.food_name}}</td>
+											<td>{{food.food.price}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group text-right m-b-0">
+						<button class="btn btn-primary ti-save" ng-click="update()"></button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

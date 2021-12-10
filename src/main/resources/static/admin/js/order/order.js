@@ -1,6 +1,8 @@
 app.controller("order-ctrl", function($scope, $http){
     $scope.orders = [];
 	$scope.form = {};
+	$scope.formDetail = {};
+	
 
     $scope.initialize = function(){
         $http.get("/rest/orders").then(resp => {
@@ -12,6 +14,13 @@ app.controller("order-ctrl", function($scope, $http){
     $scope.initialize();
 	$scope.edit = function (order) {
 		$scope.form = angular.copy(order);
+	}
+	
+	$scope.editDetail = function (order) {
+		var orderDetail = angular.copy($scope.form);	
+		$http.get(`/rest/orderDetail/${order.order_id}`).then(resp => {
+            $scope.orderDetail = resp.data;
+        });
 	}
 	
 	$scope.pending = function() {
@@ -48,6 +57,8 @@ app.controller("order-ctrl", function($scope, $http){
     		var index = $scope.orders.findIndex(p => p.order_id == order.order_id);
     		$scope.orders[index] = order;
     		$('.modal-backdrop').hide();
+    		location.href = "?#!/order";
+    		location.reload();
     	}).catch(error =>{  
     		console.log("Error", error);
     	});
