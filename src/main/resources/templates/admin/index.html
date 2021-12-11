@@ -82,7 +82,7 @@ body {
 
 				<!-- Logo container-->
 				<div class="logo">
-					<a href="#" class="logo"> <img
+					<a href="/admin/index" class="logo"> <img
 						src="/admin/images/logo.png" alt="" height="34" class="logo-large">
 					</a>
 				</div>
@@ -111,29 +111,24 @@ body {
 		
 						<li class="dropdown notification-list"><a
 							class="nav-link dropdown-toggle waves-effect waves-light nav-user"
-							data-toggle="dropdown" href="#" role="button"
+							data-toggle="dropdown" href="" role="button"
 							aria-haspopup="false" aria-expanded="false"> <!-- <img th:src="@{|/assets/img/testimonial/${acc.image}|}" alt="user" class="rounded-circle"> -->
-								[[${#request.remoteUser}]]
+								[[${#request.remoteUser}]]  <i class="ti-angle-down"></i>
 						</a>
 							<div class="dropdown-menu dropdown-menu-right profile-dropdown ">
 
 								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<i class="ti-user m-r-5"></i> Profile
+								<a href="/home/forgot-pw" class="dropdown-item notify-item">
+									<i class="mdi mdi-lock-reset"></i> Reset Password
 								</a>
 
 								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<i class="ti-settings m-r-5"></i> Settings
+								<a href="/home/change-pw" class="dropdown-item notify-item">
+									<i class="mdi mdi-key-change"></i> Change Password
 								</a>
 
 								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<i class="ti-lock m-r-5"></i> Lock screen
-								</a>
-
-								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
+								<a href="/auth/logoff" class="dropdown-item notify-item">
 									<i class="ti-power-off m-r-5"></i> Logout
 								</a>
 
@@ -142,7 +137,6 @@ body {
 					</ul>
 				</div>
 				<!-- end menu-extras -->
-
 				<div class="clearfix"></div>
 
 			</div>
@@ -157,10 +151,6 @@ body {
 					<ul class="navigation-menu">
 						<li class="has-submenu"><a href="#!dashboard-ctrl"><i
 								class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a></li>
-
-						<!-- <li class="has-submenu"><a href="#!statistical"><i class="mdi mdi-view-dashboard"></i> <span>Detail Statistical </span> </a></li> -->
-
-
 						<li class="has-submenu"><a href="#!product-manager"><i
 								class="fa fa-product-hunt"></i> <span> Shop Manager </span> </a>
 							<ul class="submenu megamenu">
@@ -175,26 +165,14 @@ body {
 						<li class="has-submenu"><a href="#!account-list"><i
 								class="fa fa-user-circle-o"></i><span> Account Manager </span> </a>
 						</li>
-
 						<li class="has-submenu"><a href="#!order"><i
 								class="fa fa-shopping-basket"></i> <span> Orders Manager
 							</span> &nbsp;&nbsp; <span class="badge badge-danger pull-right">{{total}}</span>
 						</a></li>
-
 						<li class="has-submenu"><a href="#!authorized"><i
 								class="mdi mdi-google-pages"></i><span> Authorized </span> </a></li>
-
-						<li class="has-submenu"><a href="#"><i
-								class="mdi mdi-layers"></i><span>Pages</span> </a>
-							<ul class="submenu megamenu">
-								<li>
-									<ul>
-										<li><a href="/auth/logoff">Logout</a></li>
-										<li><a href="/home/change-pw">Change Password</a></li>
-										<li><a href="/home/forgot-pw">Reset Password</a></li>
-									</ul>
-								</li>
-							</ul></li>
+						<li class="has-submenu"><a href="/home" target="blank">
+							<i class="mdi mdi-store"></i><span> Store </span> </a></li>
 					</ul>
 					<!-- End navigation menu -->
 				</div>
@@ -211,22 +189,9 @@ body {
 
 	<!-- Footer -->
 	<footer class="footer">
-	<table>
-	    <tr>
-        <td>By passing a parameter, you can execute something else for "Cancel".</td>
-        <td>
-            <button type="button" class="btn btn-light waves-effect waves-light btn-sm" id="sa-params">Click me</button>
-        </td>
-    <tr>
-        <td>A message with auto close timer</td>
-        <td>
-            <button type="button" class="btn btn-light waves-effect waves-light btn-sm" id="sa-close">Click me</button>
-        </td>
-    </tr></table>
 		<div class="container">
 			<div class="row">
-				<div class="col-12 text-center">2016 - 2018 © Adminto.
-					Coderthemes.com</div>
+				<div class="col-12 text-center">2021 © J5Va Restaurant</div>
 			</div>
 		</div>
 	</footer>

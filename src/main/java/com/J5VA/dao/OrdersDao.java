@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.J5VA.entity.BestCustomerBuy;
 import com.J5VA.entity.BestSellingProduct;
+import com.J5VA.entity.Food;
 import com.J5VA.entity.Orders;
 
 @Repository
@@ -47,4 +48,7 @@ public interface OrdersDao extends JpaRepository<Orders, Integer> {
 
 	@Query(value = "SELECT o FROM Orders o WHERE MONTH(o.orderdate)=?1 and YEAR(o.orderdate)=?2")
 	List<Orders> findByMonthAndYear(Integer month, Integer year);
+	
+	@Query("SELECT MAX(order_id) FROM Orders")
+	int selectMax();
 }
