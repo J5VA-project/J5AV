@@ -127,12 +127,12 @@ app.controller("shopping-cart-ctrl", function ($scope, $http) {
 				console.log(error)
 			})
 		},
+
 		purchasepaypal() {
 			//thực hiện đặt hàng
 			$http.post("/rest/orders", this).then(resp => {
 				//alert("đặt hàng thành công");
 				$scope.cart.clear();
-				//location.href = "/home/order-detail/"+resp.data.order_id;
 			}).catch(error => {
 				alert("Đặt hàng lỗi")
 				console.log(error)
@@ -153,5 +153,6 @@ app.controller("shopping-cart-ctrl", function ($scope, $http) {
 	}
 
 });
+
 
 

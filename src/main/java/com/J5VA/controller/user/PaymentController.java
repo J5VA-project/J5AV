@@ -13,6 +13,8 @@ import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
 import com.J5VA.config.PaypalPaymentIntent;
 import com.J5VA.config.PaypalPaymentMethod;
+import com.J5VA.dao.OrdersDao;
+import com.J5VA.service.OrdersService;
 import com.J5VA.service.PaypalService;
 import com.J5VA.util.Utils;
 @Controller
@@ -23,6 +25,11 @@ public class PaymentController {
 	private Logger log = LoggerFactory.getLogger(getClass());
 	@Autowired
 	private PaypalService paypalService;
+	@Autowired
+	private OrdersDao ordersDao;
+	@Autowired
+	private OrdersService ordersService;
+	
 	@GetMapping("/")
 	public String index(){
 		return "index";
@@ -52,7 +59,8 @@ public class PaymentController {
 	}
 	@GetMapping(URL_PAYPAL_CANCEL)
 	public String cancelPay(){
-		return "user/body/checkout";
+		ordersService.delete(ordersDao.selectMax());
+		return "redirect:/home/shop";
 	}
 	@GetMapping(URL_PAYPAL_SUCCESS)
 	public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId){
