@@ -191,6 +191,8 @@ a {
 														th:href="@{/home/register}" th:text="#{menu.register}">Register</a></li>
 													<li th:if="${#request.remoteUser}"><a
 														th:href="@{/home/profile}" th:text="#{menu.profile}">Profile</a></li>
+													<li th:if="${#request.isUserInRole('Manager')}"><a
+														th:href="@{/admin/index}">Administration</a></li>
 													<li th:if="${#request.remoteUser}"><a
 														th:href="@{/home/change-pw}" th:text="#{menu.cpw}">Change
 															Password</a></li>
