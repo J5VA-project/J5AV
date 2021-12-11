@@ -1,20 +1,35 @@
 const app = angular.module("shopping-cart-app", []);
-app.controller("shopping-cart-ctrl", function($scope, $http) {
+app.controller("shopping-cart-ctrl", function ($scope, $http) {
 
 	/*
 	QUẢN LÝ GIỎ HÀNG
 	*/
 	$scope.cart = {
-		
-	
+
+
 		items: [],
 		//them san pham vao gio hang
 
 		add(id) {
 			var item = this.items.find(item => item.food_id == id);
+			var quantity = $('#quantity').val();
+			const sl = Number(quantity);
+
 			if (item) {
-				item.qty++;
+				if (quantity != '') {
+					var a = item.qty + sl;
+					item.qty = a;
+				} else {
+					alert('Cộng thêm 1');
+				}
 				this.saveToLocalStorage();
+			} else if (quantity != '') {
+				id = parseInt(id);
+				$http.get(`/rest/food/${id}`).then(resp => {
+					resp.data.qty = 0 + (sl);
+					this.items.push(resp.data);
+					this.saveToLocalStorage();
+				})
 			}
 			else {
 				id = parseInt(id);
@@ -28,17 +43,18 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 
 		tang(id) {
 			var item = this.items.find(item => item.food_id == id);
-			if (item) {			
-					item.qty++;
-				this.saveToLocalStorage();	
+			if (item) {
+				item.qty++;
+				this.saveToLocalStorage();
 			}
 		},
 		giam(id) {
 			var item = this.items.find(item => item.food_id == id);
 			if (item) {
-				if(item.qty>1){			
-				item.qty--;
-				this.saveToLocalStorage();}
+				if (item.qty > 1) {
+					item.qty--;
+					this.saveToLocalStorage();
+				}
 			}
 		},
 		//xoa san pham khoi gio hang
@@ -83,48 +99,48 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 		}
 	}
 	$scope.cart.loadFromLocalStorage();
-	
-	
+
+
 	$scope.orders = {
 		orderdate: new Date(),
-		status:1,
+		status: 1,
 		address: "",
-		note:"",
-		order_acc: {username:$("#username").text()},
-		get orderDetails(){
-			return $scope.cart.items.map(item =>{
-				return{
-					food:{food_id:item.food_id},
-					price:item.price,
-					quantity:item.qty
+		note: "",
+		order_acc: { username: $("#username").text() },
+		get orderDetails() {
+			return $scope.cart.items.map(item => {
+				return {
+					food: { food_id: item.food_id },
+					price: item.price,
+					quantity: item.qty
 				}
 			});
 		},
-		purchase(){
+		purchase() {
 			//thực hiện đặt hàng
-			$http.post("/rest/orders", this).then(resp =>{
-			//alert("đặt hàng thành công");
-			$scope.cart.clear();
-			location.href = "/home/order-detail/"+resp.data.order_id;
-		}).catch(error => {
-		alert("Đặt hàng lỗi")
-		console.log(error)
-		})
+			$http.post("/rest/orders", this).then(resp => {
+				//alert("đặt hàng thành công");
+				$scope.cart.clear();
+				location.href = "/home/order-detail/" + resp.data.order_id;
+			}).catch(error => {
+				alert("Đặt hàng lỗi")
+				console.log(error)
+			})
 		},
-	purchasepaypal(){
+		purchasepaypal() {
 			//thực hiện đặt hàng
-			$http.post("/rest/orders", this).then(resp =>{
-			//alert("đặt hàng thành công");
-			$scope.cart.clear();
-			//location.href = "/home/order-detail/"+resp.data.order_id;
-		}).catch(error => {
-		alert("Đặt hàng lỗi")
-		console.log(error)
-		})
+			$http.post("/rest/orders", this).then(resp => {
+				//alert("đặt hàng thành công");
+				$scope.cart.clear();
+				//location.href = "/home/order-detail/"+resp.data.order_id;
+			}).catch(error => {
+				alert("Đặt hàng lỗi")
+				console.log(error)
+			})
 		}
 	}
 	//Upload hình
-	$scope.imageChanged = function(files) {
+	$scope.imageChanged = function (files) {
 		var data = new FormData();
 		data.append('file', files[0]);
 		$http.post('/rest/upload/account', data, {
@@ -135,7 +151,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			console.log("Error", error);
 		})
 	}
-	
+
 });
 
 
