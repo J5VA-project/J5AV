@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/header::dynamic(~{::body})}">
+<body>
+
+        <div class="content-wrapper">
+
+            <div class="breadcrumb-wrap bg-f br-1">
+                <div class="overlay bg-black op-9"></div>
+                <img src="/assets/img/shape-1.png" alt="Image" class="br-shape-1">
+                <img src="/assets/img/shape-2.png" alt="Image" class="br-shape-2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="breadcrumb-title">
+                                <h2 th:text=#{breadcrumb.blog}>Blog</h2>
+                                <ul class="breadcrumb-menu list-style">
+                                    <li><a th:href="@{/home}" th:text=#{breadcrumb.home}>Home </a></li>
+                                    <li th:text=#{breadcrumb.blog}>Blog </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <section class="blog-wrap ptb-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="blog-card style1">
+                                        <div class="blog-img">
+                                            <img src="/assets/img/blog/blog-1.jpg" alt="Image">
+                                            <div class="blog-social">
+                                                <span><i class="flaticon-share"></i></span>
+                                                <ul class="social-profile style2 list-style">
+                                                    <li><a target="_blank" href="https://www.facebook.com/j5varestaurant"><i
+                                                                class="flaticon-facebook"></i> </a></li>
+                                                    <li><a target="_blank" href="https://twitter.com/"> <i
+                                                                class="flaticon-twitter-1"></i> </a></li>
+                                                    <li><a target="_blank" href="https://instagram.com/"> <i
+                                                                class="flaticon-instagram"></i> </a></li>
+                                                    <li><a target="_blank" href="https://youtube.com/"> <i
+                                                                class="flaticon-youtube"></i> </a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="blog-info">
+                                            <h3 class="blog-title"><a th:text=#{blog.b1.tl}>Best Comfort Foods To Take For A Company Visit</a></h3>
+                                            <p th:text=#{blog.b1.ct}>You may misunderstand that to hiring a personal chef will cost you a lot and it is not worth it to the spend such huge money on this! </p>
+                                            <div class="blog-metainfo">
+                                                <a  class="blog-date"><i
+                                                        class="flaticon-calendar-1"></i> <i th:text=#{blog.b1.date}>29 Jun, 2021</i></a>
+                                                <a  class="blog-author"><i
+                                                        class="flaticon-user"></i> <b th:text=#{blog.admin}>By Admin</b> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="blog-card style1">
+                                        <div class="blog-img">
+                                            <img src="/assets/img/blog/blog-2.jpg" alt="Image">
+                                            <div class="blog-social">
+                                                <span><i class="flaticon-share"></i></span>
+                                                <ul class="social-profile style2 list-style">
+                                                    <li><a target="_blank" href="https://www.facebook.com/j5varestaurant"><i
+                                                                class="flaticon-facebook"></i> </a></li>
+                                                    <li><a target="_blank" href="https://twitter.com/"> <i
+                                                                class="flaticon-twitter-1"></i> </a></li>
+                                                    <li><a target="_blank" href="https://instagram.com/"> <i
+                                                                class="flaticon-instagram"></i> </a></li>
+                                                    <li><a target="_blank" href="https://youtube.com/"> <i
+                                                                class="flaticon-youtube"></i> </a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="blog-info">
+                                            <h3 class="blog-title"><a th:text=#{blog.b2.tl}>Why You Need To Stop Stressing About Food</a></h3>
+                                            <p th:text=#{blog.b2.ct}>You may misunderstand that to hiring a personal chef will cost you a lot and it is not worth it to the spend such huge money on this! </p>
+                                            <div class="blog-metainfo">
+                                                <a  class="blog-date"><i
+                                                        class="flaticon-calendar-1"></i> <i th:text=#{blog.b2.date}>12 May, 2021</i> </a>
+                                                <a  class="blog-author"><i
+                                                        class="flaticon-user"></i> <b th:text=#{blog.admin}>By Admin</b> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="blog-card style1">
+                                        <div class="blog-img">
+                                            <img src="/assets/img/blog/blog-3.jpg" alt="Image">
+                                            <div class="blog-social">
+                                                <span><i class="flaticon-share"></i></span>
+                                                <ul class="social-profile style2 list-style">
+                                                    <li><a target="_blank" href="https://www.facebook.com/j5varestaurant"><i
+                                                                class="flaticon-facebook"></i> </a></li>
+                                                    <li><a target="_blank" href="https://twitter.com/"> <i
+                                                                class="flaticon-twitter-1"></i> </a></li>
+                                                    <li><a target="_blank" href="https://instagram.com/"> <i
+                                                                class="flaticon-instagram"></i> </a></li>
+                                                    <li><a target="_blank" href="https://youtube.com/"> <i
+                                                                class="flaticon-youtube"></i> </a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="blog-info">
+                                            <h3 class="blog-title"><a th:text=#{blog.b3.tl}>17 Most Misunderstood Facts About Food </a></h3>
+                                            <p th:text=#{blog.b3.ct}>You may misunderstand that to hiring a personal chef will cost you a lot and it is not worth it to the spend such huge money on this! </p>
+                                            <div class="blog-metainfo">
+                                                <a  class="blog-date"><i
+                                                        class="flaticon-calendar-1"></i><i th:text=#{blog.b3.date}>29 Jun, 2021</i></a>
+                                                <a  class="blog-author"><i
+                                                        class="flaticon-user"></i> <b th:text=#{blog.admin}>By Admin</b> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="blog-card style1">
+                                        <div class="blog-img">
+                                            <img src="/assets/img/blog/blog-4.jpg" alt="Image">
+                                            <div class="blog-social">
+                                                <span><i class="flaticon-share"></i></span>
+                                                <ul class="social-profile style2 list-style">
+                                                    <li><a target="_blank" href="https://www.facebook.com/j5varestaurant"><i
+                                                                class="flaticon-facebook"></i> </a></li>
+                                                    <li><a target="_blank" href="https://twitter.com/"> <i
+                                                                class="flaticon-twitter-1"></i> </a></li>
+                                                    <li><a target="_blank" href="https://instagram.com/"> <i
+                                                                class="flaticon-instagram"></i> </a></li>
+                                                    <li><a target="_blank" href="https://youtube.com/"> <i
+                                                                class="flaticon-youtube"></i> </a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="blog-info">
+                                            <h3 class="blog-title"><a th:text=#{blog.b4.tl} >15 Shitty Things Food Have Done In 2021</a></h3>
+                                            <p th:text=#{blog.b4.ct}>You may misunderstand that to hiring a personal chef will cost you a lot and it is not worth it to the spend such huge money on this! </p>
+                                            <div class="blog-metainfo">
+                                                <a  class="blog-date"><i
+                                                        class="flaticon-calendar-1"></i><i th:text=#{blog.b4.date}>29 Jun, 2021</i></a>
+                                                <a  class="blog-author"><i
+                                                        class="flaticon-user"></i> <b th:text=#{blog.admin}>By Admin</b> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="blog-card style1">
+                                        <div class="blog-img">
+                                            <img src="/assets/img/blog/blog-5.jpg" alt="Image">
+                                            <div class="blog-social">
+                                                <span><i class="flaticon-share"></i></span>
+                                                <ul class="social-profile style2 list-style">
+                                                    <li><a target="_blank" href="https://www.facebook.com/j5varestaurant"><i
+                                                                class="flaticon-facebook"></i> </a></li>
+                                                    <li><a target="_blank" href="https://twitter.com/"> <i
+                                                                class="flaticon-twitter-1"></i> </a></li>
+                                                    <li><a target="_blank" href="https://instagram.com/"> <i
+                                                                class="flaticon-instagram"></i> </a></li>
+                                                    <li><a target="_blank" href="https://youtube.com/"> <i
+                                                                class="flaticon-youtube"></i> </a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="blog-info">
+                                            <h3 class="blog-title"><a th:text=#{blog.b5.tl}>Top 10 Reasons Why Tourists Love Restaurant</a></h3>
+                                            <p th:text=#{blog.b5.ct}> You may misunderstand that to hiring a personal chef will cost you a lot and it is not worth it to the spend such huge money on this! </p>
+                                            <div class="blog-metainfo">
+                                                <a  class="blog-date"><i
+                                                        class="flaticon-calendar-1"></i><i th:text=#{blog.b5.date}>29 Jun, 2021</i></a>
+                                                <a  class="blog-author"><i
+                                                        class="flaticon-user"></i> <b th:text=#{blog.admin}>By Admin</b> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="blog-card style1">
+                                        <div class="blog-img">
+                                            <img src="/assets/img/blog/blog-6.jpg" alt="Image">
+                                            <div class="blog-social">
+                                                <span><i class="flaticon-share"></i></span>
+                                                <ul class="social-profile style2 list-style">
+                                                    <li><a target="_blank" href="https://www.facebook.com/j5varestaurant"><i
+                                                                class="flaticon-facebook"></i> </a></li>
+                                                    <li><a target="_blank" href="https://twitter.com/"> <i
+                                                                class="flaticon-twitter-1"></i> </a></li>
+                                                    <li><a target="_blank" href="https://instagram.com/"> <i
+                                                                class="flaticon-instagram"></i> </a></li>
+                                                    <li><a target="_blank" href="https://youtube.com/"> <i
+                                                                class="flaticon-youtube"></i> </a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="blog-info">
+                                            <h3 class="blog-title"><a th:text=#{blog.b6.tl}>7 Secrets You Will Never Know About Restaurant</a></h3>
+                                            <p th:text=#{blog.b6.ct}>You may misunderstand that to hiring a personal chef will cost you a lot and it is not worth it to the spend such huge money on this! </p>
+                                            <div class="blog-metainfo">
+                                                <a  class="blog-date"><i
+                                                        class="flaticon-calendar-1"></i><i th:text=#{blog.b6.date}>29 Jun, 2021</i></a>
+                                                <a  class="blog-author"><i
+                                                        class="flaticon-user"></i> <b th:text=#{blog.admin}>By Admin</b> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+</body>
+
+<!-- Mirrored from templates.hibootstrap.com/caban/default/blog-no-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:46 GMT -->
+
+</html>

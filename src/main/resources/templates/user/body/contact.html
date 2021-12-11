@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/header::dynamic(~{::body})}">
+
+<body>
+
+    
+        <div class="content-wrapper">
+
+            <div class="breadcrumb-wrap bg-f br-1">
+                <div class="overlay bg-black op-9"></div>
+                <img src="/assets/img/shape-1.png" alt="Image" class="br-shape-1">
+                <img src="/assets/img/shape-2.png" alt="Image" class="br-shape-2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="breadcrumb-title">
+                                <h2 th:text=#{breadcrumb.contact}></h2>
+                                <ul class="breadcrumb-menu list-style">
+                                    <li><a  th:href="@{/home}" th:text=#{breadcrumb.home}>Home</a></li>
+                                    <li th:text=#{breadcrumb.contact}>Contact Us</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<br>
+
+
+            <section class="contact-wrap style3 bg-f contact-bg-2 ptb-100  contact-page">
+                <div class="container pos-rel">
+                    <img src="/assets/img/contact/agent-1.png" alt="Image" class="agent-img md-none">
+                    <div class="section-title style6 text-center mb-30">
+                        <span>
+                            <img src="/assets/img/secion-shape-1.png" alt="Image">
+                            <b th:text=#{contact.contactUs}>Contact Us</b>
+                            <img src="/assets/img/secion-shape-2.png" alt="Image">
+                        </span>
+                        <h2 class="text-white"><div th:text=#{contact.contactUs1}>Not Sure What To Order?</div><br> 
+                        <div th:text=#{contact.contactUs2}>Contact Us Now</div></h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                            <div class="contact-btn">
+                                <a href="tel:880123654223" class="btn style1" th:text=#{contact.makeACall}>Make A Call<i
+                                        class="flaticon-right-arrow-2"></i></a>
+                                <a href="contact.html" class="btn style3" th:text=#{contact.contactUs}>Contact Us<i
+                                        class="flaticon-right-arrow-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="contact-wrap style2 pb-100  contact-page2">
+                <div class="map-bg bg-f"></div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                            <div class="contact-card">
+                                <div class="contact-icon">
+                                    <i class="flaticon-home"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h4 th:text=#{contact.location}>Our Location</h4>
+                                    <p>Quang Trung Software Park</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                            <div class="contact-card">
+                                <div class="contact-icon">
+                                    <i class="flaticon-mail"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h4 th:text=#{contact.email}>Our Email</h4>
+                                    <a href="mailto:j5varestaurant@email.com">j5varestaurant@email.com</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                            <div class="contact-card">
+                                <div class="contact-icon">
+                                    <i class="flaticon-phone-call"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h4 th:text=#{contact.contactUs}>Contact Us</h4>
+                                    <a href="tel:4434567890">+84 096-323-0016</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                            <div class="contact-card">
+                                <div class="contact-icon">
+                                    <i class="flaticon-wall-clock-1"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h4 th:text=#{contact.ohour}>Opening Hour</h4>
+                                    <p th:text=#{contact.ms}>Mon - Sunday</p>
+                                    <p>8:00 am - 10:00 pm</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-30 text-center">
+                            <a href="https://goo.gl/maps/XhGRXNPKmqMNSuZD6" target="blank" class="btn style1"> <b th:text=#{contact.map}>Explore Map</b> <i class="flaticon-right-arrow-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+</body>
+
+<!-- Mirrored from templates.hibootstrap.com/caban/default/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:47 GMT -->
+
+</html>

@@ -1,0 +1,731 @@
+
+<div class="container-fluid">
+	<div class="col-xl-12">
+		<div class="card-box">
+			<h4 class="header-title mt-0">Age of customers Statistics</h4>
+			<div id="chartAccount" style="height: 300px;"></div>
+		</div>
+	</div>
+
+	<div class="col-xl-12">
+		<div class="card-box">
+			<h4 class="header-title mt-0">Monthly Customers Buy The Most
+				Statistics</h4>
+			<div class="row">
+				<select class="form-select" id="monthCustomer1">
+					<option selected>Choose month</option>
+					<option value="1">January</option>
+					<option value="2">February</option>
+					<option value="3">March</option>
+					<option value="4">April</option>
+					<option value="5">May</option>
+					<option value="6">June</option>
+					<option value="7">July</option>
+					<option value="8">August</option>
+					<option value="9">September</option>
+					<option value="10">October</option>
+					<option value="11">November</option>
+					<option value="12">December</option>
+				</select> <select class="form-select" id="yearCustomer1">
+					<option selected>Choose year</option>
+					<option value="2019">2019</option>
+					<option value="2020">2020</option>
+					<option value="2021">2021</option>
+				</select>
+				<button type="button" class="btn btn-primary"
+					id="btn-filterCustomer1">Filter</button>
+				<div id="chartCustomer" class="col-sm-12"></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xl-12">
+		<div class="card-box">
+			<h4 class="header-title mt-0">Monthly Customers Buy The Most
+				Statistics</h4>
+			<div class="row">
+				<select class="form-select" id="monthCustomer1">
+					<option selected>Choose month</option>
+					<option value="1">January</option>
+					<option value="2">February</option>
+					<option value="3">March</option>
+					<option value="4">April</option>
+					<option value="5">May</option>
+					<option value="6">June</option>
+					<option value="7">July</option>
+					<option value="8">August</option>
+					<option value="9">September</option>
+					<option value="10">October</option>
+					<option value="11">November</option>
+					<option value="12">December</option>
+				</select> <select class="form-select" id="yearCustomer1">
+					<option selected>Choose year</option>
+					<option value="2019">2019</option>
+					<option value="2020">2020</option>
+					<option value="2021">2021</option>
+				</select>
+				<button type="button" class="btn btn-primary"
+					id="btn-filterCustomer1">Filter</button>
+				<div id="chartProduct" class="col-sm-12"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xl-3 col-md-6" ng-repeat="acco in account">
+			<div class="card-box widget-user">
+				<div>
+					<img ng-src="/assets/img/testimonial/{{acco.image}}"
+						class="img-responsive rounded-circle" alt="user">
+					<div class="wid-u-info">
+						<h5 class="mt-0 m-b-5">{{acco.fullname}}</h5>
+						<p class="text-muted m-b-5 font-13">{{acco.email}}</p>
+						<small class="text-warning"><b>SALARY: {{acco.salary}}</b></small>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end col -->
+	</div>
+	<!-- end row -->
+
+</div>
+<!-- end container -->
+
+
+<!-- Right Sidebar -->
+<div class="side-bar right-bar">
+	<a href="javascript:void(0);" class="right-bar-toggle"> <i
+		class="mdi mdi-close-circle-outline"></i>
+	</a>
+	<h4 class="">Notifications</h4>
+	<div class="notification-list nicescroll">
+		<ul class="list-group list-no-border user-list">
+			<li class="list-group-item"><a href="#" class="user-list-item">
+					<div class="avatar">
+						<img src="/admin/images/users/avatar-2.jpg" alt="">
+					</div>
+					<div class="user-desc">
+						<span class="name">Michael Zenaty</span> <span class="desc">There
+							are new settings available</span> <span class="time">2 hours ago</span>
+					</div>
+			</a></li>
+			<li class="list-group-item"><a href="#" class="user-list-item">
+					<div class="icon bg-info">
+						<i class="mdi mdi-account"></i>
+					</div>
+					<div class="user-desc">
+						<span class="name">New Signup</span> <span class="desc">There
+							are new settings available</span> <span class="time">5 hours ago</span>
+					</div>
+			</a></li>
+			<li class="list-group-item"><a href="#" class="user-list-item">
+					<div class="icon bg-pink">
+						<i class="mdi mdi-comment"></i>
+					</div>
+					<div class="user-desc">
+						<span class="name">New Message received</span> <span class="desc">There
+							are new settings available</span> <span class="time">1 day ago</span>
+					</div>
+			</a></li>
+			<li class="list-group-item active"><a href="#"
+				class="user-list-item">
+					<div class="avatar">
+						<img src="/admin/images/users/avatar-3.jpg" alt="">
+					</div>
+					<div class="user-desc">
+						<span class="name">James Anderson</span> <span class="desc">There
+							are new settings available</span> <span class="time">2 days ago</span>
+					</div>
+			</a></li>
+			<li class="list-group-item active"><a href="#"
+				class="user-list-item">
+					<div class="icon bg-warning">
+						<i class="mdi mdi-settings"></i>
+					</div>
+					<div class="user-desc">
+						<span class="name">Settings</span> <span class="desc">There
+							are new settings available</span> <span class="time">1 day ago</span>
+					</div>
+			</a></li>
+
+		</ul>
+	</div>
+
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$('#btn-filterCustomer1')
+									.click(
+											function() {
+												var month = $('#monthCustomer1')
+														.val();
+												var year = $('#yearCustomer1')
+														.val();
+
+												$
+														.ajax({
+															url : 'http://localhost:8080/rest/data/listBestCustomersBuy/'
+																	+ month
+																	+ '/'
+																	+ year,
+															type : "GET",
+															success : function(
+																	result) {
+																var count = [];
+																var customer = [];
+
+																$
+																		.each(
+																				result,
+																				function(
+																						i,
+																						item) {
+																					count
+																							.push(item.countQuantity);
+																				})
+
+																$
+																		.each(
+																				result,
+																				function(
+																						i,
+																						item) {
+																					customer
+																							.push(item.bestCustomerName);
+																				})
+
+																var options = {
+																	series : [ {
+																		name : 'Inflation',
+																		data : count,
+																	} ],
+																	chart : {
+																		height : 300,
+																		type : 'bar',
+																	},
+																	plotOptions : {
+																		bar : {
+																			borderRadius : 10,
+																			dataLabels : {
+																				position : 'top', // top, center, bottom
+																			},
+																		}
+																	},
+																	dataLabels : {
+																		enabled : true,
+																		formatter : function(
+																				val) {
+																			return val
+																					+ "";
+																		},
+																		offsetY : -20,
+																		style : {
+																			fontSize : '12px',
+																			colors : [ "#304758" ]
+																		}
+																	},
+
+																	xaxis : {
+																		categories : customer,
+																		position : 'top',
+																		axisBorder : {
+																			show : false
+																		},
+																		axisTicks : {
+																			show : false
+																		},
+																		crosshairs : {
+																			fill : {
+																				type : 'gradient',
+																				gradient : {
+																					colorFrom : '#D8E3F0',
+																					colorTo : '#BED1E6',
+																					stops : [
+																							0,
+																							100 ],
+																					opacityFrom : 0.4,
+																					opacityTo : 0.5,
+																				}
+																			}
+																		},
+																		tooltip : {
+																			enabled : true,
+																		}
+																	},
+																	yaxis : {
+																		axisBorder : {
+																			show : false
+																		},
+																		axisTicks : {
+																			show : false,
+																		},
+																		labels : {
+																			show : false,
+																			formatter : function(
+																					val) {
+																				return val
+																						+ "$";
+																			}
+																		}
+
+																	},
+																	title : {
+																		text : 'Monthly Inflation in Argentina, 2002',
+																		floating : true,
+																		offsetY : 300,
+																		align : 'center',
+																		style : {
+																			color : '#444'
+																		}
+																	}
+																};
+																var chart = new ApexCharts(
+																		document
+																				.querySelector("#chartCustomer"),
+																		options);
+																chart.render();
+															},
+															error : function(
+																	error) {
+																console
+																		.log(error);
+															}
+														})
+											});
+							//
+							showCustomer();
+
+							function showCustomer() {
+								var month = 11;
+								var year = 2021;
+
+								$
+										.ajax({
+											url : 'http://localhost:8080/rest/data/listBestCustomersBuy/'
+													+ month + '/' + year,
+											type : "GET",
+											success : function(result) {
+												var count = [];
+												var customer = [];
+
+												$
+														.each(
+																result,
+																function(i,
+																		item) {
+																	count
+																			.push(item.countQuantity);
+																})
+
+												$
+														.each(
+																result,
+																function(i,
+																		item) {
+																	customer
+																			.push(item.bestCustomerName);
+																})
+
+												var options = {
+													series : [ {
+														name : 'Inflation',
+														data : count,
+													} ],
+													chart : {
+														height : 300,
+														type : 'bar',
+													},
+													plotOptions : {
+														bar : {
+															borderRadius : 10,
+															dataLabels : {
+																position : 'top', // top, center, bottom
+															},
+														}
+													},
+													dataLabels : {
+														enabled : true,
+														formatter : function(
+																val) {
+															return val + "";
+														},
+														offsetY : -20,
+														style : {
+															fontSize : '12px',
+															colors : [ "#304758" ]
+														}
+													},
+
+													xaxis : {
+														categories : customer,
+														position : 'top',
+														axisBorder : {
+															show : false
+														},
+														axisTicks : {
+															show : false
+														},
+														crosshairs : {
+															fill : {
+																type : 'gradient',
+																gradient : {
+																	colorFrom : '#D8E3F0',
+																	colorTo : '#BED1E6',
+																	stops : [
+																			0,
+																			100 ],
+																	opacityFrom : 0.4,
+																	opacityTo : 0.5,
+																}
+															}
+														},
+														tooltip : {
+															enabled : true,
+														}
+													},
+													yaxis : {
+														axisBorder : {
+															show : false
+														},
+														axisTicks : {
+															show : false,
+														},
+														labels : {
+															show : false,
+															formatter : function(
+																	val) {
+																return val
+																		+ "$";
+															}
+														}
+
+													},
+													title : {
+														text : 'Monthly Inflation in Argentina, 2002',
+														floating : true,
+														offsetY : 300,
+														align : 'center',
+														style : {
+															color : '#444'
+														}
+													}
+												};
+												var chart = new ApexCharts(
+														document
+																.querySelector("#chartCustomer"),
+														options);
+												chart.render();
+											},
+											error : function(error) {
+												console.log(error);
+											}
+										})
+
+								$
+										.ajax({
+											url : 'http://localhost:8080/rest/data/listBestSellingFoods/'
+													+ month + '/' + year,
+											type : "GET",
+											success : function(result) {
+												var count = [];
+												var food = [];
+
+												$
+														.each(
+																result,
+																function(i,
+																		item) {
+																	count
+																			.push(item.countQuantity);
+																})
+
+												$
+														.each(
+																result,
+																function(i,
+																		item) {
+																	food
+																			.push(item.bestSellingFood.food_name);
+																})
+
+												var options = {
+													series : [ {
+														name : 'Inflation',
+														data : count,
+													} ],
+													chart : {
+														height : 300,
+														type : 'bar',
+													},
+													plotOptions : {
+														bar : {
+															borderRadius : 10,
+															dataLabels : {
+																position : 'top', // top, center, bottom
+															},
+														}
+													},
+													dataLabels : {
+														enabled : true,
+														formatter : function(
+																val) {
+															return val + "";
+														},
+														offsetY : -20,
+														style : {
+															fontSize : '12px',
+															colors : [ "#304758" ]
+														}
+													},
+
+													xaxis : {
+														categories : food,
+														position : 'top',
+														axisBorder : {
+															show : false
+														},
+														axisTicks : {
+															show : false
+														},
+														crosshairs : {
+															fill : {
+																type : 'gradient',
+																gradient : {
+																	colorFrom : '#D8E3F0',
+																	colorTo : '#BED1E6',
+																	stops : [
+																			0,
+																			100 ],
+																	opacityFrom : 0.4,
+																	opacityTo : 0.5,
+																}
+															}
+														},
+														tooltip : {
+															enabled : true,
+														}
+													},
+													yaxis : {
+														axisBorder : {
+															show : false
+														},
+														axisTicks : {
+															show : false,
+														},
+														labels : {
+															show : false,
+															formatter : function(
+																	val) {
+																return val
+																		+ "$";
+															}
+														}
+
+													},
+													title : {
+														text : 'Monthly Inflation in Argentina, 2002',
+														floating : true,
+														offsetY : 300,
+														align : 'center',
+														style : {
+															color : '#444'
+														}
+													}
+												};
+												var chart = new ApexCharts(
+														document
+																.querySelector("#chartProduct"),
+														options);
+												chart.render();
+											},
+											error : function(error) {
+												console.log(error);
+											}
+										})
+
+							}
+
+							$('#btn-filterCustomer2')
+									.click(
+											function() {
+												var month = $('#monthCustomer2')
+														.val();
+												var year = $('#yearCustomer2')
+														.val();
+
+												$
+														.ajax({
+															url : 'http://localhost:8080/rest/data/listBestSellingFoods/'
+																	+ month
+																	+ '/'
+																	+ year,
+															type : "GET",
+															success : function(
+																	result) {
+																var count = [];
+																var food = [];
+
+																$
+																		.each(
+																				result,
+																				function(
+																						i,
+																						item) {
+																					count
+																							.push(item.countQuantity);
+																				})
+
+																$
+																		.each(
+																				result,
+																				function(
+																						i,
+																						item) {
+																					food
+																							.push(item.bestSellingFood.food_name);
+																				})
+
+																var options = {
+																	series : [ {
+																		name : 'Inflation',
+																		data : count,
+																	} ],
+																	chart : {
+																		height : 300,
+																		type : 'bar',
+																	},
+																	plotOptions : {
+																		bar : {
+																			borderRadius : 10,
+																			dataLabels : {
+																				position : 'top', // top, center, bottom
+																			},
+																		}
+																	},
+																	dataLabels : {
+																		enabled : true,
+																		formatter : function(
+																				val) {
+																			return val
+																					+ "";
+																		},
+																		offsetY : -20,
+																		style : {
+																			fontSize : '12px',
+																			colors : [ "#304758" ]
+																		}
+																	},
+
+																	xaxis : {
+																		categories : food,
+																		position : 'top',
+																		axisBorder : {
+																			show : false
+																		},
+																		axisTicks : {
+																			show : false
+																		},
+																		crosshairs : {
+																			fill : {
+																				type : 'gradient',
+																				gradient : {
+																					colorFrom : '#D8E3F0',
+																					colorTo : '#BED1E6',
+																					stops : [
+																							0,
+																							100 ],
+																					opacityFrom : 0.4,
+																					opacityTo : 0.5,
+																				}
+																			}
+																		},
+																		tooltip : {
+																			enabled : true,
+																		}
+																	},
+																	yaxis : {
+																		axisBorder : {
+																			show : false
+																		},
+																		axisTicks : {
+																			show : false,
+																		},
+																		labels : {
+																			show : false,
+																			formatter : function(
+																					val) {
+																				return val
+																						+ "$";
+																			}
+																		}
+
+																	},
+																	title : {
+																		text : 'Monthly Inflation in Argentina, 2002',
+																		floating : true,
+																		offsetY : 300,
+																		align : 'center',
+																		style : {
+																			color : '#444'
+																		}
+																	}
+																};
+																var chart = new ApexCharts(
+																		document
+																				.querySelector("#chartProduct"),
+																		options);
+																chart.render();
+															},
+															error : function(
+																	error) {
+																console
+																		.log(error);
+															}
+														})
+											});
+						});
+	</script>
+
+	<script>
+		$(document).ready(
+				function() {
+					$.ajax({
+						url : "/rest/accounts/list",
+						type : "GET",
+						success : function(result) {
+							$.ajax({
+								url : "/rest/accounts/age",
+								type : "GET",
+								success : function(count) {
+									var options = {
+										series : count,
+										chart : {
+											width : 380,
+											type : 'pie',
+										},
+										labels : result,
+										responsive : [ {
+											breakpoint : 480,
+											options : {
+												chart : {
+													width : 200
+												},
+												legend : {
+													position : 'bottom'
+												}
+											}
+										} ]
+									};
+
+									var chart = new ApexCharts(document
+											.querySelector("#chartAccount"),
+											options);
+									chart.render();
+								}
+							});
+
+						}
+					});
+				});
+	</script>

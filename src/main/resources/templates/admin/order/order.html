@@ -1,0 +1,519 @@
+
+<style>
+a:hover {
+	text-decoration: none;
+}
+</style>
+<ul class="nav nav-tabs" style="letter-spacing: 2px; cursor: pointer;">
+	<li class="active"><a data-toggle="tab" data-target="#all">All
+			Order <span class="badge badge-danger pull-right">{{total}}</span>
+	</a></li>
+	<li><a class="pending" data-toggle="tab" data-target="#pending"
+		ng-click="pending()">Pending <span
+			class="badge badge-danger pull-right">{{totalPending}}</span></a></li>
+	<li><a class="ready" data-toggle="tab" data-target="#ready"
+		ng-click="ready()">Ready <span
+			class="badge badge-danger pull-right">{{totalReady}}</span></a></li>
+	<li><a class="shipping" data-toggle="tab" data-target="#shipping"
+		ng-click="shipping()">Shipping <span
+			class="badge badge-danger pull-right">{{totalshipping}}</span></a></li>
+	<li><a class="delivered" data-toggle="tab"
+		data-target="#delivered" ng-click="delivered()">Delivered <span
+			class="badge badge-danger pull-right">{{totalDelivered}}</span></a></li>
+	<li><a class="cancelled" data-toggle="tab"
+		data-target="#cancelled" ng-click="cancelled()">Cancelled <span
+			class="badge badge-danger pull-right">{{totalCancel}}</span></a></li>
+</ul>
+
+<div class="tab-content">
+
+	<!-- Tab all -->
+	<div id="all" class="tab-pane fade in active">
+		<div class="row">
+			<select class="form-control col-xl-4 select2" style="height: 100%"
+				id="month">
+				<option selected>Choose month</option>
+				<option value="1">January</option>
+				<option value="2">February</option>
+				<option value="3">March</option>
+				<option value="4">April</option>
+				<option value="5">May</option>
+				<option value="6">June</option>
+				<option value="7">July</option>
+				<option value="8">August</option>
+				<option value="9">September</option>
+				<option value="10">October</option>
+				<option value="11">November</option>
+				<option value="12">December</option>
+			</select> <select class="form-control col-xl-4 select2"
+				style="height: 100%; margin: 0 10px" id="year">
+				<option selected>Choose year</option>
+				<option value="2019">2019</option>
+				<option value="2020">2020</option>
+				<option value="2021">2021</option>
+			</select>
+			<button type="button" class="btn btn-primary col-xl-3"
+				id="btn-filter" ng-click="filter()">
+				<i class="fa fa-filter"></i> Filter
+			</button>
+			<div id="chartCustomer" class="col-sm-12"></div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="card-box">
+					<table id="datatable" class="table table-hover">
+						<thead class="thead-dark">
+							<tr>
+								<th>OrderID</th>
+								<th>Order Date</th>
+								<th>Name customer</th>
+								<th>Phone number</th>
+								<th>Delivery Address</th>
+								<th>Note</th>
+								<th>Status</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr
+								ng-repeat="(key,order) in pager.orders | orderBy:'- orderdate' | filter:key">
+								<td>{{order.order_id}}</td>
+								<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
+								<td>{{order.order_acc.fullname}}</td>
+								<td>{{order.order_acc.phone}}</td>
+								<td>{{order.address}}</td>
+								<td>{{order.note}}</td>
+								<td><ANY ng-switch={{order.status}}> <ANY
+										ng-switch-when="1"> <b class="pending">Pending</b> </ANY> <ANY
+										ng-switch-when="2"> <b class="ready">Ready</b></ANY> <ANY
+										ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
+										ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
+										ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
+										ng-switch-default> <b class="pending">Pending</b></ANY> </ANY></td>
+								<td>
+									<button ng-click="edit(order);editDetail(order)"
+										class="btn btn-primary fa fa-edit" data-toggle="modal"
+										data-target=".bs-example-modal-lg"></button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+			<!-- end col -->
+		</div>
+		<!-- end row -->
+
+		<div class="panel-footer text-center">
+			<button ng-click="pager.first()" class="btn btn-danger">
+				<b class="ti-control-skip-backward"></b>
+			</button>
+			<button ng-click="pager.prev()" class="btn btn-primary">
+				<b class="ti-control-backward"></b>
+			</button>
+			<button class="btn btn-success">{{pager.page + 1 }} of
+				{{pager.count}}</button>
+			<button ng-click="pager.next()" class="btn btn-primary">
+				<b class="ti-control-forward"></b>
+			</button>
+			<button ng-click="pager.last()" class="btn btn-danger">
+				<b class="ti-control-skip-forward"></b>
+			</button>
+		</div>
+		<br>
+	</div>
+
+
+
+	<!-- Tab Pending -->
+	<div id="pending" class="tab-pane fade">
+		<div class="row">
+			<select class="form-control col-xl-4 select2" style="height: 100%"
+				id="month">
+				<option selected>Choose month</option>
+				<option value="1">January</option>
+				<option value="2">February</option>
+				<option value="3">March</option>
+				<option value="4">April</option>
+				<option value="5">May</option>
+				<option value="6">June</option>
+				<option value="7">July</option>
+				<option value="8">August</option>
+				<option value="9">September</option>
+				<option value="10">October</option>
+				<option value="11">November</option>
+				<option value="12">December</option>
+			</select> <select class="form-control col-xl-4 select2"
+				style="height: 100%; margin: 0 10px" id="year">
+				<option selected>Choose year</option>
+				<option value="2019">2019</option>
+				<option value="2020">2020</option>
+				<option value="2021">2021</option>
+			</select>
+			<button type="button" class="btn btn-primary col-xl-3"
+				id="btn-filter" ng-click="filter">
+				<i class="fa fa-filter"></i> Filter
+			</button>
+			<div id="chartCustomer" class="col-sm-12"></div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="card-box">
+					<table id="datatable" class="table table-bordered">
+						<thead>
+							<tr>
+								<th>OrderID</th>
+								<th>Order Date</th>
+								<th>Name customer</th>
+								<th>Phone number</th>
+								<th>Delivery Address</th>
+								<th>Note</th>
+								<th>Status</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="order in pendings">
+								<td>{{order.order_id}}</td>
+								<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
+								<td>{{order.order_acc.fullname}}</td>
+								<td>{{order.order_acc.phone}}</td>
+								<td>{{order.address}}</td>
+								<td>{{order.note}}</td>
+								<td><ANY ng-switch={{order.status}}> <ANY
+										ng-switch-when="1"> <b class="pending">Pending</b> </ANY> <ANY
+										ng-switch-when="2"> <b class="ready">Ready</b></ANY> <ANY
+										ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
+										ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
+										ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
+										ng-switch-default> <b class="pending">Pending</b></ANY> </ANY></td>
+								<td>
+									<button ng-click="edit(order);editDetail(order)"
+										class="btn btn-primary fa fa-edit" data-toggle="modal"
+										data-target=".bs-example-modal-lg"></button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<!-- Tab ready -->
+	<div id="ready" class="tab-pane fade">
+		<table id="datatable" class="table table-bordered">
+			<thead>
+				<tr>
+					<th>OrderID</th>
+					<th>Order Date</th>
+					<th>Name customer</th>
+					<th>Phone number</th>
+					<th>Delivery Address</th>
+					<th>Note</th>
+					<th>Status</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="order in readys">
+					<td>{{order.order_id}}</td>
+					<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
+					<td>{{order.order_acc.fullname}}</td>
+					<td>{{order.order_acc.phone}}</td>
+					<td>{{order.address}}</td>
+					<td>{{order.note}}</td>
+					<td><ANY ng-switch={{order.status}}> <ANY
+							ng-switch-when="1"> <b class="pending">Pending</b> </ANY> <ANY
+							ng-switch-when="2"> <b class="ready">Ready</b></ANY> <ANY
+							ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
+							ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
+							ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
+							ng-switch-default> <b class="pending">Pending</b></ANY> </ANY></td>
+					<td>
+						<button ng-click="edit(order);editDetail(order)"
+							class="btn btn-primary fa fa-edit" data-toggle="modal"
+							data-target=".bs-example-modal-lg"></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<!-- Tab shipping -->
+	<div id="shipping" class="tab-pane fade">
+		<table id="datatable" class="table table-bordered">
+			<thead>
+				<tr>
+					<th>OrderID</th>
+					<th>Order Date</th>
+					<th>Name customer</th>
+					<th>Phone number</th>
+					<th>Delivery Address</th>
+					<th>Note</th>
+					<th>Status</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+
+
+			<tbody>
+				<tr ng-repeat="order in shippings">
+					<td>{{order.order_id}}</td>
+					<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
+					<td>{{order.order_acc.fullname}}</td>
+					<td>{{order.order_acc.phone}}</td>
+					<td>{{order.address}}</td>
+					<td>{{order.note}}</td>
+					<td><ANY ng-switch={{order.status}}> <ANY
+							ng-switch-when="1"> <b class="pending">Pending</b> </ANY> <ANY
+							ng-switch-when="2"> <b class="ready">Ready</b></ANY> <ANY
+							ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
+							ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
+							ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
+							ng-switch-default> <b class="pending">Pending</b></ANY> </ANY></td>
+					<td>
+						<button ng-click="edit(order);editDetail(order)"
+							class="btn btn-primary fa fa-edit" data-toggle="modal"
+							data-target=".bs-example-modal-lg"></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id="delivered" class="tab-pane fade">
+		<table id="datatable" class="table table-bordered">
+			<thead>
+				<tr>
+					<th>OrderID</th>
+					<th>Order Date</th>
+					<th>Name customer</th>
+					<th>Phone number</th>
+					<th>Delivery Address</th>
+					<th>Note</th>
+					<th>Status</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+
+
+			<tbody>
+				<tr ng-repeat="order in delivereds">
+					<td>{{order.order_id}}</td>
+					<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
+					<td>{{order.order_acc.fullname}}</td>
+					<td>{{order.order_acc.phone}}</td>
+					<td>{{order.address}}</td>
+					<td>{{order.note}}</td>
+					<td><ANY ng-switch={{order.status}}> <ANY
+							ng-switch-when="1"> <b class="pending">Pending</b> </ANY> <ANY
+							ng-switch-when="2"> <b class="ready">Ready</b></ANY> <ANY
+							ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
+							ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
+							ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
+							ng-switch-default> <b class="pending">Pending</b></ANY> </ANY></td>
+					<td>
+						<button ng-click="edit(order);editDetail(order)"
+							class="btn btn-primary fa fa-edit" data-toggle="modal"
+							data-target=".bs-example-modal-lg"></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id="cancelled" class="tab-pane fade">
+		<table id="datatable" class="table table-bordered">
+			<thead>
+				<tr>
+					<th>OrderID</th>
+					<th>Order Date</th>
+					<th>Name customer</th>
+					<th>Phone number</th>
+					<th>Delivery Address</th>
+					<th>Note</th>
+					<th>Status</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+
+
+			<tbody>
+				<tr ng-repeat="order in cancelleds">
+					<td>{{order.order_id}}</td>
+					<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
+					<td>{{order.order_acc.fullname}}</td>
+					<td>{{order.order_acc.phone}}</td>
+					<td>{{order.address}}</td>
+					<td>{{order.note}}</td>
+					<td><ANY ng-switch={{order.status}}> <ANY
+							ng-switch-when="1"> <b class="pending">Pending</b> </ANY> <ANY
+							ng-switch-when="2"> <b class="ready">Ready</b></ANY> <ANY
+							ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
+							ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
+							ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
+							ng-switch-default> <b class="pending">Pending</b></ANY> </ANY></td>
+					<td>
+						<button ng-click="edit(order);editDetail(order)"
+							class="btn btn-primary fa fa-edit" data-toggle="modal"
+							data-target=".bs-example-modal-lg"></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id="detail" class="tab-pane fade">
+		<table id="datatable" class="table table-bordered">
+			<thead>
+				<tr>
+					<th>OrderID</th>
+					<th>Order Date</th>
+					<th>Name customer</th>
+					<th>Phone number</th>
+					<th>Delivery Address</th>
+					<th>Note</th>
+					<th>Status</th>
+					<th>Change Status</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+
+<!--  Modal content for the above example -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+	aria-labelledby="myLargeModalLabel" aria-hidden="true"
+	style="display: none;">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title mt-0" id="myLargeModalLabel">
+					<b>Order Detail</b>
+				</h4>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">×</button>
+			</div>
+			<div class="modal-body">
+				<form action="#" data-parsley-validate novalidate>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="userName">ID*</label>
+							</div>
+							<div class="col-sm-8">
+								<input type="text" ng-model="form.order_id" readonly
+									style="border: none">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="emailAddress">OrderDate*</label>
+							</div>
+							<div class="col-sm-8">
+								<input type="text" ng-model="form.orderdate | date:'MM/dd/yyyy'"
+									readonly style="border: none">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="pass1">Discount*</label>
+							</div>
+							<div class="col-sm-8">
+								<input type="text" ng-model="form.discount" readonly
+									style="border: none">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="passWord2">Address*</label>
+							</div>
+							<div class="col-sm-8">
+								<input type="text" ng-model="form.address" readonly
+									style="border: none">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="passWord2">Note*</label>
+							</div>
+							<div class="col-sm-8">
+								<input type="text" ng-model="form.note" readonly
+									style="border: none">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="passWord2">Fullname*</label>
+							</div>
+							<div class="col-sm-8">
+								<input type="text" ng-model="form.order_acc.fullname" readonly
+									style="border: none">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="passWord2">Change Status*</label>
+							</div>
+							<div class="col-sm-8">
+								<select ng-model="form.status" class="custom-select" style="height: 100%">
+									<option ng-value="1">Pending</option>
+									<option ng-value="2">Ready</option>
+									<option ng-value="3">Shipping</option>
+									<option ng-value="4">Delivered</option>
+									<option ng-value="5">Cancelled</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label for="passWord2">Food</label>
+							</div>
+							<div class="col-sm-8">
+								<table id="datatable" class="table table-hover">
+									<tbody>
+										<tr ng-repeat="food in orderDetail">
+											<td><img
+												ng-src="{{'/assets/products/'+food.food.photo}}"
+												style="width: 50px; height: 50px"></td>
+											<td>{{food.quantity}}</td>
+											<td>{{food.quantity*food.food.price}}</td>
+											<td>{{food.food_id}}</td>
+											<td>{{food.food.food_name}}</td>
+											<td>{{food.food.price}}</td>
+											
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group text-right m-b-0">
+						<button class="btn btn-primary ti-save" ng-click="update()"></button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

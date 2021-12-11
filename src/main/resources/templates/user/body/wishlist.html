@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/header::dynamic(~{::body})}">
+
+<!-- Mirrored from templates.hibootstrap.com/caban/default/wishlist.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:46 GMT -->
+
+<body>
+
+	<div class="preloader js-preloader">
+		<img src="/assets/img/preloader.gif" alt="Image">
+	</div>
+
+
+	<div class="content-wrapper">
+		<div class="breadcrumb-wrap bg-f br-1">
+			<div class="overlay bg-black op-9"></div>
+			<img src="/assets/img/shape-1.png" alt="Image" class="br-shape-1">
+			<img src="/assets/img/shape-2.png" alt="Image" class="br-shape-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12">
+						<div class="breadcrumb-title">
+							<h2 th:text=#{breadcrumb.wishlist}>Wishlist</h2>
+							<ul class="breadcrumb-menu list-style">
+								<li><a href="index.html" th:text=#{breadcrumb.home}>Home
+								</a></li>
+								<li th:text=#{breadcrumb.wishlist}>Wishlist</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<section class="Shop-wrap ptb-100">
+			<div class="container">
+				<div class="row gx-12">
+					<div class="row justify-content-center">
+						<div th:each="favorite:${favorite}"
+							class="col-xl-4  col-lg-6 col-md-6">
+							<div class="feature-card style1">
+								<div class="feature-img">
+									<img
+										th:src="@{|/assets/products/${favorite.favorite_f.photo}|}" style="width: 100%; height: 262px"
+										alt="Image">
+								</div>
+								<div class="feature-info">
+									<h3 class="feature-title">
+										<a
+											th:href="@{|/home/shop-details/${favorite.favorite_f.food_id}|}">[[${favorite.favorite_f.food_name}]]</a>
+									</h3>
+									<div class="product-more-option-item">
+										<div class="col-lg-6 col-md-6 col-12">
+											<h6 th:text=#{product.category}>Category:</h6>
+											<a
+												th:href="@{|/home/shop-details/{$favorite.favorite_f.food_detail.foodCategory.foodcategory_id}|}">
+												[[${favorite.favorite_f.food_detail.foodCategory.foodcategory_name}]]</a>
+										</div>
+										<div class="col-lg-6 col-md-6 col-12">
+											<h6 th:text=#{product.size}>Size:</h6>
+											<a
+												th:href="@{|/home/shop-details/${favorite.favorite_f.food_detail.food_detail_size.size_id}|}">
+												[[${favorite.favorite_f.food_detail.food_detail_size.name}]]</a>
+										</div>
+									</div>
+									<div class="feature-meta">
+										<p class="feature-price">[[${favorite.favorite_f.price}]]$</p>
+									</div>
+
+
+									<div class="row">
+										<div class="col-sm-7">
+											<button class="btn style2"
+												th:attr="ng-click=@{|cart.add(${favorite.favorite_f.food_id})|}">
+												<i class="flaticon-shopping-bag-1"></i><b
+													th:text=#{product.addcart}></b>
+											</button>
+										</div>
+										<div class="col-sm-5">
+										<a th:href="@{'/home/favorite/delete/'+${favorite.favorite_id}}" class="btn style2"	>
+												<i class="bi bi-trash-fill"></i><b
+													th:text=#{wishlist.delete}></b>
+										</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-sm-10"></div>
+					<div class="col-sm-2"><a th:href="@{/home/shop}" class="btn btn-outline-success " style="border: 1px solid green" > <b th:text=#{wishlist.more}> More product</b> <i class="flaticon-right-arrow-2"></i></a></div></div>				
+			</div>
+		</section>
+	</div>
+
+	<a href="javascript:void(0)" class="back-to-top"><i
+		class="las la-arrow-up"></i></a>
+</body>
+
+<!-- Mirrored from templates.hibootstrap.com/caban/default/wishlist.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:46 GMT -->
+
+</html>
