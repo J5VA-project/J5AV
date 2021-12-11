@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 public interface FoodService {
 
 	int count();
-	
+
 	Food findById(Integer id);
 
 	Food save(Food entity);
@@ -31,4 +31,6 @@ public interface FoodService {
 	Food update(Food food);
 
 	void delete(Integer id);
-	Food insert(JsonNode orderData);}
+
+	Food insert(JsonNode orderData);
+}

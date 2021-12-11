@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.J5VA.entity.Account;
 import com.J5VA.entity.Favorite;
+import com.J5VA.entity.FoodRate;
 
 public interface FavoriteService {
 	void delete(Favorite entity);
@@ -27,6 +28,8 @@ public interface FavoriteService {
 	Favorite update(Favorite favo);
 
 	void delete(Integer id);
-	
+
 	Favorite findFavoriteByFood(Integer id);
+
+	List<FoodRate> getListFoodRates();
 }

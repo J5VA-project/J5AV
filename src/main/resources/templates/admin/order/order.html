@@ -83,7 +83,8 @@ a:hover {
 								<td>{{order.order_acc.phone}}</td>
 								<td>{{order.address}}</td>
 								<td>{{order.note}}</td>
-								<td><ANY ng-switch={{order.status}}> <ANY
+								<td><input type="hidden" ng-value="order.status"
+									id="status"> <ANY ng-switch={{order.status}}> <ANY
 										ng-switch-when="1"> <b class="pending">Pending</b> </ANY> <ANY
 										ng-switch-when="2"> <b class="ready">Ready</b></ANY> <ANY
 										ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
@@ -468,16 +469,50 @@ a:hover {
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-4">
-								<label for="passWord2">Change Status*</label>
+								<label for="passWord2">Change Status*{{form.status}}</label>
 							</div>
 							<div class="col-sm-8">
-								<select ng-model="form.status" class="custom-select" style="height: 100%">
+								<ANY ng-switch="form.status"> 
+								<ANY ng-switch-when="1">
+								<select ng-model="form.status" class="custom-select"
+									style="height: 100%">
 									<option ng-value="1">Pending</option>
 									<option ng-value="2">Ready</option>
 									<option ng-value="3">Shipping</option>
 									<option ng-value="4">Delivered</option>
 									<option ng-value="5">Cancelled</option>
-								</select>
+								</select> 
+								</ANY> 
+								<ANY ng-switch-when="2">
+								 <select ng-model="form.status"
+									class="custom-select" style="height: 100%">
+									<option ng-value="2">Ready</option>
+									<option ng-value="3">Shipping</option>
+									<option ng-value="4">Delivered</option>
+									<option ng-value="5">Cancelled</option>
+								</select> 
+								</ANY> 
+								<ANY ng-switch-when="3">
+								 <select ng-model="form.status"
+									class="custom-select" style="height: 100%">
+									<option ng-value="3">Shipping</option>
+									<option ng-value="4">Delivered</option>
+									<option ng-value="5">Cancelled</option>
+								</select> 
+								</ANY>
+								<ANY ng-switch-when="4">
+								 <select ng-model="form.status"
+									class="custom-select" style="height: 100%">
+									<option ng-value="4">Delivered</option>
+								</select> 
+								</ANY>  
+								<ANY ng-switch-when="5">
+								 <select ng-model="form.status"
+									class="custom-select" style="height: 100%">
+									<option ng-value="5">Cancelled</option>
+								</select> 
+								</ANY> 
+								</ANY>
 							</div>
 						</div>
 					</div>
@@ -498,7 +533,7 @@ a:hover {
 											<td>{{food.food_id}}</td>
 											<td>{{food.food.food_name}}</td>
 											<td>{{food.food.price}}</td>
-											
+
 										</tr>
 									</tbody>
 								</table>
@@ -517,3 +552,5 @@ a:hover {
 	<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+
+

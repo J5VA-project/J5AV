@@ -1,7 +1,15 @@
 app.controller("order-ctrl", function($scope, $http){
-
-
-
+$(document).ready(function(){
+   var status = $('#status').val();
+   
+   var pending = $('#pending');
+   var ready = $('#ready');
+   var shipping = $('#shipping');
+   var delivered = $('#delivered');
+   var cancel = $('#cancel');
+   
+pending.hide();
+});
     $scope.orders = [];
 	$scope.form = {};
 	$scope.formDetail = {};

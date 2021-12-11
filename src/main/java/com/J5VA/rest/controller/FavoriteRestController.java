@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.J5VA.entity.Account;
 import com.J5VA.entity.Favorite;
+import com.J5VA.entity.FoodRate;
 import com.J5VA.service.AccountService;
 import com.J5VA.service.FavoriteService;
 
@@ -61,7 +62,10 @@ public class FavoriteRestController {
 		System.out.println("Account:"+account);
 		List<Favorite> favorite = favoriteService.findAllByAccount(account);
 		model.addAttribute("favorite", favorite);
-
 		return favorite;
+	}
+	@GetMapping("/foodRate")
+	public List<FoodRate> getFoodRates(Model model){
+		return favoriteService.getListFoodRates();
 	}
 }

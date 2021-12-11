@@ -1,5 +1,6 @@
 package com.J5VA.implement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.J5VA.dao.FavoriteDao;
 import com.J5VA.entity.Account;
 import com.J5VA.entity.Favorite;
+import com.J5VA.entity.FoodRate;
 import com.J5VA.service.FavoriteService;
 
 @Service
@@ -79,5 +81,18 @@ public class FavoriteImplement implements FavoriteService {
 	@Override
 	public Favorite findFavoriteByFood(Integer id) {
 		return dao.findFavoriteByFood(id);
+	}
+
+	@Override
+	public List<FoodRate> getListFoodRates() {
+
+//		List<FoodRate> list = new ArrayList<>();
+//		Integer five = list.get(1).getFood_id_rate();
+//		Integer four = list.get(2).getFood_id_rate();
+//		Integer three = list.get(3).getFood_id_rate();
+//		Integer two = list.get(4).getFood_id_rate();
+//		Integer one = list.get(5).getFood_id_rate();
+
+		return dao.getFoodRates();
 	}
 }
