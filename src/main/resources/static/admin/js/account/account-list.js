@@ -106,6 +106,24 @@ app.controller("account-list-ctrl", function ($scope, $http, $location) {
 	//khởi đầu
 	$scope.initialize();
 
+
+$scope.removeUser = function(account) {
+      var isConfirmed = confirm("Are you sure to delete this record ?"+account.username);
+      if(isConfirmed){
+        $http.delete(`/rest/accounts/${account.username}`).then(resp => {
+			var index = $scope.accounts.findIndex(p => p.username == account.username);
+			$scope.accounts.splice(index, 1);
+			$scope.reset();
+			alert("Xóa account thành công!");
+		}).catch(error => {
+			alert("Lỗi xóa account!");
+			console.log("Error", error);
+		});
+      }else{
+        return false;
+      }
+    };
+    
 	//xóa form
 	$scope.reset = function () {
 		$scope.form = {
