@@ -77,12 +77,6 @@
 										<div class="g-recaptcha"
 											th:data-sitekey="${@environment.getProperty('recaptcha.key')}"></div>
 
-										<div class="col-lg-6 col-md-6 col-12">
-											<div class="form_group mb-20">
-												<input type="checkbox" id="test_1"> <label
-													for="test_1" th:text=#{login.remember}>Remember Me</label>
-											</div>
-										</div>
 										<div class="col-lg-6 col-md-6 col-12 text-md-end mb-20">
 											<a th:href="@{/home/forgot-pw}" class="link style2"
 												th:text=#{login.fogot-pw}>Forgot Password?</a>

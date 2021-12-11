@@ -91,4 +91,22 @@ public class AccountImplement implements AccountService {
 		}
 		return true;
 	}
+
+	@Override
+	public Account checkByUser(String username) {
+		try {
+			return dao.findByUsername(username);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public Account checkByMail(String email) {
+		try {
+			return dao.findByEmail(email);
+		} catch (Exception e) {
+			return null;
+		}
+	}
 }

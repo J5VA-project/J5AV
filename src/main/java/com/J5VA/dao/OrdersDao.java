@@ -14,6 +14,9 @@ import com.J5VA.entity.Orders;
 @Repository
 public interface OrdersDao extends JpaRepository<Orders, Integer> {
 
+	@Query("SELECT o FROM Orders o order by o.order_id desc")
+	List<Orders> findAll();
+
 	@Query("SELECT o FROM Orders o WHERE o.order_acc.username=?1")
 	List<Orders> findByUsername(String username);
 
@@ -36,10 +39,12 @@ public interface OrdersDao extends JpaRepository<Orders, Integer> {
 			+ "where year(o.orders.orderdate) =?2 and month(o.orders.orderdate)=?1 " + "group by o.food.food_id "
 			+ "order by sum(o.quantity) desc ")
 	List<BestSellingProduct> getListBestSellingFoods(Integer month, Integer year);
-	
+
 	@Query(value = "select new BestCustomerBuy(o.order_acc.username, count(o.order_acc.username)) from Orders o "
-			+ "where year(o.orderdate) = ?2 and month(o.orderdate) = ?1 "
-			+ "group by o.order_acc.username "
+			+ "where year(o.orderdate) = ?2 and month(o.orderdate) = ?1 " + "group by o.order_acc.username "
 			+ "order by count(o.order_acc.username) desc")
 	List<BestCustomerBuy> getListBestCustomerBuy(Integer month, Integer year);
+
+	@Query(value = "SELECT o FROM Orders o WHERE MONTH(o.orderdate)=?1 and YEAR(o.orderdate)=?2")
+	List<Orders> findByMonthAndYear(Integer month, Integer year);
 }

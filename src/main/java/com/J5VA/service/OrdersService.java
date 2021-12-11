@@ -41,4 +41,6 @@ public interface OrdersService {
 	List<BestSellingProduct> getListBestSellingFoods(Integer month, Integer year);
 
 	List<BestCustomerBuy> getListBestCustomerBuy(Integer month, Integer year);
+
+	List<Orders> findByMonthAndYear(Integer month, Integer year);
 }

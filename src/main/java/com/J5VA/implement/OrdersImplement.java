@@ -116,4 +116,9 @@ public class OrdersImplement implements OrdersService {
 		return ordersDao.getListBestCustomerBuy(month, year);
 	}
 
+	@Override
+	public List<Orders> findByMonthAndYear(Integer month, Integer year) {
+		return ordersDao.findByMonthAndYear(month, year);
+	}
+
 }

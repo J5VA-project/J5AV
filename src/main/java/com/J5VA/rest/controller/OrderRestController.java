@@ -74,11 +74,16 @@ public class OrderRestController {
 			try {
 				Integer count = ordersService.quantityFoodByMonth(i);
 				value.add(count);
-			}catch (Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 				value.add(0);
 			}
 		}
 		return value;
+	}
+
+	@GetMapping("/findByMonthAndYear/{month}/{year}")
+	public List<Orders> findByMonthAndYear(@PathVariable("month") Integer month, @PathVariable("year") Integer year) {
+		return ordersService.findByMonthAndYear(month, year);
 	}
 }

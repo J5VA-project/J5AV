@@ -1,4 +1,7 @@
 app.controller("order-ctrl", function($scope, $http){
+
+
+
     $scope.orders = [];
 	$scope.form = {};
 	$scope.formDetail = {};
@@ -75,6 +78,15 @@ app.controller("order-ctrl", function($scope, $http){
     		console.log("Error", error);
     	});
     }
+
+	$scope.filter = function(){
+		var month = $('#month').val();
+		var year = $('#year').val();
+		
+		$http.get(`/rest/orders/findByMonthAndYear/${month}/${year}`).then(resp => {
+            $scope.orders = resp.data;
+        });
+	}
     
     //view so order
     $scope.total = function() {

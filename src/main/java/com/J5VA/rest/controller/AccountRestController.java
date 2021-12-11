@@ -62,12 +62,13 @@ public class AccountRestController {
 	}
 
 	@GetMapping("checkUsername/{username}")
-	public boolean checkUsername(@PathVariable("username") String username) {
-		if (service.checkByUsername(username) == true) {
-			return true;
-		} else {
-			return false;
-		}
+	public Account checkUsername(@PathVariable("username") String username) {
+		return service.checkByUser(username);
+	}
+
+	@GetMapping("checkEmail/{email}")
+	public Account checkEmail(@PathVariable("email") String email) {
+		return service.checkByMail(email);
 	}
 
 	@PutMapping("/{username}")

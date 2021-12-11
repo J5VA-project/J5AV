@@ -28,7 +28,13 @@ app.controller("account-list-ctrl", function ($scope, $http, $location) {
 			$('.error_password').html('X Password not null');
 			$('.error_password').show();
 			check = false;
-		} else {
+		} else if ($('#password').val().length > 50
+			|| $('#password').val().length < 3) {
+			$('.error_password').html('X Length password between 3 and 50 characters');
+			$('.error_password').show();
+			check = false;
+		}
+		else {
 			$('.error_password').hide();
 		}
 
@@ -39,9 +45,14 @@ app.controller("account-list-ctrl", function ($scope, $http, $location) {
 		} else {
 			$('.error_fullname').hide();
 		}
+       var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/; 
 
 		if ($('#email').val() == '') {
 			$('.error_email').html('X Email not null');
+			$('.error_email').show();
+			check = false;
+		} else if(!filter.test($('#email').val())){
+		    $('.error_email').html('X Email invalid!');
 			$('.error_email').show();
 			check = false;
 		} else {
@@ -103,39 +114,63 @@ app.controller("account-list-ctrl", function ($scope, $http, $location) {
 			gender: true,
 		};
 		$scope.check = '';
+		$('#username').css('border-color', 'grey');
+		$('.error_username').hide();
+		$('#email').css('border-color', 'grey');
+		$('.error_email').hide();
 	}
 
 	//hiển thị lên form
 	$scope.edit = function (account) {
 		$scope.form = angular.copy(account);
 		$scope.check = 1;
+		$('#username').css('border-color', 'grey');
+		$('.error_username').hide();
+		$('#email').css('border-color', 'grey');
+		$('.error_email').hide();
 	}
 
 	//thêm sản phẩm mới
 	$scope.create = function () {
 		var account = angular.copy($scope.form);
-		// $http.get(`/rest/accounts/checkUsername/account.username`).then(resp => {
-		// 	check=resp.data;
-		// }).catch(error => {
-		// 	alert("Lỗi tìm account!");
-		// 	console.log("Error", error);
-		// });
-		
-		// alert(check);
-		// if (check == true) {
-		// 	alert('User existed!');
-		// 	$scope.reset();
-		// } else {
-		// 	alert('User not existed!');
-		// }
-		$http.post(`/rest/accounts`, account).then(resp => {
-				$scope.accounts.push(resp.data);
-				$scope.reset();
-				alert("Successfully added new account!");
-			}).catch(error => {
-				alert("Failed to add new account!");
-				console.log("Error", error);
-			});
+
+		$http.get(`/rest/accounts/checkUsername/${account.username}`).then(resp => {
+			$scope.check = resp.data;
+			//alert($scope.check.username);
+			if (account.username == $scope.check.username) {
+				$('#username').css('border-color', 'red');
+				$('.error_username').html('X Username existed');
+				$('.error_username').show();
+			} else {
+				$('#username').css('border-color', 'grey');
+				$('.error_username').hide();
+				$http.get(`/rest/accounts/checkEmail/${account.email}`).then(resp => {
+					$scope.email = resp.data;
+					if (account.email == $scope.email.email) {
+						$('#email').css('border-color', 'red');
+						$('.error_email').html('X Email existed');
+						$('.error_email').show();
+					} else {
+						$('#email').css('border-color', 'grey');
+						$('.error_email').hide();
+						$http.post(`/rest/accounts`, account).then(resp => {
+							$scope.accounts.push(resp.data);
+							$scope.reset();
+							alert("Successfully added new account!");
+						}).catch(error => {
+							alert("Failed to add new account!");
+							console.log("Error", error);
+						});
+					}
+				}).catch(error => {
+					alert("Lỗi tìm email!");
+					console.log("Error", error);
+				});
+			}
+		}).catch(error => {
+			alert("Lỗi tìm account!");
+			console.log("Error", error);
+		});
 	}
 
 	//update sản phẩm
@@ -150,6 +185,10 @@ app.controller("account-list-ctrl", function ($scope, $http, $location) {
 			alert("Lỗi cập nhật account!");
 			console.log("Error", error);
 		});
+		$('#username').css('border-color', 'grey');
+		$('.error_username').hide();
+		$('#email').css('border-color', 'grey');
+		$('.error_email').hide();
 	}
 
 
@@ -165,6 +204,10 @@ app.controller("account-list-ctrl", function ($scope, $http, $location) {
 			alert("Lỗi xóa account!");
 			console.log("Error", error);
 		});
+		$('#username').css('border-color', 'grey');
+		$('.error_username').hide();
+		$('#email').css('border-color', 'grey');
+		$('.error_email').hide();
 	}
 
 	//Upload hình

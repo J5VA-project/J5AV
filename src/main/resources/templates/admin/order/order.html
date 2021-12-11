@@ -30,6 +30,35 @@ a:hover {
 	<!-- Tab all -->
 	<div id="all" class="tab-pane fade in active">
 		<div class="row">
+			<select class="form-control col-xl-4 select2" style="height: 100%"
+				id="month">
+				<option selected>Choose month</option>
+				<option value="1">January</option>
+				<option value="2">February</option>
+				<option value="3">March</option>
+				<option value="4">April</option>
+				<option value="5">May</option>
+				<option value="6">June</option>
+				<option value="7">July</option>
+				<option value="8">August</option>
+				<option value="9">September</option>
+				<option value="10">October</option>
+				<option value="11">November</option>
+				<option value="12">December</option>
+			</select> <select class="form-control col-xl-4 select2"
+				style="height: 100%; margin: 0 10px" id="year">
+				<option selected>Choose year</option>
+				<option value="2019">2019</option>
+				<option value="2020">2020</option>
+				<option value="2021">2021</option>
+			</select>
+			<button type="button" class="btn btn-primary col-xl-3"
+				id="btn-filter" ng-click="filter">
+				<i class="fa fa-filter"></i> Filter
+			</button>
+			<div id="chartCustomer" class="col-sm-12"></div>
+		</div>
+		<div class="row">
 			<div class="col-12">
 				<div class="card-box">
 					<table id="datatable" class="table table-hover">
@@ -99,42 +128,79 @@ a:hover {
 
 	<!-- Tab Pending -->
 	<div id="pending" class="tab-pane fade">
-		<table id="datatable" class="table table-bordered">
-			<thead>
-				<tr>
-					<th>OrderID</th>
-					<th>Order Date</th>
-					<th>Name customer</th>
-					<th>Phone number</th>
-					<th>Delivery Address</th>
-					<th>Note</th>
-					<th>Status</th>
-					<th>Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="order in pendings">
-					<td>{{order.order_id}}</td>
-					<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
-					<td>{{order.order_acc.fullname}}</td>
-					<td>{{order.order_acc.phone}}</td>
-					<td>{{order.address}}</td>
-					<td>{{order.note}}</td>
-					<td><ANY ng-switch={{order.status}}> <ANY
-							ng-switch-when="1"> <b class="pending">Pending</b> </ANY> <ANY
-							ng-switch-when="2"> <b class="ready">Ready</b></ANY> <ANY
-							ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
-							ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
-							ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
-							ng-switch-default> <b class="pending">Pending</b></ANY> </ANY></td>
-					<td>
-						<button ng-click="edit(order);editDetail(order)"
-							class="btn btn-primary fa fa-edit" data-toggle="modal"
-							data-target=".bs-example-modal-lg"></button>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="row">
+			<select class="form-control col-xl-4 select2" style="height: 100%"
+				id="month">
+				<option selected>Choose month</option>
+				<option value="1">January</option>
+				<option value="2">February</option>
+				<option value="3">March</option>
+				<option value="4">April</option>
+				<option value="5">May</option>
+				<option value="6">June</option>
+				<option value="7">July</option>
+				<option value="8">August</option>
+				<option value="9">September</option>
+				<option value="10">October</option>
+				<option value="11">November</option>
+				<option value="12">December</option>
+			</select> <select class="form-control col-xl-4 select2"
+				style="height: 100%; margin: 0 10px" id="year">
+				<option selected>Choose year</option>
+				<option value="2019">2019</option>
+				<option value="2020">2020</option>
+				<option value="2021">2021</option>
+			</select>
+			<button type="button" class="btn btn-primary col-xl-3"
+				id="btn-filter" ng-click="filter">
+				<i class="fa fa-filter"></i> Filter
+			</button>
+			<div id="chartCustomer" class="col-sm-12"></div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="card-box">
+					<table id="datatable" class="table table-bordered">
+						<thead>
+							<tr>
+								<th>OrderID</th>
+								<th>Order Date</th>
+								<th>Name customer</th>
+								<th>Phone number</th>
+								<th>Delivery Address</th>
+								<th>Note</th>
+								<th>Status</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="order in pendings">
+								<td>{{order.order_id}}</td>
+								<td>{{order.orderdate | date:'MM/dd/yyyy'}}</td>
+								<td>{{order.order_acc.fullname}}</td>
+								<td>{{order.order_acc.phone}}</td>
+								<td>{{order.address}}</td>
+								<td>{{order.note}}</td>
+								<td><ANY ng-switch={{order.status}}> <ANY
+										ng-switch-when="1"> <b class="pending">Pending</b> </ANY> <ANY
+										ng-switch-when="2"> <b class="ready">Ready</b></ANY> <ANY
+										ng-switch-when="3"> <b class="shipping">Shipping</b></ANY> <ANY
+										ng-switch-when="4"> <b class="delivered">Delivered</b></ANY> <ANY
+										ng-switch-when="5"> <b class="cancelled">Cancelled</b></ANY> <ANY
+										ng-switch-default> <b class="pending">Pending</b></ANY> </ANY></td>
+								<td>
+									<button ng-click="edit(order);editDetail(order)"
+										class="btn btn-primary fa fa-edit" data-toggle="modal"
+										data-target=".bs-example-modal-lg"></button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
 	</div>
 
 	<!-- Tab ready -->
@@ -425,7 +491,9 @@ a:hover {
 								<table id="datatable" class="table table-hover">
 									<tbody>
 										<tr ng-repeat="food in orderDetail">
-											<td><img ng-src="{{'/assets/products/'+food.food.photo}}" style="width: 50px; height: 50px"></td>
+											<td><img
+												ng-src="{{'/assets/products/'+food.food.photo}}"
+												style="width: 50px; height: 50px"></td>
 											<td>{{food.food_id}}</td>
 											<td>{{food.food.food_name}}</td>
 											<td>{{food.food.price}}</td>
