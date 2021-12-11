@@ -471,7 +471,7 @@ a:hover {
 								<label for="passWord2">Change Status*</label>
 							</div>
 							<div class="col-sm-8">
-								<select ng-model="form.status" class="custom-select">
+								<select ng-model="form.status" class="custom-select" style="height: 100%">
 									<option ng-value="1">Pending</option>
 									<option ng-value="2">Ready</option>
 									<option ng-value="3">Shipping</option>
@@ -481,7 +481,6 @@ a:hover {
 							</div>
 						</div>
 					</div>
-
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-4">
@@ -494,9 +493,12 @@ a:hover {
 											<td><img
 												ng-src="{{'/assets/products/'+food.food.photo}}"
 												style="width: 50px; height: 50px"></td>
+											<td>{{food.quantity}}</td>
+											<td>{{food.quantity*food.food.price}}</td>
 											<td>{{food.food_id}}</td>
 											<td>{{food.food.food_name}}</td>
 											<td>{{food.food.price}}</td>
+											
 										</tr>
 									</tbody>
 								</table>
