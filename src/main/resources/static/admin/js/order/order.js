@@ -8,7 +8,12 @@ $(document).ready(function(){
    var delivered = $('#delivered');
    var cancel = $('#cancel');
    
-pending.hide();
+   if(status == 2){
+      pending.hide();
+   }else if(status==3){
+      pending.hide();
+      ready.hide();
+   }
 });
     $scope.orders = [];
 	$scope.form = {};
