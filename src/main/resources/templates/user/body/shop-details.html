@@ -78,7 +78,8 @@
 						<div class="single-product-title">
 							<h2>[[${food.food_name}]]</h2>
 							<div class="product-ratings">
-								<ul class="ratings list-style" th:each="i : ${#numbers.sequence( 1, {star}, 1)}">
+								<ul class="ratings list-style"
+									th:each="i : ${#numbers.sequence( 1, {star}, 1)}">
 									<li><i class="flaticon-star-1"></i></li>
 								</ul>
 								<span>([[${number}]])</span>
@@ -143,6 +144,7 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="row pt-100">
 				<div class="col-lg-12">
 					<ul class="nav nav-tabs product-tablist" role="tablist">
@@ -150,117 +152,73 @@
 							<button class="nav-link active" data-bs-toggle="tab"
 								data-bs-target="#tab_1" type="button" role="tab">Description</button>
 						</li>
-						<li class="nav-item">
-							<button class="nav-link " data-bs-toggle="tab"
-								data-bs-target="#tab_2" type="button" role="tab">Reviews</button>
-						</li>
 					</ul>
 					<div class="tab-content product-tab-content">
 						<div class="tab-pane fade show active" id="tab_1" role="tabpanel">
 							<div class="product_desc">
 								<p>[[${food.food_detail.description}]]</p>
-
 							</div>
 						</div>
-						<div class="tab-pane fade" id="tab_2" role="tabpanel">
+					</div>
+				</div>
+				
+				<div class="col-lg-12" style="padding-top:5vh">
+					<ul class="nav nav-tabs product-tablist" role="tablist">
+						<li class="nav-item">
+							<button class="nav-link active" data-bs-toggle="tab"
+								data-bs-target="#tab_2" type="button" role="tab">Reviews</button>
+						</li>
+					</ul>
+					<div class="tab-content product-tab-content">
+						<div>
+							<!--  class="tab-pane fade" id="tab_2" role="tabpanel"-->
 							<div class="row gx-5">
 								<div class="col-lg-12">
 									<h4 class="comment-box-title mb-20">2 Reviews</h4>
-									<div class="comment-item">
+									
+									<!-- Start commnet -->
+									<div class="comment-item" th:each="comment:${comments}">
 										<div class="comment-author-img">
-											<img src="/assets/img/testimonial/client-1.jpg" alt="mage">
+											<img th:src="@{|/assets/account/${comment.comment_account.image}|}" alt="mage">
 										</div>
 										<div class="comment-author-wrap">
 											<div class="comment-author-info">
 												<div class="row align-items-start">
 													<div class="col-md-8 col-sm-8 col-12">
 														<div class="comment-author-name">
-															<h5>Stefen Bradely</h5>
-															<ul class="ratings list-style">
-																<li><i class="flaticon-star-1"></i></li>
-																<li><i class="flaticon-star-1"></i></li>
-																<li><i class="flaticon-star-1"></i></li>
-																<li><i class="flaticon-star-1"></i></li>
-																<li><i class="flaticon-star-1"></i></li>
-															</ul>
-														</div>
-													</div>
-													<div class="col-md-12 col-sm-12 col-12">
-														<div class="comment-text">
-															<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-																elitr, sed diam nonumy eirmod tempor invidunt ut labore
-																et dolore magna Lorem ipsum, dolor sit amet consectetur
-																adipisicing elit. Possimus excepturi nostrum quis.
-																Eligendi nemo exercitationem quo. Architecto mollitia
-																blanditiis.</p>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="comment-item">
-										<div class="comment-author-img">
-											<img src="/assets/img/testimonial/client-2.jpg" alt="mage">
-										</div>
-										<div class="comment-author-wrap">
-											<div class="comment-author-info">
-												<div class="row align-items-start">
-													<div class="col-md-8 col-sm-8 col-12">
-														<div class="comment-author-name">
-															<h5>Jonathan Miller</h5>
-															<ul class="ratings list-style">
-																<li><i class="flaticon-star-1"></i></li>
-																<li><i class="flaticon-star-1"></i></li>
-																<li><i class="flaticon-star-1"></i></li>
-																<li><i class="flaticon-star-1"></i></li>
-																<li><i class="flaticon-star-1"></i></li>
-															</ul>
+															<h5>[[${comment.comment_account.fullname}]]</h5>
 														</div>
 													</div>
 													<div class="col-md-12 col-sm-12 col-12 ">
 														<div class="comment-text">
-															<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-																elitr, sed diam nonumy eirmod tempor invidunt ut labore
-																et dolore magna Lorem ipsum, dolor sit amet consectetur
-																adipisicing elit. Possimus excepturi nostrum quis.
-																Eligendi nemo exercitationem quo. Architecto mollitia
-																blanditiis.</p>
+															<p>[[${comment.content}]]</p>
+														</div>
+														<div class="comment-text">
+															<p><i>[[${comment.createdate}]]</i></p>
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
+									<!-- End comment -->
+									
 								</div>
 								<div class="col-lg-12 mt-10">
 									<div class="comment-form-wrap">
 										<div class="comment-form-title">
 											<h4>Post Your Review</h4>
 										</div>
-										<form action="#" class="comment-form">
+										<form th:action="@{/home/comment/add}" class="comment-form">
+										<input type="hidden" th:value="${food.food_id}" name="food_id">
 											<div class="row gx-3">
-												<div class="col-lg-6">
-													<div class="form-group s1">
-														<input type="text" placeholder="Your  Full Name*">
-													</div>
-													<div class="form-group s2">
-														<input type="email" placeholder="Email Address*">
-													</div>
-												</div>
-												<div class="col-lg-6">
+												<div class="col-lg-12">
 													<div class="form-group v1">
-														<textarea name="review-msg" id="review-msg" cols="30"
-															rows="10" placeholder="Your comments..."></textarea>
+														<textarea id="review-msg" cols="30"
+															rows="10" placeholder="Your comments..." name="content"></textarea>
 													</div>
 												</div>
 												<div class="col-lg-12">
-													<div class="checkbox style2">
-														<input type="checkbox" id="test_1"> <label
-															for="test_1">I agree with your <a
-															class="link style1" href="terms-condition.html">terms
-																& condition.</a></label>
-													</div>
 													<button href="#" class="btn style1 mt-20">Submit
 														Review</button>
 												</div>

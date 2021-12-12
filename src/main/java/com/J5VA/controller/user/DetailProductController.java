@@ -1,6 +1,5 @@
 package com.J5VA.controller.user;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.J5VA.entity.Comment;
 import com.J5VA.entity.Food;
 import com.J5VA.entity.FoodRate;
+import com.J5VA.service.CommentService;
 import com.J5VA.service.FavoriteService;
 import com.J5VA.service.FoodService;
 
@@ -22,6 +23,8 @@ public class DetailProductController {
 	FoodService fdao;
 	@Autowired
 	FavoriteService favoriteService;
+	@Autowired
+	CommentService commentService;
 
 	@GetMapping("/shop-details/{id}")
 	public String runControll(@PathVariable("id") Integer id, Model model) {
@@ -48,16 +51,19 @@ public class DetailProductController {
 			for (int i = 0; i < foodRates.size(); i++) {
 				if (id.equals(foodRates.get(i).getFood_id_rate())) {
 					Long a = foodRates.get(i).getCount();
-					if(a==null) {
-						number=0;
-					}else {
-						number=foodRates.get(i).getCount().intValue();
+					if (a == null) {
+						number = 0;
+					} else {
+						number = foodRates.get(i).getCount().intValue();
 					}
 				}
 			}
 		}
 		model.addAttribute("star", star);
 		model.addAttribute("number", number);
+
+		List<Comment> listComments = commentService.getCommentsByFoodId(id);
+		model.addAttribute("comments", listComments);
 		return "user/body/shop-details";
 	}
 }

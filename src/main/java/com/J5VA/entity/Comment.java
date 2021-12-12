@@ -1,5 +1,7 @@
 package com.J5VA.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,11 +26,13 @@ public class Comment {
 	
 	@ManyToOne
 	@JoinColumn(name = "food_id")
-	private Food favorite_f;
+	private Food comment_food;
 
 	@ManyToOne
 	@JoinColumn(name = "username")
-	private Account favorite_acc;
+	private Account comment_account;
 	
 	private String content;
+	
+	private Date createdate;
 }
