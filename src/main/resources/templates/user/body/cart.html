@@ -44,9 +44,8 @@
 												<img src="/assets/products/{{item.photo}}" alt="Image">
 												<div class="wh-item-info">
 													<a th:href="@{|/home/shop-details/{{item.food_id}}|}">{{item.food_name}}</a>
-													<p>There are many variation of chicken.You can choose
-														your favourite one</p>
-													Price: <span>${{item.price}}</span>
+													<br>
+													Price: <span>$ {{item.price}}</span>
 												</div>
 											</div>
 										</td>
