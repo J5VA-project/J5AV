@@ -117,10 +117,10 @@
 								th:attr="ng-click=@{|cart.add(${food.food_id})|}">
 								<i class="flaticon-shopping-bag-1"></i>Add To Cart
 							</button>
-							<button class="btn style2"
-								th:attr="ng-click=@{|cart.add(${food.food_id})|}">
-								<i class="flaticon-shopping-bag-1"></i>Buy Now
-							</button>
+							<a th:href="@{'/home/favorite/'+${food.food_id}}"
+								class="btn style1"> <i class="bi bi-heart-fill"></i><b
+								th:text=#{product.favorite}></b>
+							</a>
 						</div>
 						<div class="product-more-option">
 							<div class="product-more-option-item">
@@ -144,7 +144,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="row pt-100">
 				<div class="col-lg-12">
 					<ul class="nav nav-tabs product-tablist" role="tablist">
@@ -161,8 +161,8 @@
 						</div>
 					</div>
 				</div>
-				
-				<div class="col-lg-12" style="padding-top:5vh">
+
+				<div class="col-lg-12" style="padding-top: 5vh">
 					<ul class="nav nav-tabs product-tablist" role="tablist">
 						<li class="nav-item">
 							<button class="nav-link active" data-bs-toggle="tab"
@@ -174,12 +174,14 @@
 							<!--  class="tab-pane fade" id="tab_2" role="tabpanel"-->
 							<div class="row gx-5">
 								<div class="col-lg-12">
-									<h4 class="comment-box-title mb-20">2 Reviews</h4>
-									
+									<h4 class="comment-box-title mb-20">[[${count}]] Reviews</h4>
+
 									<!-- Start commnet -->
-									<div class="comment-item" th:each="comment:${comments}">
+									<div class="comment-item" th:each="comment,state:${comments}">
 										<div class="comment-author-img">
-											<img th:src="@{|/assets/account/${comment.comment_account.image}|}" alt="mage">
+											<img
+												th:src="@{|/assets/account/${comment.comment_account.image}|}"
+												alt="mage">
 										</div>
 										<div class="comment-author-wrap">
 											<div class="comment-author-info">
@@ -194,7 +196,9 @@
 															<p>[[${comment.content}]]</p>
 														</div>
 														<div class="comment-text">
-															<p><i>[[${comment.createdate}]]</i></p>
+															<p>
+																<i>[[${comment.createdate}]]</i>
+															</p>
 														</div>
 													</div>
 												</div>
@@ -202,7 +206,7 @@
 										</div>
 									</div>
 									<!-- End comment -->
-									
+
 								</div>
 								<div class="col-lg-12 mt-10">
 									<div class="comment-form-wrap">
@@ -210,12 +214,13 @@
 											<h4>Post Your Review</h4>
 										</div>
 										<form th:action="@{/home/comment/add}" class="comment-form">
-										<input type="hidden" th:value="${food.food_id}" name="food_id">
+											<input type="hidden" th:value="${food.food_id}"
+												name="food_id">
 											<div class="row gx-3">
 												<div class="col-lg-12">
 													<div class="form-group v1">
-														<textarea id="review-msg" cols="30"
-															rows="10" placeholder="Your comments..." name="content"></textarea>
+														<textarea id="review-msg" cols="30" rows="10"
+															placeholder="Your comments..." name="content"></textarea>
 													</div>
 												</div>
 												<div class="col-lg-12">
@@ -253,7 +258,7 @@
 								class="swiper-slide">
 								<div class="feature-card style1">
 									<div class="feature-img">
-										<img th:src="@{|/assets/products/${foods.food.photo}|}"
+										<img th:src="@{|/assets/products/${foods.food.photo}|}" style="width: 100%; height: 262px" 
 											alt="Image">
 									</div>
 									<div class="feature-info">

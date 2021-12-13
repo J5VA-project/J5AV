@@ -64,6 +64,7 @@ public class DetailProductController {
 
 		List<Comment> listComments = commentService.getCommentsByFoodId(id);
 		model.addAttribute("comments", listComments);
+		model.addAttribute("count", listComments.size());
 		return "user/body/shop-details";
 	}
 }
