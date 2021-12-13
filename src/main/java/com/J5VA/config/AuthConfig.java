@@ -60,7 +60,7 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().cors().disable();
 		http.authorizeRequests()
 				.antMatchers("/home/checkout", "/home/order/listorder", "/home/change-pw", 
-						"/home/order-detail/**", "/rest/authorities/**","/home/favorite/list","/home/profile","/home/comment")
+						"/home/order-detail/**", "/rest/authorities/**","/home/favorite/list","/home/profile","/home/comment/**")
 				.authenticated().antMatchers("/admin/index/**").hasRole("Manager")
 				.anyRequest().permitAll();
 
