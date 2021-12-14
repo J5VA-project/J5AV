@@ -175,13 +175,11 @@
 							<div class="product-more-option-item">
 								<div class="col-lg-6 col-md-6 col-12">
 									<h6 th:text=#{product.category}>Category</h6>
-									<a
-										th:href="@{'/home/shop?p=1&sort=asc&show=6'+'&cate='+${food.group.food_detail.foodCategory.foodcategory_name}}">[[${food.group.food_detail.foodCategory.foodcategory_name}]]</a>
+									<a th:href="@{'/home/shop?p=1&sort=asc&show=6'+'&cate='+${food.group.food_detail.foodCategory.foodcategory_name}}">[[${food.group.food_detail.foodCategory.foodcategory_name}]]</a>
 								</div>
 								<div class="col-lg-6 col-md-6 col-12">
 									<h6 th:text=#{product.size}>Size</h6>
-									<a
-										th:href="@{'/home/shop?p=1&sort=asc&show=6'+'&size='+${food.group.food_detail.food_detail_size.name}}">[[${food.group.food_detail.food_detail_size.name}]]</a>
+									<a th:href="@{'/home/shop?p=1&sort=asc&show=6'+'&size='+${food.group.food_detail.food_detail_size.name}}">[[${food.group.food_detail.food_detail_size.name}]]</a>
 								</div>
 							</div>
 							<div class="feature-meta">

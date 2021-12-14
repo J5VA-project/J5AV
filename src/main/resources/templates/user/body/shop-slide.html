@@ -258,11 +258,11 @@
 									<div class="product-more-option-item">
 										<div class="col-lg-6 col-md-6 col-12">
 											<h6 th:text=#{product.category}>Category:</h6>
-											<a>[[${food.food_detail.foodCategory.foodcategory_name}]]</a>
+											<a th:href="@{'/home/shop?p=1&sort=asc&show=6'+'&cate='+${food.food_detail.foodCategory.foodcategory_name}}">[[${food.food_detail.foodCategory.foodcategory_name}]]</a>
 										</div>
 										<div class="col-lg-6 col-md-6 col-12">
 											<h6 th:text=#{product.size}>Size:</h6>
-											<a>[[${food.food_detail.food_detail_size.name}]]</a>
+											<a th:href="@{'/home/shop?p=1&sort=asc&show=6'+'&size='+${food.food_detail.food_detail_size.name}}">[[${food.food_detail.food_detail_size.name}]]</a>
 												<input type="hidden" class="qtyValue" value="1" id="quantity" />
 										</div>
 									</div>

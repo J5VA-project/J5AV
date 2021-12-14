@@ -103,11 +103,11 @@
 							</div>
 							<div class="product-more-option-item">
 								<h6 th:text=#{product.category}>Category:</h6>
-								<a>[[${food.food_detail.foodCategory.foodcategory_name}]]</a>
+								<a th:href="@{'/home/shop?p=1&sort=asc&show=6'+'&cate='+${food.food_detail.foodCategory.foodcategory_name}}">[[${food.food_detail.foodCategory.foodcategory_name}]]</a>
 							</div>
 							<div class="product-more-option-item">
 								<h6 th:text=#{product.size}>Size:</h6>
-								<a>[[${food.food_detail.food_detail_size.name}]]</a>
+								<a th:href="@{'/home/shop?p=1&sort=asc&show=6'+'&size='+${food.food_detail.food_detail_size.name}}">[[${food.food_detail.food_detail_size.name}]]</a>
 							</div>
 						</div>
 						<div class="single-product-option">
@@ -265,13 +265,11 @@
 										<div class="product-more-option-item">
 											<div class="col-lg-6 col-md-6 col-12">
 												<h6 th:text=#{product.category}>Category:</h6>
-												<a
-													th:href="@{|/home/shop-details/${foods.food.food_detail.foodCategory.foodcategory_id}|}">[[${foods.food.food_detail.foodCategory.foodcategory_name}]]</a>
+												<a th:href="@{'/home/shop?p=1&sort=asc&show=6'+'&cate='+${foods.food.food_detail.foodCategory.foodcategory_name}}">[[${foods.food.food_detail.foodCategory.foodcategory_name}]]</a>
 											</div>
 											<div class="col-lg-6 col-md-6 col-12">
 												<h6 th:text=#{product.size}>Size:</h6>
-												<a
-													th:href="@{|/home/shop-details/${foods.food.food_detail.food_detail_size.size_id}|}">[[${foods.food.food_detail.food_detail_size.name}]]</a>
+												<a th:href="@{'/home/shop?p=1&sort=asc&show=6'+'&size='+${foods.food.food_detail.food_detail_size.name}}">[[${foods.food.food_detail.food_detail_size.name}]]</a>
 											</div>
 										</div>
 										<div class="feature-meta">
