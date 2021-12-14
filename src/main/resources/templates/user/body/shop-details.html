@@ -91,7 +91,7 @@
 
 						<div class="product-more-option">
 							<div class="product-more-option-item">
-								<h6>Quantity:</h6>
+								<h6 th:text=#{product.quanty}>Quantity:</h6>
 								<div class="product-quantity style1">
 									<div class="qtySelector">
 										<span class="decreaseQty"><i
@@ -102,20 +102,18 @@
 								</div>
 							</div>
 							<div class="product-more-option-item">
-								<h6>Category:</h6>
-								<a
-									th:href="@{|/home/shop-details/${food.food_detail.foodCategory.foodcategory_id}|}">[[${food.food_detail.foodCategory.foodcategory_name}]]</a>
+								<h6 th:text=#{product.category}>Category:</h6>
+								<a>[[${food.food_detail.foodCategory.foodcategory_name}]]</a>
 							</div>
 							<div class="product-more-option-item">
-								<h6>Size:</h6>
-								<a
-									th:href="@{|/home/shop-details/${food.food_detail.food_detail_size.size_id}|}">[[${food.food_detail.food_detail_size.name}]]</a>
+								<h6 th:text=#{product.size}>Size:</h6>
+								<a>[[${food.food_detail.food_detail_size.name}]]</a>
 							</div>
 						</div>
 						<div class="single-product-option">
 							<button class="btn style1"
 								th:attr="ng-click=@{|cart.add(${food.food_id})|}">
-								<i class="flaticon-shopping-bag-1"></i>Add To Cart
+								<i class="flaticon-shopping-bag-1"></i> <b th:text=#{product.addcart}>Add To Cart</b> 
 							</button>
 							<a th:href="@{'/home/favorite/'+${food.food_id}}"
 								class="btn style1"> <i class="bi bi-heart-fill"></i><b
@@ -124,7 +122,7 @@
 						</div>
 						<div class="product-more-option">
 							<div class="product-more-option-item">
-								<h6>Share On :</h6>
+								<h6 th:text=#{product.share}>Share On :</h6>
 								<ul class="social-profile style3 list-style">
 									<li><a target="_blank"
 										href="https://www.facebook.com/j5varestaurant"><i
@@ -150,7 +148,7 @@
 					<ul class="nav nav-tabs product-tablist" role="tablist">
 						<li class="nav-item">
 							<button class="nav-link active" data-bs-toggle="tab"
-								data-bs-target="#tab_1" type="button" role="tab">Description</button>
+								data-bs-target="#tab_1" type="button" role="tab" th:text=#{product.des}>Description</button>
 						</li>
 					</ul>
 					<div class="tab-content product-tab-content">
@@ -166,7 +164,7 @@
 					<ul class="nav nav-tabs product-tablist" role="tablist">
 						<li class="nav-item">
 							<button class="nav-link active" data-bs-toggle="tab"
-								data-bs-target="#tab_2" type="button" role="tab">Reviews</button>
+								data-bs-target="#tab_2" type="button" role="tab" th:text=#{product.reviews}>Reviews</button>
 						</li>
 					</ul>
 					<div class="tab-content product-tab-content">
@@ -174,7 +172,7 @@
 							<!--  class="tab-pane fade" id="tab_2" role="tabpanel"-->
 							<div class="row gx-5">
 								<div class="col-lg-12">
-									<h4 class="comment-box-title mb-20">[[${count}]] Reviews</h4>
+									<h4 class="comment-box-title mb-20">[[${count}]] <i th:text=#{product.reviews}>Comment</i> </h4>
 
 									<!-- Start commnet -->
 									<div class="comment-item" th:each="comment,state:${comments}">
@@ -211,7 +209,7 @@
 								<div class="col-lg-12 mt-10">
 									<div class="comment-form-wrap">
 										<div class="comment-form-title">
-											<h4>Post Your Review</h4>
+											<h4 th:text=#{product.comment}>Post Your Review</h4>
 										</div>
 										<form th:action="@{/home/comment/add}" class="comment-form">
 											<input type="hidden" th:value="${food.food_id}"
@@ -224,8 +222,7 @@
 													</div>
 												</div>
 												<div class="col-lg-12">
-													<button href="#" class="btn style1 mt-20">Submit
-														Review</button>
+													<button class="btn style1 mt-20" th:text=#{product.submit}>Submit Review</button>
 												</div>
 											</div>
 										</form>
@@ -244,9 +241,9 @@
 		<div class="container">
 			<div class="section-title style1 text-center mb-40">
 				<span> <img src="/assets/img/secion-shape-1.png" alt="Image">
-					Check More <img src="/assets/img/secion-shape-2.png" alt="Image">
+					<i th:text=#{wishlist.more}>Check More </i><img src="/assets/img/secion-shape-2.png" alt="Image">
 				</span>
-				<h2>Related product</h2>
+				<h2 th:text=#{product.related}>Related product</h2>
 			</div>
 		</div>
 		<div class="container-fluid">
@@ -267,12 +264,12 @@
 										</h3>
 										<div class="product-more-option-item">
 											<div class="col-lg-6 col-md-6 col-12">
-												<h6>Category:</h6>
+												<h6 th:text=#{product.category}>Category:</h6>
 												<a
 													th:href="@{|/home/shop-details/${foods.food.food_detail.foodCategory.foodcategory_id}|}">[[${foods.food.food_detail.foodCategory.foodcategory_name}]]</a>
 											</div>
 											<div class="col-lg-6 col-md-6 col-12">
-												<h6>Size:</h6>
+												<h6 th:text=#{product.size}>Size:</h6>
 												<a
 													th:href="@{|/home/shop-details/${foods.food.food_detail.food_detail_size.size_id}|}">[[${foods.food.food_detail.food_detail_size.name}]]</a>
 											</div>
@@ -283,7 +280,7 @@
 
 										<a class="btn style2"
 											th:attr="ng-click=@{|cart.add(${food.food_id})|}"><i
-											class="flaticon-shopping-bag-1"></i>Add To Cart</a>
+											class="flaticon-shopping-bag-1" ></i> <b th:text=#{product.addcart}>Add To Cart</b></a>
 										<div class="discount-tag">
 											<img src="/assets/img/feature/circle-1.png" alt="Image">
 											<p>
