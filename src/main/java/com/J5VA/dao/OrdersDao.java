@@ -2,6 +2,8 @@ package com.J5VA.dao;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -9,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import com.J5VA.entity.BestCustomerBuy;
 import com.J5VA.entity.BestSellingProduct;
-import com.J5VA.entity.Food;
 import com.J5VA.entity.Orders;
 
 @Repository
@@ -19,7 +20,7 @@ public interface OrdersDao extends JpaRepository<Orders, Integer> {
 	List<Orders> findAll();
 
 	@Query("SELECT o FROM Orders o WHERE o.order_acc.username=?1")
-	List<Orders> findByUsername(String username);
+	Page<Orders> findByUsername(String username, Pageable pageable);
 
 	@Query("SELECT o FROM Orders o WHERE o.status=?1  ORDER BY o.orderdate desc")
 	List<Orders> orderStatus(Integer status);

@@ -1,13 +1,17 @@
 package com.J5VA.controller.user;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.J5VA.entity.Orders;
 import com.J5VA.service.AccountService;
@@ -36,9 +40,16 @@ public class OrderController {
 	}
 
 	@RequestMapping("/order/listorder")
-	public String orderlist(Model model, HttpServletRequest request) {
+	public String orderlist(Model model, HttpServletRequest request,
+			@RequestParam(name = "p", required = false, defaultValue = "1") Integer currentPage) {
+		int showNumber = 10;
 		String username = request.getRemoteUser();
-		model.addAttribute("orders", ordersService.findByUsername(username));
+		Page<Orders> page = ordersService.findByUsername(username, currentPage, showNumber);
+		List<Orders> orders = page.getContent();
+		int totalPages = page.getTotalPages();
+		model.addAttribute("orders",orders);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("totalPages", totalPages);
 		return "user/body/orderlist";
 	}
 

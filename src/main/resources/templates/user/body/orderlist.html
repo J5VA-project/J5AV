@@ -173,6 +173,45 @@
 				</div>
 			</div>
 		</section>
+		<div class="page-navigation">
+			<div class="row align-items-center">
+				<div
+					class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20">
+				</div>
+				<div
+					class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center smb-20">
+					<ul class="page-nav list-style">
+						<li th:each="i: ${#numbers.sequence(1, totalPages)}"><a
+							th:if="${i != currentPage}" href="shop-left-sidebar.html"
+							th:href="@{'/home/order/listorder?p=' + ${i}}">
+								[[${i}]] </a> <a class="active" th:unless="${i != currentPage}">[[${i}]]</a>
+						</li>
+					</ul>
+				</div>
+				<div
+					class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-end text-center">
+				</div>
+			</div>
+			<div class="page-navigation">
+				<div class="row align-items-center">
+					<div
+						class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20"></div>
+					<div
+						class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center smb-20">
+						<div>
+							<div class="profuct-result">
+								<p>
+									<b th:text=#{product.page}>Page</b> [[${currentPage}]] <b
+										th:text="#{product.of}">of</b> [[${totalPages}]]
+								</p>
+							</div>
+						</div>
+					</div>
+					<div
+						class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20"></div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

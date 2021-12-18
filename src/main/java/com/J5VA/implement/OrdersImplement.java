@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.J5VA.dao.OrderDetailDao;
@@ -25,11 +29,6 @@ public class OrdersImplement implements OrdersService {
 
 	@Autowired
 	OrderDetailDao orderDetailDao;
-
-	@Override
-	public List<Orders> findByUsername(String username) {
-		return ordersDao.findByUsername(username);
-	}
 
 	@Override
 	public Orders save(Orders entity) {
@@ -119,6 +118,15 @@ public class OrdersImplement implements OrdersService {
 	@Override
 	public List<Orders> findByMonthAndYear(Integer month, Integer year) {
 		return ordersDao.findByMonthAndYear(month, year);
+	}
+
+	@Override
+	public Page<Orders> findByUsername(String username, Integer pageNumber, Integer showPageNumber) {
+		Sort sort = Sort.by("orderdate").descending();
+		pageNumber = (pageNumber == null || pageNumber <= 0) ? 1 : pageNumber;
+		showPageNumber = showPageNumber == null ? 10 : showPageNumber;
+		Pageable pageable = PageRequest.of(pageNumber - 1, showPageNumber, sort);
+		return ordersDao.findByUsername(username, pageable);
 	}
 
 }
