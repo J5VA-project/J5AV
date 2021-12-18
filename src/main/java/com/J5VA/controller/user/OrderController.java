@@ -41,15 +41,19 @@ public class OrderController {
 
 	@RequestMapping("/order/listorder")
 	public String orderlist(Model model, HttpServletRequest request,
-			@RequestParam(name = "p", required = false, defaultValue = "1") Integer currentPage) {
-		int showNumber = 10;
+			@RequestParam(name = "p", required = false, defaultValue = "1") Integer currentPage,
+			@RequestParam(name = "show", required = false, defaultValue = "6") Integer show,
+			@RequestParam(name = "sort", required = false, defaultValue = "desc") String sort) {
 		String username = request.getRemoteUser();
-		Page<Orders> page = ordersService.findByUsername(username, currentPage, showNumber);
+		Page<Orders> page = ordersService.findByUsername(username, currentPage, show, sort);
 		List<Orders> orders = page.getContent();
 		int totalPages = page.getTotalPages();
-		model.addAttribute("orders",orders);
+		model.addAttribute("orders", orders);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("sort", sort == null ? "" : sort);
+		model.addAttribute("show", show == null ? "" : show);
+		model.addAttribute("count",ordersService.countOrder(username));
 		return "user/body/orderlist";
 	}
 

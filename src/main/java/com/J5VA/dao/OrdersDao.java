@@ -52,4 +52,7 @@ public interface OrdersDao extends JpaRepository<Orders, Integer> {
 	
 	@Query("SELECT MAX(order_id) FROM Orders")
 	int selectMax();
+	
+	@Query("SELECT COUNT(o) FROM Orders o where o.order_acc.username =?1")
+	int countOrder(String username);
 }

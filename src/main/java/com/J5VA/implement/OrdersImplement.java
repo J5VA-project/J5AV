@@ -121,12 +121,23 @@ public class OrdersImplement implements OrdersService {
 	}
 
 	@Override
-	public Page<Orders> findByUsername(String username, Integer pageNumber, Integer showPageNumber) {
-		Sort sort = Sort.by("orderdate").descending();
+	public Page<Orders> findByUsername(String username, Integer pageNumber, Integer showPageNumber, String key) {
+		key = key == null ? "" : key;
 		pageNumber = (pageNumber == null || pageNumber <= 0) ? 1 : pageNumber;
 		showPageNumber = showPageNumber == null ? 10 : showPageNumber;
+		Sort sort = null;
+		if (key.equals("asc"))
+			sort = Sort.by("orderdate").ascending();
+		else if (key.equals("desc"))
+			sort = Sort.by("orderdate").descending();
 		Pageable pageable = PageRequest.of(pageNumber - 1, showPageNumber, sort);
 		return ordersDao.findByUsername(username, pageable);
+	}
+
+	@Override
+	public Integer countOrder(String username) {
+		return ordersDao.countOrder(username);
+
 	}
 
 }

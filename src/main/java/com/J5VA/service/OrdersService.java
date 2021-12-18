@@ -20,7 +20,7 @@ public interface OrdersService {
 
 	Orders save(Orders entity);
 
-	Page<Orders> findByUsername(String username, Integer pageNumber, Integer showPageNumber);
+	Page<Orders> findByUsername(String username, Integer pageNumber, Integer showPageNumber, String sort);
 
 	void delete(Integer id);
 
@@ -45,5 +45,7 @@ public interface OrdersService {
 	List<BestCustomerBuy> getListBestCustomerBuy(Integer month, Integer year);
 
 	List<Orders> findByMonthAndYear(Integer month, Integer year);
+	
+	Integer countOrder(String username);
 
 }
