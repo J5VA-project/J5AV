@@ -56,11 +56,11 @@
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
 										<label for="check_1"><a
-											th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=0&priceEnd=200'}">
+											th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=0&priceEnd=1'}">
 												<input style="display: none;" name="priceSt" th:value="0"
 												type="checkbox" id="check_1"> <input
-												style="display: none;" name="priceEn" th:value="200"
-												type="checkbox" id="check_1"> $0-$200
+												style="display: none;" name="priceEn" th:value="1"
+												type="checkbox" id="check_1"> $0-$1
 										</a></label>
 									</div>
 								</div>
@@ -68,11 +68,11 @@
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
 										<label for="check_2"><a
-											th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=200&priceEnd=400'}">
-												<input style="display: none;" name="priceSt" th:value="200"
+											th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=1&priceEnd=2'}">
+												<input style="display: none;" name="priceSt" th:value="1"
 												type="checkbox" id="check_2"> <input
-												style="display: none;" name="priceEn" th:value="400"
-												type="checkbox" id="check_2"> $200-$400
+												style="display: none;" name="priceEn" th:value="2"
+												type="checkbox" id="check_2"> $1-$2
 										</a></label>
 									</div>
 								</div>
@@ -80,11 +80,11 @@
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
 										<label for="check_3"><a
-											th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=400&priceEnd=600'}">
-												<input style="display: none;" name="priceSt" th:value="400"
-												type="checkbox" id="check_3"> <input
-												style="display: none;" name="priceEn" th:value="600"
-												type="checkbox" id="check_3"> $400-$600
+											th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=2&priceEnd=5'}">
+												<input style="display: none;" name="priceSt" th:value="2"
+												type="radio" checked="checked" id="check_3"> <input
+												style="display: none;" name="priceEn" th:value="5"
+												type="radio"  id="check_3"> $2-$5
 										</a></label>
 									</div>
 								</div>
@@ -92,11 +92,11 @@
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
 										<label for="check_4"><a
-											th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=600&priceEnd=800'}">
-												<input style="display: none;" name="priceSt" th:value="600"
+											th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=5&priceEnd=10'}">
+												<input style="display: none;" name="priceSt" th:value="5"
 												type="checkbox" id="check_4"> <input
-												style="display: none;" name="priceEn" th:value="800"
-												type="checkbox" id="check_4"> $600-$800
+												style="display: none;" name="priceEn" th:value="10"
+												type="checkbox" id="check_4"> $5-$10
 										</a></label>
 									</div>
 								</div>
@@ -104,11 +104,11 @@
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
 										<label for="check_5"><a
-											th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=800&priceEnd=1000'}">
-												<input style="display: none;" name="priceSt" th:value="800"
+											th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=10&priceEnd=20'}">
+												<input style="display: none;" name="priceSt" th:value="10"
 												type="checkbox" id="check_5"> <input
-												style="display: none;" name="priceEn" th:value="1000"
-												type="checkbox" id="check_5"> $800-$1000
+												style="display: none;" name="priceEn" th:value="20"
+												type="checkbox" id="check_5"> $10-$20
 										</a></label>
 									</div>
 								</div>
@@ -116,11 +116,23 @@
 									class="checkbox-item d-flex justify-content-between align-items-center">
 									<div class="checkbox style2">
 										<label for="check_5"><a
-											th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=1000&priceEnd=1200'}">
-												<input style="display: none;" name="priceSt" th:value="1000"
+											th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=20&priceEnd=50'}">
+												<input style="display: none;" name="priceSt" th:value="20"
 												type="checkbox" id="check_5"> <input
-												style="display: none;" name="priceEn" th:value="1200"
-												type="checkbox" id="check_5"> $1000-$1200
+												style="display: none;" name="priceEn" th:value="50"
+												type="checkbox" id="check_5"> $20-$50
+										</a></label>
+									</div>
+								</div>
+								<div
+									class="checkbox-item d-flex justify-content-between align-items-center">
+									<div class="checkbox style2">
+										<label for="check_5"><a
+											th:href="@{'/home/shop?p=1&search='+${search}+'&sort=asc&show='+${showPageNumber}+'&priceSt=50&priceEnd=100'}">
+												<input style="display: none;" name="priceSt" th:value="50"
+												type="checkbox" id="check_5"> <input
+												style="display: none;" name="priceEn" th:value="100"
+												type="checkbox" id="check_5"> $50-$100
 										</a></label>
 									</div>
 								</div>
