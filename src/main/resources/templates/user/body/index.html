@@ -165,8 +165,8 @@
 				<div th:each="food:${foods}" class="col-xl-4 col-lg-6 col-md-6">
 					<div class="feature-card style1">
 						<div class="feature-img">
-							<img th:src="@{|/assets/img/feature/${food.group.photo}|}" style="width: 100%; height: 262px"
-								alt="Image">
+							<img th:src="@{|/assets/img/feature/${food.group.photo}|}"
+								style="width: 100%; height: 262px" alt="Image">
 						</div>
 						<div class="feature-info">
 							<h3 class="feature-title">
@@ -175,11 +175,13 @@
 							<div class="product-more-option-item">
 								<div class="col-lg-6 col-md-6 col-12">
 									<h6 th:text=#{product.category}>Category</h6>
-									<a th:href="@{'/home/shop?p=1&sort=asc&show=6'+'&cate='+${food.group.food_detail.foodCategory.foodcategory_name}}">[[${food.group.food_detail.foodCategory.foodcategory_name}]]</a>
+									<a
+										th:href="@{'/home/shop?p=1&sort=asc&show=6'+'&cate='+${food.group.food_detail.foodCategory.foodcategory_name}}">[[${food.group.food_detail.foodCategory.foodcategory_name}]]</a>
 								</div>
 								<div class="col-lg-6 col-md-6 col-12">
 									<h6 th:text=#{product.size}>Size</h6>
-									<a th:href="@{'/home/shop?p=1&sort=asc&show=6'+'&size='+${food.group.food_detail.food_detail_size.name}}">[[${food.group.food_detail.food_detail_size.name}]]</a>
+									<a
+										th:href="@{'/home/shop?p=1&sort=asc&show=6'+'&size='+${food.group.food_detail.food_detail_size.name}}">[[${food.group.food_detail.food_detail_size.name}]]</a>
 								</div>
 							</div>
 							<div class="feature-meta">
@@ -204,7 +206,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<section
 		class="contact-wrap style1 bg-f contact-bg-1 pt-100 pb-70 pos-rel">
 		<div class="overlay bg-black op-85"></div>
@@ -264,8 +266,8 @@
 							<div th:each="cust:${custs}" class="swiper-slide">
 								<div class="testimonial-item style1">
 									<div class="client-img">
-										<img th:src="@{|/assets/account/${cust.image}|}"
-											alt="Image">
+										<img th:src="@{|/assets/account/${cust.image}|}" alt="Image"
+											style="border-radius: 50%; height: 8em; width: 10em;">
 									</div>
 									<div class="client-info">
 										<h4>[[${cust.fullname}]]</h4>
@@ -320,6 +322,5 @@
 	</section>
 </body>
 
-<!-- Mirrored from templates.hibootstrap.com/caban/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Sep 2021 13:59:23 GMT -->
 
 </html>
