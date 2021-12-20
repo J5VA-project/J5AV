@@ -185,7 +185,7 @@
 														<th th:text=#{prod.image} width="30%">Food</th>
 														<th th:text=#{prod.name} width="25%">Food name</th>
 														<th th:text=#{prod.qty} width="15%">Quantity</th>
-														<th th:text=#{prod.price} width="15%">Price¡</th>
+														<th th:text=#{prod.price} width="15%">PriceÂ¡</th>
 														<th th:text=#{prod.total} width="15%">Total</th>
 													</tr>
 												</thead>
@@ -208,10 +208,10 @@
 															style="vertical-align: middle">[[*{quantity}]]</td>
 														<td class="text-right" width="15%"
 															style="vertical-align: middle">
-															$[[*{#numbers.formatDecimal(price,0,'COMMA',0,'POINT')}]]
+															$[[*{price}]]
 														</td>
 														<td width="15%" style="vertical-align: middle">
-															$[[*{#numbers.formatDecimal(price*quantity,0,'COMMA',0,'POINT')}]]
+															$[[*{#numbers.formatDecimal(price*quantity,0,'COMMA',2,'POINT')}]]
 														</td>
 													</tr>
 												</tbody>
